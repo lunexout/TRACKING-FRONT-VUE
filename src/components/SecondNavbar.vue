@@ -22,7 +22,7 @@
           <li class="nav-item">
             <!-- <a class="nav-link active" aria-current="page" href="#">Home</a>
              -->
-            <img class="logo-img1" src="./../assets/mainpage/logo.svg" />
+            <img class="logo-img1" src="./../assets/services/logo.svg" />
           </li>
         </ul>
       </div>
@@ -44,7 +44,7 @@
               <p
                 class="phoneFONT"
                 style="
-                  color: white;
+                  color: black;
                   font-size: 25px;
                   margin-left: 35px;
                   margin-top: 10px;
@@ -67,11 +67,11 @@
 
 <script>
 export default {
-  name: "Navbar",
+  name: "SecondNavbar",
 };
 </script>
 
-<style>
+<style scoped>
 .container-fluid {
   margin-top: 60px;
 }
@@ -85,7 +85,7 @@ export default {
   height: 85px;
 }
 .lang-txt {
-  color: white;
+  color: black;
   font-size: 22px;
   margin-left: 35px;
   margin-top: 5px;
@@ -115,17 +115,17 @@ export default {
   top: 100px;
 }
 .nav-link {
-  color: white !important;
+  color: black   !important;
 }
 .navbar-brand {
-  color: white !important;
+  color: black !important;
 }
 .loginBtn {
   margin-left: 80px;
   width: 160px;
   height: 50px;
-  color: white;
-  border: 1px solid white;
+  color: #009EDB;
+  border: 1px solid #009EDB;
   font-family: arrowFONT;
   font-size: 22px;
   border-radius: 4px;
@@ -148,11 +148,6 @@ export default {
     margin-left: 80px;
   }
 }
-/* @media all and (min-width:300px ) {
-  .right-nav-items {
-  margin-left: 20px;
-  }
-} */
 @media all and (min-width: 900px) {
   .right-nav-items {
     margin-left: 70px;

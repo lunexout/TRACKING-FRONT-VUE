@@ -45,45 +45,20 @@
         :key="image.id"
       >
         <div
+          v-if="image.id == 1"
           class="parallax-slide-image"
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         >
-          <img :src="image.imageUrl" />
-          <h1
-            class="text-center"
-            style="
-              position: absolute;
-              z-index: 555;
-              color: white;
-              font-family: arrowFONT;
-              font-weight: bold;
-              font-size: 50px;
-              margin-top: -290px;
-            "
-          >
-            ამანათების ტრანსპორტირება<br />
-            თურქეთის ნებისმიერი წერტილიდან
-          </h1>
-          <div
-            class="text-center"
-            style="
-              margin-top: -150px;
-              margin-left: -20px;
-              position: absolute;
-              width: 60px;
-              height: 4px;
-              background-color: #19a5db;
-              z-index: 55;
-            "
-          ></div>
-
-          <div
-            class="text-center registerContainer"
-            style="position: absolute; margin-left: -20px"
-          >
-            <button class="registreBtn">რეგისტრაცია</button>
-          </div>
+          <FirstSlide :image='image.imageUrl' />
+        </div>
+        <div
+          v-if="image.id == 2"
+          class="parallax-slide-image"
+          :data-swiper-parallax="parallaxAmount"
+          :data-swiper-parallax-opacity="0.5"
+        >
+          <SecondSlide :image='image.imageUrl' />
         </div>
       </swiper-slide>
     </swiper>
@@ -110,14 +85,16 @@ import "swiper/components/navigation/navigation.scss";
 
 SwiperCore.use([Navigation, Parallax]);
 
+import FirstSlide from "./Slides/FirstSlide.vue";
+import SecondSlide from "./Slides/SecondSlide.vue";
 export default {
   data() {
     return {
       parallaxSwiperWidth: 0,
       images: [
         { id: 1, imageUrl: require("../assets/images/image1.jpg") },
-        { id: 2, imageUrl: require("../assets/images/image2.jpg") },
-        { id: 3, imageUrl: require("../assets/images/image3.jpg") },
+        { id: 2, imageUrl: require("../assets/images/image1.jpg") },
+        { id: 3, imageUrl: require("../assets/images/image2.jpg") },
       ],
     };
   },
@@ -129,41 +106,18 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    FirstSlide,SecondSlide
     // FontAwesomeIcon,
   },
   methods: {
     onSwiperInitialized(swiper) {
       this.parallaxSwiperWidth = swiper.width;
-    },
+    }
   },
 };
 </script>
 
 <style scoped>
-.registerContainer {
-  border-radius: 70px;
-  outline: none;
-  border: 1px solid white;
-  padding: 9px;
-  text-align: center;
-  height: 82px;
-  width: 370px;
-  margin-top: 500px;
-}
-.registreBtn {
-  border-radius: 70px;
-  outline: none;
-  padding: 10px;
-  width: 350px;
-  font-family: arrowFONT;
-  font-weight: bold;
-  height: 60px;
-  text-align: center;
-  font-size: 28px;
-  color: white;
-  background-color: #009ce7;
-  border: none;
-}
 .parallax-slider {
   position: relative;
 }
