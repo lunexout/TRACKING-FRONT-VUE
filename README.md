@@ -1,3 +1,3 @@
-## Made with ❤️ - by Jano Gazashvili
+## Made with Vue - by Jano Gazashvili
 # tracking-app
 
