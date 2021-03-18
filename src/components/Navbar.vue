@@ -39,19 +39,9 @@
             </div>
           </li>
           <li class="nav-item">
-            <div style="display: flex">
+            <div style="display: flex; width: 440%">
               <div class="line-phone" />
-              <p
-                class="phoneFONT"
-                style="
-                  color: white;
-                  font-size: 25px;
-                  margin-left: 35px;
-                  margin-top: 10px;
-                "
-              >
-                (+ 995) 599 710 202
-              </p>
+              <p class="phoneFONT phoneNumber">(+ 995) 599 710 202</p>
             </div>
           </li>
 
@@ -71,14 +61,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container-fluid {
   margin-top: 60px;
 }
 .logo-img1 {
   width: 85px;
   height: 85px;
-  margin-left: 70px;
+  margin-left: 25%;
 }
 .logo-img {
   width: 85px;
@@ -87,16 +77,16 @@ export default {
 .lang-txt {
   color: white;
   font-size: 22px;
-  margin-left: 35px;
+  margin-left: 10%;
   margin-top: 5px;
 }
 .line-phone {
   background-color: #337bbb;
   margin-top: 28px;
-  width: 35px;
+  width: 45px;
   height: 3px;
   z-index: 55;
-  margin-left: 125px;
+  margin-left: 20%;
 }
 .lang-img {
   width: 70px;
@@ -104,10 +94,16 @@ export default {
   margin-left: 0px;
 }
 .right-nav-items {
-  margin-left: 180px;
+  margin-left: 50%;
+}
+.phoneNumber {
+  color: white;
+  font-size: 25px;
+  margin-left: 10%;
+  margin-top: 10px;
 }
 .main-nav {
-  left: 100px;
+  left: 5%;
   height: 70px;
   background-color: transparent;
   z-index: 999;
@@ -121,7 +117,7 @@ export default {
   color: white !important;
 }
 .loginBtn {
-  margin-left: 80px;
+  margin-left: 200%;
   width: 160px;
   height: 50px;
   color: white;
@@ -143,16 +139,201 @@ export default {
   font-family: arrowFONT;
   font-weight: 600;
 }
+@media all and (max-width: 1200px) {
+}
+@media all and (min-width: 1249px) {
+  .right-nav-items {
+    margin-left: 105%;
+  }
+  .lang-txt {
+    font-size: 18px;
+  }
+  .lang-img {
+  width: 50px;
+  height: 60px;
+  margin-left: 0px;
+}
+  .loginBtn {
+    width: 120px;
+    height: 40px;
+    font-size: 17px;
+    margin-left: 210%;
+  }
+  .phoneNumber {
+    color: white;
+    font-size: 18px;
+    margin-left: 13%;
+    margin-top: 10px;
+  }
+  .line-phone {
+  background-color: #337bbb;
+  margin-top: 22px;
+  width: 35px;
+  height: 2px;
+  z-index: 55;
+  margin-left: 55%;
+}
+  .line-phone {
+  background-color: #337bbb;
+  margin-top: 22px;
+  width: 35px;
+  height: 2px;
+  z-index: 55;
+  margin-left: 15%;
+}
+.lang-txt {
+  color: white;
+  font-size: 15px;
+  margin-left: 0%;
+  margin-top: 5px;
+}
+.logo-img1 {
+  width: 60px;
+  height: 60px;
+  margin-left: 25%;
+}
+.logo-img {
+  width: 75px;
+  height: 75px;
+}
+}
+@media all and (min-width: 1440px) {
+  .right-nav-items {
+    margin-left: 120%;
+  }
+  .lang-txt {
+    font-size: 18px;
+  }
+  .logo-img1 {
+  width: 75px;
+  height: 75px;
+  margin-left: 25%;
+}
+.logo-img {
+  width: 75px;
+  height: 75px;
+}
+  .loginBtn {
+    width: 120px;
+    height: 40px;
+    font-size: 17px;
+    margin-left: 210%;
+  }
+  .phoneNumber {
+    color: white;
+    font-size: 18px;
+    margin-left: 13%;
+    margin-top: 10px;
+  }
+  .line-phone {
+  background-color: #337bbb;
+  margin-top: 22px;
+  width: 35px;
+  height: 2px;
+  z-index: 55;
+  margin-left: 55%;
+}
+  .line-phone {
+  background-color: #337bbb;
+  margin-top: 22px;
+  width: 45px;
+  height: 2px;
+  z-index: 55;
+  margin-left: 15%;
+}
+.lang-txt {
+  color: white;
+  font-size: 18px;
+  margin-left: 0%;
+  margin-top: 5px;
+}
+}
+@media all and (min-width: 1640px) {
+  .right-nav-items {
+    margin-left: 105%;
+  }
+  .loginBtn {
+    width: 160px;
+    height: 50px;
+    font-size: 22px;
+    margin-left: 210%;
+  }
+    .logo-img1 {
+  width: 75px;
+  height: 75px;
+  margin-left: 25%;
+}
+.logo-img {
+  width: 75px;
+  height: 75px;
+}
+  .phoneNumber {
+    color: white;
+    font-size: 25px;
+    margin-left: 13%;
+    margin-top: 10px;
+  }
+  .line-phone {
+  background-color: #337bbb;
+  margin-top: 28px;
+  width: 45px;
+  height: 3px;
+  z-index: 55;
+  margin-left: 15%;
+}
+.lang-txt {
+  color: white;
+  font-size: 22px;
+  margin-left: 0%;
+  margin-top: 5px;
+}
+}
+@media all and (min-width: 1740px) {
+  .right-nav-items {
+    margin-left: 120%;
+  }
+      .logo-img1 {
+  width: 75px;
+  height: 75px;
+  margin-left: 25%;
+}
+.logo-img {
+  width: 75px;
+  height: 75px;
+}
+  .loginBtn {
+    width: 160px;
+    height: 50px;
+    font-size: 22px;
+    margin-left: 210%;
+  }
+  .phoneNumber {
+    color: white;
+    font-size: 25px;
+    margin-left: 13%;
+    margin-top: 10px;
+  }
+  .line-phone {
+  background-color: #337bbb;
+  margin-top: 28px;
+  width: 45px;
+  height: 3px;
+  z-index: 55;
+  margin-left: 15%;
+}
+.lang-txt {
+  color: white;
+  font-size: 22px;
+  margin-left: 0%;
+  margin-top: 5px;
+}
+}
+/* }
 @media all and (max-width: 1060px) {
   .right-nav-items {
     margin-left: 80px;
   }
 }
-/* @media all and (min-width:300px ) {
-  .right-nav-items {
-  margin-left: 20px;
-  }
-} */
 @media all and (min-width: 900px) {
   .right-nav-items {
     margin-left: 70px;
@@ -175,5 +356,5 @@ export default {
   .right-nav-items {
     margin-left: 760px;
   }
-}
+} */
 </style>
