@@ -7,10 +7,10 @@
       grabCursor
       @swiper="onSwiperInitialized"
     >
-      <div class="parallax-slider-navigation">
+      <div class="parallax-slider-navigation" style="display: none;">
         <div class="nav-indicator prevArrow">
           <div style="display: flex">
-            <p id='goback' style='color: white;'>უკან</p>
+            <p id='goback' style="display: none;">უკან</p>
             <hr
               style="
                 background-color: white;
@@ -50,14 +50,16 @@
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         >
+        <NavigationArrows :color='`white`' :lineColor='`white`' :toggle='true'/>
           <FirstSlide :image="image.imageUrl" />
         </div>
         <div
-          v-if="image.id == 2 && test2(bool)"
+          v-if="image.id == 2"
           class="parallax-slide-image"
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
-        >
+        > 
+          <NavigationArrows :color='`black`' :lineColor='`black`'  :toggle='false' />
           <SecondSlide :image="image.imageUrl" />
         </div>
         <div
@@ -66,7 +68,17 @@
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         >
+          <NavigationArrows :color='`white`'  :lineColor='`white`'  :toggle='false'/>
           <ThirdSlide :image="image.imageUrl" />
+        </div>
+        <div
+          v-if="image.id == 4"
+          class="parallax-slide-image"
+          :data-swiper-parallax="parallaxAmount"
+          :data-swiper-parallax-opacity="0.5"
+        >
+          <NavigationArrows :color='`black`'  :lineColor='`#00A4E1`'  :toggle='false'/>
+          <FourthSlide :image="image.imageUrl" />
         </div>
       </swiper-slide>
     </swiper>
@@ -96,6 +108,11 @@ SwiperCore.use([Navigation, Parallax]);
 import FirstSlide from "./Slides/FirstSlide.vue";
 import SecondSlide from "./Slides/SecondSlide.vue";
 import ThirdSlide from "./Slides/ThirdSlide.vue";
+import FourthSlide from './Slides/FourthSlide.vue'
+
+import NavigationArrows from './NavigationArrows.vue'
+
+
 export default {
   data() {
     return {
@@ -105,6 +122,9 @@ export default {
         { id: 1, imageUrl: require("../assets/images/image1.jpg") },
         { id: 2, imageUrl: require("../assets/images/image1.jpg") },
         { id: 3, imageUrl: require("../assets/images/image3.jpg") },
+        { id: 4, imageUrl: require("../assets/images/image3.jpg") },
+        // { id: 3, imageUrl: require("../assets/images/image3.jpg") },
+        // { id: 3, imageUrl: require("../assets/images/image3.jpg") },
       ],
     };
   },
@@ -120,17 +140,18 @@ export default {
     Swiper,
     SwiperSlide,
     FirstSlide,
-    SecondSlide,ThirdSlide
+    SecondSlide,ThirdSlide,FourthSlide,
+    NavigationArrows
     // FontAwesomeIcon,
   },
   methods: {
     onSwiperInitialized(swiper) {
       this.parallaxSwiperWidth = swiper.width;
     },
-    test2: function(bool) { 
-      // document.getElementById('goback').style.color = 'black'
-      console.log(document);
-    return bool;}
+    // test2: function(bool) { 
+    //   // document.getElementById('goback').style.color = 'black'
+    //   console.log(document);
+    // return bool;}
   },
 };
 </script>
@@ -146,19 +167,6 @@ export default {
   align-items: center;
   overflow: hidden;
 }
-
-.parallax-slider-navigation {
-  position: absolute;
-  top:40%;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  height: 0;
-}
-
 .parallax-slide-image {
   /* max-width: 100%;
     height: auto;
@@ -175,28 +183,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.nextArrow {
-  margin-right: 20px;
-}
-.prevArrow {
-  margin-left: 20px;
-}
-.nav-indicator {
-  color: white;
-  font-family: arrowFONT;
-  font-size: 25px;
-  /* height: 160px;
-  width: 140px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #6b77f6;
-  color: #ffffff;
-  border-radius: 40px;
-  cursor: pointer;
-  position: relative;
-  transform: translateY(-50%); */
-}
+
 @font-face {
   font-family: arrowFONT;
   src: url("./../fonts/mainpage/BPG Nateli Mtavruli Light.ttf");
