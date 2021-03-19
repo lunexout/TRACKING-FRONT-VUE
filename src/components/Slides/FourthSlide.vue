@@ -109,14 +109,14 @@
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingThree">
                 <button
-                  class="accordion-button accord-btn"
+                  class="accordion-button accord-btn" style="color: red;"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseThree"
                   aria-expanded="true"
                   aria-controls="collapseThree"
                 >
-                  რა უნდა ვიცოდეთ განბაჟებაზე?
+                  აკრძალული ნივთების სია:
                 </button>
               </h2>
               <div

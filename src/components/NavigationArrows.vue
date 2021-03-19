@@ -1,7 +1,7 @@
 <template>
                         <div class="parallax-slider-navigation">
         <div class="nav-indicator prevArrow">
-          <div style="display: flex">
+          <div class='nav-arrows' style="display: flex">
             <p :style="ArrowTxt" :class='{hideContent: toggle}'>უკან</p>
             <hr
             :style='ArrowLine' 
@@ -63,7 +63,7 @@ export default {
   height: 0;
 }
 .nextArrow {
-  margin-right: 20px;
+   margin-right: 20px;
 }
 .prevArrow {
   margin-left: 20px;
@@ -84,4 +84,24 @@ export default {
   position: relative;
   transform: translateY(-50%); */
 }
+/* @media all and(max-width: 1249px) {
+  .nav-arrows {
+      margin-top:20%;
+  }
+}
+@media all and (min-width: 1440px) {
+.nav-arrows {
+    margin-top:40%;
+    }
+}
+@media all and (min-width: 1640px) {
+  .nav-arrows {
+      margin-top:45%;
+    }
+}
+@media all and (min-width: 1740px) {
+  .nav-arrows {
+    margin-top:50%;
+    }
+} */
 </style>

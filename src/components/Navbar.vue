@@ -4,6 +4,7 @@
       <div class="navbar-brand">
         <div style="">
           <img class="logo-img" src="./../assets/mainpage/menu.svg" />
+          <p class='menu-text'>მენიუ</p >
         </div>
       </div>
       <!-- <button
@@ -66,8 +67,8 @@ export default {
   margin-top: 60px;
 }
 .logo-img1 {
-  width: 85px;
-  height: 85px;
+  width: 95px;
+  height: 95px;
   margin-left: 25%;
 }
 .logo-img {
@@ -127,6 +128,10 @@ export default {
   border-radius: 4px;
   background-color: transparent;
 }
+.menu-text {
+  position: absolute;margin-top: -25px;  font-family: arrowFONT;
+  font-size: 15px; margin-left: 2%; font-weight: bold; z-index: 555; color: white;
+}
 @font-face {
   font-family: arrowFONT;
   src: url("./../fonts/mainpage/BPG Nateli Mtavruli Light.ttf");
@@ -143,7 +148,7 @@ export default {
 }
 @media all and (min-width: 1249px) {
   .right-nav-items {
-    margin-left: 105%;
+    margin-left: 112%;
   }
   .lang-txt {
     font-size: 18px;
@@ -188,8 +193,9 @@ export default {
   margin-top: 5px;
 }
 .logo-img1 {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
+  margin-top: 8px;
   margin-left: 25%;
 }
 .logo-img {
@@ -199,7 +205,7 @@ export default {
 }
 @media all and (min-width: 1440px) {
   .right-nav-items {
-    margin-left: 120%;
+    margin-left: 133%;
   }
   .lang-txt {
     font-size: 18px;
@@ -250,7 +256,7 @@ export default {
 }
 @media all and (min-width: 1640px) {
   .right-nav-items {
-    margin-left: 105%;
+    margin-left: 117%;
   }
   .loginBtn {
     width: 160px;
@@ -290,7 +296,7 @@ export default {
 }
 @media all and (min-width: 1740px) {
   .right-nav-items {
-    margin-left: 120%;
+    margin-left: 135%;
   }
       .logo-img1 {
   width: 75px;

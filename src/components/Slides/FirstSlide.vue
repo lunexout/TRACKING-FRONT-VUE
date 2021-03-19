@@ -236,11 +236,29 @@ export default {
     background-color: #009ce7;
     border: none;
   }
+   .slide-number-img {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    z-index: 55;
+    right: -35px;
+    bottom: 26%;
+  }
+  .carousel-number-text {
+    position: absolute;
+    z-index: 55;
+    right: 40px;
+    bottom: 34.5%;
+  }
+    .slide-number-line {
+    bottom: 37%;
+    right: 9%;
+  }
 }
 @media all and (min-width: 1440px) {
   .slide-number-line {
     bottom: 32%;
-    right: 15%;
+    right: 10%;
   }
   .soc-cards {
     width: 70px;
@@ -256,13 +274,13 @@ export default {
     height: 300px;
     position: absolute;
     z-index: 55;
-    right: 30px;
+    right: -35px;
     bottom: 18%;
   }
   .carousel-number-text {
     position: absolute;
     z-index: 55;
-    right: 125px;
+    right: 60px;
     bottom: 29%;
   }
   .header-first-slide {
@@ -327,7 +345,7 @@ export default {
   }
   .slide-number-line {
     bottom: 24%;
-    right: 13.5%;
+    right: 9%;
   }
   .soc-cards {
     width: 70px;
@@ -343,13 +361,13 @@ export default {
     height: 300px;
     position: absolute;
     z-index: 55;
-    right: 30px;
+    right: -30px;
     bottom: 10%;
   }
   .carousel-number-text {
     position: absolute;
     z-index: 55;
-    right: 125px;
+    right: 65px;
     bottom: 21%;
   }
 }
@@ -406,7 +424,7 @@ export default {
   }
   .slide-number-line {
     bottom: 21%;
-    right: 12.5%;
+    right: 9%;
   }
   .soc-cards {
     width: 70px;
@@ -422,13 +440,13 @@ export default {
     height: 300px;
     position: absolute;
     z-index: 55;
-    right: 30px;
+    right: -30px;
     bottom: 7%;
   }
   .carousel-number-text {
     position: absolute;
     z-index: 55;
-    right: 125px;
+    right: 65px;
     bottom: 18%;
   }
   .soc-card-container {

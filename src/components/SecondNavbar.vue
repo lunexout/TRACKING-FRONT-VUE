@@ -4,6 +4,7 @@
       <div class="navbar-brand">
         <div style="">
           <img class="logo-img" src="./../assets/mainpage/menu.svg" />
+          <p class='menu-text'>მენიუ</p >
         </div>
       </div>
       <!-- <button
@@ -62,6 +63,10 @@ export default {
 </script>
 
 <style scoped>
+.menu-text {
+  position: absolute;margin-top: -25px;  font-family: arrowFONT;
+  font-size: 15px; margin-left:9%; font-weight: bold; z-index: 555; color: white;
+}
 .container-fluid {
   margin-top: 60px;
 }
@@ -143,7 +148,7 @@ export default {
 }
 @media all and (min-width: 1249px) {
   .right-nav-items {
-    margin-left: 105%;
+    margin-left: 110%;
   }
   .lang-txt {
     font-size: 18px;
@@ -188,8 +193,8 @@ export default {
   margin-top: 5px;
 }
 .logo-img1 {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   margin-left: 25%;
 }
 .logo-img {
@@ -203,7 +208,7 @@ export default {
 }
 @media all and (min-width: 1440px) {
   .right-nav-items {
-    margin-left: 120%;
+    margin-left: 125%;
   }
   .lang-txt {
     font-size: 18px;
@@ -257,8 +262,11 @@ export default {
 }
 }
 @media all and (min-width: 1640px) {
+  .menu-text {
+    margin-left: 7%;
+  }
   .right-nav-items {
-    margin-left: 105%;
+    margin-left: 113%;
   }
   .loginBtn {
     width: 160px;
@@ -301,8 +309,11 @@ export default {
 }
 }
 @media all and (min-width: 1740px) {
+    .menu-text {
+    margin-left: 7.5%;
+  }
   .right-nav-items {
-    margin-left: 120%;
+    margin-left: 130%;
   }
       .logo-img1 {
   width: 75px;
@@ -343,6 +354,9 @@ export default {
 .logo-img1 {
   margin-left: 120%;
 }
+/* .nav-indicator {
+  margin-top: 1000px !important;
+} */
 }
 /* }
 @media all and (max-width: 1060px) {

@@ -80,6 +80,15 @@
           <NavigationArrows :color='`black`'  :lineColor='`#00A4E1`'  :toggle='false'/>
           <FourthSlide :image="image.imageUrl" />
         </div>
+        <div
+          v-if="image.id == 5"
+          class="parallax-slide-image"
+          :data-swiper-parallax="parallaxAmount"
+          :data-swiper-parallax-opacity="0.5"
+        >
+          <NavigationArrows :color='`white`'  :lineColor='`#white`'  :toggle='false'/>
+          <FifthSlide :image="image.imageUrl" />
+        </div>
       </swiper-slide>
     </swiper>
   </div>
@@ -109,7 +118,7 @@ import FirstSlide from "./Slides/FirstSlide.vue";
 import SecondSlide from "./Slides/SecondSlide.vue";
 import ThirdSlide from "./Slides/ThirdSlide.vue";
 import FourthSlide from './Slides/FourthSlide.vue'
-
+import FifthSlide from './Slides/FifthSlide.vue'
 import NavigationArrows from './NavigationArrows.vue'
 
 
@@ -123,7 +132,7 @@ export default {
         { id: 2, imageUrl: require("../assets/images/image1.jpg") },
         { id: 3, imageUrl: require("../assets/images/image3.jpg") },
         { id: 4, imageUrl: require("../assets/images/image3.jpg") },
-        // { id: 3, imageUrl: require("../assets/images/image3.jpg") },
+        { id: 5, imageUrl: require("../assets/images/image5.jpg") },
         // { id: 3, imageUrl: require("../assets/images/image3.jpg") },
       ],
     };
@@ -140,7 +149,7 @@ export default {
     Swiper,
     SwiperSlide,
     FirstSlide,
-    SecondSlide,ThirdSlide,FourthSlide,
+    SecondSlide,ThirdSlide,FourthSlide,FifthSlide,
     NavigationArrows
     // FontAwesomeIcon,
   },
@@ -188,7 +197,7 @@ export default {
   font-family: arrowFONT;
   src: url("./../fonts/mainpage/BPG Nateli Mtavruli Light.ttf");
 }
-@media all and(max-width: 1249px) {
+/* @media all and(max-width: 1249px) {
   .parallax-slider-navigation {
       top:20%;
   }
@@ -207,5 +216,5 @@ export default {
   .parallax-slider-navigation {
     top:50%;
     }
-}
+} */
 </style>

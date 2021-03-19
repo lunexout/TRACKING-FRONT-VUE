@@ -277,10 +277,10 @@ export default {
   .next-img-box {
     position: absolute;
     right: 0;
-    margin-top: -10px;
+    margin-top: -70px;
   }
   .next-img {
-    width: 150px;
+    width: 160px;
   }
   .box-conditions1 {
     width: 380px;
@@ -310,10 +310,10 @@ export default {
   .next-img-box {
     position: absolute;
     right: 0;
-    margin-top: 45px;
+    margin-top: -70px;
   }
   .next-img {
-    width: 150px;
+    width: 160;
   }
   .box-paragraph {
     margin-top: 30px;
