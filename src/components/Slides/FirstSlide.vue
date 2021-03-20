@@ -58,14 +58,6 @@ export default {
   bottom: 38%;
   display: flex;
 }
-.register-arrow-box {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  background-color: #11bdf7;
-  margin-left: 280px;
-  margin-top: -37px;
-}
 .slide-number-line {
   position: absolute;
   z-index: 55;
@@ -110,6 +102,14 @@ export default {
   height: 4px;
   background-color: #19a5db;
   z-index: 55;
+}
+.register-arrow-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #11bdf7;
+  margin-left: 280px;
+  margin-top: -37px;
 }
 .registerContainer {
   border-radius: 70px;

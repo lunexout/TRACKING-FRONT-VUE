@@ -172,7 +172,7 @@ export default {
     margin-left: 120%;
   }
   .right-nav-items {
-    margin-left: 112%;
+    margin-left: 107%;
   }
   .lang-txt {
     font-size: 18px;
@@ -232,7 +232,7 @@ export default {
     margin-left: 120%;
   }
   .right-nav-items {
-    margin-left: 133%;
+    margin-left: 113%;
   }
   .lang-txt {
     font-size: 18px;
@@ -323,9 +323,9 @@ export default {
 }
 @media all and (min-width: 1740px) {
   .right-nav-items {
-    margin-left: 140%;
+    margin-left: 120%;
   }
-      .logo-img2 {
+  .logo-img2 {
     margin-left: 120%;
     margin-top: -20px;
   }
