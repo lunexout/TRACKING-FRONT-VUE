@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <!-- v-if='!isDeviceSmall' -->
+  <div v-if='!isDeviceSmall'>
     <SwiperSlider />
   </div>
-  <!-- <div v-else>
+  <div v-else>
     <h1>Mobile version coming soon</h1>
-  </div> -->
+  </div>
 
 </template>
 
@@ -34,7 +33,7 @@ data(){
     methods: {
         handleResize() {
             this.width = window.innerWidth;
-            if(this.width < 1249){this.isDeviceSmall = true}
+            if(this.width < 1311){this.isDeviceSmall = true}
             else {this.isDeviceSmall = false}    
         }
     }

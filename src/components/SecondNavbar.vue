@@ -275,11 +275,13 @@ export default {
     margin-left: 210%;
   }
     .logo-img1 {
+      margin-top: -20px;
   width: 75px;
   height: 75px;
   margin-left: 25%;
 }
 .logo-img {
+  margin-top: -20px;
   width: 75px;
   height: 75px;
   margin-left: 50%;
@@ -313,7 +315,7 @@ export default {
     margin-left: 7.5%;
   }
   .right-nav-items {
-    margin-left: 130%;
+    margin-left: 145%;
   }
       .logo-img1 {
   width: 75px;

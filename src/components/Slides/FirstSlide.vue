@@ -1,5 +1,5 @@
 <template>
-  <Navbar />
+  <Navbar :image='true' :btnColor="`white`" :textColor="`white`"/>
   <img class="main-image" :src="image" />
   <h1 class="text-center header-first-slide">
     ამანათების ტრანსპორტირება<br />
@@ -47,9 +47,6 @@ export default {
   name: "FirstSlide",
   props: ["image"],
   components: { Navbar },
-  mounted() {
-    document.getElementById("goback").style.color = "white";
-  },
 };
 </script>
 
@@ -424,7 +421,7 @@ export default {
   }
   .slide-number-line {
     bottom: 21%;
-    right: 9%;
+    right: 11%;
   }
   .soc-cards {
     width: 70px;
@@ -440,13 +437,13 @@ export default {
     height: 300px;
     position: absolute;
     z-index: 55;
-    right: -30px;
+    right: 30px;
     bottom: 7%;
   }
   .carousel-number-text {
     position: absolute;
     z-index: 55;
-    right: 65px;
+    right: 125px;
     bottom: 18%;
   }
   .soc-card-container {

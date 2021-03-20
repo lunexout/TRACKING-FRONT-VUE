@@ -23,7 +23,8 @@
           <li class="nav-item">
             <!-- <a class="nav-link active" aria-current="page" href="#">Home</a>
              -->
-            <img class="logo-img1" src="./../assets/mainpage/logo.svg" />
+            <img v-if='image' class="logo-img1" src='./../assets/mainpage/logo.svg' />
+            <img v-else class="logo-img2" src='./../assets/services/logo.svg'/>
           </li>
         </ul>
       </div>
@@ -31,7 +32,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <div style="display: flex">
-              <a class="nav-link phoneFONT lang-txt"> ქა</a>
+              <a class="nav-link phoneFONT lang-txt" :style='menuTextColor'> ქა</a>
               <img
                 style="margin-top: -5px; margin-left: -20px"
                 class="lang-img"
@@ -42,12 +43,12 @@
           <li class="nav-item">
             <div style="display: flex; width: 440%">
               <div class="line-phone" />
-              <p class="phoneFONT phoneNumber">(+ 995) 599 710 202</p>
+              <p class="phoneFONT phoneNumber" :style='menuTextColor'>(+ 995) 599 710 202</p>
             </div>
           </li>
 
           <li class="nav-item">
-            <button class="loginBtn">შესვლა</button>
+            <button class="loginBtn" :style='menuBtnColor'>შესვლა</button>
           </li>
         </ul>
       </div>
@@ -59,12 +60,32 @@
 <script>
 export default {
   name: "Navbar",
+  data() {
+    return {
+      imagelink1: './../assets/mainpage/logo.svg',
+      imagelink2: './../assets/services/logo.svg'
+    }
+  },
+  props: ['image', 'textColor', 'btnColor'],
+    computed: {
+      menuTextColor () {
+        return 'color: ' + this.textColor;
+      },
+      menuBtnColor() {
+          return 'border: 1px solid #' + this.btnColor +'; color: #' + this.btnColor;
+      }
+    },
 };
 </script>
 
 <style scoped>
 .container-fluid {
   margin-top: 60px;
+}
+.logo-img2 {
+    width: 85px;
+  height: 85px;
+  margin-left: 25%;
 }
 .logo-img1 {
   width: 95px;
@@ -147,6 +168,9 @@ export default {
 @media all and (max-width: 1200px) {
 }
 @media all and (min-width: 1249px) {
+  .logo-img2 {
+    margin-left: 120%;
+  }
   .right-nav-items {
     margin-left: 112%;
   }
@@ -204,6 +228,9 @@ export default {
 }
 }
 @media all and (min-width: 1440px) {
+    .logo-img2 {
+    margin-left: 120%;
+  }
   .right-nav-items {
     margin-left: 133%;
   }
@@ -296,14 +323,20 @@ export default {
 }
 @media all and (min-width: 1740px) {
   .right-nav-items {
-    margin-left: 135%;
+    margin-left: 140%;
+  }
+      .logo-img2 {
+    margin-left: 120%;
+    margin-top: -20px;
   }
       .logo-img1 {
+        margin-top: -20px;
   width: 75px;
   height: 75px;
   margin-left: 25%;
 }
 .logo-img {
+  margin-top: -30px;
   width: 75px;
   height: 75px;
 }

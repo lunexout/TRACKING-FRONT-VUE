@@ -1,5 +1,5 @@
 <template>
-  <Navbar />
+  <Navbar :image='true' :btnColor="`white`" :textColor="`white !important;`"/>
   <img class="main-image" :src="image" />
     <div class="left-svg-box">
     <img src="./../../assets/howworks/left-svg.png" />

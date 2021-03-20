@@ -1,6 +1,6 @@
 <template>
   <!-- <img :src="image" /> -->
-  <SecondNavbar />
+ <Navbar :image='false' :btnColor="`1D96D9`" :textColor="`black !important;`"/>
   <div style="background-color: white; width: 1920px; height: 1080px">
     <img src="./../../assets/services/menu_bg.png" />
     <div class="next-img-box">
@@ -23,37 +23,10 @@
         </p>
       </div>
       <div class="col-xxl-7 col-lg-8" style="margin-left: 0px">
-        <div class="row">
-          <div class="col-xl-6 col-lg-6 col-12">
-            <div style="display: grid">
-              <div class="box-conditions1">
-                <h5 class="box-header1">რამდენ ხანში ჩამოდის ამანათი?</h5>
-                <p class="box-paragraph">
-                  შპს "მეკო"-ს თურქეთის ოფისში სამშაბათამდე მისული ამანათები
-                  იგზავნება ოთხშაბათს, გაცემა იწყება თბილისში, შაბათს,
-                  რეგიონებში სამშაბათს
-                </p>
-              </div>
-              <div class="box-conditions2"></div>
-            </div>
-          </div>
-          <div class="col-xl-1"></div>
-          <div class="col-xl-5 col-lg-6 col-12">
-            <div style="display: grid">
-              <div class="box-conditions1">
-                <h5 class="text-center box-header2">
-                  როგორ გავიგო ჩემი ამანათი მივიდა შპს "მეკო"-ს თურქეთის ოფისში?
-                </h5>
-                <p class="box-paragraph">
-                  თურქეთში მისულ ამანათებთან დაკავშირებით შეტყობინებას მიიღებთ
-                  ელ. ფოსტით
-                </p>
-              </div>
-              <div class="box-conditions2"></div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <CardSlider/>
       </div>
+    </div>
     </div>
   </div>
 
@@ -69,11 +42,12 @@
 </template>
 
 <script>
-import SecondNavbar from "./../SecondNavbar.vue";
+import Navbar from "./../Navbar.vue";
+import CardSlider from './../CardSlider.vue'
 export default {
   name: "SecondSlide",
   props: ["image"],
-  components: { SecondNavbar },
+  components: { Navbar,CardSlider },
 };
 </script>
 
@@ -106,40 +80,6 @@ export default {
 }
 .next-img {
   width: 150px;
-}
-.box-conditions1 {
-  width: 400px;
-  height: 400px;
-  background-color: #029fd5;
-  margin-bottom: -400px;
-  z-index: 2;
-  padding: 35px;
-}
-.box-conditions2 {
-  width: 400px;
-  height: 400px;
-  background-color: #008dcf;
-  transform: rotateY(0deg) rotate(5deg);
-  transition: transform 2s;
-}
-.box-paragraph {
-  font-family: arrowFONT;
-  font-weight: 600;
-  font-size: 20px;
-  color: white;
-  margin-top: 80px;
-}
-.box-header1 {
-  font-family: arrowFONT;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-}
-.box-header2 {
-  font-family: arrowFONT;
-  font-weight: 600;
-  color: white;
-  text-align: center;
 }
 .container1 {
   position: absolute;
@@ -210,24 +150,7 @@ export default {
   height: 230px;
 }
 @media all and (min-width: 1249px) {
-  .box-header1 {
-    font-size: 20px;
-  }
-  .box-header2 {
-    font-size: 20px;
-  }
-  .box-conditions1 {
-    width: 300px;
-    height: 300px;
-  }
-  .box-conditions2 {
-    width: 300px;
-    height: 300px;
-  }
-  .box-paragraph {
-    margin-top: 30px;
-    font-size: 16px;
-  }
+ 
   .about-us-text {
     font-size: 30px;
   }
@@ -238,14 +161,12 @@ export default {
     font-size: 19px;
   }
   .container1 {
-    top: 280px;
+    /* width: 1300px; */
+    top: 270px;
   }
 }
 @media all and (min-width: 1440px) {
-  .box-paragraph {
-    margin-top: 30px;
-    font-size: 19px;
-  }
+ 
   .about-paragraph {
     font-size: 21px;
   }
@@ -264,14 +185,6 @@ export default {
   .container1 {
     top: 280px;
   }
-  .box-conditions1 {
-    width: 350px;
-    height: 350px;
-  }
-  .box-conditions2 {
-    width: 350px;
-    height: 350px;
-  }
 }
 @media all and (min-width: 1640px) {
   .next-img-box {
@@ -281,14 +194,6 @@ export default {
   }
   .next-img {
     width: 160px;
-  }
-  .box-conditions1 {
-    width: 380px;
-    height: 380px;
-  }
-  .box-conditions2 {
-    width: 380px;
-    height: 380px;
   }
   .about-paragraph {
     font-size: 23px;
@@ -315,10 +220,6 @@ export default {
   .next-img {
     width: 160;
   }
-  .box-paragraph {
-    margin-top: 30px;
-    font-size: 25px;
-  }
   .about-paragraph {
     font-size: 25px;
   }
@@ -333,14 +234,6 @@ export default {
   .number-slide-line {
     right: 10%;
     bottom: 16.5%;
-  }
-  .box-conditions1 {
-    width: 400px;
-    height: 400px;
-  }
-  .box-conditions2 {
-    width: 400px;
-    height: 400px;
   }
 }
 </style>

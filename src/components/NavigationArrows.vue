@@ -15,7 +15,7 @@
             />
           </div>
         </div>
-        <div class="nav-indicator nextArrow">
+        <div class="nav-indicator nextArrow" :class='{hideContent: toggleNext}'>
           <div style="display: flex">
             <hr
               style="
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-    props: ['color', 'lineColor', 'toggle'],
+    props: ['color', 'lineColor', 'toggle', 'toggleNext'],
     computed: {
       ArrowTxt () {
         return 'color: ' + this.color;

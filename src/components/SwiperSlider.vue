@@ -89,6 +89,15 @@
           <NavigationArrows :color='`white`'  :lineColor='`#white`'  :toggle='false'/>
           <FifthSlide :image="image.imageUrl" />
         </div>
+                <div
+          v-if="image.id == 6"
+          class="parallax-slide-image"
+          :data-swiper-parallax="parallaxAmount"
+          :data-swiper-parallax-opacity="0.5"
+        >
+          <NavigationArrows :color='`white`'  :lineColor='`#00A4E1`'  :toggle='false' :toggleNext='true'/>
+          <SixSlide :image="image.imageUrl" />
+        </div>
       </swiper-slide>
     </swiper>
   </div>
@@ -119,10 +128,14 @@ import SecondSlide from "./Slides/SecondSlide.vue";
 import ThirdSlide from "./Slides/ThirdSlide.vue";
 import FourthSlide from './Slides/FourthSlide.vue'
 import FifthSlide from './Slides/FifthSlide.vue'
+
+import SixSlide from './Slides/SixSlide.vue'
+
 import NavigationArrows from './NavigationArrows.vue'
 
 
 export default {
+  name: 'SwiperSlider',
   data() {
     return {
       navState: 1,
@@ -133,7 +146,7 @@ export default {
         { id: 3, imageUrl: require("../assets/images/image3.jpg") },
         { id: 4, imageUrl: require("../assets/images/image3.jpg") },
         { id: 5, imageUrl: require("../assets/images/image5.jpg") },
-        // { id: 3, imageUrl: require("../assets/images/image3.jpg") },
+        { id: 6, imageUrl: require("../assets/images/image1.jpg") },
       ],
     };
   },
@@ -150,6 +163,7 @@ export default {
     SwiperSlide,
     FirstSlide,
     SecondSlide,ThirdSlide,FourthSlide,FifthSlide,
+    SixSlide,
     NavigationArrows
     // FontAwesomeIcon,
   },
@@ -157,10 +171,6 @@ export default {
     onSwiperInitialized(swiper) {
       this.parallaxSwiperWidth = swiper.width;
     },
-    // test2: function(bool) { 
-    //   // document.getElementById('goback').style.color = 'black'
-    //   console.log(document);
-    // return bool;}
   },
 };
 </script>

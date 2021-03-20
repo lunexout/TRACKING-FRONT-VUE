@@ -1,6 +1,7 @@
 <template>
   <!-- <img :src="image" /> -->
-  <SecondNavbar />
+  <!-- <SecondNavbar /> -->
+  <Navbar :image='false' :btnColor="`1D96D9;` " :textColor="`black !important`"/>
   <div style="background-color: white; width: 1920px; height: 1080px">
     <img src="./../../assets/clearance/left-svg.png" />
     <!-- <div class="next-img-box">
@@ -146,11 +147,11 @@
 </template>
 
 <script>
-import SecondNavbar from "./../SecondNavbar.vue";
+import Navbar from "./../Navbar.vue";
 export default {
   name: "FourthSlide",
   props: ["image"],
-  components: { SecondNavbar },
+  components: { Navbar },
 };
 </script>
 
