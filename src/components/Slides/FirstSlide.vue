@@ -46,7 +46,18 @@ import Navbar from "./../Navbar.vue";
 export default {
   name: "FirstSlide",
   props: ["image"],
+  data(){
+    return {
+      isSpinner: true
+    }
+  },
   components: { Navbar },
+  //   beforeMount() {
+  //   this.isSpinner=true
+  // },
+  created(){
+    this.isSpinner=false
+  }
 };
 </script>
 

@@ -1,6 +1,18 @@
 <template>
   <div class="container p-0" style="max-width: 1920px; margin-top: -98px">
+        <div v-if='isSpinner' style="display: flex;">
+      <div class="spinner-grow text-info" style="position: absolute; 
+      top:30%; font-size: 300px; left: 48%; " role="status">
+      </div>
+            <div class="spinner-grow text-info" style="position: absolute; 
+      top:30%; font-size: 300px; left: 49%; " role="status">
+      </div>
+            <div class="spinner-grow text-info" style="position: absolute; 
+      top:30%; font-size: 300px; left: 50%; " role="status">
+      </div>
+      </div>
     <swiper
+      v-else
       class="parallax-slider"
       :navigation="{ nextEl: '.nextArrow', prevEl: '.prevArrow' }"
       parallax
@@ -59,6 +71,7 @@
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         > 
+
           <NavigationArrows :color='`black`' :lineColor='`black`'  :toggle='false' />
           <SecondSlide :image="image.imageUrl" />
         </div>
@@ -100,7 +113,7 @@
         </div>
       </swiper-slide>
     </swiper>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -148,7 +161,16 @@ export default {
         { id: 5, imageUrl: require("../assets/images/image5.jpg") },
         { id: 6, imageUrl: require("../assets/images/image1.jpg") },
       ],
+      isSpinner: true
     };
+  },
+  beforeMount() {
+    this.isSpinner=true
+  },
+    mounted(){
+    setTimeout(()=> {
+this.isSpinner=false
+    }, 1500)
   },
   computed: {
     parallaxAmount() {

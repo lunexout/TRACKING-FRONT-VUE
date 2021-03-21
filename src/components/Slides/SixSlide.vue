@@ -61,6 +61,23 @@
     </div>
   </div>
 
+  <div class="container social-box">
+    <div class="row">
+      <div class="col-xl-1"></div>
+        <div class="col-xl-2">
+           <div style="display: flex; justify-content: space-between">
+            <img style="width: 40px; height: 40px;" src='./../../assets/contact/fb.svg'/>
+            <img style="width: 40px; height: 40px;" src='./../../assets/contact/ig.svg'/>
+
+            <img style="width: 40px; height: 40px;" src='./../../assets/contact/lin.svg'/>
+
+            <img style="width: 40px; height: 40px;" src='./../../assets/contact/yt.svg'/>
+
+           </div>
+        </div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col-xl-7">
@@ -76,11 +93,11 @@
               marginheight="0"
               marginwidth="0"
             >
-            </iframe
-            ><a href="https://123movies-to.org"> </a><br />
+            </iframe>
+            <!-- <a href="https://123movies-to.org"> </a><br />
             <a href="https://www.embedgooglemap.net"
               >how to add a google map to my website</a
-            >
+            > -->
           </div>
         </div>
       </div>
@@ -145,7 +162,7 @@
             placeholder="წერილი*"
           />
         </form>
-                  <div
+        <div
             class="text-center registerContainer"
             style="position: absolute;"
           >
@@ -327,6 +344,9 @@ export default {
   background-color: #009EEA;
   border: none;
 }
+.social-box {
+  margin-top: 325px;
+}
 @font-face {
   font-family: arrowFONT;
   src: url("./../../fonts/mainpage/BPG Nateli Mtavruli Light.ttf");
@@ -336,9 +356,74 @@ export default {
   src: url("./../../fonts/mainpage/Gotham Pro Medium.ttf");
 }
 @media all and (min-width: 1440px) {
+  .slide-number-img {
+  width: 240px;
+  height: 240px;
+}
+.number-slide-box {
+  right: 140px;
+  bottom: 28.5%;
+}
+.number-slide-svg-box {
+  right: 100px;
+  bottom: 20%;
+}
+.number-slide-line {
+  right: 15.5%;
+  bottom: 31.5%;
+}
 }
 @media all and (min-width: 1640px) {
+  .contact-us-text {
+  margin-left:50px;
+}
+  .slide-number-img {
+  width: 270px;
+  height: 270px;
+}
+.number-slide-box {
+  right: 150px;
+  bottom: 22%;
+}
+.number-slide-svg-box {
+  right: 100px;
+  bottom: 12%;
+}
+.number-slide-line {
+  right: 14.5%;
+  bottom: 24.5%;
+}
+.mapouter {
+  height: 420px;
+  width: 1080px;
+}
+.gmap_canvas {
+   height: 420px;
+  width: 1080px;
+}
+.social-box {
+  margin-top: 400px;
+}
 }
 @media all and (min-width: 1740px) {
+    .contact-us-text {
+  margin-left:65px;
+}
+  .slide-number-img {
+  width: 300px;
+  height: 300px;
+}
+.number-slide-box {
+  right: 150px;
+  bottom: 17%;
+}
+.number-slide-svg-box {
+  right: 100px;
+  bottom: 5.5%;
+}
+.number-slide-line {
+  right: 14.5%;
+  bottom: 20%;
+}
 }
 </style>

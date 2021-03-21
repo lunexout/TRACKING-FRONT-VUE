@@ -3,18 +3,18 @@
     <SwiperSlider />
   </div>
   <div v-else>
-    <h1>Mobile version coming soon</h1>
+    <MobileApp/>
   </div>
 
 </template>
 
 <script>
 import SwiperSlider from "./components/SwiperSlider";
-// import Navbar from "./components/Navbar";
+import MobileApp from "./components/MobileVersion/MobileApp";
 export default {
   name: "App",
   components: {
-    SwiperSlider,
+    SwiperSlider,MobileApp
   },
 data(){
         return {
