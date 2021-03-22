@@ -4,7 +4,8 @@
   <MobAbout />
   <ConditionSlider />
   <MobClearance />
-  <div class="container" style="height: 1200px"></div>
+  <MobContact/>
+  <!-- <div class="container" style="height: 1200px"></div> -->
 </template>
 
 <script>
@@ -13,6 +14,8 @@ import MobMainPage from "./components/MobMainPage.vue";
 import MobAbout from "./components/MobAbout.vue";
 import ConditionSlider from "./components/ConditionSlider.vue";
 import MobClearance from "./components/MobClearance.vue";
+import MobContact from "./components/MobContact.vue";
+
 export default {
   name: "MobileApp",
   data() {
@@ -27,6 +30,7 @@ export default {
     MobAbout,
     ConditionSlider,
     MobClearance,
+    MobContact
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
