@@ -1,6 +1,6 @@
 <template>
   <div v-if='!isDeviceSmall'>
-    <SwiperSlider />
+    <DesktopApp />
   </div>
   <div v-else>
     <MobileApp/>
@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import SwiperSlider from "./components/SwiperSlider";
+import DesktopApp from "./components/DesktopApp";
 import MobileApp from "./components/MobileVersion/MobileApp";
 export default {
   name: "App",
   components: {
-    SwiperSlider,MobileApp
+    DesktopApp,MobileApp
   },
 data(){
         return {
@@ -40,10 +40,5 @@ data(){
 };
 </script>
 
-<style>
-html,
-body {
-  margin: 0;
-  overflow: hidden;
-}
+<style scoped>
 </style>

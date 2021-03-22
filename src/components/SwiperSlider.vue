@@ -249,4 +249,9 @@ this.isSpinner=false
     top:50%;
     }
 } */
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+}
 </style>
