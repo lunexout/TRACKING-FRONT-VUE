@@ -47,13 +47,13 @@ export default {
 html,
 body {
   margin: 0;
-  overflow-y: scroll !important;
+  overflow:hidden;
 }
-@media all and (min-width: 1311px) {
+@media all and (max-width: 1311px) {
 html,
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-y: scroll !important;
 }
 }
 </style>
