@@ -5,17 +5,13 @@
     parallax
     @swiper="onSwiperInitialized"
   >
-    <swiper-slide
-      class="parallax-slide"
-      v-for="card in 12"
-      :key="card"
-    >
+    <swiper-slide class="parallax-slide" v-for="card in 12" :key="card">
       <div
         class="parallax-slide-image"
         :data-swiper-parallax="parallaxAmount"
         :data-swiper-parallax-opacity="0.5"
       >
-        <AboutCard :choosedSlide='`${card}`' :numberOfSlides='`12`' />
+        <AboutCard :choosedSlide="`${card}`" :numberOfSlides="`12`" />
       </div>
     </swiper-slide>
   </swiper>
@@ -29,7 +25,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 
-import AboutCard from './AboutCard.vue'
+import AboutCard from "./AboutCard.vue";
 
 SwiperCore.use([Navigation, Parallax]);
 
@@ -60,9 +56,8 @@ export default {
 </script>
 
 <style scoped>
-
 .parallax-slider:hover {
-    cursor: default;
+  cursor: default;
   /* position: relative;d */
 }
 .parallax-slide {
@@ -73,6 +68,7 @@ export default {
   overflow: hidden;
 }
 .parallax-slide-image {
+  margin: 0 auto;
   /* height: 100%;
   width: 100%; */
   /* position: absolute;
@@ -90,5 +86,4 @@ export default {
   font-family: arrowFONT;
   src: url("./../../../fonts/mainpage/BPG Nateli Mtavruli Light.ttf");
 }
-
 </style>

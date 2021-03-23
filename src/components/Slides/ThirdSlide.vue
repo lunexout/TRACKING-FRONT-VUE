@@ -1,5 +1,5 @@
 <template>
-  <Navbar :image='true' :btnColor="`white`" :textColor="`white`"/>
+  <Navbar :image="true" :btnColor="`white`" :textColor="`white`" />
   <img style="background-size: cover" :src="image" />
   <h1 class="text-center main-header">პირობები</h1>
   <div class="text-center header-line"></div>

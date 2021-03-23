@@ -1,56 +1,84 @@
 <template>
-  <nav class="navbar navbar-expand-xxl navbar-light fixed-top" 
-  :style="`background-color: ${color};`" >
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img style="width: 80px; height:80px;" src='./../../../assets/mainpage/logo.svg' /></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <!-- <span class="navbar-toggler-icon"> -->
-          <img style="width: 44px; height:44px;" src='./../../../assets/mainpage/menu.svg' />
-          <p class='menu-text'>მენიუ</p>
-      <!-- </span> -->
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <!-- <a class="nav-link text-white" aria-current="page" href="#">Home</a> -->
-        <a class="nav-link text-white phoneFONT" aria-current="page" href="#">ქა</a>
-        <a class="nav-link text-white phoneFONT" aria-current="page" href="#">(+ 995) 599 710 202</a>
+  <nav
+    class="navbar navbar-expand-xxl navbar-light fixed-top m-0"
+    :style="`background-color: ${color};`"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"
+        ><img
+          style="width: 80px; height: 80px"
+          src="./../../../assets/mainpage/logo.svg"
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <!-- <span class="navbar-toggler-icon"> -->
+        <img
+          style="width: 44px; height: 44px"
+          src="./../../../assets/mainpage/menu.svg"
+        />
+        <p class="menu-text">მენიუ</p>
+        <!-- </span> -->
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- <a class="nav-link text-white" aria-current="page" href="#">Home</a> -->
+          <a class="nav-link text-white phoneFONT" aria-current="page" href="#"
+            >ქა</a
+          >
+          <a class="nav-link text-white phoneFONT" aria-current="page" href="#"
+            >(+ 995) 599 710 202</a
+          >
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </template>
 
 <script>
 export default {
-    name: 'MobNavbar',
-    data(){
-      return {
-        navColor: this.color
-      }
-    },
-    props: ['color','scrollPosition'],
-    // methods: {
-    //   setMenuBgColor(){
-    //     if(this.scrollPosition == 0){
-    //       this.navColor = '#09253C'
-    //     }
-    //   }
-    // }
-}
+  name: "MobNavbar",
+  data() {
+    return {
+      navColor: this.color,
+    };
+  },
+  props: ["color", "scrollPosition"],
+  // methods: {
+  //   setMenuBgColor(){
+  //     if(this.scrollPosition == 0){
+  //       this.navColor = '#09253C'
+  //     }
+  //   }
+  // }
+};
 </script>
 
 <style scoped>
 .navbar-toggler {
-    outline: none !important; border: none !important;
+  outline: none !important;
+  border: none !important;
 }
 .navbar-toggler:focus {
-    text-decoration: none;
-    outline: 0;
-    box-shadow: 0 0 0 0rem;
+  text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 0rem;
 }
 .menu-text {
-  position: absolute;margin-top: -5px;  font-family: arrowFONT;
-  font-size: 15px; margin-left: 0.5%; font-weight: bold; z-index: 555; color: white;
+  position: absolute;
+  margin-top: -5px;
+  font-family: arrowFONT;
+  font-size: 15px;
+  margin-left: 0.5%;
+  font-weight: bold;
+  z-index: 555;
+  color: white;
 }
 @font-face {
   font-family: phoneFONT;

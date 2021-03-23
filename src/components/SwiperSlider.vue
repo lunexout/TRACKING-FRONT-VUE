@@ -1,16 +1,22 @@
 <template>
   <div class="container p-0" style="max-width: 1920px; margin-top: -98px">
-        <div v-if='isSpinner' style="display: flex;">
-      <div class="spinner-grow text-info" style="position: absolute; 
-      top:30%; font-size: 300px; left: 48%; " role="status">
-      </div>
-            <div class="spinner-grow text-info" style="position: absolute; 
-      top:30%; font-size: 300px; left: 49%; " role="status">
-      </div>
-            <div class="spinner-grow text-info" style="position: absolute; 
-      top:30%; font-size: 300px; left: 50%; " role="status">
-      </div>
-      </div>
+    <div v-if="isSpinner" style="display: flex">
+      <div
+        class="spinner-grow text-info"
+        style="position: absolute; top: 30%; font-size: 300px; left: 48%"
+        role="status"
+      ></div>
+      <div
+        class="spinner-grow text-info"
+        style="position: absolute; top: 30%; font-size: 300px; left: 49%"
+        role="status"
+      ></div>
+      <div
+        class="spinner-grow text-info"
+        style="position: absolute; top: 30%; font-size: 300px; left: 50%"
+        role="status"
+      ></div>
+    </div>
     <swiper
       v-else
       class="parallax-slider"
@@ -19,10 +25,10 @@
       grabCursor
       @swiper="onSwiperInitialized"
     >
-      <div class="parallax-slider-navigation" style="display: none;">
+      <div class="parallax-slider-navigation" style="display: none">
         <div class="nav-indicator prevArrow">
           <div style="display: flex">
-            <p id='goback' style="display: none;">უკან</p>
+            <p id="goback" style="display: none">უკან</p>
             <hr
               style="
                 background-color: white;
@@ -62,7 +68,11 @@
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         >
-        <NavigationArrows :color='`white`' :lineColor='`white`' :toggle='true'/>
+          <NavigationArrows
+            :color="`white`"
+            :lineColor="`white`"
+            :toggle="true"
+          />
           <FirstSlide :image="image.imageUrl" />
         </div>
         <div
@@ -70,9 +80,12 @@
           class="parallax-slide-image"
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
-        > 
-
-          <NavigationArrows :color='`black`' :lineColor='`black`'  :toggle='false' />
+        >
+          <NavigationArrows
+            :color="`black`"
+            :lineColor="`black`"
+            :toggle="false"
+          />
           <SecondSlide :image="image.imageUrl" />
         </div>
         <div
@@ -81,7 +94,11 @@
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         >
-          <NavigationArrows :color='`white`'  :lineColor='`white`'  :toggle='false'/>
+          <NavigationArrows
+            :color="`white`"
+            :lineColor="`white`"
+            :toggle="false"
+          />
           <ThirdSlide :image="image.imageUrl" />
         </div>
         <div
@@ -90,7 +107,11 @@
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         >
-          <NavigationArrows :color='`black`'  :lineColor='`#00A4E1`'  :toggle='false'/>
+          <NavigationArrows
+            :color="`black`"
+            :lineColor="`#00A4E1`"
+            :toggle="false"
+          />
           <FourthSlide :image="image.imageUrl" />
         </div>
         <div
@@ -99,21 +120,30 @@
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         >
-          <NavigationArrows :color='`white`'  :lineColor='`#white`'  :toggle='false'/>
+          <NavigationArrows
+            :color="`white`"
+            :lineColor="`#white`"
+            :toggle="false"
+          />
           <FifthSlide :image="image.imageUrl" />
         </div>
-                <div
+        <div
           v-if="image.id == 6"
           class="parallax-slide-image"
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
         >
-          <NavigationArrows :color='`white`'  :lineColor='`#00A4E1`'  :toggle='false' :toggleNext='true'/>
+          <NavigationArrows
+            :color="`white`"
+            :lineColor="`#00A4E1`"
+            :toggle="false"
+            :toggleNext="true"
+          />
           <SixSlide :image="image.imageUrl" />
         </div>
       </swiper-slide>
     </swiper>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -139,16 +169,15 @@ SwiperCore.use([Navigation, Parallax]);
 import FirstSlide from "./Slides/FirstSlide.vue";
 import SecondSlide from "./Slides/SecondSlide.vue";
 import ThirdSlide from "./Slides/ThirdSlide.vue";
-import FourthSlide from './Slides/FourthSlide.vue'
-import FifthSlide from './Slides/FifthSlide.vue'
+import FourthSlide from "./Slides/FourthSlide.vue";
+import FifthSlide from "./Slides/FifthSlide.vue";
 
-import SixSlide from './Slides/SixSlide.vue'
+import SixSlide from "./Slides/SixSlide.vue";
 
-import NavigationArrows from './NavigationArrows.vue'
-
+import NavigationArrows from "./NavigationArrows.vue";
 
 export default {
-  name: 'SwiperSlider',
+  name: "SwiperSlider",
   data() {
     return {
       navState: 1,
@@ -161,16 +190,16 @@ export default {
         { id: 5, imageUrl: require("../assets/images/image5.jpg") },
         { id: 6, imageUrl: require("../assets/images/image1.jpg") },
       ],
-      isSpinner: true
+      isSpinner: true,
     };
   },
   beforeMount() {
-    this.isSpinner=true
+    this.isSpinner = true;
   },
-    mounted(){
-    setTimeout(()=> {
-this.isSpinner=false
-    }, 1500)
+  mounted() {
+    setTimeout(() => {
+      this.isSpinner = false;
+    }, 1500);
   },
   computed: {
     parallaxAmount() {
@@ -184,9 +213,12 @@ this.isSpinner=false
     Swiper,
     SwiperSlide,
     FirstSlide,
-    SecondSlide,ThirdSlide,FourthSlide,FifthSlide,
+    SecondSlide,
+    ThirdSlide,
+    FourthSlide,
+    FifthSlide,
     SixSlide,
-    NavigationArrows
+    NavigationArrows,
     // FontAwesomeIcon,
   },
   methods: {
@@ -229,29 +261,24 @@ this.isSpinner=false
   font-family: arrowFONT;
   src: url("./../fonts/mainpage/BPG Nateli Mtavruli Light.ttf");
 }
-/* @media all and(max-width: 1249px) {
+@media all and (max-width: 1249px) {
   .parallax-slider-navigation {
-      top:20%;
+    top: 20%;
   }
 }
 @media all and (min-width: 1440px) {
-.parallax-slider-navigation {
-    top:40%;
-    }
+  .parallax-slider-navigation {
+    top: 40%;
+  }
 }
 @media all and (min-width: 1640px) {
   .parallax-slider-navigation {
-      top:45%;
-    }
+    top: 45%;
+  }
 }
 @media all and (min-width: 1740px) {
   .parallax-slider-navigation {
-    top:50%;
-    }
-} */
-html,
-body {
-  margin: 0;
-  overflow: hidden;
+    top: 50%;
+  }
 }
 </style>

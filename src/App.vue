@@ -1,11 +1,10 @@
 <template>
-  <div v-if='!isDeviceSmall'>
+  <div v-if="!isDeviceSmall">
     <DesktopApp />
   </div>
   <div v-else>
-    <MobileApp/>
+    <MobileApp />
   </div>
-
 </template>
 
 <script>
@@ -14,31 +13,48 @@ import MobileApp from "./components/MobileVersion/MobileApp";
 export default {
   name: "App",
   components: {
-    DesktopApp,MobileApp
+    DesktopApp,
+    MobileApp,
   },
-data(){
-        return {
-            isDeviceSmall: false,
-            width: 0,
-            height: 0
-        }
+  data() {
+    return {
+      isDeviceSmall: false,
+      width: 0,
+      height: 0,
+    };
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.width = window.innerWidth;
+      if (this.width < 1311) {
+        this.isDeviceSmall = true;
+      } else {
+        this.isDeviceSmall = false;
+      }
     },
-    mounted() {
-        window.addEventListener('resize', this.handleResize);
-        this.handleResize();
-    },
-    unmounted() {
-        window.removeEventListener('resize', this.handleResize);
-    },
-    methods: {
-        handleResize() {
-            this.width = window.innerWidth;
-            if(this.width < 1311){this.isDeviceSmall = true}
-            else {this.isDeviceSmall = false}    
-        }
-    }
+  },
 };
 </script>
 
-<style scoped>
+<style>
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+}
+@media all and (max-width: 1311px) {
+  html,
+  body {
+    margin: 0;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+  }
+}
 </style>

@@ -1,49 +1,66 @@
 <template>
   <div>
-      <img style="
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    max-height: 600px;
-    background-size: 100% 100%" src='./../../../assets/images/image1.jpg'/>
-      <div class='text-center' style="margin-top: 150px;">
-        <h1 class='header-first'>ამანათების<br/> ტრანსპორტირება<br/> თურქეთის ნებისმიერი<br/> წერტილიდან</h1>
-        </div>
+    <img class="bg-image" src="./../../../assets/images/image1.jpg" />
 
-    <div class='header-line'> </div>
-    <div
-    class="text-center mt-4 registerContainer"
-  >
-    <button class="registreBtn ">
-      რეგისტრაცია
-      <div class="register-arrow-box">
-        <img
-          style="width: 25px; height: 25x; margin-top: 8px"
-          src="./../../../assets/mainpage/right-arrow.svg"
-        />
-      </div>
-    </button>
+    <div class="text-center" style="margin-top: 150px">
+      <h1 class="header-first">
+        ამანათების<br />
+        ტრანსპორტირება<br />
+        თურქეთის ნებისმიერი<br />
+        წერტილიდან
+      </h1>
     </div>
 
-    <div class='text-center mt-4'>
-        <button style="
-        background-color: transparent; border: 1px solid white;
-        padding: 18px; border-radius: 100px; width: 270px; font-size: 21px; font-family: arrowFONT; font-weight: bold; color: white;
-        ">შესვლა</button>
+    <div class="header-line"></div>
+    <div class="text-center mt-4 registerContainer">
+      <button class="registreBtn">
+        რეგისტრაცია
+        <div class="register-arrow-box">
+          <img
+            style="width: 25px; height: 25x; margin-top: 8px"
+            src="./../../../assets/mainpage/right-arrow.svg"
+          />
+        </div>
+      </button>
+    </div>
+
+    <div class="text-center mt-4">
+      <button
+        style="
+          background-color: transparent;
+          border: 1px solid white;
+          padding: 18px;
+          border-radius: 100px;
+          width: 270px;
+          font-size: 21px;
+          font-family: arrowFONT;
+          font-weight: bold;
+          color: white;
+        "
+      >
+        შესვლა
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'MobMainPage'
-}
+  name: "MobMainPage",
+};
 </script>
 
 <style scoped>
+.bg-image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+  background-size: 100% 100%;
+}
 .header-line {
   width: 60px;
   height: 4px;
@@ -69,7 +86,7 @@ export default {
   margin-top: -37px;
 }
 .registerContainer {
-     margin: 0 auto;
+  margin: 0 auto;
   border-radius: 70px;
   outline: none;
   border: 1px solid white;
@@ -92,5 +109,10 @@ export default {
   color: white;
   background-color: #009ce7;
   border: none;
+}
+@media all and (max-width: 768px) {
+  .bg-image {
+    height: 600px;
+  }
 }
 </style>

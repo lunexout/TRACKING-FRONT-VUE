@@ -1,6 +1,10 @@
 <template>
   <!-- <img :src="image" /> -->
- <Navbar :image='false' :btnColor="`1D96D9`" :textColor="`black !important;`"/>
+  <Navbar
+    :image="false"
+    :btnColor="`1D96D9`"
+    :textColor="`black !important;`"
+  />
   <div style="background-color: white; width: 1920px; height: 1080px">
     <img src="./../../assets/services/menu_bg.png" />
     <div class="next-img-box">
@@ -23,10 +27,10 @@
         </p>
       </div>
       <div class="col-xxl-7 col-lg-8" style="margin-left: 0px">
-      <div>
-        <CardSlider/>
+        <div>
+          <CardSlider />
+        </div>
       </div>
-    </div>
     </div>
   </div>
 
@@ -43,11 +47,11 @@
 
 <script>
 import Navbar from "./../Navbar.vue";
-import CardSlider from './../CardSlider.vue'
+import CardSlider from "./../CardSlider.vue";
 export default {
   name: "SecondSlide",
   props: ["image"],
-  components: { Navbar,CardSlider },
+  components: { Navbar, CardSlider },
 };
 </script>
 
@@ -150,7 +154,6 @@ export default {
   height: 230px;
 }
 @media all and (min-width: 1249px) {
- 
   .about-us-text {
     font-size: 30px;
   }
@@ -166,7 +169,6 @@ export default {
   }
 }
 @media all and (min-width: 1440px) {
- 
   .about-paragraph {
     font-size: 21px;
   }
@@ -190,7 +192,8 @@ export default {
   .next-img-box {
     position: absolute;
     right: 0;
-    margin-top: -70px;
+    /* margin-top: -70px; */
+    margin-top: -20px;
   }
   .next-img {
     width: 160px;
@@ -215,7 +218,7 @@ export default {
   .next-img-box {
     position: absolute;
     right: 0;
-    margin-top: -70px;
+    margin-top: 35px;
   }
   .next-img {
     width: 160;

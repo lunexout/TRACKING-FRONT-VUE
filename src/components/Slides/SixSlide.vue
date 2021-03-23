@@ -64,17 +64,28 @@
   <div class="container social-box">
     <div class="row">
       <div class="col-xl-1"></div>
-        <div class="col-xl-2">
-           <div style="display: flex; justify-content: space-between">
-            <img style="width: 40px; height: 40px;" src='./../../assets/contact/fb.svg'/>
-            <img style="width: 40px; height: 40px;" src='./../../assets/contact/ig.svg'/>
+      <div class="col-xl-2">
+        <div style="display: flex; justify-content: space-between">
+          <img
+            style="width: 40px; height: 40px"
+            src="./../../assets/contact/fb.svg"
+          />
+          <img
+            style="width: 40px; height: 40px"
+            src="./../../assets/contact/ig.svg"
+          />
 
-            <img style="width: 40px; height: 40px;" src='./../../assets/contact/lin.svg'/>
+          <img
+            style="width: 40px; height: 40px"
+            src="./../../assets/contact/lin.svg"
+          />
 
-            <img style="width: 40px; height: 40px;" src='./../../assets/contact/yt.svg'/>
-
-           </div>
+          <img
+            style="width: 40px; height: 40px"
+            src="./../../assets/contact/yt.svg"
+          />
         </div>
+      </div>
     </div>
   </div>
 
@@ -162,20 +173,17 @@
             placeholder="წერილი*"
           />
         </form>
-        <div
-            class="text-center registerContainer"
-            style="position: absolute;"
-          >
-            <button class="registreBtn">
-              გაგზავნა
-              <div class="register-arrow-box">
-                <img
-                  style="width: 28px; height: 28x; margin-top: 8px"
-                  src="./../../assets/mainpage/right-arrow.svg"
-                />
-              </div>
-            </button>
-          </div>
+        <div class="text-center registerContainer" style="position: absolute">
+          <button class="registreBtn">
+            გაგზავნა
+            <div class="register-arrow-box">
+              <img
+                style="width: 28px; height: 28x; margin-top: 8px"
+                src="./../../assets/mainpage/right-arrow.svg"
+              />
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -314,12 +322,12 @@ export default {
   width: 45px;
   height: 45px;
   border-radius: 25px;
-  background-color: #0FBCFA;
+  background-color: #0fbcfa;
   margin-left: 240px;
   margin-top: -43px;
 }
 
- .registerContainer {
+.registerContainer {
   border-radius: 70px;
   outline: none;
   border: 1px solid white;
@@ -330,7 +338,7 @@ export default {
   margin-top: 20px;
   margin-left: 90px;
 }
- .registreBtn {
+.registreBtn {
   border-radius: 70px;
   outline: none;
   padding: 9px;
@@ -341,7 +349,7 @@ export default {
   text-align: center;
   font-size: 25px;
   color: white;
-  background-color: #009EEA;
+  background-color: #009eea;
   border: none;
 }
 .social-box {
@@ -357,73 +365,79 @@ export default {
 }
 @media all and (min-width: 1440px) {
   .slide-number-img {
-  width: 240px;
-  height: 240px;
-}
-.number-slide-box {
-  right: 140px;
-  bottom: 28.5%;
-}
-.number-slide-svg-box {
-  right: 100px;
-  bottom: 20%;
-}
-.number-slide-line {
-  right: 15.5%;
-  bottom: 31.5%;
-}
+    width: 240px;
+    height: 240px;
+  }
+  .number-slide-box {
+    right: 140px;
+    bottom: 28.5%;
+  }
+  .number-slide-svg-box {
+    right: 100px;
+    bottom: 20%;
+  }
+  .number-slide-line {
+    right: 15.5%;
+    bottom: 31.5%;
+  }
 }
 @media all and (min-width: 1640px) {
   .contact-us-text {
-  margin-left:50px;
-}
+    margin-left: 50px;
+  }
   .slide-number-img {
-  width: 270px;
-  height: 270px;
-}
-.number-slide-box {
-  right: 150px;
-  bottom: 22%;
-}
-.number-slide-svg-box {
-  right: 100px;
-  bottom: 12%;
-}
-.number-slide-line {
-  right: 14.5%;
-  bottom: 24.5%;
-}
-.mapouter {
-  height: 420px;
-  width: 1080px;
-}
-.gmap_canvas {
-   height: 420px;
-  width: 1080px;
-}
-.social-box {
-  margin-top: 400px;
-}
+    width: 270px;
+    height: 270px;
+  }
+  .number-slide-box {
+    right: 150px;
+    bottom: 22%;
+  }
+  .number-slide-svg-box {
+    right: 100px;
+    bottom: 12%;
+  }
+  .number-slide-line {
+    right: 14.5%;
+    bottom: 24.5%;
+  }
+  .mapouter {
+    height: 420px;
+    width: 1080px;
+  }
+  .gmap_canvas {
+    height: 420px;
+    width: 1080px;
+  }
+  .social-box {
+    margin-top: 400px;
+  }
+  .next-img-box {
+    margin-top: -70px;
+  }
 }
 @media all and (min-width: 1740px) {
-    .contact-us-text {
-  margin-left:65px;
-}
+  .next-img-box {
+    margin-top: 37px;
+  }
+  .contact-us-text {
+    margin-left: 65px;
+  }
   .slide-number-img {
-  width: 300px;
-  height: 300px;
-}
-.number-slide-box {
-  right: 150px;
-  bottom: 17%;
-}
-.number-slide-svg-box {
-  right: 100px;
-  bottom: 5.5%;
-}
-.number-slide-line {
-  right: 14.5%;
-  bottom: 20%;
-}
+    width: 300px;
+    height: 300px;
+  }
+  .number-slide-box {
+    right: 150px;
+    bottom: 17%;
+  }
+  .number-slide-svg-box {
+    right: 100px;
+    bottom: 5.5%;
+  }
+  .number-slide-line {
+    right: 14.5%;
+    bottom: 20%;
+  }
 }
 </style>
