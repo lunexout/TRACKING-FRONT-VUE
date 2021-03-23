@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="bg-image" src="./../../../assets/images/image1.jpg" />
+    <img class="bg-image" src="./../../../assets/images/image1.jpg" alt='Main background wallpaper' />
 
     <div class="text-center" style="margin-top: 150px">
       <h1 class="header-first">
@@ -19,6 +19,7 @@
           <img
             style="width: 25px; height: 25x; margin-top: 8px"
             src="./../../../assets/mainpage/right-arrow.svg"
+            alt='Register button arrow'
           />
         </div>
       </button>

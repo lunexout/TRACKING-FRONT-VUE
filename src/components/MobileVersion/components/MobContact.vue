@@ -1,5 +1,5 @@
 <template>
-    <h1
+  <h1
     class="text-center mt-4"
     style="font-size: 20px; font-weight: bold; font-family: arrowFONT"
   >
@@ -10,20 +10,56 @@
     style="margin: 0 auto; height: 3px; width: 50px; background-color: #009ad9"
   ></div>
 
-  <div class='text-center mt-5' style='margin: 0 auto;'>
-    <ul style='list-style: none;'>
-    <li style='font-size: 20px; color: #009AD9;font-weight: bold; font-family: arrowFONT'>
-      <img style="width: 45px; height: 45px; margin-left: -45px;" src='./../../../assets/contact/adres.svg'/>
-      დ. უზნაძის ქ. 6</li>
-        <li style='font-size: 20px; color: #009AD9;font-weight: bold; font-family: arrowFONT'>
-      <img style="width: 45px; height: 45px; margin-left: -55px;" src='./../../../assets/contact/mail.svg'/>
-      info@meko.ge</li>
-          <li style='font-size: 20px;color: #009AD9; font-weight: bold; font-family: arrowFONT'>
-      <img style="width: 45px; height: 45px; margin-left: -25px;" src='./../../../assets/contact/phone.svg'/>
-      (+995) 599 710 202</li>
-  </ul>
+  <div class="text-center mt-5" style="margin: 0 auto">
+    <ul style="list-style: none">
+      <li
+        style="
+          font-size: 20px;
+          color: #009ad9;
+          font-weight: bold;
+          font-family: arrowFONT;
+        "
+      >
+        <img
+          style="width: 45px; height: 45px; margin-left: -45px"
+          src="./../../../assets/contact/adres.svg"
+          alt='Adress icon'
+        />
+        დ. უზნაძის ქ. 6
+      </li>
+      <li
+        style="
+          font-size: 20px;
+          color: #009ad9;
+          font-weight: bold;
+          font-family: arrowFONT;
+        "
+      >
+        <img
+          style="width: 45px; height: 45px; margin-left: -55px"
+          src="./../../../assets/contact/mail.svg"
+          alt='Mail icon'
+        />
+        info@meko.ge
+      </li>
+      <li
+        style="
+          font-size: 20px;
+          color: #009ad9;
+          font-weight: bold;
+          font-family: arrowFONT;
+        "
+      >
+        <img
+          style="width: 45px; height: 45px; margin-left: -25px"
+          src="./../../../assets/contact/phone.svg"
+          alt='Phone Icon'
+        />
+        (+995) 599 710 202
+      </li>
+    </ul>
   </div>
-  <div class='container p-0 mt-3 google-map' style='max-width: 900px;'>
+  <div class="container p-0 mt-3 google-map" style="max-width: 900px">
     <div class="mapouter">
       <div class="gmap_canvas">
         <iframe
@@ -43,38 +79,54 @@
       </div>
     </div>
   </div>
-  <div class="text-center mt-4" style="max-width: 150px; margin: 0 auto;">
-    <div style="display: inline-block; justify-content: space-between;">
-      <img style="width: 30px; heght: 30px;" src="./../../../assets/contact/fb.svg" />
-      <img style="width: 30px; heght: 30px;" src="./../../../assets/contact/ig.svg" />
-      <img style="width: 30px; heght: 30px;"  src="./../../../assets/contact/yt.svg" />
-      <img style="width: 30px; heght: 30px;" src="./../../../assets/contact/lin.svg" />
+  <div class="text-center mt-4" style="max-width: 150px; margin: 0 auto">
+    <div style="display: inline-block; justify-content: space-between">
+      <img
+        style="width: 30px; heght: 30px"
+        src="./../../../assets/contact/fb.svg"
+        alt='Facebook icon'
+      />
+      <img
+        style="width: 30px; heght: 30px"
+        src="./../../../assets/contact/ig.svg"
+        alt='Instagram icon'
+      />
+      <img
+        style="width: 30px; heght: 30px"
+        src="./../../../assets/contact/yt.svg"
+        alt='Youtube icon'
+      />
+      <img
+        style="width: 30px; heght: 30px"
+        src="./../../../assets/contact/lin.svg"
+        alt='LinkedIn icon'
+      />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'MobContact'
-}
+  name: "MobContact",
+};
 </script>
 
 <style scoped>
-          .gmap_canvas {
-            overflow: hidden;
-            background: none !important;
-            height: 500px;
-            width: 900px;
-          }
-          .mapouter {
-            position: relative;
-            text-align: right;
-            height: 500px;
-            width: 900px;
-          }
-          @media all and (max-width: 480px) {
-            .google-map {
-              margin-left: -270px;
-            }
-          }
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 500px;
+  width: 900px;
+}
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 500px;
+  width: 900px;
+}
+@media all and (max-width: 480px) {
+  .google-map {
+    margin-left: -270px;
+  }
+}
 </style>

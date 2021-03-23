@@ -11,7 +11,7 @@
       class="mt-3"
     >
       <div>
-        <img :src="image" style="height: 580px; width: 900px" />
+        <img :src="image" alt='Send question background wallpaper' style="height: 580px; width: 900px" />
       </div>
       <div style="position: absolute; top: 0">
         <form @submit.prevent="">

@@ -8,6 +8,7 @@
         ><img
           style="width: 80px; height: 80px"
           src="./../../../assets/mainpage/logo.svg"
+          alt='Meko Logo'
       /></a>
       <button
         class="navbar-toggler"
@@ -22,6 +23,7 @@
         <img
           style="width: 44px; height: 44px"
           src="./../../../assets/mainpage/menu.svg"
+          alt='Menu Icon'
         />
         <p class="menu-text">მენიუ</p>
         <!-- </span> -->
