@@ -39,18 +39,21 @@
             <div class="col-xl-9">
               <input
                 v-model="sigr"
+                @change='calc'
                 class="input-box mt-3"
                 type="number"
                 placeholder="სიგრძე"
               /><br />
               <input
                 v-model="siga"
+                @change='calc'
                 class="input-box mt-3"
                 type="number"
                 placeholder="სიგანე"
               /><br />
               <input
                 v-model="sima"
+                @change='calc'
                 class="input-box mt-3"
                 type="number"
                 placeholder="სიმაღლე"
@@ -60,16 +63,15 @@
             </div>
           </div>
           <div class="mt-4 price-div">
-            <h1 class="p-2 price-text">1000კგ</h1>
-            <h1 class="p-2 price-text">6000$</h1>
+            <h1 class="p-2 price-text">{{kg}}კგ</h1>
+            <h1 class="p-2 price-text">{{price}}$</h1>
           </div>
 
           <!-- <input :value="answer" /> -->
 
           <div style="margin: 0 auto; max-width: 270px">
             <button
-              @keyup.enter="calc"
-              @click.prevent="calc"
+
               class="registreBtn mb-4 mt-3"
             >
               რეგისტრაცია
@@ -125,7 +127,28 @@
 <script>
 export default {
   name: "WorkCalculate",
-};
+    data() {
+    return {
+      sigr: Number,
+      siga: Number,
+      sima: Number,
+      answer: 0,
+      kg: 0,
+      price: 0,
+    };
+  },
+    methods: {
+      calc() {
+        if(this.sigr != 0 && this.siga != 0 && this.sima != 0){
+          this.kg =
+          (parseInt(this.sigr) * parseInt(this.siga) * parseInt(this.sima)) /
+          6000;
+
+          this.price = this.kg * 4
+        }
+      },
+    }
+}
 </script>
 
 <style scoped>
