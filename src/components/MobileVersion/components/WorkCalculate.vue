@@ -129,9 +129,9 @@ export default {
   name: "WorkCalculate",
     data() {
     return {
-      sigr: Number,
-      siga: Number,
-      sima: Number,
+      sigr: null,
+      siga: null,
+      sima: null,
       answer: 0,
       kg: 0,
       price: 0,
@@ -139,7 +139,7 @@ export default {
   },
     methods: {
       calc() {
-        if(this.sigr != 0 && this.siga != 0 && this.sima != 0){
+        if(this.sigr != null && this.siga != null && this.sima != null){
           this.kg =
           (parseInt(this.sigr) * parseInt(this.siga) * parseInt(this.sima)) /
           6000;
