@@ -129,6 +129,7 @@
               <img
                 src="./../../../assets/conditions/p01.svg"
                 class="conditions-img"
+                alt='Condition svg'
               />
             </div>
           </div>
