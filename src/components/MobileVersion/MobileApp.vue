@@ -4,7 +4,9 @@
   <MobAbout />
   <ConditionSlider />
   <MobClearance />
-  <MobContact/>
+  <MobWorkSlider />
+  <MobContact />
+  <MobSendMail />
   <!-- <div class="container" style="height: 1200px"></div> -->
 </template>
 
@@ -15,6 +17,8 @@ import MobAbout from "./components/MobAbout.vue";
 import ConditionSlider from "./components/ConditionSlider.vue";
 import MobClearance from "./components/MobClearance.vue";
 import MobContact from "./components/MobContact.vue";
+import MobSendMail from "./components/MobSendMail.vue";
+import MobWorkSlider from "./components/MobWorkSlider.vue";
 
 export default {
   name: "MobileApp",
@@ -30,7 +34,9 @@ export default {
     MobAbout,
     ConditionSlider,
     MobClearance,
-    MobContact
+    MobWorkSlider,
+    MobContact,
+    MobSendMail,
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
@@ -49,6 +55,15 @@ export default {
       }
       if (window.scrollY >= 1600) {
         this.bgColor = "#485A67";
+      }
+      if (window.scrollY >= 2200) {
+        this.bgColor = "#062030";
+      }
+      if (window.scrollY >= 3100) {
+        this.bgColor = "#485A67";
+      }
+      if (window.scrollY >= 4030) {
+        this.bgColor = "#062030";
       }
     },
   },

@@ -107,7 +107,13 @@
               <h1 class="p-2 price-text">6000$</h1>
             </div>
 
-            <button class="registreBtn mb-4">
+            <!-- <input :value="answer" /> -->
+
+            <button
+              @keyup.enter="calc"
+              @click.prevent="calc"
+              class="registreBtn mb-4"
+            >
               რეგისტრაცია
               <!-- <div> -->
               <div class="register-arrow-box">
@@ -151,10 +157,13 @@ export default {
   },
   methods: {
     calc() {
-      let calculatedTotal = this.sigr.toInt() + this.siga.toInt();
-      this.answer = calculatedTotal;
+      this.answer =
+        (parseInt(this.sigr) * parseInt(this.siga) * parseInt(this.sima)) /
+        6000;
+      // let calculatedTotal = this.sigr.toInt() + this.siga.toInt();
+      // this.answer = calculatedTotal;
 
-      return calculatedTotal;
+      // return calculatedTotal;
     },
   },
 };
@@ -182,12 +191,6 @@ export default {
   background-color: #009ce7;
   border: none;
 }
-.price-text {
-  font-size: 30px;
-  font-family: arrowFONT;
-  font-weight: bolder;
-  color: #009ce7;
-}
 .how-works-large {
   font-size: 22px;
   font-weight: bold;
@@ -200,6 +203,12 @@ export default {
   font-size: 17px;
   font-family: arrowFONT;
   color: white;
+}
+.price-text {
+  font-size: 30px;
+  font-family: arrowFONT;
+  font-weight: bolder;
+  color: #009ce7;
 }
 .input-label {
   margin-left: 20px;
