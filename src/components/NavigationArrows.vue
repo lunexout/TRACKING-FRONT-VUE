@@ -1,6 +1,6 @@
 <template>
                         <div class="parallax-slider-navigation">
-        <div class="nav-indicator prevArrow">
+        <div class="nav-indicator prevArrow" id='prevArrow' @click='() => null'>
           <div class='nav-arrows' style="display: flex">
             <p :style="ArrowTxt" :class='{hideContent: toggle}'>უკან</p>
             <hr
@@ -15,7 +15,8 @@
             />
           </div>
         </div>
-        <div class="nav-indicator nextArrow" :class='{hideContent: toggleNext}'>
+        <div class="nav-indicator nextArrow" id='nextArrow' @click='()=>null'
+         :class='{hideContent: toggleNext}'>
           <div style="display: flex">
             <hr
               style="
@@ -27,22 +28,38 @@
                 margin-right: 15px;
               "
             />
+            
             <p>შემდეგი</p>
           </div>
         </div>
       </div>
+     
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
+
 export default {
     props: ['color', 'lineColor', 'toggle', 'toggleNext'],
+    data(){
+      return {
+        stateNAV: 0
+      }
+    },
+    mounted(){
+      // console.log(this.getCartQuantity());
+    },
     computed: {
       ArrowTxt () {
         return 'color: ' + this.color;
       },
       ArrowLine() {
           return 'background-color: ' + this.lineColor;
-      }
+      },
+       ...mapGetters(['getNavbarState']),
+    },
+    methods: {
+      ...mapActions(['goNext','goBack']),
     },
 }
 </script>

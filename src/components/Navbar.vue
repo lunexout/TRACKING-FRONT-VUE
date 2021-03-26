@@ -2,11 +2,12 @@
   <nav class="navbar navbar-expand-lg navbar-light main-nav">
     <div class="container-fluid" style="max-width: 1920px">
       <div class="navbar-brand">
-        <div style="">
+        <div style="" @click='showMenu'>
           <img class="logo-img" src="./../assets/mainpage/menu.svg" />
           <p class='menu-text'>მენიუ</p >
         </div>
       </div>
+
       <!-- <button
         class="navbar-toggler"
         type="button"
@@ -58,13 +59,24 @@
 </template>
 
 <script>
+// import mitt from 'mitt'
+// const emitter = mitt()
 export default {
   name: "Navbar",
   data() {
     return {
+      isMenuOpen: false,
       imagelink1: './../assets/mainpage/logo.svg',
       imagelink2: './../assets/services/logo.svg'
     }
+  },
+  methods: {
+    showMenu() {
+      this.emitter.emit('showmenu')
+    },
+    closeMenu() {
+      this.isMenuOpen = false
+    },
   },
   props: ['image', 'textColor', 'btnColor'],
     computed: {

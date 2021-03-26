@@ -42,6 +42,8 @@
 </template>
 
 <script>
+// import mitt from 'mitt'
+// const emitter = mitt()
 import Navbar from "./../Navbar.vue";
 export default {
   name: "FirstSlide",

@@ -5,7 +5,12 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import store from './../store/index.js'
+import mitt from 'mitt';
+const emitter = mitt();
+// App.config.globalProperties.emitter = emitter;
 
 library.add(faChevronLeft, faChevronRight);
-
-createApp(App).mount("#app");
+const app = createApp(App)
+app.config.globalProperties.emitter = emitter;
+app.use(emitter).use(store).mount("#app");

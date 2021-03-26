@@ -1,4 +1,196 @@
 <template>
+  <transition name="menu" class="animate__animated animate__flipInY">
+    <div
+      v-if="isMenuOpen"
+      class="animate__animated animate__flipInY"
+      style="
+        position: absolute;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0396db;
+      "
+    >
+      <!-- <div style='color: white;' @click='next(4)'>4</div> -->
+      <!-- <h1 style='color: white;' @click='next(6)'>6</h1>
+    <h1 style='color: white;' @click='next(2)'>2</h1> -->
+      <button
+        @click="() => (isMenuOpen = false)"
+        style="
+          position: absolute;
+          top: 1%;
+          left: 2%;
+          border: none;
+          background-color: transparent;
+          outline: none;
+          font-size: 50px;
+          color: white;
+          font-family: arrowFONT;
+          font-weight: bolder;
+        "
+      >
+        X
+      </button>
+      <div class="container" style="margin-top: 5%; max-width: 1300px">
+        <div class="row">
+          <div class="col-xl-4">
+            <div class="container12" @click="next(1)">
+              <div class="box">
+                <div class="text-center">
+                  <img
+                    width="50px;"
+                    style="width: 100px; margin-top: 10%"
+                    src="./../assets/menu-images/main.svg"
+                    alt="Main icon"
+                  />
+                </div>
+                <h4
+                  class="text-center"
+                  style="
+                    color: white;
+                    margin-top: 10%;
+                    font-family: arrowFONT;
+                    font-weight: bold;
+                  "
+                >
+                  მთავარი
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="container12" @click="next(2)">
+              <div class="box">
+                <div class="text-center">
+                  <img
+                    width="50px;"
+                    style="width: 100px; margin-top: 10%"
+                    src="./../assets/conditions/p02.svg"
+                    alt="Main icon"
+                  />
+                </div>
+                <h4
+                  class="text-center"
+                  style="
+                    color: white;
+                    margin-top: 10%;
+                    font-family: arrowFONT;
+                    font-weight: bold;
+                  "
+                >
+                  ჩვენი სერვისები
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="container12" @click="next(3)">
+              <div class="box">
+                <div class="text-center">
+                  <img
+                    width="50px;"
+                    style="width: 100px; margin-top: 10%"
+                    src="./../assets/conditions/p03.svg"
+                    alt="Main icon"
+                  />
+                </div>
+                <h4
+                  class="text-center"
+                  style="
+                    color: white;
+                    margin-top: 10%;
+                    font-family: arrowFONT;
+                    font-weight: bold;
+                  "
+                >
+                  პირობები
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-4">
+            <div class="container12" @click="next(4)">
+              <div class="box-second-row">
+                <div class="text-center">
+                  <img
+                    width="50px;"
+                    style="width: 100px; margin-top: 10%"
+                    src="./../assets/menu-images/clearance.svg"
+                    alt="Main icon"
+                  />
+                </div>
+                <h4
+                  class="text-center"
+                  style="
+                    color: white;
+                    margin-top: 10%;
+                    font-family: arrowFONT;
+                    font-weight: bold;
+                  "
+                >
+                  დეკლარირება და განბაჟება
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="container12" @click="next(5)">
+              <div class="box-second-row">
+                                <div class="text-center">
+                  <img
+                    width="50px;"
+                    style="width: 100px; margin-top: 10%"
+                    src="./../assets/menu-images/howwroks.svg"
+                    alt="Main icon"
+                  />
+                </div>
+                <h4
+                  class="text-center"
+                  style="
+                    color: white;
+                    margin-top: 10%;
+                    font-family: arrowFONT;
+                    font-weight: bold;
+                  "
+                >
+                  როგორ მუშაობს
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="container12" @click="next(6)">
+              <div class="box-second-row">
+                                <div class="text-center">
+                  <img
+                    width="50px;"
+                    style="width: 100px; margin-top: 10%"
+                    src="./../assets/menu-images/contact.svg"
+                    alt="Main icon"
+                  />
+                </div>
+                <h4
+                  class="text-center"
+                  style="
+                    color: white;
+                    margin-top: 10%;
+                    font-family: arrowFONT;
+                    font-weight: bold;
+                  "
+                >
+                  კონტაქტი
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
   <div class="container p-0" style="max-width: 1920px; margin-top: -98px">
     <div v-if="isSpinner" style="display: flex">
       <div
@@ -76,7 +268,7 @@
           <FirstSlide :image="image.imageUrl" />
         </div>
         <div
-          v-if="image.id == 2"
+          v-if="image.id == 2 || getNavbarState == 2"
           class="parallax-slide-image"
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"
@@ -175,11 +367,12 @@ import FifthSlide from "./Slides/FifthSlide.vue";
 import SixSlide from "./Slides/SixSlide.vue";
 
 import NavigationArrows from "./NavigationArrows.vue";
-
+import { mapGetters } from "vuex";
 export default {
   name: "SwiperSlider",
   data() {
     return {
+      isMenuOpen: false,
       navState: 1,
       parallaxSwiperWidth: 0,
       images: [
@@ -200,8 +393,13 @@ export default {
     setTimeout(() => {
       this.isSpinner = false;
     }, 1500);
+
+    this.emitter.on("showmenu", () => {
+      this.isMenuOpen = true;
+    });
   },
   computed: {
+    ...mapGetters(["getNavbarState"]),
     parallaxAmount() {
       return this.parallaxSwiperWidth * 0.5;
     },
@@ -225,11 +423,66 @@ export default {
     onSwiperInitialized(swiper) {
       this.parallaxSwiperWidth = swiper.width;
     },
+    next(where) {
+      this.isMenuOpen = false;
+      for (let n = 1; n <= 6; n++) {
+        document.getElementById("prevArrow").click();
+      }
+      for (let n = 1; n <= where - 1; n++) {
+        document.getElementById("nextArrow").click();
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
+.container12 {
+  display: flex;
+}
+.box {
+  background-image: linear-gradient(white, white), linear-gradient(white, white),
+    linear-gradient(white, white), linear-gradient(white, white),
+    linear-gradient(#0271da, #0271da);
+  background-repeat: no-repeat;
+  background-size: 1px 7%, 5% 1px, 1px 7%, 5% 1px, calc(100%) calc(100%);
+  background-position: left bottom, left bottom, right top, right top, 0px 0px;
+
+  height: 230px;
+  width: 380px;
+  margin: 20px;
+
+  transition: background-size 2s;
+}
+.box:hover {
+  background-size: 1px 100%, 100% 2px, 1px 100%, 100% 1px, calc(100%) calc(100%);
+}
+.box-second-row {
+  background-image: linear-gradient(white, white), linear-gradient(white, white),
+    linear-gradient(white, white), linear-gradient(white, white),
+    linear-gradient(#0271da, #0271da);
+  background-repeat: no-repeat;
+  background-size: 1px 6%, 5% 1px, 1px 7%, 5% 1px, calc(100%) calc(100%);
+  background-position: left bottom, left bottom, right top, right top, 0px 0px;
+
+  height: 230px;
+  width: 380px;
+  margin: 20px;
+
+  transition: background-size 2s;
+}
+.box-second-row:hover {
+  background-size: 1px 100%, 100% 1px, 1px 100%, 100% 1px, calc(100%) calc(100%);
+}
+.menu-enter-active,
+.menu-leave-active {
+  transition: all 1.5s ease;
+}
+
+.menu-enter,
+.menu-leave-to {
+  opacity: 0;
+}
 .parallax-slider {
   position: relative;
 }
