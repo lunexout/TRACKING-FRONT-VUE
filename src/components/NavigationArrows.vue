@@ -2,7 +2,7 @@
                         <div class="parallax-slider-navigation">
         <div class="nav-indicator prevArrow" id='prevArrow' @click='() => null'>
           <div class='nav-arrows' style="display: flex">
-            <p :style="ArrowTxt" :class='{hideContent: toggle}'>უკან</p>
+            <p :style="ArrowTxt" :class='{hideContent: toggle}'>{{$t('back')}}</p>
             <hr
             :style='ArrowLine' 
               style="
@@ -29,7 +29,7 @@
               "
             />
             
-            <p>შემდეგი</p>
+            <p>{{$t('next')}}</p>
           </div>
         </div>
       </div>

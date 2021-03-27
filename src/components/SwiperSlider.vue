@@ -1,8 +1,8 @@
 <template>
-  <transition name="menu" class="animate__animated animate__flipInY">
+  <!-- <transition name="menu" class="animate__animated animate__fadeInDown"> -->
     <div
       v-if="isMenuOpen"
-      class="animate__animated animate__flipInY"
+      class="animate__animated animate__fadeInDown"
       style="
         position: absolute;
         z-index: 999;
@@ -13,24 +13,7 @@
         background-color: #0396db;
       "
     >
-      <!-- <div style='color: white;' @click='next(4)'>4</div> -->
-      <!-- <h1 style='color: white;' @click='next(6)'>6</h1>
-    <h1 style='color: white;' @click='next(2)'>2</h1> -->
-      <button
-        @click="() => (isMenuOpen = false)"
-        style="
-          position: absolute;
-          top: 1%;
-          left: 2%;
-          border: none;
-          background-color: transparent;
-          outline: none;
-          font-size: 50px;
-          color: white;
-          font-family: arrowFONT;
-          font-weight: bolder;
-        "
-      >
+      <button @click="() => (isMenuOpen = false)" class="close-button">
         X
       </button>
       <div class="container" style="margin-top: 5%; max-width: 1300px">
@@ -140,7 +123,7 @@
           <div class="col-xl-4">
             <div class="container12" @click="next(5)">
               <div class="box-second-row">
-                                <div class="text-center">
+                <div class="text-center">
                   <img
                     width="50px;"
                     style="width: 100px; margin-top: 10%"
@@ -165,7 +148,7 @@
           <div class="col-xl-4">
             <div class="container12" @click="next(6)">
               <div class="box-second-row">
-                                <div class="text-center">
+                <div class="text-center">
                   <img
                     width="50px;"
                     style="width: 100px; margin-top: 10%"
@@ -190,7 +173,10 @@
         </div>
       </div>
     </div>
-  </transition>
+  <!-- </transition> -->
+  <ShowRegisterModal v-if='isRegisterModalOpen'/>  
+  <ShowLoginModal v-if='isLoginModalOpen'/>
+
   <div class="container p-0" style="max-width: 1920px; margin-top: -98px">
     <div v-if="isSpinner" style="display: flex">
       <div
@@ -217,7 +203,7 @@
       grabCursor
       @swiper="onSwiperInitialized"
     >
-      <div class="parallax-slider-navigation" style="display: none">
+      <!-- <div class="parallax-slider-navigation" style="display: none">
         <div class="nav-indicator prevArrow">
           <div style="display: flex">
             <p id="goback" style="display: none">უკან</p>
@@ -248,7 +234,7 @@
             <p>შემდეგი</p>
           </div>
         </div>
-      </div>
+      </div> -->
       <swiper-slide
         class="parallax-slide"
         v-for="image in images"
@@ -367,11 +353,16 @@ import FifthSlide from "./Slides/FifthSlide.vue";
 import SixSlide from "./Slides/SixSlide.vue";
 
 import NavigationArrows from "./NavigationArrows.vue";
+
+import ShowRegisterModal from './ShowRegisterModal.vue'
+import ShowLoginModal from './ShowLoginModal.vue'
 import { mapGetters } from "vuex";
 export default {
   name: "SwiperSlider",
   data() {
     return {
+      isRegisterModalOpen: false,
+      isLoginModalOpen: false,
       isMenuOpen: false,
       navState: 1,
       parallaxSwiperWidth: 0,
@@ -394,6 +385,18 @@ export default {
       this.isSpinner = false;
     }, 1500);
 
+    this.emitter.on('openregistermodal', () => {
+      this.isRegisterModalOpen = true
+    });
+    this.emitter.on('closeregistermodal', () => {
+      this.isRegisterModalOpen = false
+    })
+    this.emitter.on('openloginmodal', () => {
+      this.isLoginModalOpen = true
+    })
+    this.emitter.on('closeloginmodal', () => {
+      this.isLoginModalOpen = false
+    })
     this.emitter.on("showmenu", () => {
       this.isMenuOpen = true;
     });
@@ -417,6 +420,8 @@ export default {
     FifthSlide,
     SixSlide,
     NavigationArrows,
+    ShowRegisterModal,
+    ShowLoginModal
     // FontAwesomeIcon,
   },
   methods: {
@@ -437,6 +442,18 @@ export default {
 </script>
 
 <style scoped>
+.close-button {
+  position: absolute;
+  top: 1%;
+  left: 2%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 50px;
+  color: white;
+  font-family: arrowFONT;
+  font-weight: bolder;
+}
 .container12 {
   display: flex;
 }

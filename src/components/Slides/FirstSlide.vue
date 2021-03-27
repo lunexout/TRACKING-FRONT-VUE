@@ -2,8 +2,7 @@
   <Navbar :image='true' :btnColor="`white`" :textColor="`white`"/>
   <img class="main-image" :src="image" />
   <h1 class="text-center header-first-slide">
-    ამანათების ტრანსპორტირება<br />
-    თურქეთის ნებისმიერი წერტილიდან
+    {{$t('firstHeader1')}} <br/>  {{$t('firstHeader2')}}
   </h1>
   <div class="text-center header-line"></div>
 
@@ -11,24 +10,21 @@
     class="text-center registerContainer"
     style="position: absolute; margin-left: -20px"
   >
-    <button class="registreBtn">
-      რეგისტრაცია
-      <!-- <div> -->
+    <button class="registreBtn" @click='() => emitter.emit("openregistermodal")'>
+      {{$t('register')}}
       <div class="register-arrow-box">
         <img
-          style="width: 35px; height: 35x; margin-top: 8px"
-          src="./../../assets/mainpage/right-arrow.svg"
+          class='small-arrow'
+          src="./../../assets/mainpage/right-arrow.svg" alt='Right arrow'
         />
-        <!-- </div> -->
       </div>
     </button>
   </div>
   <div class="soc-card-container">
-    <img class="soc-cards" src="./../../assets/mainpage/fb.svg" />
-
-    <img class="soc-cards" src="./../../assets/mainpage/istagram.svg" />
-    <img class="soc-cards" src="./../../assets/mainpage/youtub.svg" />
-    <img class="soc-cards" src="./../../assets/mainpage/linkdin.svg" />
+    <img class="soc-cards" src="./../../assets/mainpage/fb.svg" alt='Facebook icon' />
+    <img class="soc-cards" src="./../../assets/mainpage/istagram.svg" alt='Instagram icon' />
+    <img class="soc-cards" src="./../../assets/mainpage/youtub.svg" alt='Youtube icon' />
+    <img class="soc-cards" src="./../../assets/mainpage/linkdin.svg" alt='Linkedin icon'  />
   </div>
   <div class="slide-number-line">
     <div style="width: 50px; height: 4px; background-color: white"></div>
@@ -37,26 +33,23 @@
     <p style="color: white; font-family: numericFONT; font-size: 20px">1/06</p>
   </div>
   <div>
-    <img class="slide-number-img" src="./../../assets/mainpage/01.svg" />
+    <img class="slide-number-img" src="./../../assets/mainpage/01.svg" alt='Slide 01 Number' />
   </div>
 </template>
 
 <script>
-// import mitt from 'mitt'
-// const emitter = mitt()
 import Navbar from "./../Navbar.vue";
 export default {
   name: "FirstSlide",
   props: ["image"],
   data(){
     return {
-      isSpinner: true
+      isSpinner: true,
     }
   },
+  methods: {
+  },
   components: { Navbar },
-  //   beforeMount() {
-  //   this.isSpinner=true
-  // },
   created(){
     this.isSpinner=false
   }
@@ -64,6 +57,9 @@ export default {
 </script>
 
 <style scoped>
+.small-arrow {
+  width: 25px; height: 25x; margin-top: 12px
+}
 .soc-card-container {
   position: absolute;
   z-index: 55;
@@ -121,8 +117,8 @@ export default {
   height: 50px;
   border-radius: 25px;
   background-color: #11bdf7;
-  margin-left: 280px;
-  margin-top: -37px;
+  margin-left: 285px;
+  margin-top: -42px;
 }
 .registerContainer {
   border-radius: 70px;
@@ -235,7 +231,7 @@ export default {
   .registreBtn {
     border-radius: 70px;
     outline: none;
-    padding: 9px;
+    padding: 14px;
     width: 350px;
     font-family: arrowFONT;
     font-weight: bold;
@@ -330,6 +326,14 @@ export default {
     background-color: #009ce7;
     border: none;
   }
+  .register-arrow-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #11bdf7;
+  margin-left: 288px;
+  margin-top: -36px;
+}
 }
 @media all and (min-width: 1640px) {
   .header-first-slide {
@@ -387,8 +391,8 @@ export default {
     height: 50px;
     border-radius: 25px;
     background-color: #11bdf7;
-    margin-left: 280px;
-    margin-top: -48px;
+    margin-left: 288px;
+    margin-top: -45px;
   }
   .header-first-slide {
     position: absolute;
@@ -461,6 +465,10 @@ export default {
   }
   .soc-card-container {
     bottom: 13%;
+  }
+  .small-arrow {
+
+    margin-top: 9px;
   }
 }
 </style>

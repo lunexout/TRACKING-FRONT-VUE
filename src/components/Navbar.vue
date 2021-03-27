@@ -2,30 +2,20 @@
   <nav class="navbar navbar-expand-lg navbar-light main-nav">
     <div class="container-fluid" style="max-width: 1920px">
       <div class="navbar-brand">
-        <div style="" @click='showMenu'>
+        <div style="" @click="showMenu">
           <img class="logo-img" src="./../assets/mainpage/menu.svg" />
-          <p class='menu-text'>მენიუ</p >
+          <p class="menu-text">{{$t('menu')}}</p>
         </div>
       </div>
-
-      <!-- <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="#">Home</a>
-             -->
-            <img v-if='image' class="logo-img1" src='./../assets/mainpage/logo.svg' />
-            <img v-else class="logo-img2" src='./../assets/services/logo.svg'/>
+            <img
+              v-if="image"
+              class="logo-img1"
+              src="./../assets/mainpage/logo.svg"
+            />
+            <img v-else class="logo-img2" src="./../assets/services/logo.svg" />
           </li>
         </ul>
       </div>
@@ -33,8 +23,35 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <div style="display: flex">
-              <a class="nav-link phoneFONT lang-txt" :style='menuTextColor'> ქა</a>
+              <select
+                v-model="$i18n.locale"
+                class="lang-select"
+                :style="menuTextColor"
+              >
+                <option
+                  class='lang-item'
+                  v-for="(lang, i) in langs"
+                  :key="`Lang${i}`"
+                  :value="lang"
+                >
+                  <div
+                    style="background-color: transparent"
+                    v-if="lang == 'geo'"
+                  >
+                    ქა
+                  </div>
+                  <div style="background-color: transparent" v-else>
+                    {{ lang }}
+                  </div>
+                </option>
+              </select>
+
               <img
+                @click="
+                  () => {
+                    document.getElementById('LangSelect').click();
+                  }
+                "
                 style="margin-top: -5px; margin-left: -20px"
                 class="lang-img"
                 src="./../assets/mainpage/downarrow.svg"
@@ -44,12 +61,16 @@
           <li class="nav-item">
             <div style="display: flex; width: 440%">
               <div class="line-phone" />
-              <p class="phoneFONT phoneNumber" :style='menuTextColor'>(+ 995) 599 710 202</p>
+              <p class="phoneFONT phoneNumber" :style="menuTextColor">
+                (+ 995) 599 710 202
+              </p>
             </div>
           </li>
 
           <li class="nav-item">
-            <button class="loginBtn" :style='menuBtnColor'>შესვლა</button>
+            <button class="loginBtn" @click='emitter.emit("openloginmodal")' :style="menuBtnColor">
+              {{ $t("login") }}
+            </button>
           </li>
         </ul>
       </div>
@@ -59,43 +80,69 @@
 </template>
 
 <script>
-// import mitt from 'mitt'
-// const emitter = mitt()
 export default {
   name: "Navbar",
   data() {
     return {
       isMenuOpen: false,
-      imagelink1: './../assets/mainpage/logo.svg',
-      imagelink2: './../assets/services/logo.svg'
-    }
+      imagelink1: "./../assets/mainpage/logo.svg",
+      imagelink2: "./../assets/services/logo.svg",
+      langs: ["geo", "Tü"]
+    };
   },
   methods: {
     showMenu() {
-      this.emitter.emit('showmenu')
+      this.emitter.emit("showmenu");
     },
     closeMenu() {
-      this.isMenuOpen = false
+      this.isMenuOpen = false;
+    },
+    setLocale(locale) {
+      this.$root.$i18n.locale = locale;
     },
   },
-  props: ['image', 'textColor', 'btnColor'],
-    computed: {
-      menuTextColor () {
-        return 'color: ' + this.textColor;
-      },
-      menuBtnColor() {
-          return 'border: 1px solid #' + this.btnColor +'; color: #' + this.btnColor;
-      }
+  props: ["image", "textColor", "btnColor"],
+  computed: {
+    menuTextColor() {
+      return "color: " + this.textColor;
     },
+    menuBtnColor() {
+      return (
+        "border: 1px solid #" + this.btnColor + "; color: #" + this.btnColor
+      );
+    },
+  },
 };
 </script>
 
 <style scoped>
+.lang-select {
+  border: none;
+  position: absolute;
+  z-index: 2;
+  margin-left: -35px;
+  font-size: 20px;
+  font-family: arrowFONT;
+  margin-top:8px;
+  color: white;
+  border: none; outline: none;
+  background-color: transparent;
+  appearance: none;
+  width: 60px;height: 25px;
+  /* padding: 10px; */
+}
+.lang-item:hover {
+  color: white;
+}
+.lang-item {
+  background-color: #029FD5;
+  color: white;
+}
 .container-fluid {
   margin-top: 60px;
 }
 .logo-img2 {
-    width: 85px;
+  width: 85px;
   height: 85px;
   margin-left: 25%;
 }
@@ -162,8 +209,14 @@ export default {
   background-color: transparent;
 }
 .menu-text {
-  position: absolute;margin-top: -25px;  font-family: arrowFONT;
-  font-size: 15px; margin-left: 2%; font-weight: bold; z-index: 555; color: white;
+  position: absolute;
+  margin-top: -25px;
+  font-family: arrowFONT;
+  font-size: 15px;
+  margin-left: 2%;
+  font-weight: bold;
+  z-index: 555;
+  color: white;
 }
 @font-face {
   font-family: arrowFONT;
@@ -190,10 +243,10 @@ export default {
     font-size: 18px;
   }
   .lang-img {
-  width: 50px;
-  height: 60px;
-  margin-left: 0px;
-}
+    width: 50px;
+    height: 60px;
+    margin-left: 0px;
+  }
   .loginBtn {
     width: 120px;
     height: 40px;
@@ -207,40 +260,40 @@ export default {
     margin-top: 10px;
   }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 22px;
-  width: 35px;
-  height: 2px;
-  z-index: 55;
-  margin-left: 55%;
-}
+    background-color: #337bbb;
+    margin-top: 22px;
+    width: 35px;
+    height: 2px;
+    z-index: 55;
+    margin-left: 55%;
+  }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 22px;
-  width: 35px;
-  height: 2px;
-  z-index: 55;
-  margin-left: 15%;
-}
-.lang-txt {
-  color: white;
-  font-size: 15px;
-  margin-left: 0%;
-  margin-top: 5px;
-}
-.logo-img1 {
-  width: 70px;
-  height: 70px;
-  margin-top: 8px;
-  margin-left: 25%;
-}
-.logo-img {
-  width: 75px;
-  height: 75px;
-}
+    background-color: #337bbb;
+    margin-top: 22px;
+    width: 35px;
+    height: 2px;
+    z-index: 55;
+    margin-left: 15%;
+  }
+  .lang-txt {
+    color: white;
+    font-size: 15px;
+    margin-left: 0%;
+    margin-top: 5px;
+  }
+  .logo-img1 {
+    width: 70px;
+    height: 70px;
+    margin-top: 8px;
+    margin-left: 25%;
+  }
+  .logo-img {
+    width: 75px;
+    height: 75px;
+  }
 }
 @media all and (min-width: 1440px) {
-    .logo-img2 {
+  .logo-img2 {
     margin-left: 120%;
   }
   .right-nav-items {
@@ -250,14 +303,14 @@ export default {
     font-size: 18px;
   }
   .logo-img1 {
-  width: 75px;
-  height: 75px;
-  margin-left: 25%;
-}
-.logo-img {
-  width: 75px;
-  height: 75px;
-}
+    width: 75px;
+    height: 75px;
+    margin-left: 25%;
+  }
+  .logo-img {
+    width: 75px;
+    height: 75px;
+  }
   .loginBtn {
     width: 120px;
     height: 40px;
@@ -271,27 +324,27 @@ export default {
     margin-top: 10px;
   }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 22px;
-  width: 35px;
-  height: 2px;
-  z-index: 55;
-  margin-left: 55%;
-}
+    background-color: #337bbb;
+    margin-top: 22px;
+    width: 35px;
+    height: 2px;
+    z-index: 55;
+    margin-left: 55%;
+  }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 22px;
-  width: 45px;
-  height: 2px;
-  z-index: 55;
-  margin-left: 15%;
-}
-.lang-txt {
-  color: white;
-  font-size: 18px;
-  margin-left: 0%;
-  margin-top: 5px;
-}
+    background-color: #337bbb;
+    margin-top: 22px;
+    width: 45px;
+    height: 2px;
+    z-index: 55;
+    margin-left: 15%;
+  }
+  .lang-txt {
+    color: white;
+    font-size: 18px;
+    margin-left: 0%;
+    margin-top: 5px;
+  }
 }
 @media all and (min-width: 1640px) {
   .right-nav-items {
@@ -303,15 +356,15 @@ export default {
     font-size: 22px;
     margin-left: 210%;
   }
-    .logo-img1 {
-  width: 75px;
-  height: 75px;
-  margin-left: 25%;
-}
-.logo-img {
-  width: 75px;
-  height: 75px;
-}
+  .logo-img1 {
+    width: 75px;
+    height: 75px;
+    margin-left: 25%;
+  }
+  .logo-img {
+    width: 75px;
+    height: 75px;
+  }
   .phoneNumber {
     color: white;
     font-size: 25px;
@@ -319,19 +372,19 @@ export default {
     margin-top: 10px;
   }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 28px;
-  width: 45px;
-  height: 3px;
-  z-index: 55;
-  margin-left: 15%;
-}
-.lang-txt {
-  color: white;
-  font-size: 22px;
-  margin-left: 0%;
-  margin-top: 5px;
-}
+    background-color: #337bbb;
+    margin-top: 28px;
+    width: 45px;
+    height: 3px;
+    z-index: 55;
+    margin-left: 15%;
+  }
+  .lang-txt {
+    color: white;
+    font-size: 22px;
+    margin-left: 0%;
+    margin-top: 5px;
+  }
 }
 @media all and (min-width: 1740px) {
   .right-nav-items {
@@ -341,17 +394,17 @@ export default {
     margin-left: 120%;
     margin-top: -20px;
   }
-      .logo-img1 {
-        margin-top: -20px;
-  width: 75px;
-  height: 75px;
-  margin-left: 25%;
-}
-.logo-img {
-  margin-top: -30px;
-  width: 75px;
-  height: 75px;
-}
+  .logo-img1 {
+    margin-top: -20px;
+    width: 75px;
+    height: 75px;
+    margin-left: 25%;
+  }
+  .logo-img {
+    margin-top: -30px;
+    width: 75px;
+    height: 75px;
+  }
   .loginBtn {
     width: 160px;
     height: 50px;
@@ -365,19 +418,19 @@ export default {
     margin-top: 10px;
   }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 28px;
-  width: 45px;
-  height: 3px;
-  z-index: 55;
-  margin-left: 15%;
-}
-.lang-txt {
-  color: white;
-  font-size: 22px;
-  margin-left: 0%;
-  margin-top: 5px;
-}
+    background-color: #337bbb;
+    margin-top: 28px;
+    width: 45px;
+    height: 3px;
+    z-index: 55;
+    margin-left: 15%;
+  }
+  .lang-txt {
+    color: white;
+    font-size: 22px;
+    margin-left: 0%;
+    margin-top: 5px;
+  }
 }
 /* }
 @media all and (max-width: 1060px) {

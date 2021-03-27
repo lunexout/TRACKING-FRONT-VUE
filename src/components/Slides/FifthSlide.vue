@@ -113,8 +113,8 @@
             <!-- <input :value="answer" /> -->
 
             <button
-              @keyup.enter="calc"
-              @click.prevent="calc"
+              @keyup.enter="() => emitter.emit('openregistermodal')"
+              @click.prevent='() => emitter.emit("openregistermodal")'
               class="registreBtn mb-4"
             >
               რეგისტრაცია
@@ -169,10 +169,6 @@ export default {
 
         this.price = this.kg * 4
       }
-      // let calculatedTotal = this.sigr.toInt() + this.siga.toInt();
-      // this.answer = calculatedTotal;
-
-      // return calculatedTotal;
     },
   },
 };
