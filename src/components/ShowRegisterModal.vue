@@ -224,7 +224,7 @@
                   <div class="register-arrow-box">
                     <img
                       style="width: 15px; height: 15x; margin-top: 5px"
-                      src="./../../../assets/mainpage/right-arrow.svg"
+                      src="./../assets/mainpage/right-arrow.svg"
                       alt="Right arrow"
                     />
                   </div>
