@@ -74,7 +74,7 @@
           border-radius: 50px;
           color: #022b4b;
         "
-        @click='() => {emitter.emit("mobregistermodal"); emitter.emit("closeloginmodal")}'
+        @click='() => {emitter.emit("mobregistermodal");emitter.emit("openregistermodal"); emitter.emit("closeloginmodal")}'
       >
         {{ `რეგისტრაცია` }}
       </button>
