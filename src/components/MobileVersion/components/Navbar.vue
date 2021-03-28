@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#"
         ><img
-          style="width: 80px; height: 80px"
+          style="width: 60px; height: 60px"
           src="./../../../assets/mainpage/logo.svg"
           alt='Meko Logo'
       /></a>
@@ -18,6 +18,7 @@
         aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        @click='() => emitter.emit("openmobmenu")'
       >
         <!-- <span class="navbar-toggler-icon"> -->
         <img
@@ -28,9 +29,8 @@
         <p class="menu-text">მენიუ</p>
         <!-- </span> -->
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <!-- <a class="nav-link text-white" aria-current="page" href="#">Home</a> -->
           <a class="nav-link text-white phoneFONT" aria-current="page" href="#"
             >ქა</a
           >
@@ -38,7 +38,7 @@
             >(+ 995) 599 710 202</a
           >
         </div>
-      </div>
+      </div> -->
     </div>
   </nav>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-0" style="max-width: 900px">
+  <div class="container p-0" id='conditions' style="max-width: 900px">
     <div
       id="carouselExampleIndicators"
       class="carousel slide"

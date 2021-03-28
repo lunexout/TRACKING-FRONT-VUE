@@ -1,12 +1,17 @@
 <template>
-  <MobNavbar :color="`${bgColor}`" :scrollPosition="scrollPosition" />
-  <MobMainPage />
-  <MobAbout />
-  <ConditionSlider />
-  <MobClearance />
-  <MobWorkSlider />
-  <MobContact />
-  <MobSendMail />
+  <ShowLoginModal v-if='isMobLoginModal'/>
+  <ShowMobMenu v-if='isMobMenuOpen'/>
+  <ShowMobRegister v-if='isMobRegisterModal'/>
+  <template v-if='isMobRegisterModal == false || !isMobLoginModal == false'>
+    <MobNavbar :color="`${bgColor}`" :scrollPosition="scrollPosition" />
+    <MobMainPage />
+    <MobAbout />
+    <ConditionSlider />
+    <MobClearance />
+    <MobWorkSlider />
+    <MobContact />
+    <MobSendMail />
+  </template>
   <!-- <div class="container" style="height: 1200px"></div> -->
 </template>
 
@@ -19,6 +24,9 @@ import MobClearance from "./components/MobClearance.vue";
 import MobContact from "./components/MobContact.vue";
 import MobSendMail from "./components/MobSendMail.vue";
 import MobWorkSlider from "./components/MobWorkSlider.vue";
+import ShowLoginModal from './../../components/ShowLoginModal.vue';
+import ShowMobMenu from './components/ShowMobMenu.vue'
+import ShowMobRegister from './components/ShowMobRegister.vue'
 
 export default {
   name: "MobileApp",
@@ -26,9 +34,15 @@ export default {
     return {
       bgColor: "transparent",
       scrollPosition: 0,
+      isMobLoginModal: false,
+      isMobMenuOpen: false,
+      isMobRegisterModal: false,
     };
   },
   components: {
+    ShowLoginModal,
+    ShowMobMenu,
+    ShowMobRegister,
     MobNavbar,
     MobMainPage,
     MobAbout,
@@ -37,6 +51,26 @@ export default {
     MobWorkSlider,
     MobContact,
     MobSendMail,
+  },
+  mounted(){
+    this.emitter.on('mobloginmodal', () => {
+      this.isMobLoginModal = true
+    });
+    this.emitter.on('closeloginmodal', () => {
+      this.isMobLoginModal = false
+    })
+    this.emitter.on('mobregistermodal', () => {
+      this.isMobRegisterModal = true
+    });
+    this.emitter.on('closemobregistermodal', () => {
+      this.isMobRegisterModal = false
+    })
+    this.emitter.on('closemobmenu', () => {
+      this.isMobMenuOpen = false
+    })
+    this.emitter.on('openmobmenu', () => {
+      this.isMobMenuOpen = true
+    })
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);

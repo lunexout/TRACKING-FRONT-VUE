@@ -130,7 +130,7 @@
                 class="input-registration mt-3"
               />
               <input
-                type="text"
+                type="password"
                 placeholder="პაროლი*"
                 class="input-registration mt-3"
               />
@@ -183,7 +183,7 @@
                 class="input-registration mt-3"
               />
               <input
-                type="text"
+                type="password"
                 placeholder="პაროლი(განმეორებით)*"
                 class="input-registration mt-3"
               />
@@ -349,7 +349,7 @@ export default {
 }
 .register-modal {
   position: absolute;
-  z-index: 999;
+  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;

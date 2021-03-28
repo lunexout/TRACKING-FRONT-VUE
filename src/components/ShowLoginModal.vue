@@ -2,17 +2,7 @@
   <div class="login-modal animate__animated animate__fadeInDown">
     <button
       @click="() => emitter.emit('closeloginmodal')"
-      style="
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        font-size: 40px;
-        font-weight: 200;
-        color: white;
-      "
+      class='close-log-modal'
     >
       X
     </button>
@@ -23,12 +13,13 @@
         left: 50%;
         top: 50%;
         height: auto;
+        min-width: 300px;
         max-width: 370px;
         transform: translate(-50%, -50%);
       "
     >
       <input class="login-inputs" type="text" placeholder="ელ ფოსტა" />
-      <input class="mt-4 login-inputs" type="text" placeholder="პაროლი" />
+      <input class="mt-4 login-inputs" type="password" placeholder="პაროლი" />
 
       <div class="mt-4">
         <input type="radio" id="female" name="gender" value="female" />
@@ -49,15 +40,7 @@
       >
 
       <p
-        style="
-          font-family: arrowFONT;
-          font-size: 19px;
-          color: #022b4b;
-          font-weight: bold;
-          position: absolute;
-          margin-top: -28px;
-          right: 0;
-        "
+        class='recover-password'
       >
         პაროლის აღდგენა?
       </p>
@@ -91,6 +74,7 @@
           border-radius: 50px;
           color: #022b4b;
         "
+        @click='() => {emitter.emit("mobregistermodal"); emitter.emit("closeloginmodal")}'
       >
         {{ `რეგისტრაცია` }}
       </button>
@@ -105,6 +89,26 @@ export default {
 </script>
 
 <style scoped>
+.close-log-modal {
+          position: absolute;
+        right: 20px;
+        top: 20px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 40px;
+        font-weight: 200;
+        color: white;
+}
+.recover-password {
+            font-family: arrowFONT;
+          font-size: 19px;
+          color: #022b4b;
+          font-weight: bold;
+          position: absolute;
+          margin-top: -28px;
+          right: 0;
+}
 .login-inputs {
   border: 1px solid white;
   background-color: transparent;
@@ -128,8 +132,8 @@ input[type="radio"] {
   color: #fff;
 }
 .login-modal {
-  position: absolute;
-  z-index: 999;
+  position: fixed;
+  z-index: 99998;
   top: 0;
   left: 0;
   width: 100%;
@@ -167,5 +171,22 @@ input[type="radio"] {
   color: white;
   background-color: #009ce7;
   border: none;
+}
+@media all and (max-width: 320px) {
+  .register-arrow-box {
+    display: none;
+  }
+  .recover-password {
+          margin-top: -23px;
+                    font-size: 14px !important;
+                    
+
+  }
+}
+@media all and (max-width: 480px) {
+    .close-log-modal {
+    top: 0px;
+    right: 0px;
+  }
 }
 </style>

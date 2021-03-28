@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="max-width: 900px">
+  <div class="container" id='sendmail' style="max-width: 900px">
     <div
       style="
         display: flex;

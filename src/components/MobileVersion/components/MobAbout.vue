@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center header-about" style="margin-top: 270px">
+  <h1 id='services' class="text-center header-about" style="margin-top: 270px">
     ჩვენს შესახებ
   </h1>
   <div class="header-line"></div>

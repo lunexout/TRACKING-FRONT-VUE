@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="max-width: 900px">
+  <div class="container" id='declare' style="max-width: 900px">
     <div style="padding: 5px" class="mt-5">
       <h1
         class="text-center"

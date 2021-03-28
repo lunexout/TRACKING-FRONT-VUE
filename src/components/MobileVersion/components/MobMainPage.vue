@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id='mainpage'>
     <img class="bg-image" src="./../../../assets/images/image1.jpg" alt='Main background wallpaper' />
 
     <div class="text-center" style="margin-top: 150px">
@@ -13,8 +13,8 @@
 
     <div class="header-line"></div>
     <div class="text-center mt-4 registerContainer">
-      <button class="registreBtn">
-        რეგისტრაცია
+      <button class="registreBtn" @click="() => emitter.emit('mobregistermodal')">
+        {{$t('register')}}
         <div class="register-arrow-box">
           <img
             style="width: 25px; height: 25x; margin-top: 8px"
@@ -38,6 +38,7 @@
           font-weight: bold;
           color: white;
         "
+        @click='()=>emitter.emit("mobloginmodal")'
       >
         შესვლა
       </button>

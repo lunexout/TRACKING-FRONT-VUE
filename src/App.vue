@@ -48,12 +48,14 @@ html,
 body {
   margin: 0;
   overflow:hidden;
+  /* scroll-behavior: smooth; */
 }
 @media all and (max-width: 1311px) {
 html,
 body {
   margin: 0;
   overflow-y: scroll !important;
+  scroll-behavior: smooth !important;
 }
 }
 </style>
