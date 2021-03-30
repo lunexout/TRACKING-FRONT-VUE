@@ -13,7 +13,7 @@
 
     <div class="header-line"></div>
     <div class="text-center mt-4 registerContainer">
-      <button class="registreBtn" @click="() => emitter.emit('mobregistermodal')">
+      <button class="registreBtn" @click="() => emitter.emit('mobregisterrulemodal')">
         {{$t('register')}}
         <div class="register-arrow-box">
           <img

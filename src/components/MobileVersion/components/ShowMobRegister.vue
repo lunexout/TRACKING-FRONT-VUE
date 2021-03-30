@@ -30,18 +30,12 @@
               </div>
       <div style="display: flex; justify-content: space-between">
         <div
-          style="
-            width: 100%;
-            padding: 13px;
-            height: 45px;
-            border: 1px solid #000;
-            margin-right: 15px;
-          "
+          class='active-box'
         >
           <h5
             class="text-center"
             style="
-              color: #000;
+              color: white;
               font-weight: bold;
               font-size: 13px;
               font-family: arrowFONT;
@@ -51,18 +45,19 @@
             ფიზიკური პირი
           </h5>
         </div>
+        <div class="down-arrow-div"></div>
         <div
           style="
             width: 100%;
             padding: 14px;
             height: 45px;
-            border: 1px solid white;
+            border: 1px solid #000;
           "
         >
           <h5
             class="text-center"
             style="
-              color: white;
+              color: #000;
               font-weight: bold;
               font-family: arrowFONT;
               z-index: 2;
@@ -72,7 +67,6 @@
             იურიდიული პირი
           </h5>
         </div>
-        <div class="down-arrow-div"></div>
       </div>
       <input type="text" placeholder="სახელი(ქართულად)*" class="inputs" />
       <input type="text" placeholder="გვარი(ქართულად)*" class="inputs" />
@@ -176,6 +170,13 @@ export default {
 
 <style scoped>
 /* register */
+.active-box {
+              width: 100%;
+            padding: 13px;
+            height: 45px;
+            border: 1px solid #fff;
+            margin-right: 15px;
+}
 .register-arrow-box {
   width: 30px;
   height: 30px;
@@ -215,7 +216,7 @@ export default {
   background-color: #0396db;
   height: 20px;
   position: absolute;
-  margin-left: 218px;
+  margin-left: 60px;
   margin-top: 34px;
   z-index: 1;
   transform: rotate(-45deg);

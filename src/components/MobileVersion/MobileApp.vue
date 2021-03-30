@@ -2,6 +2,7 @@
   <ShowLoginModal v-if='isMobLoginModal'/>
   <ShowMobMenu v-if='isMobMenuOpen'/>
   <ShowMobRegister v-if='isMobRegisterModal'/>
+  <ShowMobRegisterRules v-if='isMobRegisterRuleModal'/>
   <template v-if='isMobRegisterModal == false || !isMobLoginModal == false'>
     <MobNavbar :color="`${bgColor}`" :scrollPosition="scrollPosition" />
     <MobMainPage />
@@ -12,7 +13,6 @@
     <MobContact />
     <MobSendMail />
   </template>
-  <!-- <div class="container" style="height: 1200px"></div> -->
 </template>
 
 <script>
@@ -27,6 +27,7 @@ import MobWorkSlider from "./components/MobWorkSlider.vue";
 import ShowLoginModal from './../../components/ShowLoginModal.vue';
 import ShowMobMenu from './components/ShowMobMenu.vue'
 import ShowMobRegister from './components/ShowMobRegister.vue'
+import ShowMobRegisterRules from './components/ShowMobRegisterRules.vue'
 
 export default {
   name: "MobileApp",
@@ -37,12 +38,14 @@ export default {
       isMobLoginModal: false,
       isMobMenuOpen: false,
       isMobRegisterModal: false,
+      isMobRegisterRuleModal: false,
     };
   },
   components: {
     ShowLoginModal,
     ShowMobMenu,
     ShowMobRegister,
+    ShowMobRegisterRules,
     MobNavbar,
     MobMainPage,
     MobAbout,
@@ -64,6 +67,12 @@ export default {
     });
     this.emitter.on('closemobregistermodal', () => {
       this.isMobRegisterModal = false
+    })
+    this.emitter.on('mobregisterrulemodal', () => {
+      this.isMobRegisterRuleModal = true
+    });
+    this.emitter.on('closemobregisterrulemodal', () => {
+      this.isMobRegisterRuleModal = false
     })
     this.emitter.on('closemobmenu', () => {
       this.isMobMenuOpen = false

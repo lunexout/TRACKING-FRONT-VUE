@@ -24,7 +24,8 @@
         </select>
         <button style="" class="menu-log-reg-button"
          @click='() => emitter.emit("mobloginmodal")'>{{ $t("login") }}</button>
-        <button style="" class="menu-log-reg-button" @click='emitter.emit("mobregistermodal")'>
+        <button style="" class="menu-log-reg-button"
+         @click='emitter.emit("mobregisterrulemodal")'>
           {{ $t("register") }}
         </button>
       </div>

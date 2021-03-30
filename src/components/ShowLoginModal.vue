@@ -7,16 +7,7 @@
       X
     </button>
     <div
-      class=""
-      style="
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        height: auto;
-        min-width: 300px;
-        max-width: 370px;
-        transform: translate(-50%, -50%);
-      "
+      class="log-cont"
     >
       <input class="login-inputs" type="text" placeholder="ელ ფოსტა" />
       <input class="mt-4 login-inputs" type="password" placeholder="პაროლი" />
@@ -25,16 +16,7 @@
         <input type="radio" id="female" name="gender" value="female" />
       </div>
       <label
-        style="
-          font-family: arrowFONT;
-          margin-left: 5px;
-          font-size: 18px;
-          color: white;
-          font-weight: bold;
-          position: absolute;
-          margin-top: -28px;
-          margin-left: 25px;
-        "
+        class='save-user'
         for="female"
         >დამახსოვრება</label
       >
@@ -74,7 +56,8 @@
           border-radius: 50px;
           color: #022b4b;
         "
-        @click='() => {emitter.emit("mobregistermodal");emitter.emit("openregistermodal"); emitter.emit("closeloginmodal")}'
+        @click='() => {emitter.emit("mobregisterrulemodal");
+        emitter.emit("openregistermodal"); emitter.emit("closeloginmodal")}'
       >
         {{ `რეგისტრაცია` }}
       </button>
@@ -89,6 +72,25 @@ export default {
 </script>
 
 <style scoped>
+.log-cont {
+  position: absolute;
+        left: 50%;
+        top: 50%;
+        height: auto;
+        min-width: 300px;
+        max-width: 370px;
+        transform: translate(-50%, -50%);
+}
+.save-user {
+  font-family: arrowFONT;
+          margin-left: 5px;
+          font-size: 18px;
+          color: white;
+          font-weight: bold;
+          position: absolute;
+          margin-top: -28px;
+          margin-left: 25px;
+}
 .close-log-modal {
           position: absolute;
         right: 20px;
@@ -188,5 +190,22 @@ input[type="radio"] {
     top: 0px;
     right: 0px;
   }
+  .log-cont {
+        max-width: 325px;
+  }
+  .register-arrow-box {
+  width: 45px;
+  height: 45px;
+  border-radius: 25px;
+  background-color: #11bdf7;
+  margin-left: 238px;
+  margin-top: -48px;
+}
+.recover-password {
+  font-size: 16px;
+}
+.save-user {
+          font-size: 16px;
+}
 }
 </style>
