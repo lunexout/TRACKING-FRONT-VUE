@@ -12,7 +12,7 @@
       <input class="login-inputs" type="text" placeholder="ელ ფოსტა" />
       <input class="mt-4 login-inputs" type="password" placeholder="პაროლი" />
 
-      <div class="mt-4">
+      <div class="mt-4" s>
         <input type="radio" id="female" name="gender" value="female" />
       </div>
       <label
@@ -35,7 +35,7 @@
           {{ $t("login") }}
           <div class="register-arrow-box">
             <img
-              style="width: 15px; height: 15x; margin-top: 5px"
+              style="width: 15px; height: 15x; margin-top: 13px"
               src="./../assets/mainpage/right-arrow.svg"
               alt="Right arrow"
             />
@@ -44,18 +44,7 @@
       </div>
 
       <button
-        class="mt-4"
-        style="
-          width: 100%;
-          font-size: 28px;
-          font-family: arrowFONT;
-          font-weight: bold;
-          height: 77px;
-          border: 1px solid #fff;
-          background-color: transparent;
-          border-radius: 50px;
-          color: #022b4b;
-        "
+        class="mt-4 register-btn"
         @click='() => {emitter.emit("mobregisterrulemodal");
         emitter.emit("openregistermodal"); emitter.emit("closeloginmodal")}'
       >
@@ -72,6 +61,17 @@ export default {
 </script>
 
 <style scoped>
+.register-btn {
+            width: 100%;
+          font-size: 28px;
+          font-family: arrowFONT;
+          font-weight: bold;
+          height: 77px;
+          border: 1px solid #fff;
+          background-color: transparent;
+          border-radius: 50px;
+          color: #022b4b;
+}
 .log-cont {
   position: absolute;
         left: 50%;
@@ -186,12 +186,24 @@ input[type="radio"] {
   }
 }
 @media all and (max-width: 480px) {
+  .login-inputs {
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 14px;
+  width: 100%;
+  border-radius: 35px;
+  font-family: arrowFONT;
+  font-size: 15px;
+  font-weight: bold;
+  outline: none;
+  color: #022b4b;
+}
     .close-log-modal {
     top: 0px;
     right: 0px;
   }
   .log-cont {
-        max-width: 325px;
+        max-width: 315px;
   }
   .register-arrow-box {
   width: 45px;
@@ -202,10 +214,55 @@ input[type="radio"] {
   margin-top: -48px;
 }
 .recover-password {
-  font-size: 16px;
+  font-size: 14px;
+   margin-top: -25px;
 }
 .save-user {
-          font-size: 16px;
+  margin-top: -25px;
+          font-size: 14px;
+}
+.register-btn {
+              width: 100%;
+          font-size: 18px;
+          font-family: arrowFONT;
+          font-weight: bold;
+          height: 67px;
+          border: 1px solid #fff;
+          background-color: transparent;
+          border-radius: 50px;
+          color: #022b4b;
+}
+.register-arrow-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: #11bdf7;
+  margin-left: 242px;
+  margin-top: -35px;
+}
+.registerContainer {
+  border-radius: 70px;
+  outline: none;
+  border: 1px solid #fff;
+  padding: 9px;
+  text-align: center;
+  height: 67px;
+  width: 100%;
+  margin-top: -15px;
+}
+.registreBtn {
+  border-radius: 70px;
+  outline: none;
+  padding: 10px;
+  width: 100%;
+  font-family: arrowFONT;
+  font-weight: bold;
+  height: 45px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  background-color: #009ce7;
+  border: none;
 }
 }
 </style>

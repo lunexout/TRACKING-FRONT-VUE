@@ -1,181 +1,110 @@
 <template>
-  <div class="register-modal animate__animated animate__fadeInDown">
-    <button
+  <div class="register-modal animate__animated animate__fadeInDown" :class='{ physicalModal: isPhysical }'>
+
+    <div class="reg-modal-inside">
+          <button
       @click="() => emitter.emit('closemobregistermodal')"
       class="close-reg-modal"
     >
       X
-    </button>   
-    <div class="reg-modal-inside">
-      <h4 style='color: #fff; font-family: arrowFONT;
-      font-weight: bold'>{{$t('register')}}</h4>
-              <div style="display: flex">
-                <p
-                  style="
-                    margin-top: -10px;
-                    margin-left: 20px;
-                    color: white;
-                    font-size: 13px;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                >
-                  უცხოელი (არა საქართველოს მოქალაქე)
-                </p>
-
-<label class="switch">
-  <input type="checkbox">
-  <span class="slider round"></span>
-</label>
-              </div>
-      <div style="display: flex; justify-content: space-between">
-        <div
-          class='active-box'
-        >
-          <h5
-            class="text-center"
-            style="
-              color: white;
-              font-weight: bold;
-              font-size: 13px;
-              font-family: arrowFONT;
-              z-index: 2;
-            "
-          >
-            ფიზიკური პირი
-          </h5>
-        </div>
-        <div class="down-arrow-div"></div>
-        <div
+    </button>
+      <h4 style="color: #fff; font-family: arrowFONT; font-weight: bold">
+        {{ $t("register") }}
+      </h4>
+      <div style="display: flex">
+        <p
           style="
-            width: 100%;
-            padding: 14px;
-            height: 45px;
-            border: 1px solid #000;
+            margin-top: -10px;
+            margin-left: 20px;
+            color: white;
+            font-size: 13px;
+            font-family: arrowFONT;
+            font-weight: bold;
           "
         >
-          <h5
-            class="text-center"
-            style="
-              color: #000;
-              font-weight: bold;
-              font-family: arrowFONT;
-              z-index: 2;
-              font-size: 12px;
-            "
-          >
-            იურიდიული პირი
-          </h5>
-        </div>
+          უცხოელი (არა საქართველოს მოქალაქე)
+        </p>
+
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
       </div>
-      <input type="text" placeholder="სახელი(ქართულად)*" class="inputs" />
-      <input type="text" placeholder="გვარი(ქართულად)*" class="inputs" />
-      <input type="text" placeholder="სახელი(ლათინურად)*" class="inputs" />
-      <input type="text" placeholder="გვარი(ლათინურად)*" class="inputs" />
-            <input type="text" placeholder="დაბადების თარიღი" class="inputs" />
+      <PhysicalType v-if='isPhysical'/>
+      <IuridiuliType v-if='!isPhysical'/>
 
-            <p
-                style="
-                  font-family: arrowFONT;
-                  font-size: 14px;
-                  color: white;
-                  margin-left: 18px;
-                  font-weight: bold;
-                  margin-bottom: -5px;
-                  margin-top: 20px;
-                "
-              >
-                სქესი*
-              </p>
-              <input type="radio" id="male" name="gender" value="male" />
-              <label
-                style="
-                  font-family: arrowFONT;
-                  font-size: 14px;
-                  color: white;
-                  font-weight: bold;
-                  margin-left: 5px;
-                  margin-right: 10px;
-                "
-                for="male"
-                >მდედრობით</label
-              >
-              <input type="radio" id="female" name="gender" value="female" />
-              <label
-                style="
-                  font-family: arrowFONT;
-                  margin-left: 5px;
-                  font-size: 14px;
-                  color: white;
-                  font-weight: bold;
-                "
-                for="female"
-                >მამრობითი</label
-              ><br />
+      <p
+        class="mt-4 text-center"
+        style="
+          color: white;
+          margin-bottom: 0px;
+          font-family: arrowFONT;
+          font-weight: bold;
+          font-size: 14px;
+        "
+      >
+        რეგისტრაციის დასრულებისას<br />
+        გთხოვთ გადაამოწმოთ
+        <span
+          style="
+            color: black;
+            font-size: 14px;
+            font-family: arrowFONT;
+            font-weight: bold;
+          "
+          >თქვენი ელ ფოსტა</span
+        >
+      </p>
 
-         <input type="text" placeholder="ელ-ფოსტა*" class="inputs" />
-          <input type="text" placeholder="მობილური ტელეფონი*" class="inputs" />
-           <input type="password" placeholder="პაროლი*" class="inputs" />
-            <input type="password" placeholder="პაროლი განმეორებით" class="inputs" />
-             <input type="text" placeholder="მისამართი" class="inputs" />
-             <input type="text" placeholder="პირადი ნომერი*" class="inputs" />
-             <input type="text" placeholder="ორგანიზაციის დასახელება*" class="inputs" />
-             <input type="text" placeholder="საიდენთიფიკაციო კოდი*" class="inputs" />
-              <p
-                class="mt-4 text-center"
-                style="
-                  color: white;
-                  margin-bottom: 0px;
-                  font-family: arrowFONT;
-                  font-weight: bold;
-                  font-size: 14px;
-                "
-              >
-                რეგისტრაციის დასრულებისას<br/> გთხოვთ გადაამოწმოთ
-                <span
-                  style="
-                    color: black;
-                    font-size: 14px;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                  >თქვენი ელ ფოსტა</span
-                >
-              </p>
-
-                            <div
-                class="text-center registerContainer mt-4"
-                style="margin-left: -20px; margin: 0 auto"
-              >
-                <button class="registreBtn">
-                  {{ $t("register") }}
-                  <div class="register-arrow-box">
-                    <img
-                      style="width: 15px; height: 15x; margin-top: 5px"
-                      src="./../../../assets/mainpage/right-arrow.svg"
-                      alt="Right arrow"
-                    />
-                  </div>
-                </button>
-              </div>
+      <div
+        class="text-center registerContainer mt-4"
+        style="margin-left: -20px; margin: 0 auto"
+      >
+        <button class="registreBtn">
+          {{ $t("register") }}
+          <div class="register-arrow-box">
+            <img
+              style="width: 15px; height: 15x; margin-top: 5px"
+              src="./../../../assets/mainpage/right-arrow.svg"
+              alt="Right arrow"
+            />
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import PhysicalType from './PhysicalType.vue'
+import IuridiuliType from './IuridiuliType.vue'
+
 export default {
   name: "ShowMobRegister",
+  components: {PhysicalType, IuridiuliType},
+  data(){
+    return {
+      isPhysical: true,
+      // isIuridiuli: false,
+    }
+  },
+  mounted() {
+    this.emitter.on('physical', () => {
+        if(this.isPhysical == true){
+            this.isPhysical = false
+        }else {
+          this.isPhysical = true
+        }
+        // this.isIuridiuli = false
+    })
+  }
 };
 </script>
 
 <style scoped>
 /* register */
-.active-box {
-              width: 100%;
-            padding: 13px;
-            height: 45px;
-            border: 1px solid #fff;
-            margin-right: 15px;
+.physicalModal {
+  margin-top: -150px !important;
 }
 .register-arrow-box {
   width: 30px;
@@ -210,32 +139,6 @@ export default {
   border: none;
 }
 /* register-end */
-.down-arrow-div {
-  margin-top: -20px;
-  width: 20px;
-  background-color: #0396db;
-  height: 20px;
-  position: absolute;
-  margin-left: 60px;
-  margin-top: 34px;
-  z-index: 1;
-  transform: rotate(-45deg);
-  border-left: 1px solid white;
-  border-bottom: 1px solid white;
-}
-.inputs {
-  border: 1px solid white;
-  padding: 8px;
-  margin-top: 20px;
-  background-color: transparent;
-  font-family: arrowFONT;
-  font-weight: bold;
-  width: 100%;
-  border-radius: 30px;
-}
-::placeholder {
-  color: #fff;
-}
 .register-modal {
   position: absolute;
   z-index: 99999;
@@ -243,19 +146,22 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 1250px;
+  min-height: 1250px;
+    max-height: 1250px;
+
   background-color: #0396db;
 }
 .close-reg-modal {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: -40px;
+  top: -40px;
   background-color: transparent;
   border: none;
   outline: none;
   font-size: 40px;
   font-weight: 200;
   color: white;
+  /* margin-bottom: 150px; */
 }
 .reg-modal-inside {
   position: absolute;
@@ -267,7 +173,6 @@ export default {
   max-width: 370px;
   transform: translate(-50%, -120%);
 }
-
 
 /* switchbox */
 .switch {
@@ -293,8 +198,8 @@ export default {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -305,16 +210,16 @@ export default {
   left: 4px;
   bottom: 2px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
