@@ -1,6 +1,6 @@
 <template>
-  <UserLogged v-if='true'/>
-  <SwiperSlider v-if='false'/>
+  <UserLogged v-if='false'/>
+  <SwiperSlider v-if='true'/>
 </template>
 
 <script>
