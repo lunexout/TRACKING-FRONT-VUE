@@ -1,12 +1,14 @@
 <template>
-  <SwiperSlider/>
+  <UserLogged v-if='true'/>
+  <SwiperSlider v-if='false'/>
 </template>
 
 <script>
 import SwiperSlider from './SwiperSlider.vue'
+import UserLogged from './DesktopUser/UserLogged.vue'
 export default {
     name: 'DesktopApp',
-    components: {SwiperSlider}
+    components: {SwiperSlider,UserLogged}
 }
 </script>
 
