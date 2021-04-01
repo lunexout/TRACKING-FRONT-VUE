@@ -9,8 +9,9 @@
     <div
       class="log-cont"
     >
-      <input class="login-inputs" type="text" placeholder="ელ ფოსტა" />
-      <input class="mt-4 login-inputs" type="password" placeholder="პაროლი" />
+      <form>
+        <input v-model='logdata.email' class="login-inputs" type="text" placeholder="ელ ფოსტა" />
+      <input v-model='logdata.passw' class="mt-4 login-inputs" type="password" placeholder="პაროლი" />
 
       <div class="mt-4" s>
         <input type="radio" id="female" name="gender" value="female" />
@@ -31,7 +32,7 @@
         class="text-center registerContainer mt-5"
         style="margin-left: -20px; margin: 0 auto"
       >
-        <button class="registreBtn">
+        <button class="registreBtn" @click.prevent='login' @keyup.enter='login'>
           {{ $t("login") }}
           <div class="register-arrow-box">
             <img
@@ -42,6 +43,7 @@
           </div>
         </button>
       </div>
+      </form>
 
       <button
         class="mt-4 register-btn"
@@ -57,6 +59,19 @@
 <script>
 export default {
   name: "ShowLoginModal",
+  data() {
+    return {
+      logdata: {
+        email: '',
+        passw: ""
+      }
+    }
+  },
+  methods: {
+    login() {
+      this.emitter.emit("onLogin",this.logdata)
+    }
+  }
 };
 </script>
 

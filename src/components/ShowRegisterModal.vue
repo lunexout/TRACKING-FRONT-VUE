@@ -45,7 +45,7 @@
                   class="switch"
                   style="margin-top: -10px; margin-left: 20px"
                 >
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="checkboxs" @change="ddd"/>
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -68,6 +68,7 @@ export default {
   components: { RegisterCards,DesktopPhysical,DesktopIuridiuli },
         data() {
     return {
+      checkboxs: false,
       isPhysical: true,
       cards: [
         {
@@ -94,6 +95,11 @@ export default {
       ],
     };
   },
+  methods: {
+    ddd() {
+      console.log(this.checkboxs);
+    }
+  },
   mounted() {
     this.emitter.on("desktopphysical", () => {
       if(this.isPhysical == true) {
@@ -108,6 +114,10 @@ export default {
 </script>
 
 <style scoped>
+.main-cont {  top: 50%;
+position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);}
 .register-modal {
   position: absolute;
   z-index: 9999;

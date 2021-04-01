@@ -46,7 +46,8 @@
               >
                 სქესი*
               </p>
-              <input type="radio" id="male" name="gender" value="male" />
+              <input v-model="sex"
+                @change='getSex' type="radio" id="male" name="gender" value="male"/>
               <label
                 style="
                   font-family: arrowFONT;
@@ -59,7 +60,8 @@
                 for="male"
                 >მდედრობით</label
               >
-              <input type="radio" id="female" name="gender" value="female" />
+
+              <input v-model="sex" @change='getSex' type="radio" id="female" name="gender" value="female" />
               <label
                 style="
                   font-family: arrowFONT;
@@ -186,6 +188,16 @@
 <script>
 export default {
     name: 'DesktopPhysical',
+    data() {
+      return {
+        sex: '',
+      }
+    },
+    methods: {
+      getSex() {
+        console.log(this.sex);
+      }
+    }
 
 }
 </script>

@@ -51,8 +51,7 @@ body {
   /* scroll-behavior: smooth; */
 }
 @media all and (max-width: 1311px) {
-html,
-body {
+html{
   margin: 0;
   overflow-y: scroll !important;
   scroll-behavior: smooth !important;

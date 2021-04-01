@@ -67,9 +67,14 @@
             </div>
           </li>
 
-          <li class="nav-item">
+          <li v-if='!isLogged' class="nav-item">
             <button class="loginBtn" @click='emitter.emit("openloginmodal")' :style="menuBtnColor">
               {{ $t("login") }}
+            </button>
+          </li>
+          <li v-else class="nav-item">
+            <button class="loginBtn" @click='emitter.emit("onLogout")' :style="menuBtnColor">
+              {{ `გასვლა` }}
             </button>
           </li>
         </ul>
@@ -87,7 +92,8 @@ export default {
       isMenuOpen: false,
       imagelink1: "./../assets/mainpage/logo.svg",
       imagelink2: "./../assets/services/logo.svg",
-      langs: ["geo", "Tü"]
+      langs: ["geo", "Tü"],
+      isLogged: false,
     };
   },
   methods: {
@@ -112,6 +118,13 @@ export default {
       );
     },
   },
+  mounted() {
+    if(localStorage.getItem("UserLogged") == 'true') {
+      this.isLogged = true
+    }else {
+      this.isLogged = false
+    }
+  }
 };
 </script>
 
@@ -184,13 +197,22 @@ export default {
   margin-top: 10px;
 }
 .main-nav {
+  left: 50%;
+  height: 70px;
+  background-color: transparent;
+  z-index: 999;
+  position: absolute;
+  top: 8%;
+  transform: translate(-120%, 0%)
+}
+/* .main-nav {
   left: 5%;
   height: 70px;
   background-color: transparent;
   z-index: 999;
   position: absolute;
   top: 100px;
-}
+} */
 .nav-link {
   color: white !important;
 }
