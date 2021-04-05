@@ -74,7 +74,9 @@
           </li>
           <li v-else class="nav-item">
             <button class="loginBtn" @click='emitter.emit("onLogout")' :style="menuBtnColor">
-              {{ `გასვლა` }}
+            <!-- <img src='./../assets/mainpage/logout.svg' style='margin-right: 20px;width: 40px; height: 40px; color: #fff;'/> -->
+              <!-- <p class='mt-2'>{{ `გამოსვლა` }}</p> -->
+              {{ `გამოსვლა` }}
             </button>
           </li>
         </ul>
@@ -227,6 +229,17 @@ export default {
   border: 1px solid white;
   font-family: arrowFONT;
   font-size: 22px;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.logoutBtn {
+  margin-left: 160%;
+  width: 160px;
+  height: 50px;
+  color: white;
+  border: none;
+  font-family: arrowFONT;
+  font-size: 20px; font-weight: bold;
   border-radius: 4px;
   background-color: transparent;
 }

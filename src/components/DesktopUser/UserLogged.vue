@@ -7,7 +7,7 @@
   />
   <img src="./../../assets/images/image1.jpg" class="bg-image" />
 
-  <div class="container main-cont p-0">
+  <div class="container main-cont mt-3 p-0">
     <div class="first-div">
       <h5
         class="text-white text-center"
@@ -329,7 +329,7 @@
       </div>
 
       <div
-        style="display: flex; margin-top: 40px; justify-content: space-between"
+        style="display: flex; margin-top: 70px; justify-content: space-between"
       >
         <div style="align-items: center; text-align: center; margin-left: 20px">
           <h5
@@ -403,6 +403,14 @@
             </button>
           </div>
         </div>
+      </div>
+
+            <div
+        style="display: flex; margin-top: 100px; justify-content: space-between; margin-left: 20px; margin-right: 20px;"
+      >
+        <button class='right-menu-btn'>ტრანსზაქციები</button>
+        <button class='right-menu-btn'>თურქეთის მისამართი</button>
+        <button class='right-menu-btn'>პარამეტრები</button>
       </div>
     </div>
   </div>
@@ -528,6 +536,11 @@ export default {
 </script>
 
 <style scoped>
+.right-menu-btn {
+  border: 1px solid white; background-color: transparent;
+  padding: 7px; font-family: arrowFONT; font-weight: bold;
+  color: #fff;border-radius: 40px;
+}
 ::placeholder {
   font-size: 14px;
   color: #fff;
