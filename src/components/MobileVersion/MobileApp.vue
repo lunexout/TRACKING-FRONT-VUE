@@ -1,17 +1,22 @@
 <template>
-  <ShowLoginModal v-if='isMobLoginModal'/>
-  <ShowMobMenu v-if='isMobMenuOpen'/>
-  <ShowMobRegister v-if='isMobRegisterModal'/>
-  <ShowMobRegisterRules v-if='isMobRegisterRuleModal'/>
-  <template v-if='isMobRegisterModal == false || !isMobLoginModal == false'>
-    <MobNavbar :color="`${bgColor}`" :scrollPosition="scrollPosition" />
-    <MobMainPage />
-    <MobAbout />
-    <ConditionSlider />
-    <MobClearance />
-    <MobWorkSlider />
-    <MobContact />
-    <MobSendMail />
+  <template v-if='!isUserLogged'>
+    <ShowLoginModal v-if='isMobLoginModal'/>
+    <ShowMobMenu v-if='isMobMenuOpen'/>
+    <ShowMobRegister v-if='isMobRegisterModal'/>
+    <ShowMobRegisterRules v-if='isMobRegisterRuleModal'/>
+    <template v-if='isMobRegisterModal == false || !isMobLoginModal == false'>
+      <MobNavbar :color="`${bgColor}`" :scrollPosition="scrollPosition" />
+      <MobMainPage />
+      <MobAbout />
+      <ConditionSlider />
+      <MobClearance />
+      <MobWorkSlider />
+      <MobContact />
+      <MobSendMail />
+    </template>
+  </template>
+  <template v-else>
+    <MobUserLogged/>
   </template>
 </template>
 
@@ -29,6 +34,10 @@ import ShowMobMenu from './components/ShowMobMenu.vue'
 import ShowMobRegister from './components/ShowMobRegister.vue'
 import ShowMobRegisterRules from './components/ShowMobRegisterRules.vue'
 
+// logged
+
+import MobUserLogged from './components/MobileUser/MobUserLogged.vue'
+
 export default {
   name: "MobileApp",
   data() {
@@ -39,6 +48,7 @@ export default {
       isMobMenuOpen: false,
       isMobRegisterModal: false,
       isMobRegisterRuleModal: false,
+      isUserLogged: false,
     };
   },
   components: {
@@ -54,6 +64,7 @@ export default {
     MobWorkSlider,
     MobContact,
     MobSendMail,
+    MobUserLogged,
   },
   mounted(){
     this.emitter.on('mobloginmodal', () => {
@@ -80,6 +91,24 @@ export default {
     this.emitter.on('openmobmenu', () => {
       this.isMobMenuOpen = true
     })
+
+
+    if (localStorage.getItem("UserLogged") == 'true') {
+       this.isUserLogged = true;
+    }else {
+       this.isUserLogged = false;
+        this.emitter.on("onLogin", (logdata) => {
+        if (logdata.email == "admin" && logdata.passw == 'admin') {
+          this.isUserLogged = true;
+          localStorage.setItem("UserLogged", true);
+        }
+      });
+    }
+      this.emitter.on("onLogout", () => {
+        this.isUserLogged = false;
+        localStorage.setItem("UserLogged", false);
+      });
+
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);

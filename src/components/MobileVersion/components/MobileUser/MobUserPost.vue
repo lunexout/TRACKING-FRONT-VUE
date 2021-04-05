@@ -1,18 +1,21 @@
 <template>
   <div class="main-added-post mt-3">
-    <div style="display: flex">
-      <img class="added-post" src="./../../assets/conditions/p01.svg" />
+    <div style="display: flex;">
+      <img class="added-post" src="./../../../../assets/conditions/p01.svg" />
       <h5 class="text-white mt-1 tracking-code">
         {{ code }}
       </h5>
     </div>
+    <h5 style='margin-left: 45px; margin-top: -10px;'>200$</h5>
+    <h5 class='post-desc'>აუდიო აპარატურის ნაწილი</h5>
+    <div style="display: flex;">
     <div>
-      <button class="declareBtn">
+      <button class="declareBtn" @click='emitter.emit("openmobdeclare",code)'>
         დეკლარირება
         <div class="declare-svg-box">
           <img
-            style="width: 25px; height: 25x; margin-top: 0px"
-            src="./../../assets/mobile/declare.svg"
+            style="width: 25px; height: 25x; margin-right: 0px"
+            src="./../../../../assets/mobile/declare.svg"
             alt="Right arrow"
           />
         </div>
@@ -27,18 +30,20 @@
         <div class="declare-svg-box">
           <img
             style="width: 25px; height: 25x; margin-top: 0px"
-            src="./../../assets/mobile/delete.svg"
+            src="./../../../../assets/mobile/delete.svg"
             alt="Right arrow"
           />
         </div>
       </button>
     </div>
+    </div>
   </div>
+  
 </template>
 
 <script>
 export default {
-  name: "MainPostAdd",
+  name: "MobUserPost",
   props: ["code"],
 };
 </script>
@@ -50,54 +55,61 @@ export default {
 }
 .main-added-post {
   background-color: none;
-  height: 50px;
+  height: 150px;
   border: 1px solid white;
   font-family: arrowFONT;
   font-size: 18px;
   padding: 7px;
-  border-radius: 40px;
-  display: flex;
-  justify-content: space-between;
+  border-radius: 10px;
+  /* display: flex; */
+  /* justify-content: space-between; */
   padding-right: 3px;
 }
 .declareBtn {
   border-radius: 70px;
   outline: none;
-  padding: 10px;
-
-  width: 200px;
+  padding-top: 6px;
+  width: 150px;
   font-family: arrowFONT;
   font-weight: bold;
-  height: 41px;
+  height: 31px;
+  padding-right: 0;
   text-align: center;
-  font-size: 14px;
+  font-size: 11px;
   color: white;
   margin-top: -3px;
-  background-color: #009ce7;
+  background-color: red;
   border: none;
+  margin-left: 14px;
 }
 .declare-svg-box {
-  width: 27px;
-  height: 27px;
+  width: 23px;
+  height: 23px;
   /* border-radius: 25px; */
   /* background-color: #11bdf7; */
   margin-left: -2px;
   margin-top: -23px;
 }
 .deleteDeclareBtn {
+
   border-radius: 70px;
   outline: none;
-  padding: 10px;
-  width: 150px;
+  padding-top: 6px;
+  padding-right: 0px;
+  width: 90px;
   font-family: arrowFONT;
   font-weight: bold;
-  height: 41px;
+  height:31px;
   text-align: center;
-  font-size: 14px;
+  font-size: 11px;
   color: red;
   margin-top: -4px;
+  margin-left: 5px;
   background-color: #fff;
   border: none;
+}
+.post-desc {
+    font-size: 14px;;margin-left: 45px; margin-top: -10px;
 }
 .tracking-code {
   margin-left: 10px;
@@ -125,5 +137,14 @@ export default {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #00a8f0;
+}
+
+@media all and (min-width: 321px) {
+.declareBtn {
+    margin-left: 40px;
+}
+.post-desc {
+    font-size: 16px;
+}
 }
 </style>

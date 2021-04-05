@@ -18,27 +18,15 @@
         aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
         aria-label="Toggle navigation"
-        @click='() => emitter.emit("openmobmenu")'
+        @click='() => {emitter.emit("openmobmenu"); emitter.emit("openloggedusermenu")}'
       >
-        <!-- <span class="navbar-toggler-icon"> -->
         <img
-          style="width: 44px; height: 44px"
+          style="width: 44px; height: 44px; margin-top: -15px;"
           src="./../../../assets/mainpage/menu.svg"
           alt='Menu Icon'
         />
         <p class="menu-text">მენიუ</p>
-        <!-- </span> -->
       </button>
-      <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link text-white phoneFONT" aria-current="page" href="#"
-            >ქა</a
-          >
-          <a class="nav-link text-white phoneFONT" aria-current="page" href="#"
-            >(+ 995) 599 710 202</a
-          >
-        </div>
-      </div> -->
     </div>
   </nav>
 </template>

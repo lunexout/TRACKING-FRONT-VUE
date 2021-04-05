@@ -1,281 +1,33 @@
 <template>
-  <Navbar
-    :image="true"
-    :btnColor="`#fff`"
-    :textColor="`#fff`"
-    class="user-nav"
-  />
-  <img src="./../../assets/images/image1.jpg" class="bg-image" />
-
-  <div class="container main-cont p-0">
-    <div class="first-div">
-      <h5
-        class="text-white text-center"
-        style="font-family: arrowFONT; font-weight: bold; padding: 25px"
-      >
-        ამანათები
-      </h5>
-      <div class="p-2 main-step-div">
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isFirstActive }"
-          @click="activeFirstStep"
-        >
-          <img
-            v-if="isFirstImage"
-            class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
-            alt="Step div Icons"
-          />
-
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isFirstActive }"
-          >
-            მისაღები<br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isFirstActive }"
-            >
-              {{ posts.length }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isSecondActive }"
-          @click="activeSecondStep"
-        >
-          <img
-            v-if="isSecondImage"
-            class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
-            alt="Step div Icons"
-          />
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isSecondActive }"
-          >
-            მისაღები<br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isSecondActive }"
-            >
-              {{ 0 }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isThirdActive }"
-          @click="activeThirdStep"
-        >
-          <img
-            v-if="isThirdImage"
-            class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
-            alt="Step div Icons"
-          />
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isThirdActive }"
-          >
-            მისაღები<br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isThirdActive }"
-            >
-              {{ 0 }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isFourthActive }"
-          @click="activeFourthStep"
-        >
-          <img
-            v-if="isFourthImage"
-            class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
-            alt="Step div Icons"
-          />
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isFourthActive }"
-          >
-            მისაღები<br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isFourthActive }"
-            >
-              {{ 0 }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isFifthActive }"
-          @click="activeFifthStep"
-        >
-          <img
-            v-if="isFifthImage"
-            class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
-            alt="Step div Icons"
-          />
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isFifthActive }"
-          >
-            მისაღები <br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isFifthActive }"
-            >
-              {{ 0 }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="scrolling-div">
-        <div v-if="isFirstActive" class="mt-2 p-3">
-          <h5
-            style="
-              color: white;
-              font-family: arrowFONT;
-              font-weight: bold;
-              font-size: 16px;
-            "
-          >
-            ამანათის დამატება
-          </h5>
-          <div style="display: flex">
-            <input
-              v-model="code"
-              type="text"
-              placeholder="შეიყვანეთ თრექინგ კოდი"
-              style="
-                border: 1px solid #1F9EE5; border-radius: 40px; font-family: arrowFONT; outline: none;
-                padding 15px; color: #fff;height: 40px;
-                  background-color: transparent; width: 250px; text-align: center;
-                "
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'შეიყვანეთ თრექინგ კოდი'"
-            />
-            <div class="text-center addContainer" style="margin-left: 20px">
-              <button
-                class="addBtn"
-                @click.prevent="addPost"
-                @keyup.enter="addPost"
-              >
-                დამატება
-                <div class="add-arrow-box">
-                  <img
-                    style="width: 15px; height: 15x; margin-top: 5px"
-                    src="./../../assets/mainpage/right-arrow.svg"
-                    alt="Right arrow"
-                  />
-                </div>
-              </button>
-            </div>
-          </div>
-          <div class="mt-5">
-            <h5
-              style="
-                color: white;
-                font-family: arrowFONT;
-                font-weight: bold;
-                font-size: 16px;
-              "
-            >
-              მისაღები ამანათები
-            </h5>
-
-            <!-- POSTS -->
-            <h5
-              v-if="isEmpty"
-              style="
-                color: red;
-                margin-top: 20px;
-                font-family: arrowFONT;
-                font-weight: bold;
-                font-size: 18px;
-              "
-            >
-              ამანათები არ მოიძებნება
-            </h5>
-            <MainPostAdd
-              v-else
-              v-for="post in posts.slice().reverse()"
-              :key="post.code"
-              :code="post.code"
-            />
-            <div v-if="posts.length > 2" style="margin-bottom: 35px"></div>
-            <!-- POSTS -->
-          </div>
-        </div>
-        <div v-if="isSecondActive" class="">2</div>
-        <div v-if="isThirdActive" class="">3</div>
-        <div v-if="isFourthActive" class="">4</div>
-        <div v-if="isFifthActive" class="">5</div>
-      </div>
-    </div>
+  <Navbar />
+  <MobPayment v-if='isPayment' />
+  <MobUserLoggedDeclare :code='declare_code' v-if='isDeclare'/>
+  <MobAddBalance v-if='isAddBalanace'/>
+  
+  <template v-else>
+     <div>
+    <img
+      style="
+        position: absolute;
+        background-size: cover;
+        width: 100%;
+        height: 370px;
+      "
+      src="./../../../../assets/mobile/loggeduser1bg.jpg"
+    />
     <div
       style="
+        max-width: 900px;
+        margin-top: 90px;
+        color: #fff;
+        z-index: 1;
+        left: 50%;
+        transform: translate(-50%);
+        width: 92%;
         border-radius: 10px;
-        height: auto;
         background-color: rgba(255, 255, 255, 0.15);
-        width: 40.5%;
+        position: absolute;
+        height: 260px;
       "
     >
       <div
@@ -329,14 +81,21 @@
       </div>
 
       <div
-        style="display: flex; margin-top: 40px; justify-content: space-between"
+        style="
+          display: flex;
+
+          justify-content: space-between;
+          max-width: 400px;
+          margin: 0 auto;
+          margin-top: 40px;
+        "
       >
-        <div style="align-items: center; text-align: center; margin-left: 20px">
+        <div style="align-items: center; text-align: center; margin-left: 5px">
           <h5
             style="
               font-weight: bold;
               font-family: arrowFONT;
-              font-size: 20px;
+              font-size: 19px;
               color: #fff;
             "
           >
@@ -354,26 +113,15 @@
             15&#8382;
           </h5>
           <div class="text-center balanceBtnContainer">
-            <button class="balanceBtn">
-              ბალანსის შევსება
-              <div class="balance-arrow-box">
-                <img
-                  style="width: 12px; height: 12x; margin-top: 5px"
-                  src="./../../assets/mainpage/right-arrow.svg"
-                  alt="Right arrow"
-                />
-              </div>
-            </button>
+            <button class="balanceBtn" @click='emitter.emit("openmobbalanace")'>ბალანსის შევსება</button>
           </div>
         </div>
-        <div
-          style="align-items: center; text-align: center; margin-right: 20px"
-        >
+        <div style="align-items: center; text-align: center; margin-right: 5px">
           <h5
             style="
               font-weight: bold;
               font-family: arrowFONT;
-              font-size: 20px;
+              font-size: 19px;
               color: #fff;
             "
           >
@@ -390,31 +138,331 @@
           >
             0&#8382;
           </h5>
-          <div class="text-center paymentBtnContainer">
-            <button class="paymentBtn">
-              გადახდა
-              <div class="payment-arrow-box">
-                <img
-                  style="width: 12px; height: 12x; margin-top: 5px"
-                  src="./../../assets/mainpage/right-arrow.svg"
-                  alt="Right arrow"
-                />
-              </div>
-            </button>
+          <div class="text-center paymentBtnContainer" @click='emitter.emit("openmobpayment")'>
+            <button class="paymentBtn">გადახდა</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="mob-three-btn-cont">
+    <button class="mob-transaction-button">ტრანზაქციები</button>
+    <button class="mob-transaction-button" style="margin: 0 5px">
+      თურქეთის მისამართი
+    </button>
+    <button class="mob-transaction-button">პარამეტრები</button>
+  </div>
+
+  <img
+    style="
+      position: absolute;
+      background-size: cover;
+      width: 100%;
+      height: 470px;
+      margin-top: 435px;
+    "
+    src="./../../../../assets/mobile/loggeduser2bg.jpg"
+  />
+
+  <div
+    style="
+      max-width: 900px;
+      margin-top: 445px;
+      color: #fff;
+      z-index: 1;
+      left: 50%;
+      transform: translate(-50%);
+      width: 92%;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.15);
+      position: absolute;
+      height: 460px;
+    "
+  >
+    <div style="display: flex; justify-content: center; padding: 10px">
+      <img
+        src="./../../../../assets/mobile/amanatebi.svg"
+        style="width: 30px; height: 30px"
+      />
+      <h5
+        class="text-white text-center"
+        style="
+          font-family: arrowFONT;
+          font-weight: bold;
+          padding-left: 5px;
+          padding-top: 3px;
+        "
+      >
+        ამანათები
+      </h5>
+    </div>
+    <div class="p-2 main-step-div">
+        <div
+          class="step-divs text-center"
+          :class="{ 'step-divs-active': isFirstActive }"
+          @click="activeFirstStep"
+        >
+          <img
+            v-if="isFirstImage"
+            class="step-div-image"
+            src="./../../../../assets/conditions/p03.svg"
+            alt="Step div Icons"
+          />
+          <img
+            v-else
+            class="step-div-image"
+            src="./../../../../assets/conditions/p01.svg"
+            alt="Step div Icons"
+          />
+
+          <h5
+            class="step-div-text"
+            :class="{ 'step-div-text-active': isFirstActive }"
+          >
+            მისაღები<br />
+            ამანათები
+          </h5>
+          <div style="margin: 0 auto; width: 20%">
+            <div
+              class="step-counter"
+              :class="{ 'step-counter-active': isFirstActive }"
+            >
+              {{ posts.length }}
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="step-divs text-center"
+          :class="{ 'step-divs-active': isSecondActive }"
+          @click="activeSecondStep"
+        >
+          <img
+            v-if="isSecondImage"
+            class="step-div-image"
+            src="./../../../../assets/conditions/p03.svg"
+            alt="Step div Icons"
+          />
+          <img
+            v-else
+            class="step-div-image"
+            src="./../../../../assets/conditions/p01.svg"
+            alt="Step div Icons"
+          />
+          <h5
+            class="step-div-text"
+            :class="{ 'step-div-text-active': isSecondActive }"
+          >
+            თურქეთის<br />
+            საწყობი
+          </h5>
+          <div style="margin: 0 auto; width: 20%">
+            <div
+              class="step-counter"
+              :class="{ 'step-counter-active': isSecondActive }"
+            >
+              {{ 0 }}
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="step-divs text-center"
+          :class="{ 'step-divs-active': isThirdActive }"
+          @click="activeThirdStep"
+        >
+          <img
+            v-if="isThirdImage"
+            class="step-div-image"
+            src="./../../../../assets/conditions/p03.svg"
+            alt="Step div Icons"
+          />
+          <img
+            v-else
+            class="step-div-image"
+            src="./../../../../assets/conditions/p01.svg"
+            alt="Step div Icons"
+          />
+          <h5
+            class="step-div-text"
+            :class="{ 'step-div-text-active': isThirdActive }"
+          >
+            გამოგზ..<br />
+            ამანათები
+          </h5>
+          <div style="margin: 0 auto; width: 20%">
+            <div
+              class="step-counter"
+              :class="{ 'step-counter-active': isThirdActive }"
+            >
+              {{ 0 }}
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="step-divs text-center"
+          :class="{ 'step-divs-active': isFourthActive }"
+          @click="activeFourthStep"
+        >
+          <img
+            v-if="isFourthImage"
+            class="step-div-image"
+            src="./../../../../assets/conditions/p03.svg"
+            alt="Step div Icons"
+          />
+          <img
+            v-else
+            class="step-div-image"
+            src="./../../../../assets/conditions/p01.svg"
+            alt="Step div Icons"
+          />
+          <h5
+            class="step-div-text"
+            :class="{ 'step-div-text-active': isFourthActive }"
+          >
+            ჩამოსული<br />
+            ამანათები
+          </h5>
+          <div style="margin: 0 auto; width: 20%">
+            <div
+              class="step-counter"
+              :class="{ 'step-counter-active': isFourthActive }"
+            >
+              {{ 0 }}
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="step-divs text-center"
+          :class="{ 'step-divs-active': isFifthActive }"
+          @click="activeFifthStep"
+        >
+          <img
+            v-if="isFifthImage"
+            class="step-div-image"
+            src="./../../../../assets/conditions/p03.svg"
+            alt="Step div Icons"
+          />
+          <img
+            v-else
+            class="step-div-image"
+            src="./../../../../assets/conditions/p01.svg"
+            alt="Step div Icons"
+          />
+          <h5
+            class="step-div-text"
+            :class="{ 'step-div-text-active': isFifthActive }"
+          >
+            მიღებული <br />
+            ამანათები
+          </h5>
+          <div style="margin: 0 auto; width: 20%">
+            <div
+              class="step-counter"
+              :class="{ 'step-counter-active': isFifthActive }"
+            >
+              {{ 0 }}
+            </div>
+          </div>
+        </div>
+      </div>
+            <div class="scrolling-div">
+        <div v-if="isFirstActive" class="mt-2 p-3">
+          <h5
+            style="
+              color: white;
+              font-family: arrowFONT;
+              font-weight: bold;
+              font-size: 16px;
+            "
+          >
+            ამანათის დამატება
+          </h5>
+          <div style="display: flex">
+            <input
+              v-model="code"
+              type="text"
+              placeholder="შეიყვანეთ თრექინგ კოდი"
+              style="
+                border: 1px solid #1F9EE5; border-radius: 40px; font-family: arrowFONT; outline: none;
+                padding 15px; color: #fff;height: 40px;
+                  background-color: transparent; width: 250px; text-align: center;
+                "
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'შეიყვანეთ თრექინგ კოდი'"
+            />
+            <div class="text-center addContainer" style="margin-left: 20px">
+              <button
+                class="addBtn"
+                @click.prevent="addPost"
+                @keyup.enter="addPost"
+              >
+                დამატება
+              </button>
+            </div>
+          </div>
+          <div class="mt-5">
+            <h5
+              style="
+                color: white;
+                font-family: arrowFONT;
+                font-weight: bold;
+                font-size: 16px;
+              "
+            >
+              მისაღები ამანათები
+            </h5>
+
+            <!-- POSTS -->
+            <div v-if="isEmpty" style='height:130px; border: 1px solid white; border-radius: 10px;
+            background-color: transparent; display: flex;padding: 10px;
+            '>
+            <img src='./../../../../assets/mobile/amanatebi.svg' style='width: 40px; height: 40px;'/>
+                <h5
+              style="
+                color: red;
+                font-family: arrowFONT;
+                font-weight: bold;
+                font-size: 16px;
+                margin-left: 7px;
+                color: #fff;
+              "
+            >
+              თქვენ არ გაქვთ მისაღები ამანათები
+            </h5>
+            </div>
+            <MobUserPost
+              v-else
+              v-for="post in posts.slice().reverse()"
+              :key="post.code"
+              :code="post.code"
+            />
+            <div v-if="posts.length > 1" style="margin-bottom: 25px"></div>
+            <!-- POSTS -->
+          </div>
+        </div>
+        <div v-if="isSecondActive" class="">2</div>
+        <div v-if="isThirdActive" class="">3</div>
+        <div v-if="isFourthActive" class="">4</div>
+        <div v-if="isFifthActive" class="">5</div>
+      </div>
+  </div>
+  </template>
 </template>
 
 <script>
 import Navbar from "./../Navbar.vue";
-import MainPostAdd from "./MainPostAdd.vue";
+import MobUserPost from './MobUserPost.vue'
+import MobAddBalance from './MobAddBalance.vue'
+import MobUserLoggedDeclare from './MobUserLoggedDeclare.vue'
+import MobPayment from './MobPayment.vue'
 export default {
-  name: "UserLogged",
+  name: "MobUserLogged",
   data() {
-    return {
+    return { 
       isFirstImage: true,
       isSecondImage: false,
       isThirdImage: false,
@@ -426,9 +474,14 @@ export default {
       isThirdActive: false,
       isFourthActive: false,
       isFifthActive: false,
-
+      // PAYMENT
+      isPayment: false,
+      // BALANCE
+      isAddBalanace: false,
       // POSTS
+      isDeclare: false,
       code: "",
+      declare_code: "",
       isEmpty: false,
 
       posts: [
@@ -437,8 +490,14 @@ export default {
       ],
     };
   },
-  components: { Navbar, MainPostAdd },
-  methods: {
+  components: {
+    Navbar,
+    MobUserPost,
+    MobAddBalance,
+    MobUserLoggedDeclare,
+    MobPayment
+  },
+    methods: {
     activeFirstStep() {
       this.isFirstImage = true;
 
@@ -515,21 +574,43 @@ export default {
     },
   },
   mounted() {
-    this.emitter.on("deletePost", (code) => {
+    this.emitter.on("closemobdeclare", () => {
+      this.isDeclare = false;
+    });
+    this.emitter.on("openmobdeclare",(code) => {
+        this.isDeclare = true;
+        this.declare_code = code;
+    })
+    this.emitter.on("deletePost", () => {
+            this.emitter.on("deletePost", (code) => {
       const index = this.posts.findIndex((x) => x.code == code);
       if (index > -1) {
         this.posts.splice(index, 1);
       }
       if (this.posts.length <= 0) this.isEmpty = true;
-    });
+        });
+    })
     if (this.posts.length <= 0) this.isEmpty = true;
+
+    this.emitter.on("openmobbalanace", () => {
+      this.isAddBalanace = true;
+    })
+    this.emitter.on("closemobbalanace", () => {
+      this.isAddBalanace = false;
+    })
+        this.emitter.on("openmobpayment", () => {
+      this.isPayment = true;
+    })
+    this.emitter.on("closemobpayment", () => {
+      this.isPayment = false;
+    })
   },
 };
 </script>
 
 <style scoped>
 ::placeholder {
-  font-size: 14px;
+  font-size: 12px;
   color: #fff;
   font-family: arrowFONT;
   font-weight: bold;
@@ -541,7 +622,7 @@ export default {
 .step-div-text {
   font-family: arrowFONT;
   color: #fff;
-  font-size: 16px;
+  font-size: 10px;
   margin-top: 5px;
   font-weight: bold;
 }
@@ -572,47 +653,98 @@ export default {
   background-color: #1f9ee5;
   color: #fff;
 }
-.first-div {
-  width: 59%;
-  /* border: 1px solid black; */
-  border-radius: 10px;
-  height: 490px;
-  background-color: rgba(255, 255, 255, 0.15);
-}
 .step-div-image {
   width: 40px;
   height: 40px;
 }
-.bg-image {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.main-cont {
+/*  */
+.mob-three-btn-cont {
+  height: 56px;
   position: absolute;
   left: 50%;
-  top: 55%;
-  transform: translate(-50%, -55%);
-  /* margin-top: 120px; */
-  max-width: 1272px;
-  /* border: 1px solid red; */
-  padding-left: auto;
-  padding-right: auto;
+  transform: translate(-50%);
+  top: 375px;
+  width: 320px;
+  border: 1px solid #0294d6;
+  border-radius: 40px;
   display: flex;
   justify-content: space-between;
+  background-color: transparent;
+  padding: 6px;
 }
-.user-nav {
-  top: -20px;
-  margin: 0 auto;
+.mob-transaction-button {
+  color: #fff;
+  background: rgb(2, 0, 36);
+  padding: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(2, 148, 214, 1) 0%,
+    rgba(2, 121, 192, 1) 98%
+  );
+  font-family: arrowFONT;
+  font-weight: bold;
+  font-size: 13px;
+  border-radius: 40px;
+  outline: none;
+  border: none;
+}
+.balanceBtnContainer {
+  border-radius: 70px;
+  outline: none;
+  border: 1px solid lightgray;
+  padding: 3px;
+  text-align: center;
+  height: 40px;
+  width: 155px;
+  /* margin-top: -15px; */
+}
+.balanceBtn {
+  border-radius: 70px;
+  outline: none;
+  padding: 5px;
+  width: 145px;
+  font-family: arrowFONT;
+  font-weight: bold;
+  height: 31px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  background-color: #009ce7;
+  border: none;
+}
+.balance-arrow-box {
+  width: 27px;
+  height: 27px;
+  border-radius: 25px;
+  background-color: #11bdf7;
+  margin-left: 230px;
+  margin-top: -27px;
+}
+
+.paymentBtnContainer {
+  border-radius: 70px;
+  outline: none;
+  border: 1px solid lightgray;
+  padding: 3px;
+  text-align: center;
+  height: 40px;
+  width: 130px;
+  /* margin-top: -15px; */
+}
+.paymentBtn {
+  border-radius: 70px;
+  outline: none;
+  padding: 5px;
+  width: 120px;
+  font-family: arrowFONT;
+  font-weight: bold;
+  height: 31px;
+  text-align: center;
+  font-size: 14px;
+  color: black;
+  background-color: #fff;
+  border: none;
 }
 .addContainer {
   border-radius: 70px;
@@ -621,14 +753,14 @@ export default {
   padding: 3px;
   text-align: center;
   height: 40px;
-  width: 230px;
+  width:100px;
   /* margin-top: -15px; */
 }
 .addBtn {
   border-radius: 70px;
   outline: none;
   padding: 5px;
-  width: 220px;
+  width: 90px;
   font-family: arrowFONT;
   font-weight: bold;
   height: 31px;
@@ -637,14 +769,6 @@ export default {
   color: white;
   background-color: #009ce7;
   border: none;
-}
-.add-arrow-box {
-  width: 27px;
-  height: 27px;
-  border-radius: 25px;
-  background-color: #11bdf7;
-  margin-left: 185px;
-  margin-top: -27px;
 }
 .scrolling-div {
   overflow-y: scroll !important;
@@ -667,126 +791,23 @@ export default {
 ::-webkit-scrollbar-thumb:hover {
   background: #00a8f0;
 }
-.balanceBtnContainer {
-  border-radius: 70px;
-  outline: none;
-  border: 1px solid lightgray;
-  padding: 3px;
-  text-align: center;
-  height: 40px;
-  width: 275px;
-  /* margin-top: -15px; */
-}
-.balanceBtn {
-  border-radius: 70px;
-  outline: none;
-  padding: 5px;
-  width: 265px;
-  font-family: arrowFONT;
-  font-weight: bold;
-  height: 31px;
-  text-align: center;
-  font-size: 16px;
-  color: white;
-  background-color: #009ce7;
-  border: none;
-}
-.balance-arrow-box {
-  width: 27px;
-  height: 27px;
-  border-radius: 25px;
-  background-color: #11bdf7;
-  margin-left: 230px;
-  margin-top: -27px;
-}
-
-.paymentBtnContainer {
-  border-radius: 70px;
-  outline: none;
-  border: 1px solid lightgray;
-  padding: 3px;
-  text-align: center;
-  height: 40px;
-  width: 190px;
-  /* margin-top: -15px; */
-}
-.paymentBtn {
-  border-radius: 70px;
-  outline: none;
-  padding: 5px;
-  width: 180px;
-  font-family: arrowFONT;
-  font-weight: bold;
-  height: 31px;
-  text-align: center;
-  font-size: 16px;
-  color: black;
-  background-color: #fff;
-  border: none;
-}
-.payment-arrow-box {
-  width: 27px;
-  height: 27px;
-  border-radius: 25px;
-  background-color: #11bdf7;
-  margin-left: 145px;
-  margin-top: -27px;
-}
-@media all and (min-width: 1440px) {
-  .main-cont {
-    max-width: 1380px;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -40%);
+@media all and (min-width: 375px) {
+  .paymentBtnContainer {
+    width: 160px;
+  }
+  .paymentBtn {
+    width: 150px;
+  }
+  .mob-three-btn-cont {
+    width: 360px;
   }
 }
-@media all and (min-width: 1640px) {
-  .main-cont {
-    max-width: 1570px;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -40%);
+@media all and (min-width: 480px) {
+  .mob-three-btn-cont {
+    width: 456px;
   }
-  .step-div-text {
-    font-size: 22px;
-    margin-top: 5px;
-  }
-  .step-div-image {
-    width: 50px;
-    height: 50px;
-  }
-  .step-counter {
-    background-color: #fff;
-    margin-top: -12px;
-    width: 35px;
-    height: 25px;
-    font-size: 15px;
-  }
-  .step-counter-active {
-    background-color: #1f9ee5;
-    color: #fff;
-  }
-  .first-div {
-    height: 555px;
-  }
-}
-@media all and (min-width: 1740px) {
-  .main-cont {
-    max-width: 1580px;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -40%);
-  }
-  .step-div-text {
-    font-size: 24px;
-    margin-top: 5px;
-  }
-  .step-div-image {
-    width: 60px;
-    height: 60px;
-  }
-  .first-div {
-    height: 540px;
+  .mob-transaction-button {
+    font-size: 16px;
   }
 }
 </style>
