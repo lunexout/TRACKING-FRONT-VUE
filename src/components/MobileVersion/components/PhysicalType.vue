@@ -132,6 +132,7 @@ export default {
   width: 100%;
   border-radius: 30px;
   outline: none;
+  color: #fff;
 }
 ::placeholder {
   color: #fff;

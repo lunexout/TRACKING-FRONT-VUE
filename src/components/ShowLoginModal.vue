@@ -136,7 +136,7 @@ export default {
   font-size: 20px;
   font-weight: bold;
   outline: none;
-  color: #022b4b;
+  color: #fff;
 }
 input[type="radio"] {
   border: 0px;
@@ -211,7 +211,7 @@ input[type="radio"] {
   font-size: 15px;
   font-weight: bold;
   outline: none;
-  color: #022b4b;
+  color: #fff;
 }
     .close-log-modal {
     top: 0px;

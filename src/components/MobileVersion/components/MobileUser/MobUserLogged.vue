@@ -1,24 +1,186 @@
 <template>
   <Navbar />
-  <MobPayment v-if='isPayment' />
-  <MobUserLoggedDeclare :code='declare_code' v-if='isDeclare'/>
-  <MobAddBalance v-if='isAddBalanace'/>
-  
+  <MobPayment v-if="isPayment" />
+  <MobUserLoggedDeclare :code="declare_code" v-if="isDeclare" />
+  <MobAddBalance v-if="isAddBalanace" />
+
   <template v-else>
-     <div>
+    <div>
+      <img
+        style="
+          position: absolute;
+          background-size: cover;
+          width: 100%;
+          height: 370px;
+        "
+        src="./../../../../assets/mobile/loggeduser1bg.jpg"
+      />
+      <div
+        style="
+          max-width: 900px;
+          margin-top: 90px;
+          color: #fff;
+          z-index: 1;
+          left: 50%;
+          transform: translate(-50%);
+          width: 92%;
+          border-radius: 10px;
+          background-color: rgba(255, 255, 255, 0.15);
+          position: absolute;
+          height: 260px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+          "
+        >
+          <div>
+            <img
+              src="http://cdn.onlinewebfonts.com/svg/img_212716.png"
+              style="width: 60px; height: 60px"
+            />
+          </div>
+          <div>
+            <h5
+              style="
+                font-size: 24px;
+                font-weight: bold;
+                color: #fff;
+                margin-left: 5px;
+                font-family: arrowFONT;
+                margin-top: 10px;
+              "
+            >
+              გიორგი ბოცვაძე
+            </h5>
+            <h5
+              style="
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                margin-left: 5px;
+                font-family: arrowFONT;
+              "
+            >
+              ოთახის ნომერი:
+              <span
+                style="
+                  font-size: 20px;
+                  color: #1f9ee5;
+                  font-family: arrowFONT;
+                  font-weight: bold;
+                "
+                >U234874</span
+              >
+            </h5>
+          </div>
+        </div>
+
+        <div
+          style="
+            display: flex;
+
+            justify-content: space-between;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 40px;
+          "
+        >
+          <div
+            style="align-items: center; text-align: center; margin-left: 5px"
+          >
+            <h5
+              style="
+                font-weight: bold;
+                font-family: arrowFONT;
+                font-size: 19px;
+                color: #fff;
+              "
+            >
+              ბალანსი
+            </h5>
+            <h5
+              style="
+                font-weight: bold;
+                font-family: arrowFONT;
+                font-size: 22px;
+                color: #009ce7;
+                letter-spacing: 2px;
+              "
+            >
+              15&#8382;
+            </h5>
+            <div class="text-center balanceBtnContainer">
+              <button
+                class="balanceBtn"
+                @click="emitter.emit('openmobbalanace')"
+              >
+                ბალანსის შევსება
+              </button>
+            </div>
+          </div>
+          <div
+            style="align-items: center; text-align: center; margin-right: 5px"
+          >
+            <h5
+              style="
+                font-weight: bold;
+                font-family: arrowFONT;
+                font-size: 19px;
+                color: #fff;
+              "
+            >
+              გადასახდელი
+            </h5>
+            <h5
+              style="
+                font-weight: bold;
+                font-family: arrowFONT;
+                font-size: 22px;
+                color: #009ce7;
+                letter-spacing: 2px;
+              "
+            >
+              0&#8382;
+            </h5>
+            <div
+              class="text-center paymentBtnContainer"
+              @click="emitter.emit('openmobpayment')"
+            >
+              <button class="paymentBtn">გადახდა</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mob-three-btn-cont">
+      <button class="mob-transaction-button">ტრანზაქციები</button>
+      <button class="mob-transaction-button" style="margin: 0 5px">
+        თურქეთის მისამართი
+      </button>
+      <button class="mob-transaction-button">პარამეტრები</button>
+    </div>
+
     <img
       style="
         position: absolute;
         background-size: cover;
         width: 100%;
-        height: 370px;
+        height: 470px;
+        margin-top: 435px;
       "
-      src="./../../../../assets/mobile/loggeduser1bg.jpg"
+      src="./../../../../assets/mobile/loggeduser2bg.jpg"
     />
+
     <div
       style="
         max-width: 900px;
-        margin-top: 90px;
+        margin-top: 445px;
         color: #fff;
         z-index: 1;
         left: 50%;
@@ -27,177 +189,27 @@
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.15);
         position: absolute;
-        height: 260px;
+        height: 460px;
       "
     >
-      <div
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 15px;
-        "
-      >
-        <div>
-          <img
-            src="http://cdn.onlinewebfonts.com/svg/img_212716.png"
-            style="width: 60px; height: 60px"
-          />
-        </div>
-        <div>
-          <h5
-            style="
-              font-size: 24px;
-              font-weight: bold;
-              color: #fff;
-              margin-left: 5px;
-              font-family: arrowFONT;
-              margin-top: 10px;
-            "
-          >
-            გიორგი ბოცვაძე
-          </h5>
-          <h5
-            style="
-              font-size: 16px;
-              font-weight: bold;
-              color: #fff;
-              margin-left: 5px;
-              font-family: arrowFONT;
-            "
-          >
-            ოთახის ნომერი:
-            <span
-              style="
-                font-size: 20px;
-                color: #1f9ee5;
-                font-family: arrowFONT;
-                font-weight: bold;
-              "
-              >U234874</span
-            >
-          </h5>
-        </div>
+      <div style="display: flex; justify-content: center; padding: 10px">
+        <img
+          src="./../../../../assets/mobile/amanatebi.svg"
+          style="width: 30px; height: 30px"
+        />
+        <h5
+          class="text-white text-center"
+          style="
+            font-family: arrowFONT;
+            font-weight: bold;
+            padding-left: 5px;
+            padding-top: 3px;
+          "
+        >
+          ამანათები
+        </h5>
       </div>
-
-      <div
-        style="
-          display: flex;
-
-          justify-content: space-between;
-          max-width: 400px;
-          margin: 0 auto;
-          margin-top: 40px;
-        "
-      >
-        <div style="align-items: center; text-align: center; margin-left: 5px">
-          <h5
-            style="
-              font-weight: bold;
-              font-family: arrowFONT;
-              font-size: 19px;
-              color: #fff;
-            "
-          >
-            ბალანსი
-          </h5>
-          <h5
-            style="
-              font-weight: bold;
-              font-family: arrowFONT;
-              font-size: 22px;
-              color: #009ce7;
-              letter-spacing: 2px;
-            "
-          >
-            15&#8382;
-          </h5>
-          <div class="text-center balanceBtnContainer">
-            <button class="balanceBtn" @click='emitter.emit("openmobbalanace")'>ბალანსის შევსება</button>
-          </div>
-        </div>
-        <div style="align-items: center; text-align: center; margin-right: 5px">
-          <h5
-            style="
-              font-weight: bold;
-              font-family: arrowFONT;
-              font-size: 19px;
-              color: #fff;
-            "
-          >
-            გადასახდელი
-          </h5>
-          <h5
-            style="
-              font-weight: bold;
-              font-family: arrowFONT;
-              font-size: 22px;
-              color: #009ce7;
-              letter-spacing: 2px;
-            "
-          >
-            0&#8382;
-          </h5>
-          <div class="text-center paymentBtnContainer" @click='emitter.emit("openmobpayment")'>
-            <button class="paymentBtn">გადახდა</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="mob-three-btn-cont">
-    <button class="mob-transaction-button">ტრანზაქციები</button>
-    <button class="mob-transaction-button" style="margin: 0 5px">
-      თურქეთის მისამართი
-    </button>
-    <button class="mob-transaction-button">პარამეტრები</button>
-  </div>
-
-  <img
-    style="
-      position: absolute;
-      background-size: cover;
-      width: 100%;
-      height: 470px;
-      margin-top: 435px;
-    "
-    src="./../../../../assets/mobile/loggeduser2bg.jpg"
-  />
-
-  <div
-    style="
-      max-width: 900px;
-      margin-top: 445px;
-      color: #fff;
-      z-index: 1;
-      left: 50%;
-      transform: translate(-50%);
-      width: 92%;
-      border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.15);
-      position: absolute;
-      height: 460px;
-    "
-  >
-    <div style="display: flex; justify-content: center; padding: 10px">
-      <img
-        src="./../../../../assets/mobile/amanatebi.svg"
-        style="width: 30px; height: 30px"
-      />
-      <h5
-        class="text-white text-center"
-        style="
-          font-family: arrowFONT;
-          font-weight: bold;
-          padding-left: 5px;
-          padding-top: 3px;
-        "
-      >
-        ამანათები
-      </h5>
-    </div>
-    <div class="p-2 main-step-div">
+      <div class="p-2 main-step-div">
         <div
           class="step-divs text-center"
           :class="{ 'step-divs-active': isFirstActive }"
@@ -369,7 +381,7 @@
           </div>
         </div>
       </div>
-            <div class="scrolling-div">
+      <div class="scrolling-div">
         <div v-if="isFirstActive" class="mt-2 p-3">
           <h5
             style="
@@ -417,22 +429,33 @@
             </h5>
 
             <!-- POSTS -->
-            <div v-if="isEmpty" style='height:130px; border: 1px solid white; border-radius: 10px;
-            background-color: transparent; display: flex;padding: 10px;
-            '>
-            <img src='./../../../../assets/mobile/amanatebi.svg' style='width: 40px; height: 40px;'/>
-                <h5
+            <div
+              v-if="isEmpty"
               style="
-                color: red;
-                font-family: arrowFONT;
-                font-weight: bold;
-                font-size: 16px;
-                margin-left: 7px;
-                color: #fff;
+                height: 130px;
+                border: 1px solid white;
+                border-radius: 10px;
+                background-color: transparent;
+                display: flex;
+                padding: 10px;
               "
             >
-              თქვენ არ გაქვთ მისაღები ამანათები
-            </h5>
+              <img
+                src="./../../../../assets/mobile/amanatebi.svg"
+                style="width: 40px; height: 40px"
+              />
+              <h5
+                style="
+                  color: red;
+                  font-family: arrowFONT;
+                  font-weight: bold;
+                  font-size: 16px;
+                  margin-left: 7px;
+                  color: #fff;
+                "
+              >
+                თქვენ არ გაქვთ მისაღები ამანათები
+              </h5>
             </div>
             <MobUserPost
               v-else
@@ -449,20 +472,20 @@
         <div v-if="isFourthActive" class="">4</div>
         <div v-if="isFifthActive" class="">5</div>
       </div>
-  </div>
+    </div>
   </template>
 </template>
 
 <script>
 import Navbar from "./../Navbar.vue";
-import MobUserPost from './MobUserPost.vue'
-import MobAddBalance from './MobAddBalance.vue'
-import MobUserLoggedDeclare from './MobUserLoggedDeclare.vue'
-import MobPayment from './MobPayment.vue'
+import MobUserPost from "./MobUserPost.vue";
+import MobAddBalance from "./MobAddBalance.vue";
+import MobUserLoggedDeclare from "./MobUserLoggedDeclare.vue";
+import MobPayment from "./MobPayment.vue";
 export default {
   name: "MobUserLogged",
   data() {
-    return { 
+    return {
       isFirstImage: true,
       isSecondImage: false,
       isThirdImage: false,
@@ -485,8 +508,8 @@ export default {
       isEmpty: false,
 
       posts: [
-        { code: "5145849821475821415414" },
-        { code: "5145849821475821415415" },
+        // { code: "5145849821475821415414" },
+        // { code: "5145849821475821415415" },
       ],
     };
   },
@@ -495,9 +518,9 @@ export default {
     MobUserPost,
     MobAddBalance,
     MobUserLoggedDeclare,
-    MobPayment
+    MobPayment,
   },
-    methods: {
+  methods: {
     activeFirstStep() {
       this.isFirstImage = true;
 
@@ -577,33 +600,33 @@ export default {
     this.emitter.on("closemobdeclare", () => {
       this.isDeclare = false;
     });
-    this.emitter.on("openmobdeclare",(code) => {
-        this.isDeclare = true;
-        this.declare_code = code;
-    })
+    this.emitter.on("openmobdeclare", (code) => {
+      this.isDeclare = true;
+      this.declare_code = code;
+    });
     this.emitter.on("deletePost", () => {
-            this.emitter.on("deletePost", (code) => {
-      const index = this.posts.findIndex((x) => x.code == code);
-      if (index > -1) {
-        this.posts.splice(index, 1);
-      }
-      if (this.posts.length <= 0) this.isEmpty = true;
-        });
-    })
+      this.emitter.on("deletePost", (code) => {
+        const index = this.posts.findIndex((x) => x.code == code);
+        if (index > -1) {
+          this.posts.splice(index, 1);
+        }
+        if (this.posts.length <= 0) this.isEmpty = true;
+      });
+    });
     if (this.posts.length <= 0) this.isEmpty = true;
 
     this.emitter.on("openmobbalanace", () => {
       this.isAddBalanace = true;
-    })
+    });
     this.emitter.on("closemobbalanace", () => {
       this.isAddBalanace = false;
-    })
-        this.emitter.on("openmobpayment", () => {
+    });
+    this.emitter.on("openmobpayment", () => {
       this.isPayment = true;
-    })
+    });
     this.emitter.on("closemobpayment", () => {
       this.isPayment = false;
-    })
+    });
   },
 };
 </script>
@@ -753,7 +776,7 @@ export default {
   padding: 3px;
   text-align: center;
   height: 40px;
-  width:100px;
+  width: 100px;
   /* margin-top: -15px; */
 }
 .addBtn {
