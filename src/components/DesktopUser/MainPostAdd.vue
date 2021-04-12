@@ -7,7 +7,7 @@
       </h5>
     </div>
     <div>
-      <button class="declareBtn">
+      <button class="declareBtn" @click='emitter.emit("opendeskdeclare",code)'>
         დეკლარირება
         <div class="declare-svg-box">
           <img
@@ -73,7 +73,8 @@ export default {
   font-size: 14px;
   color: white;
   margin-top: -3px;
-  background-color: #009ce7;
+background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(20,1,1,1) 0%, rgba(53,3,3,1) 0%, rgba(117,8,8,1) 27%, rgba(223,15,15,1) 98%);
   border: none;
 }
 .declare-svg-box {

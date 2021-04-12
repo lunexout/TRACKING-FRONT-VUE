@@ -5,9 +5,11 @@
     :textColor="`#fff`"
     class="user-nav"
   />
-  <img src="./../../assets/images/image1.jpg" class="bg-image" />
-
-  <div class="container main-cont mt-3 p-0">
+  <img src="./../../assets/images/userbg.jpg" class="bg-image" />
+  <PostDeclare v-if='isDeclare' :code="declareCode"/>
+  <MobPayment v-if='isPayment'/>
+  <AddBalance v-if='isBalance'/>
+  <div v-else class="container main-cont mt-3 p-0">
     <div class="first-div">
       <h5
         class="text-white text-center"
@@ -24,13 +26,13 @@
           <img
             v-if="isFirstImage"
             class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
+            src="./../../assets/mobile/hovericons/01step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
+            src="./../../assets/mobile/hovericons/011step.svg"
             alt="Step div Icons"
           />
 
@@ -59,21 +61,21 @@
           <img
             v-if="isSecondImage"
             class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
+            src="./../../assets/mobile/hovericons/02step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
+            src="./../../assets/mobile/hovericons/022step.svg"
             alt="Step div Icons"
           />
           <h5
             class="step-div-text"
             :class="{ 'step-div-text-active': isSecondActive }"
           >
-            მისაღები<br />
-            ამანათები
+            თურქეთის<br />
+            საწყობი
           </h5>
           <div style="margin: 0 auto; width: 20%">
             <div
@@ -93,20 +95,20 @@
           <img
             v-if="isThirdImage"
             class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
+            src="./../../assets/mobile/hovericons/03step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
+            src="./../../assets/mobile/hovericons/033step.svg"
             alt="Step div Icons"
           />
           <h5
             class="step-div-text"
             :class="{ 'step-div-text-active': isThirdActive }"
           >
-            მისაღები<br />
+            გამოგზავნილი<br />
             ამანათები
           </h5>
           <div style="margin: 0 auto; width: 20%">
@@ -127,20 +129,20 @@
           <img
             v-if="isFourthImage"
             class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
+            src="./../../assets/mobile/hovericons/04step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
+            src="./../../assets/mobile/hovericons/044step.svg"
             alt="Step div Icons"
           />
           <h5
             class="step-div-text"
             :class="{ 'step-div-text-active': isFourthActive }"
           >
-            მისაღები<br />
+            ჩამოსული<br />
             ამანათები
           </h5>
           <div style="margin: 0 auto; width: 20%">
@@ -161,20 +163,20 @@
           <img
             v-if="isFifthImage"
             class="step-div-image"
-            src="./../../assets/conditions/p03.svg"
+            src="./../../assets/mobile/hovericons/055step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../assets/conditions/p01.svg"
+            src="./../../assets/mobile/hovericons/05step.svg"
             alt="Step div Icons"
           />
           <h5
             class="step-div-text"
             :class="{ 'step-div-text-active': isFifthActive }"
           >
-            მისაღები <br />
+            მიღებული <br />
             ამანათები
           </h5>
           <div style="margin: 0 auto; width: 20%">
@@ -242,18 +244,22 @@
             </h5>
 
             <!-- POSTS -->
-            <h5
-              v-if="isEmpty"
-              style="
-                color: red;
-                margin-top: 20px;
-                font-family: arrowFONT;
-                font-weight: bold;
-                font-size: 18px;
-              "
-            >
-              ამანათები არ მოიძებნება
-            </h5>
+            <div v-if='isEmpty' style='height: 120px; border: 1px solid white; border-radius: 25px; padding: 12px;'>
+              <div>
+                <img src='./../../assets/conditions/p03.svg' style='width: 40px; height: 40px; margin-left: 20px;'/>
+              </div>
+              <h5 class='text-center'
+                style="
+                margin-top: -32px;
+                  color: white;
+                  font-family: arrowFONT;
+                  font-weight: bold;
+                  font-size: 22px;
+                "
+              >
+                ამანათები არ მოიძებნება
+              </h5>
+            </div>
             <MainPostAdd
               v-else
               v-for="post in posts.slice().reverse()"
@@ -351,10 +357,17 @@
               letter-spacing: 2px;
             "
           >
-            15&#8382;
+            0&#8382;
           </h5>
-          <div class="text-center balanceBtnContainer">
+          <div class="text-center balanceBtnContainer" @click='emitter.emit("addbalancedesk")'>
             <button class="balanceBtn">
+            <div class="balance-svg-arrow-box">
+                <img
+                  style="width: 40px; height: 40px; margin-top: 5px"
+                  src="./../../assets/mobile/addbalance.svg"
+                  alt="Right arrow"
+                />
+              </div>
               ბალანსის შევსება
               <div class="balance-arrow-box">
                 <img
@@ -390,7 +403,7 @@
           >
             0&#8382;
           </h5>
-          <div class="text-center paymentBtnContainer">
+          <div class="text-center paymentBtnContainer" @click='emitter.emit("openmobpayment")'>
             <button class="paymentBtn">
               გადახდა
               <div class="payment-arrow-box">
@@ -400,17 +413,31 @@
                   alt="Right arrow"
                 />
               </div>
+                            <div class="payment-svg-arrow-box">
+                <img
+                  style="width: 36px; height: 36px; margin-top: 5px"
+                  src="./../../assets/mobile/payment.svg"
+                  alt="Right arrow"
+                />
+              </div>
             </button>
           </div>
         </div>
       </div>
-
             <div
         style="display: flex; margin-top: 100px; justify-content: space-between; margin-left: 20px; margin-right: 20px;"
       >
-        <button class='right-menu-btn'>ტრანსზაქციები</button>
-        <button class='right-menu-btn'>თურქეთის მისამართი</button>
-        <button class='right-menu-btn'>პარამეტრები</button>
+
+        <button class='right-menu-btn'>
+          <img src='./../../assets/mobile/transactions.svg' 
+          style="width: 40px; height: 40px; position: absolute; margin-left: 35px; margin-top: -42px;"/>
+        ტრანსზაქციები</button>
+        <button class='right-menu-btn'>
+                    <img src='./../../assets/mobile/turkadress.svg' 
+          style="width: 30px; height: 30px; position: absolute; margin-left: 70px; margin-top: -38px;"/>თურქეთის მისამართი</button>
+        <button class='right-menu-btn'>
+                    <img src='./../../assets/mobile/settings.svg' 
+          style="width: 30px; height: 30px; position: absolute; margin-left: 35px; margin-top: -38px;"/>პარამეტრები</button>
       </div>
     </div>
   </div>
@@ -419,6 +446,9 @@
 <script>
 import Navbar from "./../Navbar.vue";
 import MainPostAdd from "./MainPostAdd.vue";
+import AddBalance from './AddBalance.vue'
+import PostDeclare from './PostDeclare.vue'
+import MobPayment from './../MobileVersion/components/MobileUser/MobPayment.vue'
 export default {
   name: "UserLogged",
   data() {
@@ -435,17 +465,23 @@ export default {
       isFourthActive: false,
       isFifthActive: false,
 
+      // PAYMENT
+      isPayment: false,
+      //BALANCE
+      isBalance: false,
       // POSTS
+      isDeclare: false,
+      declareCode: '',
       code: "",
       isEmpty: false,
 
       posts: [
-        { code: "5145849821475821415414" },
-        { code: "5145849821475821415415" },
+        // { code: "5145849821475821415414" },
+        // { code: "5145849821475821415415" },
       ],
     };
   },
-  components: { Navbar, MainPostAdd },
+  components: { Navbar, MainPostAdd,PostDeclare,AddBalance,MobPayment },
   methods: {
     activeFirstStep() {
       this.isFirstImage = true;
@@ -531,11 +567,34 @@ export default {
       if (this.posts.length <= 0) this.isEmpty = true;
     });
     if (this.posts.length <= 0) this.isEmpty = true;
+
+    this.emitter.on("addbalancedesk", () => {
+      this.isBalance = true
+    })
+    this.emitter.on("closeaddbalance", () => {
+      this.isBalance = false
+    })
+        this.emitter.on("openmobpayment", () => {
+      this.isPayment = true;
+    });
+    this.emitter.on("closemobpayment", () => {
+      this.isPayment = false;
+    });
+
+    this.emitter.on("opendeskdeclare", (code) => {
+      console.log(code);
+      this.declareCode = code;
+      this.isDeclare = true;
+    });
+    this.emitter.on("closedeskdeclare", () => {
+      this.isDeclare = false;
+    });
   },
 };
 </script>
 
 <style scoped>
+
 .right-menu-btn {
   border: 1px solid white; background-color: transparent;
   padding: 7px; font-family: arrowFONT; font-weight: bold;
@@ -712,6 +771,15 @@ export default {
   margin-left: 230px;
   margin-top: -27px;
 }
+.balance-svg-arrow-box {
+  width: 27px;
+  height: 27px;
+  border-radius: 25px;
+  /* background-color: #11bdf7; */
+  position: absolute;
+  /* margin-left: 230px; */
+  margin-top: -14px;
+}
 
 .paymentBtnContainer {
   border-radius: 70px;
@@ -744,6 +812,15 @@ export default {
   background-color: #11bdf7;
   margin-left: 145px;
   margin-top: -27px;
+}
+.payment-svg-arrow-box {
+    width: 27px;
+  height: 27px;
+  border-radius: 25px;
+  position: absolute;
+  /* background-color: #11bdf7; */
+  /* margin-left: 145px; */
+  margin-top: -38px;
 }
 @media all and (min-width: 1440px) {
   .main-cont {
