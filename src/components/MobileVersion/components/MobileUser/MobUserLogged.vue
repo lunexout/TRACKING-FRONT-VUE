@@ -1,9 +1,14 @@
 <template>
   <Navbar />
+  <MobTransactions v-if='isTransactions'/>
+  <MobTurkeyAdress v-if='isTurkeyAdress'/>
+  <MobParameters v-if='isParameters'/>
+  <MobChangePassword v-if='isChangePassProfile'/>
+  <MobProfParameters v-if='isParamProfile' />
+  <MobNotification  v-if='isNotification'/>
   <MobPayment v-if="isPayment" />
   <MobUserLoggedDeclare :code="declare_code" v-if="isDeclare" />
   <MobAddBalance v-if="isAddBalanace" />
-
   <template v-else>
     <div>
       <img
@@ -112,7 +117,7 @@
                 letter-spacing: 2px;
               "
             >
-              15&#8382;
+              0 &#8382;
             </h5>
             <div class="text-center balanceBtnContainer">
               <button
@@ -159,11 +164,12 @@
     </div>
 
     <div class="mob-three-btn-cont">
-      <button class="mob-transaction-button">ტრანზაქციები</button>
-      <button class="mob-transaction-button" style="margin: 0 5px">
+      <button class="mob-transaction-button" @click='emitter.emit("openmobtransactions")'>ტრანზაქციები</button>
+      <button class="mob-transaction-button" @click='emitter.emit("openmobturkadress")'
+       style="margin: 0 5px">
         თურქეთის მისამართი
       </button>
-      <button class="mob-transaction-button">პარამეტრები</button>
+      <button class="mob-transaction-button" @click='emitter.emit("openmobparameters")' >პარამეტრები</button>
     </div>
 
     <img
@@ -218,13 +224,13 @@
           <img
             v-if="isFirstImage"
             class="step-div-image"
-            src="./../../../../assets/conditions/p03.svg"
+            src="./../../../../assets/mobile/hovericons/01step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../../../assets/conditions/p01.svg"
+            src="./../../../../assets/mobile/hovericons/011step.svg"
             alt="Step div Icons"
           />
 
@@ -253,13 +259,13 @@
           <img
             v-if="isSecondImage"
             class="step-div-image"
-            src="./../../../../assets/conditions/p03.svg"
+            src="./../../../../assets/mobile/hovericons/02step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../../../assets/conditions/p01.svg"
+            src="./../../../../assets/mobile/hovericons/022step.svg"
             alt="Step div Icons"
           />
           <h5
@@ -287,13 +293,13 @@
           <img
             v-if="isThirdImage"
             class="step-div-image"
-            src="./../../../../assets/conditions/p03.svg"
+            src="./../../../../assets/mobile/hovericons/03step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../../../assets/conditions/p01.svg"
+            src="./../../../../assets/mobile/hovericons/033step.svg"
             alt="Step div Icons"
           />
           <h5
@@ -321,13 +327,13 @@
           <img
             v-if="isFourthImage"
             class="step-div-image"
-            src="./../../../../assets/conditions/p03.svg"
+            src="./../../../../assets/mobile/hovericons/04step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../../../assets/conditions/p01.svg"
+            src="./../../../../assets/mobile/hovericons/044step.svg"
             alt="Step div Icons"
           />
           <h5
@@ -355,13 +361,13 @@
           <img
             v-if="isFifthImage"
             class="step-div-image"
-            src="./../../../../assets/conditions/p03.svg"
+            src="./../../../../assets/mobile/hovericons/055step.svg"
             alt="Step div Icons"
           />
           <img
             v-else
             class="step-div-image"
-            src="./../../../../assets/conditions/p01.svg"
+            src="./../../../../assets/mobile/hovericons/05step.svg"
             alt="Step div Icons"
           />
           <h5
@@ -482,6 +488,13 @@ import MobUserPost from "./MobUserPost.vue";
 import MobAddBalance from "./MobAddBalance.vue";
 import MobUserLoggedDeclare from "./MobUserLoggedDeclare.vue";
 import MobPayment from "./MobPayment.vue";
+import MobTransactions from './MobTransactions.vue'
+import MobTurkeyAdress from './MobTurkeyAdress.vue'
+import MobParameters from './MobParameters.vue'
+import MobProfParameters from './MobProfParameters.vue'
+import MobChangePassword from './MobChangePassword.vue'
+import MobNotification from './MobNotifications.vue'
+
 export default {
   name: "MobUserLogged",
   data() {
@@ -497,6 +510,18 @@ export default {
       isThirdActive: false,
       isFourthActive: false,
       isFifthActive: false,
+      // NOTIFICATION
+      isNotification: false,
+      // CHANGE-PASSWORD
+      isChangePassProfile: false,
+      // PARAMETERS
+      isParameters: false,
+      // prof params 
+      isParamProfile: false,
+      // ADRESS
+      isTurkeyAdress: false,
+      // TRANSACTIONS
+      isTransactions: false,
       // PAYMENT
       isPayment: false,
       // BALANCE
@@ -519,6 +544,12 @@ export default {
     MobAddBalance,
     MobUserLoggedDeclare,
     MobPayment,
+    MobTransactions,
+    MobTurkeyAdress,
+    MobParameters,
+    MobProfParameters,
+    MobChangePassword,
+    MobNotification
   },
   methods: {
     activeFirstStep() {
@@ -627,6 +658,42 @@ export default {
     this.emitter.on("closemobpayment", () => {
       this.isPayment = false;
     });
+    this.emitter.on("openmobtransactions", () => {
+      this.isTransactions = true;
+    })
+    this.emitter.on("closemobtransactions", () => {
+      this.isTransactions = false;
+    })
+    this.emitter.on("openmobturkadress", () => {
+      this.isTurkeyAdress = true
+    })
+    this.emitter.on("closemobturkadress", () => {
+      this.isTurkeyAdress = false
+    })
+    this.emitter.on("openmobparameters", () => {
+      this.isParameters = true
+    })
+    this.emitter.on("closemobparameters", () => {
+      this.isParameters = false
+    }) 
+    this.emitter.on("mobopenparamprofile", () => {
+      this.isParamProfile = true
+    })
+    this.emitter.on("mobcloseparamprofile", () => {
+      this.isParamProfile = false
+    })
+    this.emitter.on("mobopenchangepassprofile", () => {
+      this.isChangePassProfile = true
+    })
+    this.emitter.on("mobclosechangepassprofile", () => {
+      this.isChangePassProfile = false
+    })
+    this.emitter.on("mobopennotification", () => {
+      this.isNotification = true
+    })
+    this.emitter.on("mobclosenotification", () => {
+      this.isNotification = false
+    })
   },
 };
 </script>
