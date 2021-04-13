@@ -79,8 +79,19 @@
             </h1>
           </div>
         </div>
-        <div style='margin-left: 50px;'>
-          <h1
+        <template v-if='isAddProduct'>
+          <div style='display: flex;
+    position: absolute;
+    background-color: rgb(3, 150, 219);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;'>
+            <h1
             class="declare-header"
             style="margin-left: 20px; margin-top: 20px"
           >
@@ -101,10 +112,11 @@
               $
             </h1>
             <input
+            v-model='productprice'
               type="text"
-              placeholder="200"
+              placeholder="0"
               onfocus="this.placeholder = ''"
-              onblur="this.placeholder = '200'"
+              onblur="this.placeholder = '0'"
               class="input-style mt-1"
             />
           </div>
@@ -114,6 +126,7 @@
               src="./../../assets/conditions/p02.svg"
             />
             <select
+            v-model='productpart'
               style="
                 border: none;
                 margin-left: 5px;
@@ -134,8 +147,61 @@
               <option>აუდიო აპარატურის ნაწილი</option>
             </select>
           </div>
-                    <div
-            class="styled-div mt-3"
+
+                          <div
+            class="text-center declareContainer mt-5"
+            style="margin-left: -20px; margin: 0 auto"
+          >
+            <button
+              class="declareBtn"
+              @click.prevent="addproduct"
+              @keyup.enter="addproduct"
+            >
+              დამატება
+              <div class="declare-arrow-box">
+                <img
+                  style="width: 13px; height: 13x; margin-top: -4px"
+                  src="./../../assets/mainpage/right-arrow.svg"
+                  alt="Right arrow"
+                />
+              </div>
+            </button>
+          </div>
+          </div>
+        </template>
+        <div style='margin-left: 50px;'>
+          
+          <div class="styled-div mt-4">
+            <img
+              src="./../../assets/mobile/amanatebi.svg"
+              style="width: 40px; margin-left: 8px; height: 40px"
+            />
+            <h1 class='declare-header mt-2 p-1' @click='emitter.emit("addproduct")'>
+              პროდუქტის დამატება
+            </h1>
+          </div>
+
+          <div v-if='products.length == 0' class='styled-div mt-3' style="height: 138px; border-radius: 10px;">
+            <h1 class='declare-header p-3' style='color: red;'>პროდუქტი არ დამატებულა</h1>
+          </div>
+
+          <div v-else class='styled-div mt-3' style="height: 138px; border-radius: 10px; flex-direction: column; overflow-y: scroll;">
+
+            <div v-for='product in products.slice().reverse()' :key='product.id'>
+              <div style='display: flex;' class='mt-2'>
+                <div>
+                  <img src='./../../assets/conditions/p01.svg' style='width: 40px; height: 40px;' />
+                </div>
+                <div style='display: flex; flex-direction: column; margin-left: 10px;'>
+                  <div class='declare-header' style='font-size: 13px;'>{{product.title}} <img @click='deleteproduct(product.id)' src='./../../assets/mobile/delete.svg' style='width: 30px; height: 30px;  '/></div>
+                  <div class='declare-header' style='font-size: 13px;'>{{product.price}} $</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="styled-div mt-4"
             @click="
               () => {
                 activeKurierService = false;
@@ -185,9 +251,39 @@ export default {
     return {
       activeKurierService: false,
       activeFilialService: false,
+
+      isAddProduct: false,
+
+      productpart: 'აუდიო აპარატურის ნაწილი',
+      productprice: '',
+
+      products: []
     };
   },
-};
+  mounted() {
+    this.emitter.on("addproduct", () => {
+      this.isAddProduct = true
+    });      
+  },
+  methods: {
+    addproduct() {
+      this.isAddProduct = false
+      this.products.push({
+        id: this.products.length + 1,
+        title: this.productpart,
+        price: this.productprice
+      })
+    },
+    deleteproduct(code) {
+      // console.log(code);
+        const index = this.products.findIndex((x) => x.id == code);
+        console.log(index);
+        if (index > -1) {
+          this.products.splice(index, 1);
+        }
+    }
+  }
+}
 </script>
 
 <style scoped>

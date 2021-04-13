@@ -91,11 +91,10 @@ export default {
   mounted() {
     this.emitter.on('physical', () => {
         if(this.isPhysical == true){
-            this.isPhysical = false
+          this.isPhysical = false
         }else {
           this.isPhysical = true
         }
-        // this.isIuridiuli = false
     })
   }
 };
