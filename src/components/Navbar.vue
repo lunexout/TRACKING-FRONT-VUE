@@ -4,7 +4,7 @@
       <div class="navbar-brand">
         <div style="" @click="showMenu">
           <img class="logo-img" src="./../assets/mainpage/menu.svg" />
-          <p class="menu-text">{{$t('menu')}}</p>
+          <p class="menu-text">{{ $t("menu") }}</p>
         </div>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -29,7 +29,7 @@
                 :style="menuTextColor"
               >
                 <option
-                  class='lang-item'
+                  class="lang-item"
                   v-for="(lang, i) in langs"
                   :key="`Lang${i}`"
                   :value="lang"
@@ -67,14 +67,22 @@
             </div>
           </li>
 
-          <li v-if='!isLogged' class="nav-item">
-            <button class="loginBtn" @click='emitter.emit("openloginmodal")' :style="menuBtnColor">
+          <li v-if="!isLogged" class="nav-item">
+            <button
+              class="loginBtn"
+              @click="emitter.emit('openloginmodal')"
+              :style="menuBtnColor"
+            >
               {{ $t("login") }}
             </button>
           </li>
           <li v-else class="nav-item">
-            <button class="loginBtn" @click='emitter.emit("onLogout")' :style="menuBtnColor">
-            <!-- <img src='./../assets/mainpage/logout.svg' style='margin-right: 20px;width: 40px; height: 40px; color: #fff;'/> -->
+            <button
+              class="loginBtn"
+              @click="emitter.emit('onLogout')"
+              :style="menuBtnColor"
+            >
+              <!-- <img src='./../assets/mainpage/logout.svg' style='margin-right: 20px;width: 40px; height: 40px; color: #fff;'/> -->
               <!-- <p class='mt-2'>{{ `გამოსვლა` }}</p> -->
               {{ `გამოსვლა` }}
             </button>
@@ -121,12 +129,12 @@ export default {
     },
   },
   mounted() {
-    if(localStorage.getItem("UserLogged") == 'true') {
-      this.isLogged = true
-    }else {
-      this.isLogged = false
+    if (localStorage.getItem("UserLogged") == "true") {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
     }
-  }
+  },
 };
 </script>
 
@@ -138,19 +146,21 @@ export default {
   margin-left: -35px;
   font-size: 20px;
   font-family: arrowFONT;
-  margin-top:8px;
+  margin-top: 8px;
   color: white;
-  border: none; outline: none;
+  border: none;
+  outline: none;
   background-color: transparent;
   appearance: none;
-  width: 60px;height: 25px;
+  width: 60px;
+  height: 25px;
   /* padding: 10px; */
 }
 .lang-item:hover {
   color: white;
 }
 .lang-item {
-  background-color: #029FD5;
+  background-color: #029fd5;
   color: white;
 }
 .container-fluid {
@@ -205,7 +215,7 @@ export default {
   z-index: 999;
   position: absolute;
   top: 8%;
-  transform: translate(-120%, 0%)
+  transform: translate(-120%, 0%);
 }
 /* .main-nav {
   left: 5%;
@@ -239,7 +249,8 @@ export default {
   color: white;
   border: none;
   font-family: arrowFONT;
-  font-size: 20px; font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
   border-radius: 4px;
   background-color: transparent;
 }

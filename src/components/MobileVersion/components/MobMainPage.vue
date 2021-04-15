@@ -1,6 +1,10 @@
 <template>
-  <div id='mainpage'>
-    <img class="bg-image" src="./../../../assets/images/image1.jpg" alt='Main background wallpaper' />
+  <div id="mainpage">
+    <img
+      class="bg-image"
+      src="./../../../assets/images/image1.jpg"
+      alt="Main background wallpaper"
+    />
 
     <div class="text-center" style="margin-top: 150px">
       <h1 class="header-first">
@@ -13,33 +17,23 @@
 
     <div class="header-line"></div>
     <div class="text-center mt-4 registerContainer">
-      <button class="registreBtn" @click="() => emitter.emit('mobregisterrulemodal')">
-        {{$t('register')}}
+      <button
+        class="registreBtn"
+        @click="() => emitter.emit('mobregisterrulemodal')"
+      >
+        {{ $t("register") }}
         <div class="register-arrow-box">
           <img
             style="width: 25px; height: 25x; margin-top: 8px"
             src="./../../../assets/mainpage/right-arrow.svg"
-            alt='Register button arrow'
+            alt="Register button arrow"
           />
         </div>
       </button>
     </div>
 
     <div class="text-center mt-4">
-      <button
-        style="
-          background-color: transparent;
-          border: 1px solid white;
-          padding: 18px;
-          border-radius: 100px;
-          width: 270px;
-          font-size: 21px;
-          font-family: arrowFONT;
-          font-weight: bold;
-          color: white;
-        "
-        @click='()=>emitter.emit("mobloginmodal")'
-      >
+      <button class="login-btn" @click="() => emitter.emit('mobloginmodal')">
         შესვლა
       </button>
     </div>
@@ -53,6 +47,17 @@ export default {
 </script>
 
 <style scoped>
+.login-btn {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 18px;
+  border-radius: 100px;
+  width: 270px;
+  font-size: 21px;
+  font-family: arrowFONT;
+  font-weight: bold;
+  color: white;
+}
 .bg-image {
   position: absolute;
   z-index: -1;

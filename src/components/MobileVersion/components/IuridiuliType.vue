@@ -1,109 +1,87 @@
 <template>
-        <div style="display: flex; justify-content: space-between;">
-        <div class="active-box" @click='() => emitter.emit("physical")'>
-          <h5
-            class="text-center"
-            style="
-              color: #000;
-              font-weight: bold;
-              font-size: 13px;
-              font-family: arrowFONT;
-              z-index: 2;
-            "
-          >
-            ფიზიკური პირი
-          </h5>
-        </div>
-        
-        <div
-          style="
-            width: 100%;
-            padding: 14px;
-            height: 45px;
-            border: 1px solid #fff;
-          "
-        >
-          <h5
-            class="text-center"
-            style="
-              color: #fff;
-              font-weight: bold;
-              font-family: arrowFONT;
-              z-index: 2;
-              font-size: 12px;
-            "
-          >
-            იურიდიული პირი
-          </h5>
-        </div>
-        <div class="down-arrow-div"></div>
-      </div>
-      <input type="text" placeholder="სახელი(ქართულად)*" class="inputs" />
-      <input type="text" placeholder="გვარი(ქართულად)*" class="inputs" />
-      <input type="text" placeholder="სახელი(ლათინურად)*" class="inputs" />
-      <input type="text" placeholder="გვარი(ლათინურად)*" class="inputs" />
-      <input type="text" placeholder="დაბადების თარიღი" class="inputs" />
+  <div style="display: flex; justify-content: space-between">
+    <div class="active-box" @click="() => emitter.emit('physical')">
+      <h5 class="text-center physical-txt">ფიზიკური პირი</h5>
+    </div>
 
-      <p
-        style="
-          font-family: arrowFONT;
-          font-size: 14px;
-          color: white;
-          margin-left: 18px;
-          font-weight: bold;
-          margin-bottom: -5px;
-          margin-top: 20px;
-        "
-      >
-        სქესი*
-      </p>
-      <input type="radio" id="male" name="gender" value="male" />
-      <label
-        style="
-          font-family: arrowFONT;
-          font-size: 14px;
-          color: white;
-          font-weight: bold;
-          margin-left: 5px;
-          margin-right: 10px;
-        "
-        for="male"
-        >მდედრობით</label
-      >
-      <input type="radio" id="female" name="gender" value="female" />
-      <label
-        style="
-          font-family: arrowFONT;
-          margin-left: 5px;
-          font-size: 14px;
-          color: white;
-          font-weight: bold;
-        "
-        for="female"
-        >მამრობითი</label
-      ><br />
+    <div class="iuridiuli-div">
+      <h5 class="text-center iuridiuli-txt">იურიდიული პირი</h5>
+    </div>
+    <div class="down-arrow-div"></div>
+  </div>
+  <input type="text" placeholder="სახელი(ქართულად)*" class="inputs" />
+  <input type="text" placeholder="გვარი(ქართულად)*" class="inputs" />
+  <input type="text" placeholder="სახელი(ლათინურად)*" class="inputs" />
+  <input type="text" placeholder="გვარი(ლათინურად)*" class="inputs" />
+  <input type="text" placeholder="დაბადების თარიღი" class="inputs" />
 
-      <input type="text" placeholder="ელ-ფოსტა*" class="inputs" />
-      <input type="text" placeholder="მობილური ტელეფონი*" class="inputs" />
-      <input type="password" placeholder="პაროლი*" class="inputs" />
-      <input type="password" placeholder="პაროლი განმეორებით" class="inputs" />
-      <input type="text" placeholder="მისამართი" class="inputs" />
-      <input type="text" placeholder="პირადი ნომერი*" class="inputs" />
-      <input
-        type="text"
-        placeholder="ორგანიზაციის დასახელება*"
-        class="inputs"
-      />
-      <input type="text" placeholder="საიდენთიფიკაციო კოდი*" class="inputs" />
+  <p class="sex">სქესი*</p>
+  <input type="radio" id="male" name="gender" value="male" />
+  <label class="male-togg" for="male">მდედრობით</label>
+  <input type="radio" id="female" name="gender" value="female" />
+  <label class="famale-togg" for="female">მამრობითი</label><br />
+
+  <input type="text" placeholder="ელ-ფოსტა*" class="inputs" />
+  <input type="text" placeholder="მობილური ტელეფონი*" class="inputs" />
+  <input type="password" placeholder="პაროლი*" class="inputs" />
+  <input type="password" placeholder="პაროლი განმეორებით" class="inputs" />
+  <input type="text" placeholder="მისამართი" class="inputs" />
+  <input type="text" placeholder="პირადი ნომერი*" class="inputs" />
+  <input type="text" placeholder="ორგანიზაციის დასახელება*" class="inputs" />
+  <input type="text" placeholder="საიდენთიფიკაციო კოდი*" class="inputs" />
 </template>
 
 <script>
 export default {
-    name: 'IuridiuliType'
-}
+  name: "IuridiuliType",
+};
 </script>
 
 <style scoped>
+.iuridiuli-txt {
+  width: 100%;
+  padding: 14px;
+  height: 45px;
+  border: 1px solid #fff;
+}
+.physical-txt {
+  color: #000;
+  font-weight: bold;
+  font-size: 13px;
+  font-family: arrowFONT;
+  z-index: 2;
+}
+.iuridiuli-txt {
+  color: #fff;
+  font-weight: bold;
+  font-family: arrowFONT;
+  z-index: 2;
+  font-size: 12px;
+}
+.sex {
+  font-family: arrowFONT;
+  font-size: 14px;
+  color: white;
+  margin-left: 18px;
+  font-weight: bold;
+  margin-bottom: -5px;
+  margin-top: 20px;
+}
+.male-togg {
+  font-family: arrowFONT;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+.famale-togg {
+  font-family: arrowFONT;
+  margin-left: 5px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
 .down-arrow-div {
   margin-top: -20px;
   width: 20px;
@@ -133,8 +111,8 @@ export default {
   font-weight: bold;
   width: 100%;
   border-radius: 30px;
-   outline: none;
-   color: #fff;
+  outline: none;
+  color: #fff;
 }
 ::placeholder {
   color: #fff;

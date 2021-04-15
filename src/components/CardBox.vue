@@ -1,52 +1,62 @@
 <template>
-          <div style="display: flex; justify-content: space-between">
-          <div style="display: grid">
-            <div class="box-conditions1">
-              <h5 class="box-header1">რამდენ ხანში ჩამოდის ამანათი?</h5>
-              <p class="box-paragraph">
-                შპს "მეკო"-ს თურქეთის ოფისში სამშაბათამდე მისული ამანათები
-                იგზავნება ოთხშაბათს, გაცემა იწყება თბილისში, შაბათს, რეგიონებში
-                სამშაბათს
-              </p>
-            </div>
-            <div class="box-conditions2"></div>
-          </div>
-          <div style="display: grid">
-            <div class="box-conditions1">
-              <h5 class="text-center box-header2">
-                როგორ გავიგო ჩემი ამანათი მივიდა შპს "მეკო"-ს თურქეთის ოფისში?
-              </h5>
-              <p class="box-paragraph">
-                თურქეთში მისულ ამანათებთან დაკავშირებით შეტყობინებას მიიღებთ ელ.
-                ფოსტით
-              </p>
-            </div>
-            <div class="box-conditions2"></div>
-          </div>
-        </div>
-        <div class="mt-4" style="display: flex; justify-content: center;">
-        <div class="nav-indicator prevArrowInside">
-            <p style="color: black; font-weight: bold;font-size: 20px; margin-top: -2px;">&#x3c;</p>
-          </div>&nbsp;&nbsp;
-          <div>
-              <h5 style=' font-family: arrowFONT; font-weight: bolder;'>{{choosedSlide}} / <span style='color: #008DCF;'>{{numberOfSlides}}</span></h5>
-              </div>&nbsp;&nbsp;
-          <div class="nav-indicator nextArrowInside">
-            <p style="color: black; font-weight: bold; font-size: 20px; margin-top: -2px;">&#x3e;</p>
-          </div>
-        </div>
+  <div style="display: flex; justify-content: space-between">
+    <div style="display: grid">
+      <div class="box-conditions1">
+        <h5 class="box-header1">რამდენ ხანში ჩამოდის ამანათი?</h5>
+        <p class="box-paragraph">
+          შპს "მეკო"-ს თურქეთის ოფისში სამშაბათამდე მისული ამანათები იგზავნება
+          ოთხშაბათს, გაცემა იწყება თბილისში, შაბათს, რეგიონებში სამშაბათს
+        </p>
+      </div>
+      <div class="box-conditions2"></div>
+    </div>
+    <div style="display: grid">
+      <div class="box-conditions1">
+        <h5 class="text-center box-header2">
+          როგორ გავიგო ჩემი ამანათი მივიდა შპს "მეკო"-ს თურქეთის ოფისში?
+        </h5>
+        <p class="box-paragraph">
+          თურქეთში მისულ ამანათებთან დაკავშირებით შეტყობინებას მიიღებთ ელ.
+          ფოსტით
+        </p>
+      </div>
+      <div class="box-conditions2"></div>
+    </div>
+  </div>
+  <div class="mt-4" style="display: flex; justify-content: center">
+    <div class="nav-indicator prevArrowInside">
+      <p class="card-box-arr">&#x3c;</p>
+    </div>
+    &nbsp;&nbsp;
+    <div>
+      <h5 style="font-family: arrowFONT; font-weight: bolder">
+        {{ choosedSlide }} /
+        <span style="color: #008dcf">{{ numberOfSlides }}</span>
+      </h5>
+    </div>
+    &nbsp;&nbsp;
+    <div class="nav-indicator nextArrowInside">
+      <p class="card-box-arr">&#x3e;</p>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'CardBox',
-    props: ['choosedSlide', 'numberOfSlides']
-}
+  name: "CardBox",
+  props: ["choosedSlide", "numberOfSlides"],
+};
 </script>
 
 <style scoped>
+.card-box-arr {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: -2px;
+}
 .nav-indicator:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 .box-conditions1 {
   width: 400px;

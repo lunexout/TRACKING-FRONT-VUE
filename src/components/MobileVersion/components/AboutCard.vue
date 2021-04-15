@@ -1,5 +1,4 @@
 <template>
-  <!-- <div style="display: flex; justify-content: space-between"> -->
   <div style="display: grid">
     <div class="box-conditions1">
       <h5 class="box-header1">
@@ -12,22 +11,12 @@
     </div>
     <div class="box-conditions2"></div>
   </div>
-  <!-- </div> -->
   <div
     class="mt-4"
-    style="display: flex; justify-content: center; margin-left: 30px"
+    style="display: flex; justify-content: center;"
   >
     <div class="nav-indicator prevArrowInside">
-      <p
-        style="
-          color: black;
-          font-weight: bold;
-          font-size: 20px;
-          margin-top: -2px;
-        "
-      >
-        &#x3c;
-      </p>
+      <p class="carousel-arr">&#x3c;</p>
     </div>
     &nbsp;&nbsp;
     <div>
@@ -38,16 +27,7 @@
     </div>
     &nbsp;&nbsp;
     <div class="nav-indicator nextArrowInside">
-      <p
-        style="
-          color: black;
-          font-weight: bold;
-          font-size: 20px;
-          margin-top: -2px;
-        "
-      >
-        &#x3e;
-      </p>
+      <p class="carousel-arr">&#x3e;</p>
     </div>
   </div>
 </template>
@@ -60,6 +40,12 @@ export default {
 </script>
 
 <style scoped>
+.carousel-arr {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: -2px;
+}
 .nav-indicator:hover {
   cursor: pointer;
 }

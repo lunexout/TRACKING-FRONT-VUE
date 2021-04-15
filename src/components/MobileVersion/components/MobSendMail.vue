@@ -1,46 +1,17 @@
 <template>
-  <div class="container" id='sendmail' style="max-width: 900px">
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        position: relative;
-      "
-      class="mt-3"
-    >
+  <div class="container" id="sendmail" style="max-width: 900px">
+    <div class="mt-3 send-mail-cont">
       <div>
-        <img :src="image" alt='Send question background wallpaper' style="height: 580px; width: 900px" />
+        <img
+          :src="image"
+          alt="Send question background wallpaper"
+          style="height: 580px; width: 900px"
+        />
       </div>
       <div style="position: absolute; top: 0">
         <form @submit.prevent="">
-          <h2
-            style="
-              margin-top: 40px;
-              user-select: none;
-              text-align: center;
-              font-family: arrowFONT;
-              color: #fff;
-              font-weight: normal;
-            "
-          >
-            მოგვწერეთ
-          </h2>
-          <div
-            class="centered"
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              margin: auto;
-              font-family: arrowFONT;
-              color: red;
-              width: 60px;
-              height: 2px;
-              background-color: #007cb3;
-            "
-          ></div>
+          <h2 class="send-mail-txt">მოგვწერეთ</h2>
+          <div class="centered"></div>
           <div
             style="
               display: flex;
@@ -52,62 +23,21 @@
             <input
               type="text"
               placeholder="სახელი*"
-              class="placeholder-cont mt-3"
-              style="
-                font-family: arrowFONT;
-                color: #fff;
-                border: 1px solid #fff;
-                background-color: transparent;
-                border-radius: 25px;
-                padding: 13px;
-                width: 350px;
-                outline: none;
-              "
+              class="placeholder-cont mt-3 send-mail-small-input"
             />
             <input
               type="text"
               placeholder="ელ.ფოსტა*"
-              class="placeholder-cont mt-4"
-              style="
-                font-family: arrowFONT;
-                color: #fff;
-                border: 1px solid #fff;
-                background-color: transparent;
-                border-radius: 25px;
-                padding: 13px;
-                width: 350px;
-                outline: none;
-              "
+              class="placeholder-cont mt-4 send-mail-small-input"
             />
             <input
               type="text"
               placeholder="ტელეფონი"
-              class="placeholder-cont mt-4"
-              style="
-                font-family: arrowFONT;
-                color: #fff;
-                border: 1px solid #fff;
-                background-color: transparent;
-                border-radius: 25px;
-                padding: 13px;
-                width: 350px;
-                outline: none;
-              "
+              class="placeholder-cont mt-4 send-mail-small-input"
             />
             <textarea
               placeholder="წერილი*"
-              class="mt-4 placeholder-cont"
-              style="
-                font-family: arrowFONT;
-                color: #fff;
-                border: 1px solid #fff;
-                background-color: transparent;
-                border-radius: 25px;
-                padding: 16px;
-                width: 350px;
-                outline: none;
-                resize: none;
-              "
+              class="mt-4 placeholder-cont send-mail-inputs"
             >
             </textarea>
             <div class="text-center registerContainer mt-4">
@@ -134,6 +64,53 @@ export default {
 </script>
 
 <style scoped>
+.send-mail-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.centred {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-family: arrowFONT;
+  color: red;
+  width: 60px;
+  height: 2px;
+  background-color: #007cb3;
+}
+.send-mail-small-input {
+  font-family: arrowFONT;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
+  border-radius: 25px;
+  padding: 13px;
+  width: 350px;
+  outline: none;
+}
+.send-mail-inputs {
+  font-family: arrowFONT;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
+  border-radius: 25px;
+  padding: 16px;
+  width: 350px;
+  outline: none;
+  resize: none;
+}
+.send-mail-txt {
+  margin-top: 40px;
+  user-select: none;
+  text-align: center;
+  font-family: arrowFONT;
+  color: #fff;
+  font-weight: normal;
+}
 .placeholder-cont::placeholder {
   color: #fff;
 }

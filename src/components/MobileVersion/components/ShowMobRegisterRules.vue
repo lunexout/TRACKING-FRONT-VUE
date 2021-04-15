@@ -6,23 +6,30 @@
     >
       X
     </button>
-    <div class="container" style='max-width: 900px; margin-top: 100px;'>
-        <div class="row">
+    <div class="container" style="max-width: 900px; margin-top: 100px">
+      <div class="row">
         <div class="col-xl-12" v-for="item in cards" :key="item.id">
-            <RegisterCards
+          <RegisterCards
             :cardHeader="item.cardHeader"
             :firstCondition="item.firstCondition"
             :secondCondition="item.secondCondition"
           />
         </div>
-    </div>
+      </div>
     </div>
     <div
       class="text-center registerContainer mt-4"
       style="margin-left: -20px; margin: 0 auto"
     >
-      <button class="registreBtn" 
-      @click='() => {emitter.emit("mobregistermodal"); emitter.emit("closemobregisterrulemodal")}'>
+      <button
+        class="registreBtn"
+        @click="
+          () => {
+            emitter.emit('mobregistermodal');
+            emitter.emit('closemobregisterrulemodal');
+          }
+        "
+      >
         შემდეგი
         <div class="register-arrow-box">
           <img
@@ -37,10 +44,10 @@
 </template>
 
 <script>
-import RegisterCards from './../../DesktopRegistration/RegisterCards.vue'
+import RegisterCards from "./../../DesktopRegistration/RegisterCards.vue";
 export default {
   name: "ShowMobRegisterRules",
-  components: {RegisterCards},
+  components: { RegisterCards },
   data() {
     return {
       cards: [
@@ -125,7 +132,4 @@ export default {
   font-weight: 200;
   color: white;
 }
-
-
-
 </style>

@@ -57,7 +57,6 @@
           </p>
         </div>
       </div>
-      <!-- <div class="col-xl-4"></div> -->
     </div>
   </div>
 
@@ -105,71 +104,26 @@
               marginwidth="0"
             >
             </iframe>
-            <!-- <a href="https://123movies-to.org"> </a><br />
-            <a href="https://www.embedgooglemap.net"
-              >how to add a google map to my website</a
-            > -->
           </div>
         </div>
       </div>
       <div class="col-xl-5" style="z-index: 55; color: White">
-        <!-- <label style="font-family: arrowFONT; margin-top: 5px; position: absolute;">სახელი*</label> -->
         <form style="margin-left: -20px">
           <input
-            style="
-              width: 165px;
-              border-radius: 25px;
-              padding: 8px;
-              background-color: transparent;
-              border: 1px solid white;
-              outline: none;
-              color: white;
-              font-family: arrowFONT;
-            "
+            class='contact-small-input' style='margin-left: 0 !important;'
             type="text"
             placeholder="სახელი*"
           />
           <input
             type="text"
-            style="
-              width: 165px;
-              border-radius: 25px;
-              padding: 8px;
-              margin-left: 20px;
-              background-color: transparent;
-              border: 1px solid white;
-              outline: none;
-              color: white;
-              font-family: arrowFONT;
-            "
+            class='contact-small-input'
             placeholder="ელ. ფოსტა*"
           />
-          <input
-            style="
-              width: 165px;
-              border-radius: 25px;
-              padding: 8px;
-              margin-left: 20px;
-              background-color: transparent;
-              border: 1px solid white;
-              outline: none;
-              color: white;
-              font-family: arrowFONT;
-            "
+          <input class='contact-small-input'
             placeholder="ტელეფონი"
           /><br />
           <input
-            style="
-              width: 535px;
-              margin-top: 20px;
-              border-radius: 25px;
-              padding: 20px;
-              background-color: transparent;
-              border: 1px solid white;
-              outline: none;
-              color: white;
-              font-family: arrowFONT;
-            "
+          class='contact-input-style'
             placeholder="წერილი*"
           />
         </form>
@@ -209,6 +163,28 @@ export default {
 </script>
 
 <style scoped>
+.contact-small-input {
+  width: 165px;
+              border-radius: 25px;
+              padding: 8px;
+              margin-left: 20px;
+              background-color: transparent;
+              border: 1px solid white;
+              outline: none;
+              color: white;
+              font-family: arrowFONT;
+}
+.contact-input-style {
+                width: 535px;
+              margin-top: 20px;
+              border-radius: 25px;
+              padding: 20px;
+              background-color: transparent;
+              border: 1px solid white;
+              outline: none;
+              color: white;
+              font-family: arrowFONT;
+}
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: white;

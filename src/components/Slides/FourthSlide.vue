@@ -1,12 +1,13 @@
 <template>
   <!-- <img :src="image" /> -->
   <!-- <SecondNavbar /> -->
-  <Navbar :image='false' :btnColor="`1D96D9;` " :textColor="`black !important`"/>
+  <Navbar
+    :image="false"
+    :btnColor="`1D96D9;`"
+    :textColor="`black !important`"
+  />
   <div style="background-color: white; width: 1920px; height: 1080px">
     <img src="./../../assets/clearance/left-svg.png" />
-    <!-- <div class="next-img-box">
-      <img class="next-img" src="./../../assets/clearance/left-svg.png" />
-    </div> -->
   </div>
   <div class="right-svg-box">
     <img src="./../../assets/clearance/right-svg.jpg" />
@@ -110,7 +111,8 @@
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingThree">
                 <button
-                  class="accordion-button accord-btn" style="color: red;"
+                  class="accordion-button accord-btn"
+                  style="color: red"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseThree"

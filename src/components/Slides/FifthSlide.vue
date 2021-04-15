@@ -39,26 +39,13 @@
         <div style="background-color: white">
           <form>
             <h5
-              class="text-center"
-              style="
-                font-size: 18px;
-                font-weight: bold;
-                color: black;
-                font-family: arrowFONT;
-                padding-top: 15px;
-              "
+              class="text-center header-txt"
             >
               ტრანსპორტირების<br />
               ღირებულების დათვლა:
             </h5>
             <h4
-              class="text-center"
-              style="
-                font-size: 23px;
-                font-weight: bold;
-                color: #11bdf7;
-                font-family: arrowFONT;
-              "
+              class="text-center wona-txt"
             >
               წონის კალკულატორი
             </h4>
@@ -91,20 +78,10 @@
                   type="number"
                   placeholder=""
                 />
-                <!-- <button @click.prevent='calc'>calc</button>
-                            <input :value='total'>{{answer}}/> -->
               </div>
             </div>
             <div
-              class="mt-4"
-              style="
-                margin-left: 20px;
-                display: flex;
-                justify-content: space-between;
-                width: 350px;
-                height: 50px;
-                border: 1px solid #029fd5;
-              "
+              class="mt-4 calcing-div"
             >
               <h1 class="p-2 price-text">{{kg}}კგ</h1>
               <h1 class="p-2 price-text">{{price}}$</h1>
@@ -175,11 +152,27 @@ export default {
 </script>
 
 <style scoped>
-/* .registerContainer {
-    text-align: center;
-    height: 82px;
-    margin-top: 10px;
-  } */
+.calcing-div {
+                  margin-left: 20px;
+                display: flex;
+                justify-content: space-between;
+                width: 350px;
+                height: 50px;
+                border: 1px solid #029fd5;
+}
+.header-txt {
+                  font-size: 18px;
+                font-weight: bold;
+                color: black;
+                font-family: arrowFONT;
+                padding-top: 15px;
+}
+.wona-txt {
+                  font-size: 23px;
+                font-weight: bold;
+                color: #11bdf7;
+                font-family: arrowFONT;
+}
 .registreBtn {
   border-radius: 70px;
   outline: none;

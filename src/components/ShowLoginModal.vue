@@ -2,53 +2,66 @@
   <div class="login-modal animate__animated animate__fadeInDown">
     <button
       @click="() => emitter.emit('closeloginmodal')"
-      class='close-log-modal'
+      class="close-log-modal"
     >
       X
     </button>
-    <div
-      class="log-cont"
-    >
+    <div class="log-cont">
       <form>
-        <input v-model='logdata.email' ref='login' @focus="scrollTOTOP(`login`)" class="login-inputs" type="text" placeholder="ელ ფოსტა" />
-      <input v-model='logdata.passw' ref='password' @focus='scrollTOTOP(`password`)' class="mt-4 login-inputs" type="password" placeholder="პაროლი" />
+        <input
+          v-model="logdata.email"
+          ref="login"
+          @focus="scrollTOTOP(`login`)"
+          class="login-inputs"
+          type="text"
+          placeholder="ელ ფოსტა"
+        />
+        <input
+          v-model="logdata.passw"
+          ref="password"
+          @focus="scrollTOTOP(`password`)"
+          class="mt-4 login-inputs"
+          type="password"
+          placeholder="პაროლი"
+        />
 
-      <div class="mt-4" s>
-        <input type="radio" id="female" name="gender" value="female" />
-      </div>
-      <label
-        class='save-user'
-        for="female"
-        >დამახსოვრება</label
-      >
+        <div class="mt-4" s>
+          <input type="radio" id="female" name="gender" value="female" />
+        </div>
+        <label class="save-user" for="female">დამახსოვრება</label>
 
-      <p
-        class='recover-password'
-      >
-        პაროლის აღდგენა?
-      </p>
+        <p class="recover-password">პაროლის აღდგენა?</p>
 
-      <div
-        class="text-center registerContainer mt-5"
-        style="margin-left: -20px; margin: 0 auto"
-      >
-        <button class="registreBtn" @click.prevent='login' @keyup.enter='login'>
-          {{ $t("login") }}
-          <div class="register-arrow-box">
-            <img
-              style="width: 15px; height: 15x; margin-top: 13px"
-              src="./../assets/mainpage/right-arrow.svg"
-              alt="Right arrow"
-            />
-          </div>
-        </button>
-      </div>
+        <div
+          class="text-center registerContainer mt-5"
+          style="margin-left: -20px; margin: 0 auto"
+        >
+          <button
+            class="registreBtn"
+            @click.prevent="login"
+            @keyup.enter="login"
+          >
+            {{ $t("login") }}
+            <div class="register-arrow-box">
+              <img
+                style="width: 15px; height: 15x; margin-top: 13px"
+                src="./../assets/mainpage/right-arrow.svg"
+                alt="Right arrow"
+              />
+            </div>
+          </button>
+        </div>
       </form>
 
       <button
         class="mt-4 register-btn"
-        @click='() => {emitter.emit("mobregisterrulemodal");
-        emitter.emit("openregistermodal"); emitter.emit("closeloginmodal")}'
+        @click="
+          () => {
+            emitter.emit('mobregisterrulemodal');
+            emitter.emit('openregistermodal');
+            emitter.emit('closeloginmodal');
+          }
+        "
       >
         {{ `რეგისტრაცია` }}
       </button>
@@ -62,77 +75,76 @@ export default {
   data() {
     return {
       logdata: {
-        email: '',
-        passw: ""
-      }
-    }
+        email: "",
+        passw: "",
+      },
+    };
   },
   methods: {
     login() {
-      this.emitter.emit("onLogin",this.logdata)
+      this.emitter.emit("onLogin", this.logdata);
     },
     scrollTOTOP(which) {
-      if(which == 'login') {
-        window.scrollTo(0, this.$refs.login.offsetTop) 
-      }else {
-         window.scrollTo(0, this.$refs.password.offsetTop) 
+      if (which == "login") {
+        window.scrollTo(0, this.$refs.login.offsetTop);
+      } else {
+        window.scrollTo(0, this.$refs.password.offsetTop);
       }
-     
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .register-btn {
-            width: 100%;
-          font-size: 28px;
-          font-family: arrowFONT;
-          font-weight: bold;
-          height: 77px;
-          border: 1px solid #fff;
-          background-color: transparent;
-          border-radius: 50px;
-          color: #022b4b;
+  width: 100%;
+  font-size: 28px;
+  font-family: arrowFONT;
+  font-weight: bold;
+  height: 77px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  border-radius: 50px;
+  color: #022b4b;
 }
 .log-cont {
   position: absolute;
-        left: 50%;
-        top: 50%;
-        height: auto;
-        min-width: 300px;
-        max-width: 370px;
-        transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  height: auto;
+  min-width: 300px;
+  max-width: 370px;
+  transform: translate(-50%, -50%);
 }
 .save-user {
   font-family: arrowFONT;
-          margin-left: 5px;
-          font-size: 18px;
-          color: white;
-          font-weight: bold;
-          position: absolute;
-          margin-top: -28px;
-          margin-left: 25px;
+  margin-left: 5px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  margin-top: -28px;
+  margin-left: 25px;
 }
 .close-log-modal {
-          position: absolute;
-        right: 20px;
-        top: 20px;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        font-size: 40px;
-        font-weight: 200;
-        color: white;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 40px;
+  font-weight: 200;
+  color: white;
 }
 .recover-password {
-            font-family: arrowFONT;
-          font-size: 19px;
-          color: #022b4b;
-          font-weight: bold;
-          position: absolute;
-          margin-top: -28px;
-          right: 0;
+  font-family: arrowFONT;
+  font-size: 19px;
+  color: #022b4b;
+  font-weight: bold;
+  position: absolute;
+  margin-top: -28px;
+  right: 0;
 }
 .login-inputs {
   border: 1px solid white;
@@ -202,90 +214,88 @@ input[type="radio"] {
     display: none;
   }
   .recover-password {
-          margin-top: -23px;
-                    font-size: 14px !important;
-                    
-
+    margin-top: -23px;
+    font-size: 14px !important;
   }
 }
 @media all and (max-width: 480px) {
   .login-inputs {
-  border: 1px solid white;
-  background-color: transparent;
-  padding: 14px;
-  width: 100%;
-  border-radius: 35px;
-  font-family: arrowFONT;
-  font-size: 15px;
-  font-weight: bold;
-  outline: none;
-  color: #fff;
-}
-    .close-log-modal {
+    border: 1px solid white;
+    background-color: transparent;
+    padding: 14px;
+    width: 100%;
+    border-radius: 35px;
+    font-family: arrowFONT;
+    font-size: 15px;
+    font-weight: bold;
+    outline: none;
+    color: #fff;
+  }
+  .close-log-modal {
     top: 0px;
     right: 0px;
   }
   .log-cont {
-        max-width: 315px;
+    max-width: 315px;
   }
   .register-arrow-box {
-  width: 45px;
-  height: 45px;
-  border-radius: 25px;
-  background-color: #11bdf7;
-  margin-left: 238px;
-  margin-top: -48px;
-}
-.recover-password {
-  font-size: 14px;
-   margin-top: -25px;
-}
-.save-user {
-  margin-top: -25px;
-          font-size: 14px;
-}
-.register-btn {
-              width: 100%;
-          font-size: 18px;
-          font-family: arrowFONT;
-          font-weight: bold;
-          height: 67px;
-          border: 1px solid #fff;
-          background-color: transparent;
-          border-radius: 50px;
-          color: #022b4b;
-}
-.register-arrow-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 25px;
-  background-color: #11bdf7;
-  margin-left: 242px;
-  margin-top: -35px;
-}
-.registerContainer {
-  border-radius: 70px;
-  outline: none;
-  border: 1px solid #fff;
-  padding: 9px;
-  text-align: center;
-  height: 67px;
-  width: 100%;
-  margin-top: -15px;
-}
-.registreBtn {
-  border-radius: 70px;
-  outline: none;
-  padding: 10px;
-  width: 100%;
-  font-family: arrowFONT;
-  font-weight: bold;
-  height: 45px;
-  text-align: center;
-  font-size: 18px;
-  color: white;
-  background-color: #009ce7;
-  border: none;
-}
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    background-color: #11bdf7;
+    margin-left: 238px;
+    margin-top: -48px;
+  }
+  .recover-password {
+    font-size: 14px;
+    margin-top: -25px;
+  }
+  .save-user {
+    margin-top: -25px;
+    font-size: 14px;
+  }
+  .register-btn {
+    width: 100%;
+    font-size: 18px;
+    font-family: arrowFONT;
+    font-weight: bold;
+    height: 67px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    border-radius: 50px;
+    color: #022b4b;
+  }
+  .register-arrow-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: #11bdf7;
+    margin-left: 242px;
+    margin-top: -35px;
+  }
+  .registerContainer {
+    border-radius: 70px;
+    outline: none;
+    border: 1px solid #fff;
+    padding: 9px;
+    text-align: center;
+    height: 67px;
+    width: 100%;
+    margin-top: -15px;
+  }
+  .registreBtn {
+    border-radius: 70px;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    font-family: arrowFONT;
+    font-weight: bold;
+    height: 45px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    background-color: #009ce7;
+    border: none;
+  }
 }
 </style>

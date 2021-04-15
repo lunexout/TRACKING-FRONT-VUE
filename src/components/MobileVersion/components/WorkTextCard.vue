@@ -25,43 +25,18 @@
     </div>
     <div class="mt-4" style="display: flex; justify-content: center">
       <div class="nav-indicator prevArrowInside">
-        <p
-          style="
-            color: #000;
-            font-weight: bold;
-            font-size: 25px;
-            margin-top: -2px;
-          "
-        >
-          &#x3c;
-        </p>
+        <p class="arr-mob">&#x3c;</p>
       </div>
       &nbsp;&nbsp;
       <div>
-        <h5
-          style="
-            font-family: arrowFONT;
-            font-weight: bolder;
-            color: #000;
-            font-size: 30px;
-          "
-        >
+        <h5 class="nav-numbers">
           {{ 1 }} /
           <span style="color: #00b0ef; font-size: 30px">{{ 2 }} </span>
         </h5>
       </div>
       &nbsp;&nbsp;
       <div class="nav-indicator nextArrowInside">
-        <p
-          style="
-            color: #000;
-            font-weight: bold;
-            font-size: 25px;
-            margin-top: -2px;
-          "
-        >
-          &#x3e;
-        </p>
+        <p class="arr-mob">&#x3e;</p>
       </div>
     </div>
   </div>
@@ -74,6 +49,18 @@ export default {
 </script>
 
 <style scoped>
+.nav-numbers {
+  font-family: arrowFONT;
+  font-weight: bolder;
+  color: #000;
+  font-size: 30px;
+}
+.arr-mob {
+  color: #000;
+  font-weight: bold;
+  font-size: 25px;
+  margin-top: -2px;
+}
 .how-works-paragraph {
   font-family: arrowFONT;
   color: white;

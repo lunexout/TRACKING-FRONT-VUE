@@ -1,9 +1,12 @@
 <template>
   <div class="animate__animated animate__fadeInDown register-modal">
     <div class="container main-cont" style="max-width: 1200px; height: 620px">
-      <button @click='()=> emitter.emit("closeregistermodal")' style='position: absolute; 
-      right:20px; top: 20px; background-color: transparent;
-       border: none; outline: none; font-size: 40px; font-weight: 200; color: white;'>X</button>
+      <button
+        @click="() => emitter.emit('closeregistermodal')"
+        class="close-reg-modal"
+      >
+        X
+      </button>
       <div class="row">
         <div class="col-xl-4" style="height: 620px">
           <RegisterCards
@@ -17,42 +20,22 @@
         <div class="col-xl-8" style="height: 520px">
           <div class="row">
             <div class="col-xl-12">
-              <p
-                style="
-                  color: white;
-                  font-weight: bold;
-                  font-family: arrowFONT;
-                  font-size: 22px;
-                "
-              >
-                რეგისტრაცია
-              </p>
+              <p class="register-text">რეგისტრაცია</p>
               <div style="display: flex">
-                <p
-                  style="
-                    margin-top: -10px;
-                    margin-left: 50px;
-                    color: white;
-                    font-size: 18px;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                >
-                  უცხოელი (არა საქართველოს მოქალაქე)
-                </p>
+                <p class="register-togg">უცხოელი (არა საქართველოს მოქალაქე)</p>
 
                 <label
                   class="switch"
                   style="margin-top: -10px; margin-left: 20px"
                 >
-                  <input type="checkbox" v-model="checkboxs" @change="ddd"/>
+                  <input type="checkbox" v-model="checkboxs" @change="ddd" />
                   <span class="slider round"></span>
                 </label>
               </div>
             </div>
           </div>
-          <DesktopPhysical v-if='isPhysical'/>
-          <DesktopIuridiuli v-else/>
+          <DesktopPhysical v-if="isPhysical" />
+          <DesktopIuridiuli v-else />
         </div>
       </div>
     </div>
@@ -61,12 +44,13 @@
 
 <script>
 import RegisterCards from "./DesktopRegistration/RegisterCards.vue";
-import DesktopPhysical from './DesktopRegistration/DesktopPhysical.vue'
-import DesktopIuridiuli from './DesktopRegistration/DesktopIuridiuli.vue'
+import DesktopPhysical from "./DesktopRegistration/DesktopPhysical.vue";
+import DesktopIuridiuli from "./DesktopRegistration/DesktopIuridiuli.vue";
+
 export default {
   name: "ShowRegisterModal",
-  components: { RegisterCards,DesktopPhysical,DesktopIuridiuli },
-        data() {
+  components: { RegisterCards, DesktopPhysical, DesktopIuridiuli },
+  data() {
     return {
       checkboxs: false,
       isPhysical: true,
@@ -98,26 +82,52 @@ export default {
   methods: {
     ddd() {
       console.log(this.checkboxs);
-    }
+    },
   },
   mounted() {
     this.emitter.on("desktopphysical", () => {
-      if(this.isPhysical == true) {
-        this.isPhysical = false
-      }else {
-        this.isPhysical = true
+      if (this.isPhysical == true) {
+        this.isPhysical = false;
+      } else {
+        this.isPhysical = true;
       }
-    })
-  }
-
+    });
+  },
 };
 </script>
 
 <style scoped>
-.main-cont {  top: 50%;
-position: absolute;
+.register-togg {
+  margin-top: -10px;
+  margin-left: 50px;
+  color: white;
+  font-size: 18px;
+  font-family: arrowFONT;
+  font-weight: bold;
+}
+.register-text {
+  color: white;
+  font-weight: bold;
+  font-family: arrowFONT;
+  font-size: 22px;
+}
+.close-reg-modal {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 40px;
+  font-weight: 200;
+  color: white;
+}
+.main-cont {
+  top: 50%;
+  position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);}
+  transform: translate(-50%, -50%);
+}
 .register-modal {
   position: absolute;
   z-index: 9999;
@@ -188,6 +198,4 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
-
 </style>

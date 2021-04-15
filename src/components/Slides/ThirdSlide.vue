@@ -3,16 +3,7 @@
   <img style="background-size: cover" :src="image" />
   <h1 class="text-center main-header">პირობები</h1>
   <div class="text-center header-line"></div>
-  <div
-    class="container1"
-    style="
-      position: absolute;
-      left: 150px;
-      right: 180px;
-      top: 300px;
-      max-width: 100%;
-    "
-  >
+  <div class="container1">
     <div class="row main-row">
       <div class="col-xl-12 conditions-column">
         <div class="conditions-main-box">
@@ -85,12 +76,13 @@ export default {
 </script>
 
 <style scoped>
-/* .number-slide-box {
-  position: absolute; z-index: 55; right: 65px; bottom: 125px
+.container1 {
+  position: absolute;
+  left: 150px;
+  right: 180px;
+  top: 300px;
+  max-width: 100%;
 }
-.number-slide-paragpraph {
-  color: white; font-family: numericFONT; font-size: 20px;
-} */
 .number-slide-line {
   width: 50px;
   height: 4px;

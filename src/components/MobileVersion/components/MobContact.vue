@@ -12,48 +12,27 @@
 
   <div class="text-center mt-5" style="margin: 0 auto">
     <ul style="list-style: none">
-      <li
-        style="
-          font-size: 20px;
-          color: #009ad9;
-          font-weight: bold;
-          font-family: arrowFONT;
-        "
-      >
+      <li class="contact-list-item">
         <img
           style="width: 45px; height: 45px; margin-left: -45px"
           src="./../../../assets/contact/adres.svg"
-          alt='Adress icon'
+          alt="Adress icon"
         />
         დ. უზნაძის ქ. 6
       </li>
-      <li
-        style="
-          font-size: 20px;
-          color: #009ad9;
-          font-weight: bold;
-          font-family: arrowFONT;
-        "
-      >
+      <li class="contact-list-item">
         <img
           style="width: 45px; height: 45px; margin-left: -55px"
           src="./../../../assets/contact/mail.svg"
-          alt='Mail icon'
+          alt="Mail icon"
         />
         info@meko.ge
       </li>
-      <li
-        style="
-          font-size: 20px;
-          color: #009ad9;
-          font-weight: bold;
-          font-family: arrowFONT;
-        "
-      >
+      <li class="contact-list-item">
         <img
           style="width: 45px; height: 45px; margin-left: -25px"
           src="./../../../assets/contact/phone.svg"
-          alt='Phone Icon'
+          alt="Phone Icon"
         />
         (+995) 599 710 202
       </li>
@@ -84,22 +63,22 @@
       <img
         style="width: 30px; heght: 30px"
         src="./../../../assets/contact/fb.svg"
-        alt='Facebook icon'
+        alt="Facebook icon"
       />
       <img
         style="width: 30px; heght: 30px"
         src="./../../../assets/contact/ig.svg"
-        alt='Instagram icon'
+        alt="Instagram icon"
       />
       <img
         style="width: 30px; heght: 30px"
         src="./../../../assets/contact/yt.svg"
-        alt='Youtube icon'
+        alt="Youtube icon"
       />
       <img
         style="width: 30px; heght: 30px"
         src="./../../../assets/contact/lin.svg"
-        alt='LinkedIn icon'
+        alt="LinkedIn icon"
       />
     </div>
   </div>
@@ -112,6 +91,12 @@ export default {
 </script>
 
 <style scoped>
+.contact-list-item {
+  font-size: 20px;
+  color: #009ad9;
+  font-weight: bold;
+  font-family: arrowFONT;
+}
 .gmap_canvas {
   overflow: hidden;
   background: none !important;

@@ -8,7 +8,7 @@
         ><img
           style="width: 60px; height: 60px"
           src="./../../../assets/mainpage/logo.svg"
-          alt='Meko Logo'
+          alt="Meko Logo"
       /></a>
       <button
         class="navbar-toggler"
@@ -18,12 +18,17 @@
         aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
         aria-label="Toggle navigation"
-        @click='() => {emitter.emit("openmobmenu"); emitter.emit("openloggedusermenu")}'
+        @click="
+          () => {
+            emitter.emit('openmobmenu');
+            emitter.emit('openloggedusermenu');
+          }
+        "
       >
         <img
-          style="width: 44px; height: 44px; margin-top: -15px;"
+          style="width: 44px; height: 44px; margin-top: -15px"
           src="./../../../assets/mainpage/menu.svg"
-          alt='Menu Icon'
+          alt="Menu Icon"
         />
         <p class="menu-text">მენიუ</p>
       </button>
@@ -40,13 +45,6 @@ export default {
     };
   },
   props: ["color", "scrollPosition"],
-  // methods: {
-  //   setMenuBgColor(){
-  //     if(this.scrollPosition == 0){
-  //       this.navColor = '#09253C'
-  //     }
-  //   }
-  // }
 };
 </script>
 

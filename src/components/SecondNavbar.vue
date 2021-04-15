@@ -4,25 +4,12 @@
       <div class="navbar-brand">
         <div style="">
           <img class="logo-img" src="./../assets/mainpage/menu.svg" />
-          <p class='menu-text'>მენიუ</p >
+          <p class="menu-text">მენიუ</p>
         </div>
       </div>
-      <!-- <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="#">Home</a>
-             -->
             <img class="logo-img1" src="./../assets/services/logo.svg" />
           </li>
         </ul>
@@ -52,7 +39,6 @@
         </ul>
       </div>
     </div>
-    <!-- </div> -->
   </nav>
 </template>
 
@@ -64,8 +50,14 @@ export default {
 
 <style scoped>
 .menu-text {
-  position: absolute;margin-top: -25px;  font-family: arrowFONT;
-  font-size: 15px; margin-left:9%; font-weight: bold; z-index: 555; color: white;
+  position: absolute;
+  margin-top: -25px;
+  font-family: arrowFONT;
+  font-size: 15px;
+  margin-left: 9%;
+  font-weight: bold;
+  z-index: 555;
+  color: white;
 }
 .container-fluid {
   margin-top: 60px;
@@ -154,10 +146,10 @@ export default {
     font-size: 18px;
   }
   .lang-img {
-  width: 50px;
-  height: 60px;
-  margin-left: 0px;
-}
+    width: 50px;
+    height: 60px;
+    margin-left: 0px;
+  }
   .loginBtn {
     width: 120px;
     height: 40px;
@@ -171,40 +163,40 @@ export default {
     margin-top: 10px;
   }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 22px;
-  width: 35px;
-  height: 2px;
-  z-index: 55;
-  margin-left: 55%;
-}
+    background-color: #337bbb;
+    margin-top: 22px;
+    width: 35px;
+    height: 2px;
+    z-index: 55;
+    margin-left: 55%;
+  }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 22px;
-  width: 35px;
-  height: 2px;
-  z-index: 55;
-  margin-left: 15%;
-}
-.lang-txt {
-  color: black;
-  font-size: 15px;
-  margin-left: 0%;
-  margin-top: 5px;
-}
-.logo-img1 {
-  width: 70px;
-  height: 70px;
-  margin-left: 25%;
-}
-.logo-img {
-  width: 75px;
-  height: 75px;
-   margin-left: 50%;
-}
-.logo-img1 {
-  margin-left: 170%;
-}
+    background-color: #337bbb;
+    margin-top: 22px;
+    width: 35px;
+    height: 2px;
+    z-index: 55;
+    margin-left: 15%;
+  }
+  .lang-txt {
+    color: black;
+    font-size: 15px;
+    margin-left: 0%;
+    margin-top: 5px;
+  }
+  .logo-img1 {
+    width: 70px;
+    height: 70px;
+    margin-left: 25%;
+  }
+  .logo-img {
+    width: 75px;
+    height: 75px;
+    margin-left: 50%;
+  }
+  .logo-img1 {
+    margin-left: 170%;
+  }
 }
 @media all and (min-width: 1440px) {
   .right-nav-items {
@@ -214,15 +206,15 @@ export default {
     font-size: 18px;
   }
   .logo-img1 {
-  width: 75px;
-  height: 75px;
-  margin-left: 25%;
-}
-.logo-img {
-  width: 75px;
-  height: 75px;
-  margin-left: 50%;
-}
+    width: 75px;
+    height: 75px;
+    margin-left: 25%;
+  }
+  .logo-img {
+    width: 75px;
+    height: 75px;
+    margin-left: 50%;
+  }
   .loginBtn {
     width: 120px;
     height: 40px;
@@ -236,30 +228,30 @@ export default {
     margin-top: 10px;
   }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 22px;
-  width: 35px;
-  height: 2px;
-  z-index: 55;
-  margin-left: 55%;
-}
+    background-color: #337bbb;
+    margin-top: 22px;
+    width: 35px;
+    height: 2px;
+    z-index: 55;
+    margin-left: 55%;
+  }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 22px;
-  width: 45px;
-  height: 2px;
-  z-index: 55;
-  margin-left: 15%;
-}
-.lang-txt {
-  color: black;
-  font-size: 18px;
-  margin-left: 0%;
-  margin-top: 5px;
-}
-.logo-img1 {
-  margin-left: 120%;
-}
+    background-color: #337bbb;
+    margin-top: 22px;
+    width: 45px;
+    height: 2px;
+    z-index: 55;
+    margin-left: 15%;
+  }
+  .lang-txt {
+    color: black;
+    font-size: 18px;
+    margin-left: 0%;
+    margin-top: 5px;
+  }
+  .logo-img1 {
+    margin-left: 120%;
+  }
 }
 @media all and (min-width: 1640px) {
   .menu-text {
@@ -274,18 +266,18 @@ export default {
     font-size: 22px;
     margin-left: 210%;
   }
-    .logo-img1 {
-      margin-top: -20px;
-  width: 75px;
-  height: 75px;
-  margin-left: 25%;
-}
-.logo-img {
-  margin-top: -20px;
-  width: 75px;
-  height: 75px;
-  margin-left: 50%;
-}
+  .logo-img1 {
+    margin-top: -20px;
+    width: 75px;
+    height: 75px;
+    margin-left: 25%;
+  }
+  .logo-img {
+    margin-top: -20px;
+    width: 75px;
+    height: 75px;
+    margin-left: 50%;
+  }
   .phoneNumber {
     color: black;
     font-size: 25px;
@@ -293,40 +285,40 @@ export default {
     margin-top: 10px;
   }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 28px;
-  width: 45px;
-  height: 3px;
-  z-index: 55;
-  margin-left: 15%;
-}
-.lang-txt {
-  color: black;
-  font-size: 22px;
-  margin-left: 0%;
-  margin-top: 5px;
-}
-.logo-img1 {
-  margin-left: 120%;
-}
+    background-color: #337bbb;
+    margin-top: 28px;
+    width: 45px;
+    height: 3px;
+    z-index: 55;
+    margin-left: 15%;
+  }
+  .lang-txt {
+    color: black;
+    font-size: 22px;
+    margin-left: 0%;
+    margin-top: 5px;
+  }
+  .logo-img1 {
+    margin-left: 120%;
+  }
 }
 @media all and (min-width: 1740px) {
-    .menu-text {
+  .menu-text {
     margin-left: 7.5%;
   }
   .right-nav-items {
     margin-left: 145%;
   }
-      .logo-img1 {
-  width: 75px;
-  height: 75px;
-  margin-left: 25%;
-}
-.logo-img {
-  width: 75px;
-  height: 75px;
-  margin-left: 50%;
-}
+  .logo-img1 {
+    width: 75px;
+    height: 75px;
+    margin-left: 25%;
+  }
+  .logo-img {
+    width: 75px;
+    height: 75px;
+    margin-left: 50%;
+  }
   .loginBtn {
     width: 160px;
     height: 50px;
@@ -340,23 +332,23 @@ export default {
     margin-top: 10px;
   }
   .line-phone {
-  background-color: #337bbb;
-  margin-top: 28px;
-  width: 45px;
-  height: 3px;
-  z-index: 55;
-  margin-left: 15%;
-}
-.lang-txt {
-  color: black;
-  font-size: 22px;
-  margin-left: 0%;
-  margin-top: 5px;
-}
-.logo-img1 {
-  margin-left: 120%;
-}
-/* .nav-indicator {
+    background-color: #337bbb;
+    margin-top: 28px;
+    width: 45px;
+    height: 3px;
+    z-index: 55;
+    margin-left: 15%;
+  }
+  .lang-txt {
+    color: black;
+    font-size: 22px;
+    margin-left: 0%;
+    margin-top: 5px;
+  }
+  .logo-img1 {
+    margin-left: 120%;
+  }
+  /* .nav-indicator {
   margin-top: 1000px !important;
 } */
 }

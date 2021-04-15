@@ -1,59 +1,33 @@
 <template>
-  <div class="register-modal animate__animated animate__fadeInDown" :class='{ physicalModal: isPhysical }'>
-
+  <div
+    class="register-modal animate__animated animate__fadeInDown"
+    :class="{ physicalModal: isPhysical }"
+  >
     <div class="reg-modal-inside">
-          <button
-      @click="() => emitter.emit('closemobregistermodal')"
-      class="close-reg-modal"
-    >
-      X
-    </button>
+      <button
+        @click="() => emitter.emit('closemobregistermodal')"
+        class="close-reg-modal"
+      >
+        X
+      </button>
       <h4 style="color: #fff; font-family: arrowFONT; font-weight: bold">
         {{ $t("register") }}
       </h4>
       <div style="display: flex">
-        <p
-          style="
-            margin-top: -10px;
-            margin-left: 20px;
-            color: white;
-            font-size: 13px;
-            font-family: arrowFONT;
-            font-weight: bold;
-          "
-        >
-          უცხოელი (არა საქართველოს მოქალაქე)
-        </p>
+        <p class="non-georgian-txt">უცხოელი (არა საქართველოს მოქალაქე)</p>
 
         <label class="switch">
           <input type="checkbox" />
           <span class="slider round"></span>
         </label>
       </div>
-      <PhysicalType v-if='isPhysical'/>
-      <IuridiuliType v-if='!isPhysical'/>
+      <PhysicalType v-if="isPhysical" />
+      <IuridiuliType v-if="!isPhysical" />
 
-      <p
-        class="mt-4 text-center"
-        style="
-          color: white;
-          margin-bottom: 0px;
-          font-family: arrowFONT;
-          font-weight: bold;
-          font-size: 14px;
-        "
-      >
+      <p class="mt-4 text-center end-of-reg">
         რეგისტრაციის დასრულებისას<br />
         გთხოვთ გადაამოწმოთ
-        <span
-          style="
-            color: black;
-            font-size: 14px;
-            font-family: arrowFONT;
-            font-weight: bold;
-          "
-          >თქვენი ელ ფოსტა</span
-        >
+        <span class="end-of-reg-mail">თქვენი ელ ფოსტა</span>
       </p>
 
       <div
@@ -76,32 +50,53 @@
 </template>
 
 <script>
-import PhysicalType from './PhysicalType.vue'
-import IuridiuliType from './IuridiuliType.vue'
+import PhysicalType from "./PhysicalType.vue";
+import IuridiuliType from "./IuridiuliType.vue";
 
 export default {
   name: "ShowMobRegister",
-  components: {PhysicalType, IuridiuliType},
-  data(){
+  components: { PhysicalType, IuridiuliType },
+  data() {
     return {
       isPhysical: true,
       // isIuridiuli: false,
-    }
+    };
   },
   mounted() {
-    this.emitter.on('physical', () => {
-        if(this.isPhysical == true){
-          this.isPhysical = false
-        }else {
-          this.isPhysical = true
-        }
-    })
-  }
+    this.emitter.on("physical", () => {
+      if (this.isPhysical == true) {
+        this.isPhysical = false;
+      } else {
+        this.isPhysical = true;
+      }
+    });
+  },
 };
 </script>
 
 <style scoped>
 /* register */
+.end-of-reg-mail {
+  color: black;
+  font-size: 14px;
+  font-family: arrowFONT;
+  font-weight: bold;
+}
+.end-of-reg {
+  color: white;
+  margin-bottom: 0px;
+  font-family: arrowFONT;
+  font-weight: bold;
+  font-size: 14px;
+}
+.non-georgian-txt {
+  margin-top: -10px;
+  margin-left: 20px;
+  color: white;
+  font-size: 13px;
+  font-family: arrowFONT;
+  font-weight: bold;
+}
 .physicalModal {
   margin-top: -150px !important;
 }
@@ -146,7 +141,7 @@ export default {
   bottom: 0;
   width: 100%;
   min-height: 1250px;
-    max-height: 1250px;
+  max-height: 1250px;
 
   background-color: #0396db;
 }

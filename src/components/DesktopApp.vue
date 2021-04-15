@@ -15,23 +15,21 @@ export default {
     };
   },
   mounted() {
-    if (localStorage.getItem("UserLogged") == 'true') {
-       this.isUserLogged = true;
-    }else {
-       this.isUserLogged = false;
-        this.emitter.on("onLogin", (logdata) => {
-        if (logdata.email == "admin" && logdata.passw == 'admin') {
+    if (localStorage.getItem("UserLogged") == "true") {
+      this.isUserLogged = true;
+    } else {
+      this.isUserLogged = false;
+      this.emitter.on("onLogin", (logdata) => {
+        if (logdata.email == "admin" && logdata.passw == "admin") {
           this.isUserLogged = true;
           localStorage.setItem("UserLogged", true);
         }
       });
     }
-      this.emitter.on("onLogout", () => {
-        this.isUserLogged = false;
-        localStorage.setItem("UserLogged", false);
-      });
-
-      
+    this.emitter.on("onLogout", () => {
+      this.isUserLogged = false;
+      localStorage.setItem("UserLogged", false);
+    });
   },
 };
 </script>

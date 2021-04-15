@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-0" id='conditions' style="max-width: 900px">
+  <div class="container p-0" id="conditions" style="max-width: 900px">
     <div
       id="carouselExampleIndicators"
       class="carousel slide"
@@ -30,42 +30,15 @@
           type="button"
           data-bs-slide-to="2"
           aria-label="Slide 3"
-          style="
-            position: absolute;
-            width: 100%;
-            border: none;
-            outline: none;
-            cursor: none;
-            z-index: -1;
-            margin-top: 12px;
-            height: 2px;
-            background-color: gray;
-          "
+          class="carousel-line"
         ></button>
-        <div
-          style="
-            margin: 0 auto;
-            text-align: center;
-            width: 100%;
-            position: absolute;
-            margin-top: -30px;
-            z-index: 555;
-            color: white;
-            font-size: 20px;
-            font-family: arrowFONT;
-          "
-        >
+        <div class="numeric-div">
           <button
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide-to="0"
             aria-current="true"
-            style="
-              color: white !important;
-              height: 22px;
-              font-weight: bold;
-              background-color: transparent;
-            "
+            class="numerics"
           >
             01
           </button>
@@ -74,12 +47,7 @@
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide-to="1"
             aria-current="true"
-            style="
-              color: white !important;
-              height: 22px;
-              font-weight: bold;
-              background-color: transparent;
-            "
+            class="numerics"
           >
             02
           </button>
@@ -88,12 +56,7 @@
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide-to="2"
             aria-current="true"
-            style="
-              color: white !important;
-              height: 22px;
-              font-weight: bold;
-              background-color: transparent;
-            "
+            class="numerics"
           >
             03
           </button>
@@ -113,23 +76,13 @@
           >
             პირობები
           </h1>
-          <div
-            class="centered"
-            style="
-              font-family: arrowFONT;
-              color: red;
-              margin-top: -155px;
-              width: 50px;
-              height: 3px;
-              background-color: #10bdfb;
-            "
-          ></div>
+          <div class="centered c1"></div>
           <div class="conditions-main-box">
             <div class="conditions-inside-box">
               <img
                 src="./../../../assets/conditions/p01.svg"
                 class="conditions-img"
-                alt='Condition svg'
+                alt="Condition svg"
               />
             </div>
           </div>
@@ -153,17 +106,7 @@
           >
             პირობები
           </h1>
-          <div
-            class="centered"
-            style="
-              font-family: arrowFONT;
-              color: red;
-              margin-top: -155px;
-              width: 50px;
-              height: 3px;
-              background-color: #10bdfb;
-            "
-          ></div>
+          <div class="centered c1"></div>
           <div class="conditions-main-box">
             <div class="conditions-inside-box">
               <img
@@ -192,17 +135,7 @@
           >
             პირობები
           </h1>
-          <div
-            class="centered"
-            style="
-              font-family: arrowFONT;
-              color: red;
-              margin-top: -155px;
-              width: 50px;
-              height: 3px;
-              background-color: #10bdfb;
-            "
-          ></div>
+          <div class="centered c1"></div>
           <div class="conditions-main-box">
             <div class="conditions-inside-box">
               <img
@@ -239,9 +172,43 @@ export default {
 </script>
 
 <style scoped>
+.numeric-div {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  margin-top: -30px;
+  z-index: 555;
+  color: white;
+  font-size: 20px;
+  font-family: arrowFONT;
+}
+.numerics {
+  color: white !important;
+  height: 22px;
+  font-weight: bold;
+  background-color: transparent;
+}
+.c1 {
+  font-family: arrowFONT;
+  color: red;
+  margin-top: -155px;
+  width: 50px;
+  height: 3px;
+  background-color: #10bdfb;
+}
+.carousel-line {
+  position: absolute;
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: none;
+  z-index: -1;
+  margin-top: 12px;
+  height: 2px;
+  background-color: gray;
+}
 .conditions-main-box {
-  /* margin-top: -370px;
-  margin-left: 120px; */
   margin-top: -80px;
   position: absolute;
   left: 50%;

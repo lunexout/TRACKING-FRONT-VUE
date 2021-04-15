@@ -23,7 +23,10 @@
           </option>
         </select>
         <button style="" class="menu-log-reg-button"
-         @click='() => emitter.emit("mobloginmodal")'>{{ $t("login") }}</button>
+         @click='() => emitter.emit("mobloginmodal")'>
+         {{ $t("login") }}
+        </button>
+
         <button style="" class="menu-log-reg-button"
          @click='emitter.emit("mobregisterrulemodal")'>
           {{ $t("register") }}
@@ -113,28 +116,15 @@ export default {
 .lang-select {
   border: none;
   height: 35px !important;
-  /* position: absolute; */
   z-index: 2;
-  /* margin-left: -35px; */
   font-size: 20px;
   font-family: arrowFONT;
-  /* margin-top: 8px;
-  margin-bottom: 8px; */
-  /* padding: 10px; */
   color: white;
   border: 1px solid white;
-  /* border: none; */
   outline: none;
   background-color: transparent;
   border-radius: 30px;
-  /* appearance: none; */
   width: 60px;
-  /* padding: 10px; */
-  /* -webkit-appearance: none;
-  -moz-appearance: none;
-  background: transparent;
-  background-image: url("./../../../assets/mainpage/downarrow.svg");
-  background-repeat: no-repeat; */
 }
 .lang-item:hover {
   color: white;

@@ -6,7 +6,7 @@
       style="height: 550px"
       alt="..."
     />
-    <h1 class="centered text-white">sukaaa</h1>
+    <!-- <h1 class="centered text-white">card</h1> -->
   </div>
 </template>
 

@@ -1,9 +1,8 @@
 <template>
-  <h1 id='services' class="text-center header-about" style="margin-top: 270px">
+  <h1 id="services" class="text-center header-about" style="margin-top: 270px">
     ჩვენს შესახებ
   </h1>
   <div class="header-line"></div>
-  <!-- <div class="container" style="border: 1px solid red; z-index: 55; height: 1200px;"></div> -->
 
   <div class="container1 p-4 mt-4">
     <p class="about-paragraph">

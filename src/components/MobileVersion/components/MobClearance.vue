@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id='declare' style="max-width: 900px">
+  <div class="container" id="declare" style="max-width: 900px">
     <div style="padding: 5px" class="mt-5">
       <h1
         class="text-center"
@@ -7,17 +7,7 @@
       >
         დეკლარირება და განბაჟება
       </h1>
-      <div
-        style="
-          width: 60px;
-          height: 3px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto;
-          background-color: rgb(16, 189, 251);
-        "
-      ></div>
+      <div class="declare-header-line"></div>
       <div class="accordion mt-3" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -130,6 +120,15 @@ export default {
 </script>
 
 <style scoped>
+.declare-header-line {
+  width: 60px;
+  height: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: rgb(16, 189, 251);
+}
 .border-accordion {
   border-radius: 0px 0px 25px 25px !important;
 }

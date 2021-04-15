@@ -1,5 +1,4 @@
 <template>
-  <!-- <img :src="image" /> -->
   <Navbar
     :image="false"
     :btnColor="`1D96D9`"

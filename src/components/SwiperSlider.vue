@@ -1,240 +1,120 @@
 <template>
-  <!-- <transition name="menu" class="animate__animated animate__fadeInDown"> -->
-    <div
-      v-if="isMenuOpen"
-      class="animate__animated animate__fadeInDown"
-      style="
-        position: absolute;
-        z-index: 999;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #0396db;
-      "
-    >
-      <button @click="() => (isMenuOpen = false)" class="close-button">
-        X
-      </button>
-      <div class="container" style="margin-top: 5%; max-width: 1300px">
-        <div class="row">
-          <div class="col-xl-4">
-            <div class="container12" @click="next(1)">
-              <div class="box">
-                <div class="text-center">
-                  <img
-                    width="50px;"
-                    style="width: 100px; margin-top: 10%"
-                    src="./../assets/menu-images/main.svg"
-                    alt="Main icon"
-                  />
-                </div>
-                <h4
-                  class="text-center"
-                  style="
-                    color: white;
-                    margin-top: 10%;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                >
-                  მთავარი
-                </h4>
+  <div
+    v-if="isMenuOpen"
+    class="animate__animated animate__fadeInDown main-menu-cont"
+  >
+    <button @click="() => (isMenuOpen = false)" class="close-button">X</button>
+    <div class="container" style="margin-top: 5%; max-width: 1300px">
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="container12" @click="next(1)">
+            <div class="box">
+              <div class="text-center">
+                <img
+                  width="50px;"
+                  style="width: 100px; margin-top: 10%"
+                  src="./../assets/menu-images/main.svg"
+                  alt="Main icon"
+                />
               </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="container12" @click="next(2)">
-              <div class="box">
-                <div class="text-center">
-                  <img
-                    width="50px;"
-                    style="width: 100px; margin-top: 10%"
-                    src="./../assets/conditions/p02.svg"
-                    alt="Main icon"
-                  />
-                </div>
-                <h4
-                  class="text-center"
-                  style="
-                    color: white;
-                    margin-top: 10%;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                >
-                  ჩვენი სერვისები
-                </h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="container12" @click="next(3)">
-              <div class="box">
-                <div class="text-center">
-                  <img
-                    width="50px;"
-                    style="width: 100px; margin-top: 10%"
-                    src="./../assets/conditions/p03.svg"
-                    alt="Main icon"
-                  />
-                </div>
-                <h4
-                  class="text-center"
-                  style="
-                    color: white;
-                    margin-top: 10%;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                >
-                  პირობები
-                </h4>
-              </div>
+              <h4 class="text-center menu-txt">მთავარი</h4>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xl-4">
-            <div class="container12" @click="next(4)">
-              <div class="box-second-row">
-                <div class="text-center">
-                  <img
-                    width="50px;"
-                    style="width: 100px; margin-top: 10%"
-                    src="./../assets/menu-images/clearance.svg"
-                    alt="Main icon"
-                  />
-                </div>
-                <h4
-                  class="text-center"
-                  style="
-                    color: white;
-                    margin-top: 10%;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                >
-                  დეკლარირება და განბაჟება
-                </h4>
+        <div class="col-xl-4">
+          <div class="container12" @click="next(2)">
+            <div class="box">
+              <div class="text-center">
+                <img
+                  width="50px;"
+                  style="width: 100px; margin-top: 10%"
+                  src="./../assets/conditions/p02.svg"
+                  alt="Main icon"
+                />
               </div>
+              <h4 class="text-center menu-txt">ჩვენი სერვისები</h4>
             </div>
           </div>
-          <div class="col-xl-4">
-            <div class="container12" @click="next(5)">
-              <div class="box-second-row">
-                <div class="text-center">
-                  <img
-                    width="50px;"
-                    style="width: 100px; margin-top: 10%"
-                    src="./../assets/menu-images/howwroks.svg"
-                    alt="Main icon"
-                  />
-                </div>
-                <h4
-                  class="text-center"
-                  style="
-                    color: white;
-                    margin-top: 10%;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                >
-                  როგორ მუშაობს
-                </h4>
+        </div>
+        <div class="col-xl-4">
+          <div class="container12" @click="next(3)">
+            <div class="box">
+              <div class="text-center">
+                <img
+                  width="50px;"
+                  style="width: 100px; margin-top: 10%"
+                  src="./../assets/conditions/p03.svg"
+                  alt="Main icon"
+                />
               </div>
+              <h4 class="text-center menu-txt">პირობები</h4>
             </div>
           </div>
-          <div class="col-xl-4">
-            <div class="container12" @click="next(6)">
-              <div class="box-second-row">
-                <div class="text-center">
-                  <img
-                    width="50px;"
-                    style="width: 100px; margin-top: 10%"
-                    src="./../assets/menu-images/contact.svg"
-                    alt="Main icon"
-                  />
-                </div>
-                <h4
-                  class="text-center"
-                  style="
-                    color: white;
-                    margin-top: 10%;
-                    font-family: arrowFONT;
-                    font-weight: bold;
-                  "
-                >
-                  კონტაქტი
-                </h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-4">
+          <div class="container12" @click="next(4)">
+            <div class="box-second-row">
+              <div class="text-center">
+                <img
+                  width="50px;"
+                  style="width: 100px; margin-top: 10%"
+                  src="./../assets/menu-images/clearance.svg"
+                  alt="Main icon"
+                />
               </div>
+              <h4 class="text-center menu-txt">დეკლარირება და განბაჟება</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="container12" @click="next(5)">
+            <div class="box-second-row">
+              <div class="text-center">
+                <img
+                  width="50px;"
+                  style="width: 100px; margin-top: 10%"
+                  src="./../assets/menu-images/howwroks.svg"
+                  alt="Main icon"
+                />
+              </div>
+              <h4 class="text-center menu-txt">როგორ მუშაობს</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="container12" @click="next(6)">
+            <div class="box-second-row">
+              <div class="text-center">
+                <img
+                  width="50px;"
+                  style="width: 100px; margin-top: 10%"
+                  src="./../assets/menu-images/contact.svg"
+                  alt="Main icon"
+                />
+              </div>
+              <h4 class="text-center menu-txt">კონტაქტი</h4>
             </div>
           </div>
         </div>
       </div>
     </div>
-  <!-- </transition> -->
-  <ShowRegisterModal v-if='isRegisterModalOpen'/>  
-  <ShowLoginModal v-if='isLoginModalOpen'/>
+  </div>
 
-  <div class="container p-0" style="max-width: 1920px; margin-top: -98px">
-    <div v-if="isSpinner" style="display: flex">
-      <div
-        class="spinner-grow text-info"
-        style="position: absolute; top: 30%; font-size: 300px; left: 48%"
-        role="status"
-      ></div>
-      <div
-        class="spinner-grow text-info"
-        style="position: absolute; top: 30%; font-size: 300px; left: 49%"
-        role="status"
-      ></div>
-      <div
-        class="spinner-grow text-info"
-        style="position: absolute; top: 30%; font-size: 300px; left: 50%"
-        role="status"
-      ></div>
-    </div>
+  <ShowRegisterModal v-if="isRegisterModalOpen" />
+  <ShowLoginModal v-if="isLoginModalOpen" />
+  
+  <Spinner v-if="isSpinner" />
+  <div v-else class="container p-0" style="max-width: 1920px; margin-top: -98px">
+      
     <swiper
-      v-else
       class="parallax-slider"
       :navigation="{ nextEl: '.nextArrow', prevEl: '.prevArrow' }"
       parallax
       grabCursor
       @swiper="onSwiperInitialized"
     >
-      <!-- <div class="parallax-slider-navigation" style="display: none">
-        <div class="nav-indicator prevArrow">
-          <div style="display: flex">
-            <p id="goback" style="display: none">უკან</p>
-            <hr
-              style="
-                background-color: white;
-                color: white;
-                width: 35px;
-                height: 2px;
-                z-index: 55;
-                margin-left: 15px;
-              "
-            />
-          </div>
-        </div>
-        <div class="nav-indicator nextArrow">
-          <div style="display: flex">
-            <hr
-              style="
-                background-color: white;
-                color: white;
-                width: 35px;
-                height: 2px;
-                z-index: 55;
-                margin-right: 15px;
-              "
-            />
-            <p>შემდეგი</p>
-          </div>
-        </div>
-      </div> -->
       <swiper-slide
         class="parallax-slide"
         v-for="image in images"
@@ -354,9 +234,12 @@ import SixSlide from "./Slides/SixSlide.vue";
 
 import NavigationArrows from "./NavigationArrows.vue";
 
-import ShowRegisterModal from './ShowRegisterModal.vue'
-import ShowLoginModal from './ShowLoginModal.vue'
-import { mapGetters } from "vuex";
+import ShowRegisterModal from "./ShowRegisterModal.vue";
+import ShowLoginModal from "./ShowLoginModal.vue";
+
+import Spinner from "./Spinner.vue";
+
+// import { mapGetters } from "vuex";
 export default {
   name: "SwiperSlider",
   data() {
@@ -385,30 +268,26 @@ export default {
       this.isSpinner = false;
     }, 1500);
 
-    this.emitter.on('openregistermodal', () => {
-      this.isRegisterModalOpen = true
+    this.emitter.on("openregistermodal", () => {
+      this.isRegisterModalOpen = true;
     });
-    this.emitter.on('closeregistermodal', () => {
-      this.isRegisterModalOpen = false
-    })
-    this.emitter.on('openloginmodal', () => {
-      this.isLoginModalOpen = true
-    })
-    this.emitter.on('closeloginmodal', () => {
-      this.isLoginModalOpen = false
-    })
+    this.emitter.on("closeregistermodal", () => {
+      this.isRegisterModalOpen = false;
+    });
+    this.emitter.on("openloginmodal", () => {
+      this.isLoginModalOpen = true;
+    });
+    this.emitter.on("closeloginmodal", () => {
+      this.isLoginModalOpen = false;
+    });
     this.emitter.on("showmenu", () => {
       this.isMenuOpen = true;
     });
   },
   computed: {
-    ...mapGetters(["getNavbarState"]),
     parallaxAmount() {
       return this.parallaxSwiperWidth * 0.5;
     },
-    // set(){
-    //   console.log(1);
-    // }
   },
   components: {
     Swiper,
@@ -421,7 +300,8 @@ export default {
     SixSlide,
     NavigationArrows,
     ShowRegisterModal,
-    ShowLoginModal
+    ShowLoginModal,
+    Spinner,
     // FontAwesomeIcon,
   },
   methods: {
@@ -442,6 +322,21 @@ export default {
 </script>
 
 <style scoped>
+.main-menu-cont {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0396db;
+}
+.menu-txt {
+  color: white;
+  margin-top: 10%;
+  font-family: arrowFONT;
+  font-weight: bold;
+}
 .close-button {
   position: absolute;
   top: 1%;

@@ -5,30 +5,11 @@
     <div class="center-text main-form" style="margin-top: 40px">
       <div style="background-color: white">
         <form>
-          <h5
-            class="text-center"
-            style="
-              font-size: 18px;
-              font-weight: bold;
-              color: black;
-              font-family: arrowFONT;
-              padding-top: 15px;
-            "
-          >
+          <h5 class="text-center header-txt">
             ტრანსპორტირების<br />
             ღირებულების დათვლა:
           </h5>
-          <h4
-            class="text-center"
-            style="
-              font-size: 23px;
-              font-weight: bold;
-              color: #11bdf7;
-              font-family: arrowFONT;
-            "
-          >
-            წონის კალკულატორი
-          </h4>
+          <h4 class="text-center wona-txt">წონის კალკულატორი</h4>
 
           <div class="row">
             <div class="col-xl-3 text-right">
@@ -39,43 +20,34 @@
             <div class="col-xl-9">
               <input
                 v-model="sigr"
-                @change='calc'
+                @change="calc"
                 class="input-box mt-3"
                 type="number"
                 placeholder="სიგრძე"
               /><br />
               <input
                 v-model="siga"
-                @change='calc'
+                @change="calc"
                 class="input-box mt-3"
                 type="number"
                 placeholder="სიგანე"
               /><br />
               <input
                 v-model="sima"
-                @change='calc'
+                @change="calc"
                 class="input-box mt-3"
                 type="number"
                 placeholder="სიმაღლე"
               />
-              <!-- <button @click.prevent='calc'>calc</button>
-                            <input :value='total'>{{answer}}/> -->
             </div>
           </div>
           <div class="mt-4 price-div">
-            <h1 class="p-2 price-text">{{kg}}კგ</h1>
-            <h1 class="p-2 price-text">{{price}}$</h1>
+            <h1 class="p-2 price-text">{{ kg }}კგ</h1>
+            <h1 class="p-2 price-text">{{ price }}$</h1>
           </div>
 
-          <!-- <input :value="answer" /> -->
-
           <div style="margin: 0 auto; max-width: 270px">
-            <button
-
-              class="registreBtn mb-4 mt-3"
-            >
-              რეგისტრაცია
-            </button>
+            <button class="registreBtn mb-4 mt-3">რეგისტრაცია</button>
           </div>
         </form>
       </div>
@@ -127,7 +99,7 @@
 <script>
 export default {
   name: "WorkCalculate",
-    data() {
+  data() {
     return {
       sigr: null,
       siga: null,
@@ -137,21 +109,34 @@ export default {
       price: 0,
     };
   },
-    methods: {
-      calc() {
-        if(this.sigr != null && this.siga != null && this.sima != null){
-          this.kg =
+  methods: {
+    calc() {
+      if (this.sigr != null && this.siga != null && this.sima != null) {
+        this.kg =
           (parseInt(this.sigr) * parseInt(this.siga) * parseInt(this.sima)) /
           6000;
 
-          this.price = this.kg * 4
-        }
-      },
-    }
-}
+        this.price = this.kg * 4;
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
+.wona-txt {
+  font-size: 23px;
+  font-weight: bold;
+  color: #11bdf7;
+  font-family: arrowFONT;
+}
+.header-txt {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  font-family: arrowFONT;
+  padding-top: 15px;
+}
 .price-div {
   margin-left: 20px;
   display: flex;
