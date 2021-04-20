@@ -66,7 +66,7 @@
       </h5>
       <h5
         class="txt-head"
-        style="color: #06d97b; font-size: 24px; margin: 0 auto;margin-top: -25  px;"
+        style="color: #06d97b; font-size: 21px; margin: 0 auto;margin-top: -25  px;"
       >
         20.04.2021
       </h5>
@@ -113,7 +113,7 @@
       </h5>
       <h5
         class="txt-head"
-        style="color: #06d97b; font-size: 24px; margin: 0 auto;margin-top: -25  px;"
+        style="color: #06d97b; font-size: 21px; margin: 0 auto;margin-top: -25  px;"
       >
         20.04.2021
       </h5>

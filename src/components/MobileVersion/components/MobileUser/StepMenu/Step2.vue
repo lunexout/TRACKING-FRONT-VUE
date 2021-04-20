@@ -31,7 +31,7 @@
     <div
       class="mt-2"
       style="
-        height: 120px;
+        height: 130px;
         border: 1px solid white;
         border-radius: 10px;
         background-color: transparent;

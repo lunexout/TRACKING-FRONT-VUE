@@ -23,7 +23,7 @@ v<template>
             padding-top: 7px;
             padding-bottom: 7px;
             padding-left: 20px; padding-right: 20px; background-color: #0380DB;
-            border: none;' @click='emitter.emit("mobopenparamprofile")'>რედაქტირება</button>
+            border: none;' @click='emitter.emit("mobopenparamprofile")'>რედაქ..</button>
         </div>
       </div>
             <div class="styled-div mt-2">
@@ -40,7 +40,7 @@ v<template>
             padding-top: 7px;
             padding-bottom: 7px;
             padding-left: 20px; padding-right: 20px; background-color: #0380DB;
-            border: none;' @click='emitter.emit("mobopenchangepassprofile")' >რედაქტირება</button>
+            border: none;' @click='emitter.emit("mobopenchangepassprofile")' >რედაქ..</button>
         </div>
       </div>
             <div class="styled-div mt-2">
@@ -57,7 +57,7 @@ v<template>
             padding-top: 7px;
             padding-bottom: 7px;
             padding-left: 20px; padding-right: 20px; background-color: #0380DB;
-            border: none;' @click='emitter.emit("mobopennotification")'>რედაქტირება</button>
+            border: none;' @click='emitter.emit("mobopennotification")'>რედაქ..</button>
         </div>
       </div>
 <!-- 
