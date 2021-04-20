@@ -11,7 +11,6 @@
         <input
           v-model="logdata.email"
           ref="login"
-          @focus="scrollTOTOP(`login`)"
           class="login-inputs"
           type="text"
           placeholder="ელ ფოსტა"
@@ -19,7 +18,6 @@
         <input
           v-model="logdata.passw"
           ref="password"
-          @focus="scrollTOTOP(`password`)"
           class="mt-4 login-inputs"
           type="password"
           placeholder="პაროლი"
@@ -84,13 +82,13 @@ export default {
     login() {
       this.emitter.emit("onLogin", this.logdata);
     },
-    scrollTOTOP(which) {
-      if (which == "login") {
-        window.scrollTo(0, this.$refs.login.offsetTop);
-      } else {
-        window.scrollTo(0, this.$refs.password.offsetTop);
-      }
-    },
+    // scrollTOTOP(which) {
+    //   if (which == "login") {
+    //     window.scrollTo(0, this.$refs.login.offsetTop);
+    //   } else {
+    //     window.scrollTo(0, this.$refs.password.offsetTop);
+    //   }
+    // },
   },
 };
 </script>

@@ -1,5 +1,6 @@
 <template>
   <Navbar />
+  
   <MobTransactions v-if='isTransactions'/>
   <MobTurkeyAdress v-if='isTurkeyAdress'/>
   <MobParameters v-if='isParameters'/>
@@ -9,6 +10,8 @@
   <MobPayment v-if="isPayment" />
   <MobUserLoggedDeclare :code="declare_code" v-if="isDeclare" />
   <MobAddBalance v-if="isAddBalanace" />
+  <MobGanbajeba :code="ganbajeba_code" v-if='isGanbajeba'/>
+
   <template v-else>
     <div>
       <img
@@ -473,10 +476,19 @@
             <!-- POSTS -->
           </div>
         </div>
-        <div v-if="isSecondActive" class="">2</div>
-        <div v-if="isThirdActive" class="">3</div>
-        <div v-if="isFourthActive" class="">4</div>
-        <div v-if="isFifthActive" class="">5</div>
+
+        <div v-if="isSecondActive">
+          <Step2/>
+        </div>
+        <div v-if="isThirdActive" >
+          <Step3/>
+        </div>
+        <div v-if="isFourthActive">
+          <Step4/>
+        </div>
+        <div v-if="isFifthActive" >
+          <Step5/>
+        </div>
       </div>
     </div>
   </template>
@@ -495,6 +507,14 @@ import MobProfParameters from './MobProfParameters.vue'
 import MobChangePassword from './MobChangePassword.vue'
 import MobNotification from './MobNotifications.vue'
 
+// STEPS
+
+import Step2 from './StepMenu/Step2.vue'
+import Step3 from './StepMenu/Step3.vue'
+import Step4 from './StepMenu/Step4.vue'
+import Step5 from './StepMenu/Step5.vue'
+
+import MobGanbajeba from './StepMenu/MobGanbajeba.vue'
 export default {
   name: "MobUserLogged",
   data() {
@@ -510,6 +530,9 @@ export default {
       isThirdActive: false,
       isFourthActive: false,
       isFifthActive: false,
+      // GANBAJEBA
+      isGanbajeba: false,
+      ganbajeba_code: '',
       // NOTIFICATION
       isNotification: false,
       // CHANGE-PASSWORD
@@ -536,6 +559,8 @@ export default {
         // { code: "5145849821475821415414" },
         // { code: "5145849821475821415415" },
       ],
+
+
     };
   },
   components: {
@@ -549,7 +574,12 @@ export default {
     MobParameters,
     MobProfParameters,
     MobChangePassword,
-    MobNotification
+    MobNotification,
+    MobGanbajeba,
+    Step2,
+    Step3,
+    Step4,
+    Step5
   },
   methods: {
     activeFirstStep() {
@@ -693,6 +723,12 @@ export default {
     })
     this.emitter.on("mobclosenotification", () => {
       this.isNotification = false
+    })
+    this.emitter.on("openmobganbajeba", () => {
+      this.isGanbajeba = true
+    })
+    this.emitter.on("closemobganbajeba", () => {
+      this.isGanbajeba = false
     })
   },
 };
