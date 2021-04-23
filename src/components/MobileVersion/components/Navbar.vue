@@ -4,7 +4,7 @@
     :style="`background-color: ${color};`"
   >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"
+      <a class="navbar-brand" href="/"
         ><img
           style="width: 60px; height: 60px"
           src="./../../../assets/mainpage/logo.svg"

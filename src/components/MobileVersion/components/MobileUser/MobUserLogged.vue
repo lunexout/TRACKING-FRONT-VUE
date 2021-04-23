@@ -1,6 +1,7 @@
 <template>
-  <Navbar />
+  <Navbar :color='`#082139`'/>
   
+  <MobMenu v-if='isMobMenu'/>
   <MobTransactions v-if='isTransactions'/>
   <MobTurkeyAdress v-if='isTurkeyAdress'/>
   <MobParameters v-if='isParameters'/>
@@ -11,7 +12,7 @@
   <MobUserLoggedDeclare :code="declare_code" v-if="isDeclare" />
   <MobAddBalance v-if="isAddBalanace" />
   <MobGanbajeba :code="ganbajeba_code" v-if='isGanbajeba'/>
-
+  <MobPostComplate :data='postComplateCode' v-if='isPostComplate' />
   <template v-else>
     <div>
       <img
@@ -25,7 +26,7 @@
       />
       <div
         style="
-          max-width: 900px;
+          max-width: 550px;
           margin-top: 90px;
           color: #fff;
           z-index: 1;
@@ -36,6 +37,7 @@
           background-color: rgba(255, 255, 255, 0.15);
           position: absolute;
           height: 260px;
+          margin-top: 100px;
         "
       >
         <div
@@ -188,7 +190,7 @@
 
     <div
       style="
-        max-width: 900px;
+        max-width: 550px;
         margin-top: 445px;
         color: #fff;
         z-index: 1;
@@ -201,7 +203,8 @@
         height: 460px;
       "
     >
-      <div style="display: flex; justify-content: center; padding: 10px">
+      <div v-if='!isMobQuestions && !isMobRaces'>
+        <div style="display: flex; justify-content: center; padding: 10px" >
         <img
           src="./../../../../assets/mobile/amanatebi.svg"
           style="width: 30px; height: 30px"
@@ -217,7 +220,7 @@
         >
           ამანათები
         </h5>
-      </div>
+        </div>
       <div class="p-2 main-step-div">
         <div
           class="step-divs text-center"
@@ -490,6 +493,10 @@
           <Step5/>
         </div>
       </div>
+      </div>
+
+      <MobQuestions v-if='isMobQuestions' />
+      <MobRaces v-if='isMobRaces'/>
     </div>
   </template>
 </template>
@@ -506,6 +513,11 @@ import MobParameters from './MobParameters.vue'
 import MobProfParameters from './MobProfParameters.vue'
 import MobChangePassword from './MobChangePassword.vue'
 import MobNotification from './MobNotifications.vue'
+import MobQuestions from './StepMenu/MobQuestions.vue'
+import MobRaces from './StepMenu/MobRaces.vue'
+
+// MENU
+import MobMenu from './MobMenu.vue'
 
 // STEPS
 
@@ -513,6 +525,9 @@ import Step2 from './StepMenu/Step2.vue'
 import Step3 from './StepMenu/Step3.vue'
 import Step4 from './StepMenu/Step4.vue'
 import Step5 from './StepMenu/Step5.vue'
+
+// POST COMPLATE 5 STEP
+import MobPostComplate from './StepMenu/MobPostComplate.vue'
 
 import MobGanbajeba from './StepMenu/MobGanbajeba.vue'
 export default {
@@ -560,11 +575,20 @@ export default {
         // { code: "5145849821475821415415" },
       ],
 
+      // COMPLATE POSTS
+      isPostComplate: false,
+      postComplateCode: '',
 
+      // MobMenu
+      isMobMenu: false,
+
+      isMobQuestions: false,
+      isMobRaces: false,
     };
   },
   components: {
     Navbar,
+    MobMenu,
     MobUserPost,
     MobAddBalance,
     MobUserLoggedDeclare,
@@ -576,10 +600,14 @@ export default {
     MobChangePassword,
     MobNotification,
     MobGanbajeba,
+    MobPostComplate,
+    MobQuestions,
+    MobRaces,
     Step2,
     Step3,
     Step4,
-    Step5
+    Step5,
+    
   },
   methods: {
     activeFirstStep() {
@@ -729,6 +757,33 @@ export default {
     })
     this.emitter.on("closemobganbajeba", () => {
       this.isGanbajeba = false
+    })
+    this.emitter.on("opencomplatepost", (data) => {
+      console.log(data);
+      this.isPostComplate = true;
+      this.postComplateCode = data;
+    })
+    this.emitter.on("closecomplatepost", () => {
+      this.isPostComplate = false;
+      this.postComplateCode = '';
+    })
+    this.emitter.on("closemobmenu", () => {
+      this.isMobMenu = false;
+    })
+    this.emitter.on("openloggedusermenu", () => {
+      this.isMobMenu = true;
+    })
+    this.emitter.on("opendashboard", () => {
+      this.isMobQuestions = false;
+      this.isMobRaces = false;
+    })
+    this.emitter.on("openmobquestions", () => {
+      this.isMobQuestions = true;
+      this.isMobRaces = false;
+    })
+    this.emitter.on("openmobraces", () => {
+      this.isMobRaces = true;
+      this.isMobQuestions = false;
     })
   },
 };
