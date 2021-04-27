@@ -13,20 +13,25 @@ v<template>
       <h1 class="payment-header" style='font-size: 25px;'>პროფილი</h1>
       
       
-      <p class='text-dark mt-3 input-header'>ფოტოს შეცვლა</p>
+    <div style='display:flex; justify-content: space-between;'>
+        <div>
+          <p class='text-dark mt-3 input-header'>ფოტოს შეცვლა</p>
       <!-- <input type="text" placeholder="ფოტოს ატვირთვა" class="inputs" /> -->
       <input type="file" class='inputs custom-file-input'
        
        accept="image/png, image/jpeg">
-      <p class='text-dark mt-3 input-header'>სახელი(ქართულად)</p>
+      <p class='text-dark mt-4 input-header'>სახელი(ქართულად)</p>
       <input type="text" :placeholder='`გიორგი`' class="inputs" />
-       <p class='text-dark mt-3 input-header'>გვარი(ქართულად)</p>
+       <p class='text-dark mt-4 input-header'>გვარი(ქართულად)</p>
       <input type="text" :placeholder="`ბოცვაძე`" class="inputs" />
        <p class='text-dark mt-3 input-header'>სახელი(ლათინურად)</p>
       <input type="text" :placeholder="`George`" class="inputs" />
-       <p class='text-dark mt-3 input-header'>გვარი(ლათინურად)</p>
+       <p class='text-dark mt-4 input-header'>გვარი(ლათინურად)</p>
       <input type="text" :placeholder="`Botsvadze`" class="inputs" />
-       <p class='text-dark mt-3 input-header'>დაბადების თარიღი</p>
+      </div>
+       
+       <div>
+           <p class='text-dark mt-3 input-header'>დაბადების თარიღი</p>
       <input type="date" value="2021-09-24" placeholder="დაბადების თარიღი" class="inputs" />
 
       <p
@@ -69,18 +74,20 @@ v<template>
       ><br />
 
 
-             <p class='text-dark mt-3 input-header'>ელ-ფოსტა*</p>
+             <p class='text-dark mt-2 input-header'>ელ-ფოსტა*</p>
       <input type="mail" placeholder="gio.botsvadze1988@gmail.com" class="inputs" />
 
-             <p class='text-dark mt-3 input-header'>მობილური ტელეფონი*</p>
+             <p class='text-dark mt-2 input-header'>მობილური ტელეფონი*</p>
       <input type="text" placeholder="+995 598 89 04 75" class="inputs" />
 
       
-             <p class='text-dark mt-3 input-header'>საიდენთიფიკაციო კოდი*</p>
+             <p class='text-dark mt-2 input-header'>საიდენთიფიკაციო კოდი*</p>
       <input type="mail" placeholder="012423543" class="inputs" />
 
-             <p class='text-dark mt-3 input-header'>მისამართი</p>
+             <p class='text-dark mt-2 input-header' style='margin-top: 10px !important;'>მისამართი</p>
       <input type="text" placeholder="თბილისი, დოლიძის ქუჩა 9" class="inputs" />
+       </div>
+    </div>
 
                 <div
         class="text-center paymentContainer mt-4"
@@ -91,7 +98,7 @@ v<template>
           <div class="payment-arrow-box">
             <img
               style="width: 13px; height: 13x; margin-top: -4px"
-              src="./../../../../assets/mainpage/right-arrow.svg"
+              src="./../../../assets/mainpage/right-arrow.svg"
               alt="Right arrow"
             />
           </div>
@@ -103,7 +110,7 @@ v<template>
 
 <script>
 export default {
-  name: "MobTransactions",
+  name: "ProfSettings",
   data() {
     return {};
   },
@@ -152,12 +159,11 @@ export default {
 }
 .payment-menu-cont {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left:50%;
+  margin-top: 25px;
   height: auto;
-  min-width: 300px;
-  max-width: 370px;
-  transform: translate(-50%, -50%);
+ width: 800px;
+  transform: translate(-50%);
 }
 .close-payment-modal {
   position: absolute;
@@ -222,7 +228,7 @@ export default {
   background-color: transparent;
   font-family: arrowFONT;
   font-weight: bold;
-  width: 100%;
+  width: 390px;
   border-radius: 30px;
   outline: none;
   color: #fff;

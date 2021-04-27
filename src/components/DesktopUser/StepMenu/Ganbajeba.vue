@@ -2,14 +2,14 @@
   <div class="addbalanace-modal animate__animated animate__fadeInDown">
     <!-- <div style='max-width: 500px; margin: 0 auto;'> -->
     <button
-      @click="() => emitter.emit('closemobganbajeba')"
+      @click="() => emitter.emit('closedeskganbajeba')"
       class="close-balance-modal"
     >
       X
     </button>
 
     <div class="balance-menu-cont">
-      <h1 class="balance-header">განბაჟება</h1>
+      <h1 class="balance-header" style='font-size: 25px;'>განბაჟება</h1>
 
       <div
         style="
@@ -20,103 +20,100 @@
           border-radius: 35px;
           justify-content: center;
           align-items: center;
+          margin-top: 50px;
         "
       >
         <img
-          src="./../../../../../assets/mobile/pdf.svg"
+          src="./../../../assets/mobile/pdf.svg"
           style="width: 40px; height: 40px"
         />
         <!-- <i class="far fa-file-pdf" style="width: 40px; height: 40px; color: #fff;"></i> -->
-        <input type="file" @change="FileInvoicePhoto($event)" name="file" id="file" class="inputfile" />
-        <label for="file" style="margin-left: 10px">ინვოსის ატვირთვა</label>
+        <input
+          type="file"
+          @change="FileInvoicePhoto($event)"
+          name="file"
+          id="file"
+          class="inputfile"
+        />
+        <label for="file" style="margin-left: 10px">ინვოსის ატვირთვა (PDF):</label>
       </div>
 
       <h1 class="balance-header mt-5">პირადობის ან პასპორტის</h1>
-      <!-- src='./../../../../../assets/mobile/pdf.svg' -->
-      <div style="position: relative">
-        <img
-          :src="firstPassport"
-          style="
-            width: 100%;
-            height: 200px;
-            border: 1px solid white;
-            overflow: hidden;
-            border-radius: 20px;
-          "
-        />
-        <input
-          type="file"
-          @change="FileFirstPhoto($event)"
-          name="file"
-          id="file1"
-          class="inputfile"
-        />
-        <label
-          for="file1"
-          style="
-            position: absolute;
-            text-align: center;
-            opacity: 0.7;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 999;
-          "
-        >
-          ატვირთეთ პირადობის ან პასპორტის წინა მხარე
-        </label>
-      </div>
-
-      <div style="position: relative; margin-top: 35px">
-        <img
-          :src="secondPassport"
-          style="
-            width: 100%;
-            height: 200px;
-            border: 1px solid white;
-            overflow: hidden;
-            border-radius: 20px;
-          "
-        />
-        <input
-          type="file"
-          @change="FileSecondPhoto($event)"
-          name="file"
-          id="file2"
-          class="inputfile"
-        />
-        <label
-          for="file2"
-          style="
-            position: absolute;
-            text-align: center;
-            opacity: 0.7;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 999;
-          "
-        >
-          ატვირთეთ პირადობის ან პასპორტის უკანა მხარე
-        </label>
-      </div>
-
-      <div
-        class="text-center balanceContainer mt-5"
-        style="margin-left: -20px; margin: 0 auto"
-      >
-        <button class="balanceBtn" @click.prevent="login" @keyup.enter="login">
-          გაგზავნა
-          <div class="balance-arrow-box">
-            <img
-              style="width: 13px; height: 13x; margin-top: -4px"
-              src="./../../../../../assets/mainpage/right-arrow.svg"
-              alt="Right arrow"
-            />
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-4">
+            <div style="position: relative">
+              <img
+                :src="firstPassport"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  border: 1px solid white;
+                  overflow: hidden;
+                  border-radius: 20px;
+                "
+              />
+              <input
+                type="file"
+                @change="FileFirstPhoto($event)"
+                name="file"
+                id="file1"
+                class="inputfile"
+              />
+              <label
+                for="file1"
+                style="
+                  position: absolute;
+                  text-align: center;
+                  opacity: 0.7;
+                  left: 50%;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: 999;
+                "
+              >
+                ატვირთეთ პირადობის ან პასპორტის წინა მხარე
+              </label>
+            </div>
           </div>
-        </button>
-      </div>
-      <div class="accordion mt-5" id="accordionExample">
+          <div class="col-xl-4">
+            <div style="position: relative">
+              <img
+                :src="secondPassport"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  border: 1px solid white;
+                  overflow: hidden;
+                  border-radius: 20px;
+                "
+              />
+              <input
+                type="file"
+                @change="FileSecondPhoto($event)"
+                name="file"
+                id="file2"
+                class="inputfile"
+              />
+              <label
+                for="file2"
+                style="
+                  position: absolute;
+                  text-align: center;
+                  opacity: 0.7;
+                  left: 50%;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: 999;
+                "
+              >
+                ატვირთეთ პირადობის ან პასპორტის უკანა მხარე
+              </label>
+            </div>
+          </div>
+
+          <div class="col-xl-4">
+                      <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button
@@ -149,6 +146,26 @@
             </div>
           </div>
         </div>
+            </div>
+        </div>
+      </div>
+
+      <div
+        class="text-center balanceContainer mt-5"
+        style="margin-left: -20px; margin: 0 auto"
+      >
+        <button class="balanceBtn" @click.prevent="login" @keyup.enter="login">
+          გაგზავნა
+          <div class="balance-arrow-box">
+            <img
+              style="width: 13px; height: 13x; margin-top: -4px"
+              src="./../../../assets/mainpage/right-arrow.svg"
+              alt="Right arrow"
+            />
+          </div>
+        </button>
+      </div>
+      
       </div>
     </div>
   </div>
@@ -156,7 +173,7 @@
 
 <script>
 export default {
-  name: "MobGanbajeba",
+  name: "Ganbajeba",
   data() {
     return {
       firstPassport: "",
@@ -164,25 +181,25 @@ export default {
     };
   },
   methods: {
-      FileInvoicePhoto(e){
+    FileInvoicePhoto(e) {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       let x = files[0];
       console.log(x);
     },
     FileFirstPhoto(e) {
-        console.log(e.target.files);
+      console.log(e.target.files);
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage1(files[0]);
     },
-    
+
     FileSecondPhoto(e) {
-        console.log(e.target.files);
-        console.log("eldari");
-        let files = e.target.files || e.dataTransfer.files;
-        if (!files.length) return;
-        this.createImage2(files[0]);
+      console.log(e.target.files);
+      console.log("eldari");
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage2(files[0]);
     },
     createImage1(file) {
       // let image = new Image();
@@ -191,18 +208,18 @@ export default {
       //   var vm = this;
 
       reader.onload = (e) => {
-          this.firstPassport = e.target.result;
+        this.firstPassport = e.target.result;
       };
       reader.readAsDataURL(file);
     },
-        createImage2(file) {
+    createImage2(file) {
       // let image = new Image();
 
       let reader = new FileReader();
       //   var vm = this;
 
       reader.onload = (e) => {
-          this.secondPassport = e.target.result;
+        this.secondPassport = e.target.result;
       };
       reader.readAsDataURL(file);
     },
@@ -210,7 +227,6 @@ export default {
     // this.firstPassport = '';
     // }
   },
-
 };
 </script>
 
@@ -227,11 +243,10 @@ export default {
 .balance-menu-cont {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 30px;
   height: auto;
-  min-width: 300px;
-  max-width: 370px;
-  transform: translate(-50%, -50%);
+  width: 1000px;
+  transform: translate(-50%);
 }
 .balance-header {
   color: #fff;
@@ -263,7 +278,7 @@ export default {
   width: 100%;
   height: 1200px;
   padding: 10px;
-  overflow:hidden;
+  overflow: hidden;
   background-color: #0396db;
 }
 
@@ -345,7 +360,7 @@ export default {
   height: 30px;
   margin-left: auto;
   content: "";
-  background-image: url("./../../../../../assets/mainpage/downarrow.svg");
+  background-image: url("./../../../assets/mainpage/downarrow.svg");
   background-repeat: no-repeat;
   background-size: 40px;
   transition: transform 0.2s ease-in-out;

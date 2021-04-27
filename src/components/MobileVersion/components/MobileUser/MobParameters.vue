@@ -1,7 +1,10 @@
 v<template>
   <div class="payment-modal animate__animated animate__fadeInDown">
     <button
-      @click="() => emitter.emit('closemobparameters')"
+      @click="() => {
+        emitter.emit('closemobparameters');
+        emitter.emit('closedesksettings');
+      }"
       class="close-payment-modal"
     >
       X
@@ -23,7 +26,10 @@ v<template>
             padding-top: 7px;
             padding-bottom: 7px;
             padding-left: 20px; padding-right: 20px; background-color: #0380DB;
-            border: none;' @click='emitter.emit("mobopenparamprofile")'>რედაქ..</button>
+            border: none;' @click='() => {
+              emitter.emit("mobopenparamprofile");
+              emitter.emit("opendeskprofilesettings");
+            }'>რედაქ..</button>
         </div>
       </div>
             <div class="styled-div mt-2">
@@ -40,7 +46,10 @@ v<template>
             padding-top: 7px;
             padding-bottom: 7px;
             padding-left: 20px; padding-right: 20px; background-color: #0380DB;
-            border: none;' @click='emitter.emit("mobopenchangepassprofile")' >რედაქ..</button>
+            border: none;' @click='() => {
+              emitter.emit("mobopenchangepassprofile");
+              emitter.emit("opendeskpasschange");
+            }' >რედაქ..</button>
         </div>
       </div>
             <div class="styled-div mt-2">
@@ -57,7 +66,10 @@ v<template>
             padding-top: 7px;
             padding-bottom: 7px;
             padding-left: 20px; padding-right: 20px; background-color: #0380DB;
-            border: none;' @click='emitter.emit("mobopennotification")'>რედაქ..</button>
+            border: none;' @click='() => {
+              emitter.emit("mobopennotification"); 
+              emitter.emit("opendesknotification")
+            }'>რედაქ..</button>
         </div>
       </div>
 <!-- 

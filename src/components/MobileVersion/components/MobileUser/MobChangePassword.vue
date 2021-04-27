@@ -1,7 +1,10 @@
 v<template>
   <div class="payment-modal animate__animated animate__fadeInDown">
     <button
-      @click="() => emitter.emit('mobclosechangepassprofile')"
+      @click="() => {
+        emitter.emit('mobclosechangepassprofile');
+        emitter.emit('closedeskpasschange');
+      }"
       class="close-payment-modal"
     >
       X
@@ -112,7 +115,7 @@ export default {
 
 .payment-modal {
   position: fixed;
-  z-index: 99998;
+  z-index: 999998;
   top: 0;
   left: 0;
   width: 100%;

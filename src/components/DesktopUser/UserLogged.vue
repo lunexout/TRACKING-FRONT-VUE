@@ -6,6 +6,13 @@
     class="user-nav"
   />
   <img src="./../../assets/images/userbg.jpg" class="bg-image" />
+  <Transactions v-if='isTransaction'/>
+  <Ganbajeba v-if='isGanbajeba' />
+  <Notifications v-if='isNotification' />
+  <PasswordChange v-if='isPasswordChange'/>
+  <ProfSettings v-if='isProfSettings'/>
+  <MobSettings v-if='isSettings'/>
+  <Adress v-if='isAdress'/>
   <PostDeclare v-if='isDeclare' :code="declareCode"/>
   <MobPayment v-if='isPayment'/>
   <AddBalance v-if='isBalance'/>
@@ -270,10 +277,18 @@
             <!-- POSTS -->
           </div>
         </div>
-        <div v-if="isSecondActive" class="">2</div>
-        <div v-if="isThirdActive" class="">3</div>
-        <div v-if="isFourthActive" class="">4</div>
-        <div v-if="isFifthActive" class="">5</div>
+        <div v-if="isSecondActive">
+          <Step2/>
+        </div>
+        <div v-if="isThirdActive" class="">
+          <Step3/>
+        </div>
+        <div v-if="isFourthActive" class="">
+          <Step4/>
+        </div>
+        <div v-if="isFifthActive" class="">
+          <Step5/>
+        </div>
       </div>
     </div>
     <div
@@ -428,14 +443,13 @@
         style="display: flex; margin-top: 100px; justify-content: space-between; margin-left: 20px; margin-right: 20px;"
       >
 
-        <button class='right-menu-btn'>
+        <button class='right-menu-btn' @click='emitter.emit("opendesktransactions")'>
           <img src='./../../assets/mobile/transactions.svg' 
-          style="width: 40px; height: 40px; position: absolute; margin-left: 35px; margin-top: -42px;"/>
-        ტრანსზაქციები</button>
-        <button class='right-menu-btn'>
+          style="width: 40px; height: 40px; position: absolute; margin-left: 35px; margin-top: -42px;"/> ტრანსზაქციები</button>
+        <button class='right-menu-btn' @click='emitter.emit("opendeskadress")'>
                     <img src='./../../assets/mobile/turkadress.svg' 
           style="width: 30px; height: 30px; position: absolute; margin-left: 70px; margin-top: -38px;"/>თურქეთის მისამართი</button>
-        <button class='right-menu-btn'>
+        <button class='right-menu-btn'  @click='emitter.emit("opendesksettings")'>
                     <img src='./../../assets/mobile/settings.svg' 
           style="width: 30px; height: 30px; position: absolute; margin-left: 35px; margin-top: -38px;"/>პარამეტრები</button>
       </div>
@@ -449,6 +463,22 @@ import MainPostAdd from "./MainPostAdd.vue";
 import AddBalance from './AddBalance.vue'
 import PostDeclare from './PostDeclare.vue'
 import MobPayment from './../MobileVersion/components/MobileUser/MobPayment.vue'
+
+import MobSettings from './../MobileVersion/components/MobileUser/MobParameters.vue'
+import ProfSettings from './components/ProfSettings.vue'
+import PasswordChange from './../MobileVersion/components/MobileUser/MobChangePassword.vue'
+import Notifications from './../MobileVersion/components/MobileUser/MobNotifications.vue'
+// TRANSACTIONs
+import Transactions from './components/Transactions.vue'
+import Adress from './components/Adress.vue'
+
+// STEPS
+import Step2 from './StepMenu/Step2.vue'
+import Step3 from './StepMenu/Step3.vue'
+import Step4 from './StepMenu/Step4.vue'
+import Step5 from './StepMenu/Step5.vue'
+
+import Ganbajeba from './StepMenu/Ganbajeba.vue'
 export default {
   name: "UserLogged",
   data() {
@@ -479,9 +509,34 @@ export default {
         // { code: "5145849821475821415414" },
         // { code: "5145849821475821415415" },
       ],
+
+      // TRANSACTIONS
+      isTransaction: false,
+      // ADRESS
+      isAdress: false,
+      // SETTINGS 
+      isSettings: false,
+      // PROF SETTINGS
+      isProfSettings: false,
+      //PASSWORD CHANGE
+      isPasswordChange: false,
+      // NOTIFICATIONS
+      isNotification: false,
+      // ganbajeba 
+      isGanbajeba: false,
+
     };
   },
-  components: { Navbar, MainPostAdd,PostDeclare,AddBalance,MobPayment },
+  components: { 
+    Navbar, MainPostAdd,PostDeclare,AddBalance,MobPayment,Transactions,
+    Adress, MobSettings, ProfSettings,PasswordChange, Notifications,
+    // STEPS
+    Step2,
+    Step3,
+    Step4,
+    Step5,
+    Ganbajeba,
+  },
   methods: {
     activeFirstStep() {
       this.isFirstImage = true;
@@ -582,13 +637,54 @@ export default {
     });
 
     this.emitter.on("opendeskdeclare", (code) => {
-      console.log(code);
       this.declareCode = code;
       this.isDeclare = true;
     });
     this.emitter.on("closedeskdeclare", () => {
       this.isDeclare = false;
     });
+    this.emitter.on("opendesktransactions", () => {
+      this.isTransaction = true;
+    })
+    this.emitter.on("closedesktransaction", () => {
+      this.isTransaction = false;
+    })
+        this.emitter.on("opendeskadress", () => {
+      this.isAdress = true;
+    })
+    this.emitter.on("closedeskadress", () => {
+      this.isAdress = false;
+    })
+    this.emitter.on("opendesksettings", () => {
+      this.isSettings = true;
+    })
+    this.emitter.on("closedesksettings", () => {
+      this.isSettings = false;
+    })
+        this.emitter.on("opendeskprofilesettings", () => {
+      this.isProfSettings = true;
+    })
+    this.emitter.on("closedeskprofilesettings", () => {
+      this.isProfSettings = false;
+    })
+            this.emitter.on("opendeskpasschange", () => {
+      this.isPasswordChange = true;
+    })
+    this.emitter.on("closedeskpasschange", () => {
+      this.isPasswordChange = false;
+    })
+    this.emitter.on("opendesknotification", () => {
+      this.isNotification = true;
+    })
+    this.emitter.on("closedesknotification", () => {
+      this.isNotification = false;
+    })
+        this.emitter.on("opendeskganbajeba", () => {
+      this.isGanbajeba = true;
+    })
+    this.emitter.on("closedeskganbajeba", () => {
+      this.isGanbajeba = false;
+    })
   },
 };
 </script>

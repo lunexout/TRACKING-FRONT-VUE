@@ -1,5 +1,5 @@
 <template>
-  <div class="addbalanace-modal animate__animated animate__fadeInDown">
+  <div class="addbalanace-modal ">
     <button
       @click="() => emitter.emit('closeaddbalance')"
       class="close-balance-modal"

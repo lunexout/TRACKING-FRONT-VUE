@@ -759,7 +759,7 @@ export default {
       this.isGanbajeba = false
     })
     this.emitter.on("opencomplatepost", (data) => {
-      console.log(data);
+      // console.log(data);
       this.isPostComplate = true;
       this.postComplateCode = data;
     })
