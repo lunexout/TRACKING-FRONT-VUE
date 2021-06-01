@@ -28,7 +28,7 @@
                   class="switch"
                   style="margin-top: -10px; margin-left: 20px"
                 >
-                  <input type="checkbox" v-model="checkboxs" @change="ddd" />
+                  <input type="checkbox" v-model="checkboxs" @change="setCheckBoxStatus" />
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -80,8 +80,8 @@ export default {
     };
   },
   methods: {
-    ddd() {
-      console.log(this.checkboxs);
+    setCheckBoxStatus() {
+      localStorage.setItem('checkBoxStatus', this.checkboxs)
     },
   },
   mounted() {

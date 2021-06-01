@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     handleScroll() {
-      console.log(window.scrollY);
+      // console.log(window.scrollY);
       if (window.scrollY < 400) {
         (this.bgColor = "transparent"), (this.scrollPosition = window.scrollY);
       }

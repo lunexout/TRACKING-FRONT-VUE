@@ -264,9 +264,9 @@ export default {
     this.isSpinner = true;
   },
   mounted() {
-    setTimeout(() => {
+    // setTimeout(() => {
       this.isSpinner = false;
-    }, 1500);
+    // }, 1500);
 
     this.emitter.on("openregistermodal", () => {
       this.isRegisterModalOpen = true;

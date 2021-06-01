@@ -9,31 +9,76 @@
     </div>
     <div class="down-arrow-div"></div>
   </div>
-  <input type="text" placeholder="სახელი(ქართულად)*" class="inputs" />
-  <input type="text" placeholder="გვარი(ქართულად)*" class="inputs" />
-  <input type="text" placeholder="სახელი(ლათინურად)*" class="inputs" />
-  <input type="text" placeholder="გვარი(ლათინურად)*" class="inputs" />
-  <input type="text" placeholder="დაბადების თარიღი" class="inputs" />
+    <input v-model='nameEng' type="text" placeholder="სახელი(ქართულად)*" class="inputs" />
+    <input v-model='surnameGeo' type="text" placeholder="გვარი(ქართულად)*" class="inputs" />
+    <input v-model='nameEng' type="text" placeholder="სახელი(ლათინურად)*" class="inputs" />
+    <input v-model='surnameEng' type="text" placeholder="გვარი(ლათინურად)*" class="inputs" />
+    <input v-model='birthDate' type="date" placeholder="დაბადების თარიღი" class="inputs" />
 
-  <p class="sex">სქესი*</p>
-  <input type="radio" id="male" name="gender" value="male" />
-  <label class="male-togg" for="male">მდედრობით</label>
-  <input type="radio" id="female" name="gender" value="female" />
-  <label class="famale-togg" for="female">მამრობითი</label><br />
+    <p class="sex">სქესი*</p>
+    <input v-model='sex' type="radio" id="male" name="gender" value="male" />
+    <label class="male-togg" for="male">მდედრობით</label>
+    <input v-model='sex' type="radio" id="female" name="gender" value="female" />
+    <label class="famale-togg" for="female">მამრობითი</label><br />
 
-  <input type="text" placeholder="ელ-ფოსტა*" class="inputs" />
-  <input type="text" placeholder="მობილური ტელეფონი*" class="inputs" />
-  <input type="password" placeholder="პაროლი*" class="inputs" />
-  <input type="password" placeholder="პაროლი განმეორებით" class="inputs" />
-  <input type="text" placeholder="მისამართი" class="inputs" />
-  <input type="text" placeholder="პირადი ნომერი*" class="inputs" />
-  <input type="text" placeholder="ორგანიზაციის დასახელება*" class="inputs" />
-  <input type="text" placeholder="საიდენთიფიკაციო კოდი*" class="inputs" />
+    <input v-model='email' type="email" placeholder="ელ-ფოსტა*" class="inputs" />
+    <input v-model='phone' type="text" placeholder="მობილური ტელეფონი*" class="inputs" />
+    <input v-model='password' type="password" placeholder="პაროლი*" class="inputs" />
+    <input v-model='rePassword' type="password" placeholder="პაროლი განმეორებით" class="inputs" />
+    <input v-model='adress' type="text" placeholder="მისამართი" class="inputs" />
+    <input v-model='personalNumber' type="text" placeholder="პირადი ნომერი*" class="inputs" />
+  <input  v-model='organizationName' type="text" placeholder="ორგანიზაციის დასახელება*" class="inputs" />
+  <input  v-model='identNumber' type="text" placeholder="საიდენთიფიკაციო კოდი*" class="inputs" />
 </template>
 
 <script>
 export default {
   name: "IuridiuliType",
+    data() {
+      return {
+        nameGeo: "",
+        surnameGeo:"",
+        nameEng: "",
+        surnameEng: "",
+        birthDate: new Date(),
+        email: "",
+        phone: "",
+        password: "",
+        rePassword: "",
+        adress: "",
+        personalNumber: "",
+        organizationName:"",
+        identNumber:'',
+        sex: '',
+      }
+    },
+    methods: {
+      registration(){
+        const regData = {
+          nameGeo: this.nameGeo,
+          surnameGeo: this.surnameGeo,
+          nameEng: this.nameEng,
+          surnameEng: this.surnameEng,
+          birthDate: this.birthDate,
+          email: this.email,
+          phone: this.phone,
+          password: this.password,
+          rePassword: this.rePassword,
+          adress: this.adress,
+          personalNumber: this.personalNumber,
+          organizationName: this.organizationName,
+          identNumber: this.identNumber,
+          sex: this.sex,
+          checkBoxStatus: localStorage.getItem('checkBoxStatus') == 'false' ? false : true,
+        }
+        console.log(regData);   
+      }
+    },
+    mounted(){
+      this.emitter.on('iuridiuliRegistrationRequest', () => {
+        this.registration();
+      })
+    }
 };
 </script>
 

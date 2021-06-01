@@ -26,11 +26,13 @@
                 type="text"
                 placeholder="სახელი(ქართულად)*"
                 class="input-registration mt-4"
+                v-model="nameGeo"
               />
               <input
                 type="text"
                 placeholder="სახელი(ლათინურად)*"
                 class="input-registration mt-3"
+                v-model="nameEng"
               />
 
               <p
@@ -46,8 +48,7 @@
               >
                 სქესი*
               </p>
-              <input v-model="sex"
-                @change='getSex' type="radio" id="male" name="gender" value="male"/>
+              <input v-model="sex"  type="radio" id="male" name="gender" value="male"/>
               <label
                 style="
                   font-family: arrowFONT;
@@ -61,7 +62,7 @@
                 >მდედრობით</label
               >
 
-              <input v-model="sex" @change='getSex' type="radio" id="female" name="gender" value="female" />
+              <input v-model="sex"  type="radio" id="female" name="gender" value="female" />
               <label
                 style="
                   font-family: arrowFONT;
@@ -78,16 +79,19 @@
                 type="text"
                 placeholder="ელ-ფოსტა*"
                 class="input-registration mt-3"
+                v-model="email"
               />
               <input
                 type="password"
                 placeholder="პაროლი*"
                 class="input-registration mt-3"
+                v-model="password"
               />
               <input
                 type="text"
                 placeholder="მისამართი"
                 class="input-registration mt-3"
+                v-model="adress"
               />
             </div>
             <div class="col-xl-5">
@@ -117,31 +121,37 @@
                 type="text"
                 placeholder="გვარი(ქართულად)*"
                 class="input-registration mt-4"
+                v-model="surnameGeo"
               />
               <input
                 type="text"
                 placeholder="გვარი(ლათინურად)*"
                 class="input-registration mt-3"
+                v-model="surnameEng"
               />
               <input
-                type="text"
+                type="date"
                 placeholder="დაბადების თარიღი"
                 class="input-registration mt-3"
+                v-model="birthDate"
               />
               <input
                 type="text"
                 placeholder="მობილური ტელეფონი*"
                 class="input-registration mt-3"
+                v-model="phone"
               />
               <input
                 type="password"
                 placeholder="პაროლი(განმეორებით)*"
                 class="input-registration mt-3"
+                v-model="rePassword"
               />
               <input
                 type="text"
                 placeholder="პირადი ნომერი*"
                 class="input-registration mt-3"
+                v-model="personalNumber"
               />
             </div>
             <div class="col-xl-10 text-center">
@@ -170,7 +180,7 @@
                 class="text-center registerContainer"
                 style="margin-left: -20px; margin: 0 auto"
               >
-                <button class="registreBtn">
+                <button class="registreBtn" @click="registration">
                   {{ $t("register") }}
                   <div class="register-arrow-box">
                     <img
@@ -186,18 +196,45 @@
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
     name: 'DesktopPhysical',
     data() {
       return {
+        nameGeo: "",
+        surnameGeo:"",
+        nameEng: "",
+        surnameEng: "",
+        birthDate: new Date(),
+        email: "",
+        phone: "",
+        password: "",
+        rePassword: "",
+        adress: "",
+        personalNumber: "",
         sex: '',
       }
     },
     methods: {
-      getSex() {
-        console.log(this.sex);
+      registration(){
+        const regData = {
+          nameGeo: this.nameGeo,
+          surnameGeo: this.surnameGeo,
+          nameEng: this.nameEng,
+          surnameEng: this.surnameEng,
+          birthDate: this.birthDate,
+          email: this.email,
+          phone: this.phone,
+          password: this.password,
+          rePassword: this.rePassword,
+          adress: this.adress,
+          personalNumber: this.personalNumber,
+          sex: this.sex,
+          checkBoxStatus: localStorage.getItem('checkBoxStatus') == 'false' ? false : true,
+        }
+        console.log(regData);   
       }
-    }
+    },
 
 }
 </script>

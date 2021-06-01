@@ -17,7 +17,7 @@
         <p class="non-georgian-txt">უცხოელი (არა საქართველოს მოქალაქე)</p>
 
         <label class="switch">
-          <input type="checkbox" />
+          <input type="checkbox" v-model='checkboxs' @change='setCheckBoxStatus' />
           <span class="slider round"></span>
         </label>
       </div>
@@ -34,7 +34,7 @@
         class="text-center registerContainer mt-4"
         style="margin-left: -20px; margin: 0 auto"
       >
-        <button class="registreBtn">
+        <button class="registreBtn" @click='registration'>
           {{ $t("register") }}
           <div class="register-arrow-box">
             <img
@@ -59,8 +59,17 @@ export default {
   data() {
     return {
       isPhysical: true,
+      checkboxs: false,
       // isIuridiuli: false,
     };
+  },
+  methods: {
+    setCheckBoxStatus() {
+      localStorage.setItem('checkBoxStatus', this.checkboxs)
+    },
+    registration() {
+      this.isPhysical ? this.emitter.emit("physicalRegistrationRequest") : this.emitter.emit("iuridiuliRegistrationRequest")
+    }
   },
   mounted() {
     this.emitter.on("physical", () => {
