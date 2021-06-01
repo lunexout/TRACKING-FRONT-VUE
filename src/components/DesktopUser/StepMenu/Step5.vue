@@ -12,7 +12,7 @@
     <div
       class="post-box mt-2"
       style="height: 101px; justify-content: flex-start"
-      v-for='item in 2' :key='item'
+      v-for='item in postComplate' :key='item.id'
     >
       <div>
         <img
@@ -26,27 +26,17 @@
             class="header-txt p-2"
             style="color: #1c69b2; margin-top: -20px; font-size: 29px"
           >
-            H100BF4
+            {{item.title}}
           </h1>
           <br />
-          <h1 class="header-txt p-2" style="margin-top: -45px">559623245332</h1>
+          <h1 class="header-txt p-2" style="margin-top: -45px">{{item.code}}</h1>
           <br />
-          <h1 class="header-txt p-2" style="margin-top: -45px">{{200 * item*item*2}}$</h1>
+          <h1 class="header-txt p-2" style="margin-top: -45px">{{item.price}}$</h1>
         </div>
         <div style="margin-left: 260px; margin-top: 10px">
-          <button
-            style="
-              border-radius: 40px;
-              background-color: #009ce7;
-              border: none;
-              width: 250px;
-              font-weight: bold;
-              font-family: arrowFONT;
-              color: #fff;
-              height: 41px;
-              padding: 5px;
-            "
-          >
+          <button class='detailView' @click='() => {
+              emitter.emit("complatepostdetail", item)
+            }'>
             დეტალურად ნახვა
           </button>
         </div>
@@ -58,10 +48,46 @@
 <script>
 export default {
   name: "Step5",
+  data() {
+    return {
+      postComplate: [
+        {
+          id: 1,
+          title: "HB011HT",
+          code: "23942343243423",
+          price: "1500$",
+          web: "amazon.com",
+          service: "კურიერით მომსახურება",
+          date: "11-02-2021",
+          adress: "ბათუმი, ჭავჭავაძის 135",
+        },        {
+          id: 2,
+          title: "HB011HT",
+          code: "23942343243423",
+          price: "1500$",
+          web: "aliexpress.com",
+          service: "კურიერით მომსახურება",
+          date: "11-02-2021",
+          adress: "ბათუმი, ჭავჭავაძის 135",
+        },
+      ]
+    }
+  }
 };
 </script>
 
 <style scoped>
+.detailView {
+                border-radius: 40px;
+              background-color: #009ce7;
+              border: none;
+              width: 250px;
+              font-weight: bold;
+              font-family: arrowFONT;
+              color: #fff;
+              height: 41px;
+              padding: 5px;
+}
 .header-txt {
   color: #fff;
   font-size: 20px;
