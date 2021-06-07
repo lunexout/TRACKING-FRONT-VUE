@@ -59,7 +59,7 @@
                   margin-right: 10px;
                 "
                 for="male"
-                >მდედრობით</label
+                >მამრობითი</label
               >
 
               <input v-model="sex"  type="radio" id="female" name="gender" value="female" />
@@ -72,7 +72,7 @@
                   font-weight: bold;
                 "
                 for="female"
-                >მამრობითი</label
+                >მდედრობითი</label
               ><br />
 
               <input
@@ -129,12 +129,20 @@
                 class="input-registration mt-3"
                 v-model="surnameEng"
               />
-              <input
+              <div style="display:flex;">
+                <input
                 type="date"
                 placeholder="დაბადების თარიღი"
                 class="input-registration mt-3"
+                style="max-width: 150px;"
                 v-model="birthDate"
               />
+              
+              <select name="cities" v-model="city" class="input-registration mt-3"
+                style="max-width: 150px; margin-left: 10px !important; background-color:#0396DB;">
+                <option v-for='city in cities' :key='city.id' :value="city.id">{{city.name}}</option>
+              </select>
+              </div>
               <input
                 type="text"
                 placeholder="მობილური ტელეფონი*"
@@ -196,7 +204,10 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
+import env from './../../env.json'
+import swal from 'sweetalert';
+
 export default {
     name: 'DesktopPhysical',
     data() {
@@ -213,28 +224,68 @@ export default {
         adress: "",
         personalNumber: "",
         sex: '',
+        city: 1,
+
+
+        cities:[]
       }
     },
     methods: {
       registration(){
         const regData = {
-          nameGeo: this.nameGeo,
-          surnameGeo: this.surnameGeo,
-          nameEng: this.nameEng,
-          surnameEng: this.surnameEng,
-          birthDate: this.birthDate,
+          name_ge: this.nameGeo,
+          surname_ge: this.surnameGeo,
+          name_en: this.nameEng,
+          surname_en: this.surnameEng,
+          birthday: this.birthDate,
           email: this.email,
-          phone: this.phone,
+          mobile: this.phone,
           password: this.password,
-          rePassword: this.rePassword,
-          adress: this.adress,
-          personalNumber: this.personalNumber,
+          password_confirmation: this.rePassword,
+          address: this.adress,
+          idnumber: this.personalNumber,
           sex: this.sex,
-          checkBoxStatus: localStorage.getItem('checkBoxStatus') == 'false' ? false : true,
+          city: this.city,
+          citizen: localStorage.getItem('checkBoxStatus') == 'false' ? 'არა' : 'კი',
         }
-        console.log(regData);   
+        axios.post(`${env.API_URL}/api/register`, regData).then(res => {
+            if(res.data.errors) {
+              swal({
+              title: "დაფიქსირდა შეცდომა",
+              text: `ყველა ველი საჭიროა, ველები შეავსეთ სწორად`,
+              icon: "error",
+              dangerMode: true,
+              })
+            }else {
+              swal({
+              title: "გთხოვთ შეამოწმოთ მეილი",
+              text: `${res.data.message}`,
+              icon: "success",
+              })
+
+                this.nameGeo= "",
+                this.surnameGeo="",
+                this.nameEng= "",
+                this.surnameEng= "",
+                this.birthDate= new Date(),
+                this.email= "",
+                this.phone= "",
+                this.password= "",
+                this.rePassword= "",
+                this.adress= "",
+                this.personalNumber= "",
+                this.sex= '',
+                this.city= 1
+            }
+        })
       }
     },
+    mounted(){
+      localStorage.setItem('checkBoxStatus','false')
+      axios.get(`${env.API_URL}/api/city`).then(result=>{
+        this.cities = result.data
+      })
+    }
 
 }
 </script>

@@ -322,9 +322,10 @@
               margin-left: 5px;
               font-family: arrowFONT;
               margin-top: 10px;
+              margin-left: 10px;
             "
           >
-            გიორგი ბოცვაძე
+          {{username}}
           </h5>
           <h5
             style="
@@ -483,6 +484,8 @@ export default {
   name: "UserLogged",
   data() {
     return {
+      username: localStorage.getItem('user'),
+
       isFirstImage: true,
       isSecondImage: false,
       isThirdImage: false,

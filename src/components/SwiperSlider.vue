@@ -134,7 +134,7 @@
           <FirstSlide :image="image.imageUrl" />
         </div>
         <div
-          v-if="image.id == 2 || getNavbarState == 2"
+          v-if="image.id == 2"
           class="parallax-slide-image"
           :data-swiper-parallax="parallaxAmount"
           :data-swiper-parallax-opacity="0.5"

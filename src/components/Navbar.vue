@@ -129,7 +129,7 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.getItem("UserLogged") == "true") {
+    if (localStorage.getItem("token")) {
       this.isLogged = true;
     } else {
       this.isLogged = false;

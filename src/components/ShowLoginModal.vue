@@ -16,13 +16,15 @@
           placeholder="ელ ფოსტა"
         />
         <input
-          v-model="logdata.passw"
+          v-model="logdata.password"
           ref="password"
           class="mt-4 login-inputs"
           type="password"
           placeholder="პაროლი"
         />
-
+        <div v-if='errorLogin'>
+          <p class='login-error mt-3' style="color: red; font-size; 16px;">მომხმარებლის პაროლი ან ლოგინი არასწორია</p>
+        </div>
         <div class="mt-4" s>
           <input type="radio" id="female" name="gender" value="female" />
         </div>
@@ -74,22 +76,21 @@ export default {
     return {
       logdata: {
         email: "",
-        passw: "",
+        password: "",
       },
+      errorLogin: false,
     };
   },
   methods: {
     login() {
       this.emitter.emit("onLogin", this.logdata);
     },
-    // scrollTOTOP(which) {
-    //   if (which == "login") {
-    //     window.scrollTo(0, this.$refs.login.offsetTop);
-    //   } else {
-    //     window.scrollTo(0, this.$refs.password.offsetTop);
-    //   }
-    // },
   },
+  mounted() {
+    this.emitter.on('erroOnLog', () => {
+      this.errorLogin = true;
+    })
+  }
 };
 </script>
 
@@ -121,6 +122,15 @@ export default {
   color: white;
   font-weight: bold;
   position: absolute;
+  margin-top: -28px;
+  margin-left: 25px;
+}
+.login-error {
+  font-family: arrowFONT;
+  margin-left: 5px;
+  font-size: 18px;
+  color: red;
+  font-weight: bold;
   margin-top: -28px;
   margin-left: 25px;
 }
