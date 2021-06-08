@@ -37,7 +37,8 @@ import ShowMobRegisterRules from "./components/ShowMobRegisterRules.vue";
 // logged
 
 import MobUserLogged from "./components/MobileUser/MobUserLogged.vue";
-
+import axios from 'axios'
+import env from './../../env.json'
 export default {
   name: "MobileApp",
   data() {
@@ -92,20 +93,32 @@ export default {
       this.isMobMenuOpen = true;
     });
 
-    if (localStorage.getItem("UserLogged") == "true") {
+    if (localStorage.getItem("token")) {
       this.isUserLogged = true;
     } else {
       this.isUserLogged = false;
       this.emitter.on("onLogin", (logdata) => {
-        if (logdata.email == "admin" && logdata.passw == "admin") {
-          this.isUserLogged = true;
-          localStorage.setItem("UserLogged", true);
+        const logData = {
+          email: logdata.email,
+          password: logdata.password
         }
-      });
+        console.log(logData);
+        axios.post(`${env.API_URL}/api/login`, logData).then(r => {
+          if(r.data.verified){
+            this.isUserLogged = true;
+            localStorage.setItem('token', r.data.token);
+            localStorage.setItem('user', r.data.user);
+            localStorage.setItem('id', r.data.id);
+          }else{
+            this.emitter.emit('erroOnLog')
+            this.isUserLogged = false;
+          }
+        })
+      })
     }
     this.emitter.on("onLogout", () => {
       this.isUserLogged = false;
-      localStorage.setItem("UserLogged", false);
+      localStorage.clear()
     });
   },
   created() {
