@@ -65,7 +65,7 @@
                 margin-top: 10px;
               "
             >
-              გიორგი ბოცვაძე
+              {{username}}
             </h5>
             <h5
               style="
@@ -534,6 +534,8 @@ export default {
   name: "MobUserLogged",
   data() {
     return {
+      username: localStorage.getItem('user'),
+
       isFirstImage: true,
       isSecondImage: false,
       isThirdImage: false,

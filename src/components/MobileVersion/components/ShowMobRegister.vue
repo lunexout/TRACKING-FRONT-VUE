@@ -126,6 +126,7 @@ export default {
   height: 62px;
   width: 260px;
   margin-top: -15px;
+  margin-bottom: 20px !important;
 }
 .registreBtn {
   border-radius: 70px;
@@ -149,9 +150,8 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
-  min-height: 1250px;
-  max-height: 1250px;
-
+  min-height: 1350px;
+  max-height: 1350px;
   background-color: #0396db;
 }
 .close-reg-modal {
@@ -171,6 +171,7 @@ export default {
   left: 50%;
   top: 120%;
   /* height: 200%; */
+  
   margin-top: -45px;
   min-width: 300px;
   max-width: 370px;

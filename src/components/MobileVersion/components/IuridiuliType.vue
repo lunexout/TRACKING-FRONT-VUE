@@ -13,7 +13,12 @@
     <input v-model='surnameGeo' type="text" placeholder="გვარი(ქართულად)*" class="inputs" />
     <input v-model='nameEng' type="text" placeholder="სახელი(ლათინურად)*" class="inputs" />
     <input v-model='surnameEng' type="text" placeholder="გვარი(ლათინურად)*" class="inputs" />
-    <input v-model='birthDate' type="date" placeholder="დაბადების თარიღი" class="inputs" />
+    <input v-model='birthDate' type="date" class="inputs" />
+    <select name="cities" v-model="city" class="inputs mt-3"
+      style=" background-color:#0396DB; appearance: none;">
+      <option v-for='city in cities' :key='city.id' :value="city.id">{{city.name}}</option>
+    </select>
+
 
     <p class="sex">სქესი*</p>
     <input v-model='sex' type="radio" id="male" name="gender" value="male" />
@@ -27,20 +32,33 @@
     <input v-model='rePassword' type="password" placeholder="პაროლი განმეორებით" class="inputs" />
     <input v-model='adress' type="text" placeholder="მისამართი" class="inputs" />
     <input v-model='personalNumber' type="text" placeholder="პირადი ნომერი*" class="inputs" />
-  <input  v-model='organizationName' type="text" placeholder="ორგანიზაციის დასახელება*" class="inputs" />
-  <input  v-model='identNumber' type="text" placeholder="საიდენთიფიკაციო კოდი*" class="inputs" />
+    <input  v-model='organizationName' type="text" placeholder="ორგანიზაციის დასახელება*" class="inputs" />
+    <input  v-model='identNumber' type="text" placeholder="საიდენთიფიკაციო კოდი*" class="inputs" />
+
+
+  <p v-if='isRegError' class='mt-3' style="color: red; font-size: 16px;font-family: arrowFONT;font-weight: bold; ">
+      ყველა ველი საჭიროა, ველები შეავსეთ სწორად
+  </p>
+  <p v-if='isSuccessReg' class='mt-3' style="color: green; font-size: 16px;font-family: arrowFONT;font-weight: bold; ">
+      რეგისტრაცია განხორციელდა წარმატებით, აქტივაციისთვის შეამოწმეთ მეილი.
+  </p>
 </template>
 
 <script>
+import axios from 'axios'
+import env from './../../../env.json'
 export default {
   name: "IuridiuliType",
     data() {
       return {
+        isRegError: false,
+        isSuccessReg: false,
+
         nameGeo: "",
         surnameGeo:"",
         nameEng: "",
         surnameEng: "",
-        birthDate: new Date(),
+        birthDate: '2021-01-01',
         email: "",
         phone: "",
         password: "",
@@ -48,33 +66,63 @@ export default {
         adress: "",
         personalNumber: "",
         organizationName:"",
-        identNumber:'',
+        identNumber: "",
         sex: '',
+
+        city: 1,
+        cities:[]
       }
     },
     methods: {
       registration(){
         const regData = {
-          nameGeo: this.nameGeo,
-          surnameGeo: this.surnameGeo,
-          nameEng: this.nameEng,
-          surnameEng: this.surnameEng,
-          birthDate: this.birthDate,
+          name_ge: this.nameGeo,
+          surname_ge: this.surnameGeo,
+          name_en: this.nameEng,
+          surname_en: this.surnameEng,
+          birthday: this.birthDate,
           email: this.email,
-          phone: this.phone,
+          mobile: this.phone,
           password: this.password,
-          rePassword: this.rePassword,
-          adress: this.adress,
-          personalNumber: this.personalNumber,
-          organizationName: this.organizationName,
-          identNumber: this.identNumber,
+          password_confirmation: this.rePassword,
+          address: this.adress,
+          idnumber: this.personalNumber,
           sex: this.sex,
-          checkBoxStatus: localStorage.getItem('checkBoxStatus') == 'false' ? false : true,
+          city: this.city,
+          company: this.organizationName,
+          company_id: this.identNumber,
+          citizen: localStorage.getItem('checkBoxStatus') == 'false' ? 'არა' : 'კი',
         }
-        console.log(regData);   
+        axios.post(`${env.API_URL}/api/register`, regData).then(res => {
+          if(res.data.errors) {
+              this.isRegError = true;
+            }else {
+              this.isSuccessReg = true;
+
+                this.nameGeo= "",
+                this.surnameGeo="",
+                this.nameEng= "",
+                this.surnameEng= "",
+                this.birthDate= new Date(),
+                this.email= "",
+                this.phone= "",
+                this.password= "",
+                this.rePassword= "",
+                this.adress= "",
+                this.personalNumber= "",
+                this.sex= '',
+                this.city= 1,
+                this.organizationName = "",
+                this.identNumber =  ""
+            }
+        })
       }
     },
     mounted(){
+      localStorage.setItem('checkBoxStatus','false');
+      axios.get(`${env.API_URL}/api/city`).then(result=>{
+        this.cities = result.data
+      })
       this.emitter.on('iuridiuliRegistrationRequest', () => {
         this.registration();
       })
