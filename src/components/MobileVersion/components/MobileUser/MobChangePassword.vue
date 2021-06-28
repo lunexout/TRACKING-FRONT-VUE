@@ -12,18 +12,20 @@ v<template>
     <div class="payment-menu-cont">
       <h1 class="payment-header">პაროლის შეცვლა</h1>
 
-      <p class='text-dark mt-5 input-header'>მიმდინარე პაროლი</p>
-      <input type="password" placeholder="ჩაწერეთ მიმდინარე პაროლი" class="inputs" />
+      <!-- <p class='text-dark mt-5 input-header'>მიმდინარე პაროლი</p>
+      <input type="password" placeholder="ჩაწერეთ მიმდინარე პაროლი" class="inputs" /> -->
+      <!-- <p class='text-dark mt-3 input-header'>ჩაწერეთ მაილი</p>
+      <input type="password" placeholder='ჩაწერეთ მაილი' v-model='email' class="inputs" /> -->
       <p class='text-dark mt-3 input-header'>ახალი პაროლი</p>
-      <input type="password" placeholder='ჩაწერეთ ახალი პაროლი' class="inputs" />
+      <input type="password" v-model='password' placeholder="ჩაწერეთ ახალი პაროლი" class="inputs" />
        <p class='text-dark mt-3 input-header'>გაიმეორეთ ახალი პაროლი</p>
-      <input type="password" placeholder="ჩაწერეთ ახალი პაროლი ხელახლა" class="inputs" />
+      <input type="password" v-model='repeatPassword' placeholder="ჩაწერეთ ახალი პაროლი ხელახლა" class="inputs" />
 
           <div
         class="text-center paymentContainer mt-4"
         style="margin-left: -20px; margin: 0 auto"
       >
-        <button class="paymentBtn" @click.prevent='login' @keyup.enter='login'>
+        <button class="paymentBtn" @click.prevent='resetPassword' @keyup.enter='resetPassword'>
           დამახსოვრება
           <div class="payment-arrow-box">
             <img
@@ -39,12 +41,34 @@ v<template>
 </template>
 
 <script>
+import env from './../../../../env.json'
+import axios from 'axios';
 export default {
   name: "MobChangePassword",
   data() {
-    return {};
+    return {
+      password: '',
+      repeatPassword: ''
+    };
   },
-  methods: {},
+  methods: {
+    resetPassword() {
+      const id = localStorage.getItem('id')
+      const token = localStorage.getItem('token');
+
+      const password = this.password;
+      const password_confirmation = this.repeatPassword;
+
+      if( this.password != this.repeatPassword) {
+        alert('Password dont match')
+      }else {
+        axios.put(`${env.API_URL}/api/profile/passchange/${id}`, {password, password_confirmation}, { headers:  { Authorization: `Bearer ${token}` }}).then(() => {
+          alert('Password changed successfully');
+        })
+      }
+
+    }
+  },
 };
 </script>
 
