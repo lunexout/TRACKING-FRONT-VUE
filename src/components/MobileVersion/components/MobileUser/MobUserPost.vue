@@ -6,7 +6,7 @@
         {{ code }}
       </h5>
     </div>
-
+<!-- 
     <div style='overflow-y: scroll; display: flex; padding: 10px; flex-direction: column; justify-content:center; height: 40px;'>
       <div style='margin-top: 60px;'>
         <h5 style='margin-left: 45px;'>200$</h5>
@@ -16,7 +16,7 @@
         <h5 style='margin-left: 45px; '>200$</h5>
         <h5 class='post-desc'>აუდიო აპარატურის ნაწილი</h5>
       </div>
-    </div>
+    </div> -->
 
     <div style="display: flex;" class='mt-2'>
     <div>

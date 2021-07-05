@@ -79,99 +79,40 @@
             </h1>
           </div>
         </div>
-        <template v-if='isAddProduct'>
-          <div style='display: flex;
-    position: absolute;
-    background-color: rgb(3, 150, 219);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;'>
-            <h1
-            class="declare-header"
-            style="margin-left: 20px; margin-top: 20px"
-          >
-            პროდუქტის დამატება:
-          </h1>
-          <div class="styled-div" style=' margin-top: 28px'>
-            <label class="switch" style="">
-              <input type="checkbox" />
-              <span class="slider round"></span>
-            </label>
-            <h1 class="declare-header" style="padding: 10px; font-size: 18px">
-              კოდით დამატება
-            </h1>
-          </div>
-
-          <div class="styled-div mt-2">
-            <h1 class="declare-header" style="padding: 10px; font-size: 18px">
-              $
-            </h1>
-            <input
-            v-model='productprice'
-              type="text"
-              placeholder="0"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = '0'"
-              class="input-style mt-1"
-            />
-          </div>
-          <div class="styled-div mt-2">
-            <img
-              style="width: 40px; margin-left: 8px; height: 40px"
-              src="./../../assets/conditions/p02.svg"
-            />
-            <select
-            v-model='productpart'
-              style="
-                border: none;
-                margin-left: 5px;
-                background-color: #0396db;
-                font-size: 15px;
-                font-weight: bold;
-                font-family: arrowFONT;
-                color: #fff;
-                outline: none;
-              "
-              name="product"
-              id=""
-            >
-              <option>აუდიო აპარატურის ნაწილი</option>
-              <option>აუდიო აპარატურის ნაწილი</option>
-              <option>აუდიო აპარატურის ნაწილი</option>
-              <option>აუდიო აპარატურის ნაწილი</option>
-              <option>აუდიო აპარატურის ნაწილი</option>
-            </select>
-          </div>
-
-                          <div
-            class="text-center declareContainer mt-5"
-            style="margin-left: -20px; margin: 0 auto"
-          >
-            <button
-              class="declareBtn"
-              @click.prevent="addproduct"
-              @keyup.enter="addproduct"
-            >
-              დამატება
-              <div class="declare-arrow-box">
-                <img
-                  style="width: 13px; height: 13x; margin-top: -4px"
-                  src="./../../assets/mainpage/right-arrow.svg"
-                  alt="Right arrow"
-                />
-              </div>
-            </button>
-          </div>
-          </div>
-        </template>
+        
         <div style='margin-left: 50px;'>
-          
-          <div class="styled-div mt-4">
+        <div class='styled-div mt-4' style="display: flex; justify-content: center; align-items: center;color: white;">
+          <select
+          class='input-style'
+           v-model='chooseCurrency' style="outline: none; border: none;">
+            <option value='GEL'>&#8382;</option>
+            <option value='DOLLAR'>$</option>
+            <option value='EURO'>&#8364;</option>
+          </select>
+        </div>
+
+        <div class="styled-div mt-4">
+
+            <input
+              type="number"
+              v-model='price'
+              placeholder="ფასი"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'ფასი'"
+              class="input-style"
+              style="appearance: none;"
+            />
+          </div>
+
+        <div class='styled-div mt-4' style="display: flex; justify-content: center; align-items: center;color: white;">
+          <select class='input-style'
+           v-model='chooseItem' style="outline: none; border: none;">
+            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
+            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
+            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
+          </select>
+        </div>
+          <!-- <div class="styled-div mt-4">
             <img
               src="./../../assets/mobile/amanatebi.svg"
               style="width: 40px; margin-left: 8px; height: 40px"
@@ -198,7 +139,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div
             class="styled-div mt-4"
@@ -253,10 +194,11 @@ export default {
       activeFilialService: false,
 
       isAddProduct: false,
-
+      price: 0,
       productpart: 'აუდიო აპარატურის ნაწილი',
       productprice: '',
-
+      chooseCurrency: 'GEL',
+      chooseItem: 'ვიდეო აპარატურის ნაწილი',
       products: []
     };
   },
@@ -287,6 +229,10 @@ export default {
 </script>
 
 <style scoped>
+select {
+  color: white !important;
+  background-color: #0396DB !important
+}
 .activeService {
   background: rgb(2, 0, 36) !important;
   background: linear-gradient(
@@ -327,6 +273,24 @@ export default {
   justify-content: space-between;
   border-radius: 40px;
   width: 100%;
+}
+.styled-div1 {
+  height: 51px;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px;
+  display: flex;
+  border-radius: 40px;
+  width: 50px;
+}
+.styled-div2 {
+  height: 51px;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px;
+  display: flex;
+  border-radius: 40px;
+  width: 250px;
 }
 .styled-div {
   height: 51px;

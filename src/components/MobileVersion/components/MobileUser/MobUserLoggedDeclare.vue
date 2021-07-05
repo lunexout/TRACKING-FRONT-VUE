@@ -45,7 +45,39 @@
           class="input-style"
         />
       </div>
-      <div class="styled-div mt-5" @click='emitter.emit("addproduct")' >
+
+      <div class='styled-div mt-4' style="display: flex; justify-content: center; align-items: center;color: white;">
+          <select
+          class='input-style'
+           v-model='chooseCurrency' style="outline: none; border: none;">
+            <option value='GEL'>&#8382;</option>
+            <option value='DOLLAR'>$</option>
+            <option value='EURO'>&#8364;</option>
+          </select>
+        </div>
+
+        <div class="styled-div mt-4">
+
+            <input
+              type="number"
+              v-model='price'
+              placeholder="ფასი"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'ფასი'"
+              class="input-style"
+              style="appearance: none;"
+            />
+          </div>
+
+        <div class='styled-div mt-4' style="display: flex; justify-content: center; align-items: center;color: white;">
+          <select class='input-style'
+           v-model='chooseItem' style="outline: none; border: none;">
+            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
+            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
+            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
+          </select>
+        </div>
+      <!-- <div class="styled-div mt-5" @click='emitter.emit("addproduct")' >
         <img
           src="./../../../../assets/mobile/amanatebi.svg"
           style="width: 40px; margin-left: 8px; height: 40px"
@@ -73,8 +105,8 @@
           </div>
         </div>
         
-      </div>
-      <template v-if='isAddProduct'>
+      </div> -->
+      <!-- <template v-if='isAddProduct'>
           <div style='position: absolute; background-color: #0396DB; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%;'>
             <h1 class="declare-header" style="margin-left: 20px; margin-top: 35px">
                 პროდუქტის დამატება:
@@ -144,7 +176,7 @@
                   </button>
                 </div>
           </div>
-      </template>
+      </template> -->
       <h1 class="declare-header" style="margin-left: 20px; margin-top: 35px">
         აირჩიე სერვისი:
       </h1>
@@ -217,7 +249,9 @@ export default {
 
       productpart: 'აუდიო აპარატურის ნაწილი',
       productprice: '0',
-
+      chooseCurrency: 'GEL',
+      chooseItem: 'ვიდეო აპარატურის ნაწილი',
+      price: 0,
       products: [ ]
     };
   },
@@ -251,6 +285,10 @@ export default {
 </script>
 
 <style scoped>
+select {
+  color: white !important;
+  background-color: #0396DB !important
+}
 .activeService {
   background: rgb(2, 0, 36) !important;
   background: linear-gradient(

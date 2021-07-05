@@ -6,16 +6,16 @@
     class="user-nav"
   />
   <img src="./../../assets/images/userbg.jpg" class="bg-image" />
-  <Transactions v-if='isTransaction'/>
-  <Ganbajeba v-if='isGanbajeba' />
-  <Notifications v-if='isNotification' />
-  <PasswordChange v-if='isPasswordChange'/>
-  <ProfSettings v-if='isProfSettings'/>
-  <MobSettings v-if='isSettings'/>
-  <Adress v-if='isAdress'/>
-  <PostDeclare v-if='isDeclare' :code="declareCode"/>
-  <MobPayment v-if='isPayment'/>
-  <AddBalance v-if='isBalance'/>
+  <Transactions v-if="isTransaction" />
+  <Ganbajeba v-if="isGanbajeba" />
+  <Notifications v-if="isNotification" />
+  <PasswordChange v-if="isPasswordChange" />
+  <ProfSettings v-if="isProfSettings" />
+  <MobSettings v-if="isSettings" />
+  <Adress v-if="isAdress" />
+  <PostDeclare v-if="isDeclare" :code="declareCode" />
+  <MobPayment v-if="isPayment" />
+  <AddBalance v-if="isBalance" />
   <div v-else class="container main-cont mt-3 p-0">
     <div class="first-div">
       <h5
@@ -251,13 +251,25 @@
             </h5>
 
             <!-- POSTS -->
-            <div v-if='isEmpty' style='height: 120px; border: 1px solid white; border-radius: 25px; padding: 12px;'>
+            <div
+              v-if="isEmpty"
+              style="
+                height: 120px;
+                border: 1px solid white;
+                border-radius: 25px;
+                padding: 12px;
+              "
+            >
               <div>
-                <img src='./../../assets/conditions/p03.svg' style='width: 40px; height: 40px; margin-left: 20px;'/>
+                <img
+                  src="./../../assets/conditions/p03.svg"
+                  style="width: 40px; height: 40px; margin-left: 20px"
+                />
               </div>
-              <h5 class='text-center'
+              <h5
+                class="text-center"
                 style="
-                margin-top: -32px;
+                  margin-top: -32px;
                   color: white;
                   font-family: arrowFONT;
                   font-weight: bold;
@@ -270,24 +282,24 @@
             <MainPostAdd
               v-else
               v-for="post in posts.slice().reverse()"
-              :key="post.code"
-              :code="post.code"
+              :key="post.tracking_code"
+              :code="post.tracking_code"
             />
             <div v-if="posts.length > 2" style="margin-bottom: 35px"></div>
             <!-- POSTS -->
           </div>
         </div>
         <div v-if="isSecondActive">
-          <Step2/>
+          <Step2 />
         </div>
         <div v-if="isThirdActive" class="">
-          <Step3/>
+          <Step3 />
         </div>
         <div v-if="isFourthActive" class="">
-          <Step4/>
+          <Step4 />
         </div>
         <div v-if="isFifthActive" class="">
-          <Step5/>
+          <Step5 />
         </div>
       </div>
     </div>
@@ -325,7 +337,7 @@
               margin-left: 10px;
             "
           >
-          {{username}}
+            {{ username }}
           </h5>
           <h5
             style="
@@ -375,9 +387,12 @@
           >
             0&#8382;
           </h5>
-          <div class="text-center balanceBtnContainer" @click='emitter.emit("addbalancedesk")'>
+          <div
+            class="text-center balanceBtnContainer"
+            @click="emitter.emit('addbalancedesk')"
+          >
             <button class="balanceBtn">
-            <div class="balance-svg-arrow-box">
+              <div class="balance-svg-arrow-box">
                 <img
                   style="width: 40px; height: 40px; margin-top: 5px"
                   src="./../../assets/mobile/addbalance.svg"
@@ -419,7 +434,10 @@
           >
             0&#8382;
           </h5>
-          <div class="text-center paymentBtnContainer" @click='emitter.emit("openmobpayment")'>
+          <div
+            class="text-center paymentBtnContainer"
+            @click="emitter.emit('openmobpayment')"
+          >
             <button class="paymentBtn">
               გადახდა
               <div class="payment-arrow-box">
@@ -429,7 +447,7 @@
                   alt="Right arrow"
                 />
               </div>
-                            <div class="payment-svg-arrow-box">
+              <div class="payment-svg-arrow-box">
                 <img
                   style="width: 36px; height: 36px; margin-top: 5px"
                   src="./../../assets/mobile/payment.svg"
@@ -440,19 +458,58 @@
           </div>
         </div>
       </div>
-            <div
-        style="display: flex; margin-top: 100px; justify-content: space-between; margin-left: 20px; margin-right: 20px;"
+      <div
+        style="
+          display: flex;
+          margin-top: 100px;
+          justify-content: space-between;
+          margin-left: 20px;
+          margin-right: 20px;
+        "
       >
-
-        <button class='right-menu-btn' @click='emitter.emit("opendesktransactions")'>
-          <img src='./../../assets/mobile/transactions.svg' 
-          style="width: 40px; height: 40px; position: absolute; margin-left: 35px; margin-top: -42px;"/> ტრანსზაქციები</button>
-        <button class='right-menu-btn' @click='emitter.emit("opendeskadress")'>
-                    <img src='./../../assets/mobile/turkadress.svg' 
-          style="width: 30px; height: 30px; position: absolute; margin-left: 70px; margin-top: -38px;"/>თურქეთის მისამართი</button>
-        <button class='right-menu-btn'  @click='emitter.emit("opendesksettings")'>
-                    <img src='./../../assets/mobile/settings.svg' 
-          style="width: 30px; height: 30px; position: absolute; margin-left: 35px; margin-top: -38px;"/>პარამეტრები</button>
+        <button
+          class="right-menu-btn"
+          @click="emitter.emit('opendesktransactions')"
+        >
+          <img
+            src="./../../assets/mobile/transactions.svg"
+            style="
+              width: 40px;
+              height: 40px;
+              position: absolute;
+              margin-left: 35px;
+              margin-top: -42px;
+            "
+          />
+          ტრანსზაქციები
+        </button>
+        <button class="right-menu-btn" @click="emitter.emit('opendeskadress')">
+          <img
+            src="./../../assets/mobile/turkadress.svg"
+            style="
+              width: 30px;
+              height: 30px;
+              position: absolute;
+              margin-left: 70px;
+              margin-top: -38px;
+            "
+          />თურქეთის მისამართი
+        </button>
+        <button
+          class="right-menu-btn"
+          @click="emitter.emit('opendesksettings')"
+        >
+          <img
+            src="./../../assets/mobile/settings.svg"
+            style="
+              width: 30px;
+              height: 30px;
+              position: absolute;
+              margin-left: 35px;
+              margin-top: -38px;
+            "
+          />პარამეტრები
+        </button>
       </div>
     </div>
   </div>
@@ -461,30 +518,33 @@
 <script>
 import Navbar from "./../Navbar.vue";
 import MainPostAdd from "./MainPostAdd.vue";
-import AddBalance from './AddBalance.vue'
-import PostDeclare from './PostDeclare.vue'
-import MobPayment from './../MobileVersion/components/MobileUser/MobPayment.vue'
+import AddBalance from "./AddBalance.vue";
+import PostDeclare from "./PostDeclare.vue";
+import MobPayment from "./../MobileVersion/components/MobileUser/MobPayment.vue";
 
-import MobSettings from './../MobileVersion/components/MobileUser/MobParameters.vue'
-import ProfSettings from './components/ProfSettings.vue'
-import PasswordChange from './../MobileVersion/components/MobileUser/MobChangePassword.vue'
-import Notifications from './../MobileVersion/components/MobileUser/MobNotifications.vue'
+import MobSettings from "./../MobileVersion/components/MobileUser/MobParameters.vue";
+import ProfSettings from "./components/ProfSettings.vue";
+import PasswordChange from "./../MobileVersion/components/MobileUser/MobChangePassword.vue";
+import Notifications from "./../MobileVersion/components/MobileUser/MobNotifications.vue";
 // TRANSACTIONs
-import Transactions from './components/Transactions.vue'
-import Adress from './components/Adress.vue'
+import Transactions from "./components/Transactions.vue";
+import Adress from "./components/Adress.vue";
 
 // STEPS
-import Step2 from './StepMenu/Step2.vue'
-import Step3 from './StepMenu/Step3.vue'
-import Step4 from './StepMenu/Step4.vue'
-import Step5 from './StepMenu/Step5.vue'
+import Step2 from "./StepMenu/Step2.vue";
+import Step3 from "./StepMenu/Step3.vue";
+import Step4 from "./StepMenu/Step4.vue";
+import Step5 from "./StepMenu/Step5.vue";
 
-import Ganbajeba from './StepMenu/Ganbajeba.vue'
+import Ganbajeba from "./StepMenu/Ganbajeba.vue";
+import axios from "axios";
+import env from "./../../env.json";
+import swal from "sweetalert";
 export default {
   name: "UserLogged",
   data() {
     return {
-      username: localStorage.getItem('user'),
+      username: localStorage.getItem("user"),
 
       isFirstImage: true,
       isSecondImage: false,
@@ -504,7 +564,7 @@ export default {
       isBalance: false,
       // POSTS
       isDeclare: false,
-      declareCode: '',
+      declareCode: "",
       code: "",
       isEmpty: false,
 
@@ -517,7 +577,7 @@ export default {
       isTransaction: false,
       // ADRESS
       isAdress: false,
-      // SETTINGS 
+      // SETTINGS
       isSettings: false,
       // PROF SETTINGS
       isProfSettings: false,
@@ -525,14 +585,22 @@ export default {
       isPasswordChange: false,
       // NOTIFICATIONS
       isNotification: false,
-      // ganbajeba 
+      // ganbajeba
       isGanbajeba: false,
-
     };
   },
-  components: { 
-    Navbar, MainPostAdd,PostDeclare,AddBalance,MobPayment,Transactions,
-    Adress, MobSettings, ProfSettings,PasswordChange, Notifications,
+  components: {
+    Navbar,
+    MainPostAdd,
+    PostDeclare,
+    AddBalance,
+    MobPayment,
+    Transactions,
+    Adress,
+    MobSettings,
+    ProfSettings,
+    PasswordChange,
+    Notifications,
     // STEPS
     Step2,
     Step3,
@@ -605,9 +673,35 @@ export default {
     },
     addPost() {
       if (this.code.length >= 8) {
-        this.posts.push({
-          code: this.code,
-        });
+        const token = localStorage.getItem("token");
+        const id = localStorage.getItem("id");
+        const trackingCode = this.code;
+        axios
+          .post(
+            `${env.API_URL}/api/profile/newtrackingcode`,
+            { tracking_code: trackingCode },
+            { headers: { Authorization: `Bearer ${token}` } }
+          )
+          .then((result) => {
+            if (result.data.message == "თრექინგის კოდი დაემატა წარმატებით") {
+              axios
+                .post(
+                  `${env.API_URL}/api/myparcels`,
+                  { id: id },
+                  { headers: { Authorization: `Bearer ${token}` } }
+                )
+                .then((result) => {
+                  this.posts = result.data;
+                  this.isEmpty = false;
+                });
+              swal({
+                title: "თრექინგ კოდი",
+                text: `თრექინგის კოდი დაემატა წარმატებით`,
+                icon: "success",
+                dangerMode: false,
+              });
+            }
+          });
         if (this.isEmpty == true) this.isEmpty = false;
         this.code = "";
       } else {
@@ -617,6 +711,22 @@ export default {
     },
   },
   mounted() {
+    const token = localStorage.getItem("token");
+    const id = localStorage.getItem("id");
+    axios
+      .post(
+        `${env.API_URL}/api/myparcels`,
+        { id: id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((result) => {
+        if (result.data) {
+          this.isEmpty = false;
+          this.posts = result.data;
+        } else {
+          this.isEmpty = true;
+        }
+      });
     this.emitter.on("deletePost", (code) => {
       const index = this.posts.findIndex((x) => x.code == code);
       if (index > -1) {
@@ -627,12 +737,12 @@ export default {
     if (this.posts.length <= 0) this.isEmpty = true;
 
     this.emitter.on("addbalancedesk", () => {
-      this.isBalance = true
-    })
+      this.isBalance = true;
+    });
     this.emitter.on("closeaddbalance", () => {
-      this.isBalance = false
-    })
-        this.emitter.on("openmobpayment", () => {
+      this.isBalance = false;
+    });
+    this.emitter.on("openmobpayment", () => {
       this.isPayment = true;
     });
     this.emitter.on("closemobpayment", () => {
@@ -648,56 +758,59 @@ export default {
     });
     this.emitter.on("opendesktransactions", () => {
       this.isTransaction = true;
-    })
+    });
     this.emitter.on("closedesktransaction", () => {
       this.isTransaction = false;
-    })
-        this.emitter.on("opendeskadress", () => {
+    });
+    this.emitter.on("opendeskadress", () => {
       this.isAdress = true;
-    })
+    });
     this.emitter.on("closedeskadress", () => {
       this.isAdress = false;
-    })
+    });
     this.emitter.on("opendesksettings", () => {
       this.isSettings = true;
-    })
+    });
     this.emitter.on("closedesksettings", () => {
       this.isSettings = false;
-    })
-        this.emitter.on("opendeskprofilesettings", () => {
+    });
+    this.emitter.on("opendeskprofilesettings", () => {
       this.isProfSettings = true;
-    })
+    });
     this.emitter.on("closedeskprofilesettings", () => {
       this.isProfSettings = false;
-    })
-            this.emitter.on("opendeskpasschange", () => {
+    });
+    this.emitter.on("opendeskpasschange", () => {
       this.isPasswordChange = true;
-    })
+    });
     this.emitter.on("closedeskpasschange", () => {
       this.isPasswordChange = false;
-    })
+    });
     this.emitter.on("opendesknotification", () => {
       this.isNotification = true;
-    })
+    });
     this.emitter.on("closedesknotification", () => {
       this.isNotification = false;
-    })
-        this.emitter.on("opendeskganbajeba", () => {
+    });
+    this.emitter.on("opendeskganbajeba", () => {
       this.isGanbajeba = true;
-    })
+    });
     this.emitter.on("closedeskganbajeba", () => {
       this.isGanbajeba = false;
-    })
+    });
   },
 };
 </script>
 
 <style scoped>
-
 .right-menu-btn {
-  border: 1px solid white; background-color: transparent;
-  padding: 7px; font-family: arrowFONT; font-weight: bold;
-  color: #fff;border-radius: 40px;
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 7px;
+  font-family: arrowFONT;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 40px;
 }
 ::placeholder {
   font-size: 14px;
@@ -913,7 +1026,7 @@ export default {
   margin-top: -27px;
 }
 .payment-svg-arrow-box {
-    width: 27px;
+  width: 27px;
   height: 27px;
   border-radius: 25px;
   position: absolute;

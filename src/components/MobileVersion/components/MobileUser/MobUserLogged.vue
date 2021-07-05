@@ -1,18 +1,18 @@
 <template>
-  <Navbar :color='`#082139`'/>
-  
-  <MobMenu v-if='isMobMenu'/>
-  <MobTransactions v-if='isTransactions'/>
-  <MobTurkeyAdress v-if='isTurkeyAdress'/>
-  <MobParameters v-if='isParameters'/>
-  <MobChangePassword v-if='isChangePassProfile'/>
-  <MobProfParameters v-if='isParamProfile' />
-  <MobNotification  v-if='isNotification'/>
+  <Navbar :color="`#082139`" />
+
+  <MobMenu v-if="isMobMenu" />
+  <MobTransactions v-if="isTransactions" />
+  <MobTurkeyAdress v-if="isTurkeyAdress" />
+  <MobParameters v-if="isParameters" />
+  <MobChangePassword v-if="isChangePassProfile" />
+  <MobProfParameters v-if="isParamProfile" />
+  <MobNotification v-if="isNotification" />
   <MobPayment v-if="isPayment" />
   <MobUserLoggedDeclare :code="declare_code" v-if="isDeclare" />
   <MobAddBalance v-if="isAddBalanace" />
-  <MobGanbajeba :code="ganbajeba_code" v-if='isGanbajeba'/>
-  <MobPostComplate :data='postComplateCode' v-if='isPostComplate' />
+  <MobGanbajeba :code="ganbajeba_code" v-if="isGanbajeba" />
+  <MobPostComplate :data="postComplateCode" v-if="isPostComplate" />
   <template v-else>
     <div>
       <img
@@ -65,7 +65,7 @@
                 margin-top: 10px;
               "
             >
-              {{username}}
+              {{ username }}
             </h5>
             <h5
               style="
@@ -169,12 +169,25 @@
     </div>
 
     <div class="mob-three-btn-cont">
-      <button class="mob-transaction-button" @click='emitter.emit("openmobtransactions")'>ტრანზაქციები</button>
-      <button class="mob-transaction-button" @click='emitter.emit("openmobturkadress")'
-       style="margin: 0 5px">
+      <button
+        class="mob-transaction-button"
+        @click="emitter.emit('openmobtransactions')"
+      >
+        ტრანზაქციები
+      </button>
+      <button
+        class="mob-transaction-button"
+        @click="emitter.emit('openmobturkadress')"
+        style="margin: 0 5px"
+      >
         თურქეთის მისამართი
       </button>
-      <button class="mob-transaction-button" @click='emitter.emit("openmobparameters")' >პარამეტრები</button>
+      <button
+        class="mob-transaction-button"
+        @click="emitter.emit('openmobparameters')"
+      >
+        პარამეტრები
+      </button>
     </div>
 
     <img
@@ -203,232 +216,198 @@
         height: 460px;
       "
     >
-      <div v-if='!isMobQuestions && !isMobRaces'>
-        <div style="display: flex; justify-content: center; padding: 10px" >
-        <img
-          src="./../../../../assets/mobile/amanatebi.svg"
-          style="width: 30px; height: 30px"
-        />
-        <h5
-          class="text-white text-center"
-          style="
-            font-family: arrowFONT;
-            font-weight: bold;
-            padding-left: 5px;
-            padding-top: 3px;
-          "
-        >
-          ამანათები
-        </h5>
-        </div>
-      <div class="p-2 main-step-div">
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isFirstActive }"
-          @click="activeFirstStep"
-        >
+      <div v-if="!isMobQuestions && !isMobRaces">
+        <div style="display: flex; justify-content: center; padding: 10px">
           <img
-            v-if="isFirstImage"
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/01step.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/011step.svg"
-            alt="Step div Icons"
-          />
-
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isFirstActive }"
-          >
-            მისაღები<br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isFirstActive }"
-            >
-              {{ posts.length }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isSecondActive }"
-          @click="activeSecondStep"
-        >
-          <img
-            v-if="isSecondImage"
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/02step.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/022step.svg"
-            alt="Step div Icons"
+            src="./../../../../assets/mobile/amanatebi.svg"
+            style="width: 30px; height: 30px"
           />
           <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isSecondActive }"
-          >
-            თურქეთის<br />
-            საწყობი
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isSecondActive }"
-            >
-              {{ 0 }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isThirdActive }"
-          @click="activeThirdStep"
-        >
-          <img
-            v-if="isThirdImage"
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/03step.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/033step.svg"
-            alt="Step div Icons"
-          />
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isThirdActive }"
-          >
-            გამოგზ..<br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isThirdActive }"
-            >
-              {{ 0 }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isFourthActive }"
-          @click="activeFourthStep"
-        >
-          <img
-            v-if="isFourthImage"
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/04step.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/044step.svg"
-            alt="Step div Icons"
-          />
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isFourthActive }"
-          >
-            ჩამოსული<br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isFourthActive }"
-            >
-              {{ 0 }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="step-divs text-center"
-          :class="{ 'step-divs-active': isFifthActive }"
-          @click="activeFifthStep"
-        >
-          <img
-            v-if="isFifthImage"
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/055step.svg"
-            alt="Step div Icons"
-          />
-          <img
-            v-else
-            class="step-div-image"
-            src="./../../../../assets/mobile/hovericons/05step.svg"
-            alt="Step div Icons"
-          />
-          <h5
-            class="step-div-text"
-            :class="{ 'step-div-text-active': isFifthActive }"
-          >
-            მიღებული <br />
-            ამანათები
-          </h5>
-          <div style="margin: 0 auto; width: 20%">
-            <div
-              class="step-counter"
-              :class="{ 'step-counter-active': isFifthActive }"
-            >
-              {{ 0 }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="scrolling-div">
-        <div v-if="isFirstActive" class="mt-2 p-3">
-          <h5
+            class="text-white text-center"
             style="
-              color: white;
               font-family: arrowFONT;
               font-weight: bold;
-              font-size: 16px;
+              padding-left: 5px;
+              padding-top: 3px;
             "
           >
-            ამანათის დამატება
+            ამანათები
           </h5>
-          <div style="display: flex">
-            <input
-              v-model="code"
-              type="text"
-              placeholder="შეიყვანეთ თრექინგ კოდი"
-              style="
-                border: 1px solid #1F9EE5; border-radius: 40px; font-family: arrowFONT; outline: none;
-                padding 15px; color: #fff;height: 40px;
-                  background-color: transparent; width: 250px; text-align: center;
-                "
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'შეიყვანეთ თრექინგ კოდი'"
+        </div>
+        <div class="p-2 main-step-div">
+          <div
+            class="step-divs text-center"
+            :class="{ 'step-divs-active': isFirstActive }"
+            @click="activeFirstStep"
+          >
+            <img
+              v-if="isFirstImage"
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/01step.svg"
+              alt="Step div Icons"
             />
-            <div class="text-center addContainer" style="margin-left: 20px">
-              <button
-                class="addBtn"
-                @click.prevent="addPost"
-                @keyup.enter="addPost"
+            <img
+              v-else
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/011step.svg"
+              alt="Step div Icons"
+            />
+
+            <h5
+              class="step-div-text"
+              :class="{ 'step-div-text-active': isFirstActive }"
+            >
+              მისაღები<br />
+              ამანათები
+            </h5>
+            <div style="margin: 0 auto; width: 20%">
+              <div
+                class="step-counter"
+                :class="{ 'step-counter-active': isFirstActive }"
               >
-                დამატება
-              </button>
+                {{ posts.length }}
+              </div>
             </div>
           </div>
-          <div class="mt-5">
+
+          <div
+            class="step-divs text-center"
+            :class="{ 'step-divs-active': isSecondActive }"
+            @click="activeSecondStep"
+          >
+            <img
+              v-if="isSecondImage"
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/02step.svg"
+              alt="Step div Icons"
+            />
+            <img
+              v-else
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/022step.svg"
+              alt="Step div Icons"
+            />
+            <h5
+              class="step-div-text"
+              :class="{ 'step-div-text-active': isSecondActive }"
+            >
+              თურქეთის<br />
+              საწყობი
+            </h5>
+            <div style="margin: 0 auto; width: 20%">
+              <div
+                class="step-counter"
+                :class="{ 'step-counter-active': isSecondActive }"
+              >
+                {{ 0 }}
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="step-divs text-center"
+            :class="{ 'step-divs-active': isThirdActive }"
+            @click="activeThirdStep"
+          >
+            <img
+              v-if="isThirdImage"
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/03step.svg"
+              alt="Step div Icons"
+            />
+            <img
+              v-else
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/033step.svg"
+              alt="Step div Icons"
+            />
+            <h5
+              class="step-div-text"
+              :class="{ 'step-div-text-active': isThirdActive }"
+            >
+              გამოგზ..<br />
+              ამანათები
+            </h5>
+            <div style="margin: 0 auto; width: 20%">
+              <div
+                class="step-counter"
+                :class="{ 'step-counter-active': isThirdActive }"
+              >
+                {{ 0 }}
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="step-divs text-center"
+            :class="{ 'step-divs-active': isFourthActive }"
+            @click="activeFourthStep"
+          >
+            <img
+              v-if="isFourthImage"
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/04step.svg"
+              alt="Step div Icons"
+            />
+            <img
+              v-else
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/044step.svg"
+              alt="Step div Icons"
+            />
+            <h5
+              class="step-div-text"
+              :class="{ 'step-div-text-active': isFourthActive }"
+            >
+              ჩამოსული<br />
+              ამანათები
+            </h5>
+            <div style="margin: 0 auto; width: 20%">
+              <div
+                class="step-counter"
+                :class="{ 'step-counter-active': isFourthActive }"
+              >
+                {{ 0 }}
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="step-divs text-center"
+            :class="{ 'step-divs-active': isFifthActive }"
+            @click="activeFifthStep"
+          >
+            <img
+              v-if="isFifthImage"
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/055step.svg"
+              alt="Step div Icons"
+            />
+            <img
+              v-else
+              class="step-div-image"
+              src="./../../../../assets/mobile/hovericons/05step.svg"
+              alt="Step div Icons"
+            />
+            <h5
+              class="step-div-text"
+              :class="{ 'step-div-text-active': isFifthActive }"
+            >
+              მიღებული <br />
+              ამანათები
+            </h5>
+            <div style="margin: 0 auto; width: 20%">
+              <div
+                class="step-counter"
+                :class="{ 'step-counter-active': isFifthActive }"
+              >
+                {{ 0 }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scrolling-div">
+          <div v-if="isFirstActive" class="mt-2 p-3">
             <h5
               style="
                 color: white;
@@ -437,66 +416,100 @@
                 font-size: 16px;
               "
             >
-              მისაღები ამანათები
+              ამანათის დამატება
             </h5>
-
-            <!-- POSTS -->
-            <div
-              v-if="isEmpty"
-              style="
-                height: 130px;
-                border: 1px solid white;
-                border-radius: 10px;
-                background-color: transparent;
-                display: flex;
-                padding: 10px;
-              "
-            >
-              <img
-                src="./../../../../assets/mobile/amanatebi.svg"
-                style="width: 40px; height: 40px"
+            <div style="display: flex">
+              <input
+                v-model="code"
+                type="text"
+                placeholder="შეიყვანეთ თრექინგ კოდი"
+                style="
+                border: 1px solid #1F9EE5; border-radius: 40px; font-family: arrowFONT; outline: none;
+                padding 15px; color: #fff;height: 40px;
+                  background-color: transparent; width: 250px; text-align: center;
+                "
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'შეიყვანეთ თრექინგ კოდი'"
               />
+              <div class="text-center addContainer" style="margin-left: 20px">
+                <button
+                  class="addBtn"
+                  @click.prevent="addPost"
+                  @keyup.enter="addPost"
+                >
+                  დამატება
+                </button>
+              </div>
+            </div>
+            <div class="mt-5">
               <h5
                 style="
-                  color: red;
+                  color: white;
                   font-family: arrowFONT;
                   font-weight: bold;
                   font-size: 16px;
-                  margin-left: 7px;
-                  color: #fff;
                 "
               >
-                თქვენ არ გაქვთ მისაღები ამანათები
+                მისაღები ამანათები
               </h5>
+
+              <!-- POSTS -->
+              <div
+                v-if="isEmpty"
+                style="
+                  height: 130px;
+                  border: 1px solid white;
+                  border-radius: 10px;
+                  background-color: transparent;
+                  display: flex;
+                  padding: 10px;
+                "
+              >
+                <img
+                  src="./../../../../assets/mobile/amanatebi.svg"
+                  style="width: 40px; height: 40px"
+                />
+                <h5
+                  style="
+                    color: red;
+                    font-family: arrowFONT;
+                    font-weight: bold;
+                    font-size: 16px;
+                    margin-left: 7px;
+                    color: #fff;
+                  "
+                >
+                  თქვენ არ გაქვთ მისაღები ამანათები
+                </h5>
+              </div>
+              <MobUserPost
+                v-else
+                v-for="post in posts.slice().reverse()"
+                :key="post.tracking_code"
+                :code="post.tracking_code"
+              />
+              <div v-if="posts.length > 1" style="margin-bottom: 25px"></div>
+              <!-- POSTS -->
             </div>
-            <MobUserPost
-              v-else
-              v-for="post in posts.slice().reverse()"
-              :key="post.code"
-              :code="post.code"
-            />
-            <div v-if="posts.length > 1" style="margin-bottom: 25px"></div>
-            <!-- POSTS -->
+          </div>
+
+          <div v-if="isSecondActive">
+            <Step2 />
+          </div>
+          <div v-if="isThirdActive">
+            <Step3 />
+          </div>
+          <div v-if="isFourthActive">
+            <Step4 />
+          </div>
+          <div v-if="isFifthActive">
+            <Step5 />
           </div>
         </div>
-
-        <div v-if="isSecondActive">
-          <Step2/>
-        </div>
-        <div v-if="isThirdActive" >
-          <Step3/>
-        </div>
-        <div v-if="isFourthActive">
-          <Step4/>
-        </div>
-        <div v-if="isFifthActive" >
-          <Step5/>
-        </div>
-      </div>
       </div>
 
-      <MobQuestions v-if='isMobQuestions' />
-      <MobRaces v-if='isMobRaces'/>
+      <MobQuestions v-if="isMobQuestions" />
+      <MobRaces v-if="isMobRaces" />
     </div>
   </template>
 </template>
@@ -507,34 +520,37 @@ import MobUserPost from "./MobUserPost.vue";
 import MobAddBalance from "./MobAddBalance.vue";
 import MobUserLoggedDeclare from "./MobUserLoggedDeclare.vue";
 import MobPayment from "./MobPayment.vue";
-import MobTransactions from './MobTransactions.vue'
-import MobTurkeyAdress from './MobTurkeyAdress.vue'
-import MobParameters from './MobParameters.vue'
-import MobProfParameters from './MobProfParameters.vue'
-import MobChangePassword from './MobChangePassword.vue'
-import MobNotification from './MobNotifications.vue'
-import MobQuestions from './StepMenu/MobQuestions.vue'
-import MobRaces from './StepMenu/MobRaces.vue'
+import MobTransactions from "./MobTransactions.vue";
+import MobTurkeyAdress from "./MobTurkeyAdress.vue";
+import MobParameters from "./MobParameters.vue";
+import MobProfParameters from "./MobProfParameters.vue";
+import MobChangePassword from "./MobChangePassword.vue";
+import MobNotification from "./MobNotifications.vue";
+import MobQuestions from "./StepMenu/MobQuestions.vue";
+import MobRaces from "./StepMenu/MobRaces.vue";
 
 // MENU
-import MobMenu from './MobMenu.vue'
+import MobMenu from "./MobMenu.vue";
 
 // STEPS
 
-import Step2 from './StepMenu/Step2.vue'
-import Step3 from './StepMenu/Step3.vue'
-import Step4 from './StepMenu/Step4.vue'
-import Step5 from './StepMenu/Step5.vue'
+import Step2 from "./StepMenu/Step2.vue";
+import Step3 from "./StepMenu/Step3.vue";
+import Step4 from "./StepMenu/Step4.vue";
+import Step5 from "./StepMenu/Step5.vue";
 
 // POST COMPLATE 5 STEP
-import MobPostComplate from './StepMenu/MobPostComplate.vue'
+import MobPostComplate from "./StepMenu/MobPostComplate.vue";
 
-import MobGanbajeba from './StepMenu/MobGanbajeba.vue'
+import MobGanbajeba from "./StepMenu/MobGanbajeba.vue";
+import swal from "sweetalert";
+import axios from "axios";
+import env from "./../../../../env.json";
 export default {
   name: "MobUserLogged",
   data() {
     return {
-      username: localStorage.getItem('user'),
+      username: localStorage.getItem("user"),
 
       isFirstImage: true,
       isSecondImage: false,
@@ -549,14 +565,14 @@ export default {
       isFifthActive: false,
       // GANBAJEBA
       isGanbajeba: false,
-      ganbajeba_code: '',
+      ganbajeba_code: "",
       // NOTIFICATION
       isNotification: false,
       // CHANGE-PASSWORD
       isChangePassProfile: false,
       // PARAMETERS
       isParameters: false,
-      // prof params 
+      // prof params
       isParamProfile: false,
       // ADRESS
       isTurkeyAdress: false,
@@ -579,7 +595,7 @@ export default {
 
       // COMPLATE POSTS
       isPostComplate: false,
-      postComplateCode: '',
+      postComplateCode: "",
 
       // MobMenu
       isMobMenu: false,
@@ -609,7 +625,6 @@ export default {
     Step3,
     Step4,
     Step5,
-    
   },
   methods: {
     activeFirstStep() {
@@ -676,9 +691,36 @@ export default {
     },
     addPost() {
       if (this.code.length >= 8) {
-        this.posts.push({
-          code: this.code,
-        });
+        const token = localStorage.getItem("token");
+        const id = localStorage.getItem("id");
+
+        const trackingCode = this.code;
+        axios
+          .post(
+            `${env.API_URL}/api/profile/newtrackingcode`,
+            { tracking_code: trackingCode },
+            { headers: { Authorization: `Bearer ${token}` } }
+          )
+          .then((result) => {
+            if (result.data.message == "თრექინგის კოდი დაემატა წარმატებით") {
+              axios
+                .post(
+                  `${env.API_URL}/api/myparcels`,
+                  { id: id },
+                  { headers: { Authorization: `Bearer ${token}` } }
+                )
+                .then((result) => {
+                  this.posts = result.data;
+                  this.isEmpty = false;
+                });
+              swal({
+                title: "თრექინგ კოდი",
+                text: `თრექინგის კოდი დაემატა წარმატებით`,
+                icon: "success",
+                dangerMode: false,
+              });
+            }
+          });
         if (this.isEmpty == true) this.isEmpty = false;
         this.code = "";
       } else {
@@ -688,6 +730,22 @@ export default {
     },
   },
   mounted() {
+    const token = localStorage.getItem("token");
+    const id = localStorage.getItem("id");
+    axios
+      .post(
+        `${env.API_URL}/api/myparcels`,
+        { id: id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((result) => {
+        if (result.data) {
+          this.isEmpty = false;
+          this.posts = result.data;
+        } else {
+          this.isEmpty = true;
+        }
+      });
     this.emitter.on("closemobdeclare", () => {
       this.isDeclare = false;
     });
@@ -720,73 +778,73 @@ export default {
     });
     this.emitter.on("openmobtransactions", () => {
       this.isTransactions = true;
-    })
+    });
     this.emitter.on("closemobtransactions", () => {
       this.isTransactions = false;
-    })
+    });
     this.emitter.on("openmobturkadress", () => {
-      this.isTurkeyAdress = true
-    })
+      this.isTurkeyAdress = true;
+    });
     this.emitter.on("closemobturkadress", () => {
-      this.isTurkeyAdress = false
-    })
+      this.isTurkeyAdress = false;
+    });
     this.emitter.on("openmobparameters", () => {
-      this.isParameters = true
-    })
+      this.isParameters = true;
+    });
     this.emitter.on("closemobparameters", () => {
-      this.isParameters = false
-    }) 
+      this.isParameters = false;
+    });
     this.emitter.on("mobopenparamprofile", () => {
-      this.isParamProfile = true
-    })
+      this.isParamProfile = true;
+    });
     this.emitter.on("mobcloseparamprofile", () => {
-      this.isParamProfile = false
-    })
+      this.isParamProfile = false;
+    });
     this.emitter.on("mobopenchangepassprofile", () => {
-      this.isChangePassProfile = true
-    })
+      this.isChangePassProfile = true;
+    });
     this.emitter.on("mobclosechangepassprofile", () => {
-      this.isChangePassProfile = false
-    })
+      this.isChangePassProfile = false;
+    });
     this.emitter.on("mobopennotification", () => {
-      this.isNotification = true
-    })
+      this.isNotification = true;
+    });
     this.emitter.on("mobclosenotification", () => {
-      this.isNotification = false
-    })
+      this.isNotification = false;
+    });
     this.emitter.on("openmobganbajeba", () => {
-      this.isGanbajeba = true
-    })
+      this.isGanbajeba = true;
+    });
     this.emitter.on("closemobganbajeba", () => {
-      this.isGanbajeba = false
-    })
+      this.isGanbajeba = false;
+    });
     this.emitter.on("opencomplatepost", (data) => {
       // console.log(data);
       this.isPostComplate = true;
       this.postComplateCode = data;
-    })
+    });
     this.emitter.on("closecomplatepost", () => {
       this.isPostComplate = false;
-      this.postComplateCode = '';
-    })
+      this.postComplateCode = "";
+    });
     this.emitter.on("closemobmenu", () => {
       this.isMobMenu = false;
-    })
+    });
     this.emitter.on("openloggedusermenu", () => {
       this.isMobMenu = true;
-    })
+    });
     this.emitter.on("opendashboard", () => {
       this.isMobQuestions = false;
       this.isMobRaces = false;
-    })
+    });
     this.emitter.on("openmobquestions", () => {
       this.isMobQuestions = true;
       this.isMobRaces = false;
-    })
+    });
     this.emitter.on("openmobraces", () => {
       this.isMobRaces = true;
       this.isMobQuestions = false;
-    })
+    });
   },
 };
 </script>
