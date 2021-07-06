@@ -118,7 +118,8 @@ export default {
     }
     this.emitter.on("onLogout", () => {
       this.isUserLogged = false;
-      localStorage.clear()
+      localStorage.clear();
+      window.location.reload();
     });
   },
   created() {

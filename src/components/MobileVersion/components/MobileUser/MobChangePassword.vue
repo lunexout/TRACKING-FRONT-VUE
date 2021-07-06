@@ -43,6 +43,7 @@ v<template>
 <script>
 import env from './../../../../env.json'
 import axios from 'axios';
+import swal from 'sweetalert';
 export default {
   name: "MobChangePassword",
   data() {
@@ -62,8 +63,17 @@ export default {
       if( this.password != this.repeatPassword) {
         alert('Password dont match')
       }else {
-        axios.put(`${env.API_URL}/api/profile/passchange/${id}`, {password, password_confirmation}, { headers:  { Authorization: `Bearer ${token}` }}).then(() => {
-          alert('Password changed successfully');
+        this.emitter.emit('mobclosechangepassprofile');
+        this.emitter.emit('closedeskpasschange');
+        this.emitter.emit('closemobparameters');
+        this.emitter.emit('closedesksettings');
+        axios.put(`${env.API_URL}/api/profile/passchange/${id}`, {password, password_confirmation}, { headers:  { Authorization: `Bearer ${token}` }}).then((result) => {
+          swal({
+                title: `პაროლის ცვლილება`,
+                text: `${result.data.message}`,
+                icon: "success",
+                dangerMode: false,
+              });
         })
       }
 

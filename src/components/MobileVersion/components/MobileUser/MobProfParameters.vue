@@ -13,13 +13,13 @@ v<template>
       <h1 class="payment-header" style='font-size: 25px;'>პროფილი</h1>
       
       
-      <p class="text-dark mt-3 input-header">ფოტოს შეცვლა</p>
+      <!-- <p class="text-dark mt-3 input-header">ფოტოს შეცვლა</p>
 
           <input
             type="file"
             class="inputs custom-file-input"
             accept="image/png, image/jpeg"
-          />
+          /> -->
           <p class="text-dark mt-4 input-header">სახელი(ქართულად)</p>
           <input type="text" v-model="name_ge" class="inputs" />
           <p class="text-dark mt-4 input-header">გვარი(ქართულად)</p>
@@ -160,6 +160,7 @@ v<template>
 <script>
 import axios from 'axios';
 import env from './../../../../env.json'
+import swal from 'sweetalert';
 export default {
   name: "MobTransactions",
     data() {
@@ -232,27 +233,41 @@ export default {
   },
   methods: { 
       save() {
-      //   const UserInformation = {
-      //     citizen: this.citizen,
-      //     name_ge: this.name_ge,
-      //     name_en: this.name_en,
-      //     surname_ge: this.surname_ge,
-      //     surname_en: this.surname_en,
-      //     email: this.email,
-      //     mobile: this.mobile,
-      //     birthday: this.birthDate,
-      //     idnumber: this.idNumber,
-      //     sex: this.sex,
-      //     address: this.adress,
-      //     city: this.city,
-      //   }
-      //   axios
-      //   .post(
-      //   `${env.API_URL}/api/profile/1`,
-      //   {UserInformation},
-      //   { headers: { Authorization: `Bearer ${this.token}` } }
-      // )
-      }
+      const id = localStorage.getItem('id');
+      const token = localStorage.getItem("token");
+
+      const UserInformation = {
+          citizen: this.citizen,
+          name_ge: this.name_ge,
+          name_en: this.name_en,
+          surname_ge: this.surname_ge,
+          surname_en: this.surname_en,
+          email: this.email,
+          mobile: this.mobile,
+          birthday: this.birthDate,
+          idnumber: this.idNumber,
+          sex: this.sex,
+          address: this.adress,
+          city: this.city,
+
+          company: null,
+          company_id: null,
+          company_address: null,
+        }
+        axios.put(`${env.API_URL}/api/profile/` + id, UserInformation, { headers: { Authorization: `Bearer ${token}` } }).then(r => {
+          this.emitter.emit('mobcloseparamprofile');
+          this.emitter.emit('closedeskprofilesettings');
+          this.emitter.emit('closemobparameters');
+          this.emitter.emit('closedesksettings');
+          localStorage.setItem('user', `${this.name_ge} ${this.surname_ge}`);
+          swal({
+                title: "პროფილის ცვლილება",
+                text: `${r.data.message}`,
+                icon: "success",
+                dangerMode: false,
+              });
+        })
+    },
   },
 };
 </script>

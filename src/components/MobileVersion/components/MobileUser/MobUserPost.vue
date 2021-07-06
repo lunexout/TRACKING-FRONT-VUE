@@ -34,7 +34,7 @@
     <div>
       <button
         class="deleteDeclareBtn"
-        @click="emitter.emit('deletePost', code)"
+        @click="emitter.emit('deletePost', parsel_id)"
       >
         წაშლა
         <div class="declare-svg-box">
@@ -54,7 +54,7 @@
 <script>
 export default {
   name: "MobUserPost",
-  props: ["code"],
+  props: ["code", "parsel_id"],
 };
 </script>
 

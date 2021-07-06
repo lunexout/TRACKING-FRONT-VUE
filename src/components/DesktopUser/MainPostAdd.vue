@@ -21,7 +21,7 @@
     <div>
       <button
         class="deleteDeclareBtn"
-        @click="emitter.emit('deletePost', code)"
+        @click="emitter.emit('deletePost', parcel_id)"
       >
         წაშლა
         <div class="declare-svg-box">
@@ -39,7 +39,7 @@
 <script>
 export default {
   name: "MainPostAdd",
-  props: ["code"],
+  props: ["code", "parcel_id"],
 };
 </script>
 

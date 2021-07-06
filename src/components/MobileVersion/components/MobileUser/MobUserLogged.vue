@@ -487,6 +487,7 @@
                 v-for="post in posts.slice().reverse()"
                 :key="post.tracking_code"
                 :code="post.tracking_code"
+                :parsel_id="post.id"
               />
               <div v-if="posts.length > 1" style="margin-bottom: 25px"></div>
               <!-- POSTS -->
@@ -739,11 +740,11 @@ export default {
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((result) => {
-        if (result.data) {
-          this.isEmpty = false;
-          this.posts = result.data;
-        } else {
+        if (result.data.length <= 0) {
           this.isEmpty = true;
+        } else {
+          this.posts = result.data;
+          this.isEmpty = false;
         }
       });
     this.emitter.on("closemobdeclare", () => {
@@ -753,14 +754,30 @@ export default {
       this.isDeclare = true;
       this.declare_code = code;
     });
-    this.emitter.on("deletePost", () => {
-      this.emitter.on("deletePost", (code) => {
-        const index = this.posts.findIndex((x) => x.code == code);
-        if (index > -1) {
-          this.posts.splice(index, 1);
-        }
-        if (this.posts.length <= 0) this.isEmpty = true;
-      });
+    this.emitter.on("deletePost", (code) => {
+      axios.post(`${env.API_URL}/api/profile/delete`, {id: code}, {headers: {'Authorization': `Bearer ${token}`}}).then((result) => {
+          if(result.data.message == 'წაიშალა წარმატებით') {
+            const index = this.posts.findIndex((x) => x.id == code);
+            if (index > -1) {
+              swal({
+                title: `${this.posts[index].tracking_code}`,
+                text: `${result.data.message}`,
+                icon: "success",
+                dangerMode: false,
+              });
+              this.posts.splice(index, 1);
+              if(this.posts.length <= 0) this.isEmpty = true;
+            }
+          }
+          // else {
+          //     swal({
+          //       title: "დაფიქსირდა შეცდომა",
+          //       text: `წაშლა ვერ მოხერხა`,
+          //       icon: "error",
+          //       dangerMode: true,
+          //     });
+          // }
+        })
     });
     if (this.posts.length <= 0) this.isEmpty = true;
 
