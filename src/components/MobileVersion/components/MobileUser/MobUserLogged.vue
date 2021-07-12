@@ -84,7 +84,7 @@
                   font-family: arrowFONT;
                   font-weight: bold;
                 "
-                >U234874</span
+                >{{room_number}}</span
               >
             </h5>
           </div>
@@ -589,6 +589,8 @@ export default {
       declare_code: "",
       isEmpty: false,
 
+      room_number: '',
+
       posts: [
         // { code: "5145849821475821415414" },
         // { code: "5145849821475821415415" },
@@ -722,6 +724,7 @@ export default {
               });
             }
           });
+          
         if (this.isEmpty == true) this.isEmpty = false;
         this.code = "";
       } else {
@@ -747,6 +750,15 @@ export default {
           this.isEmpty = false;
         }
       });
+      axios
+          .post(
+            `${env.API_URL}/api/mywhs`,
+            { id },
+            { headers: { Authorization: `Bearer ${token}` } }
+          )
+          .then((r) => {
+            this.room_number = r.data[0].room_number;
+          })
     this.emitter.on("closemobdeclare", () => {
       this.isDeclare = false;
     });

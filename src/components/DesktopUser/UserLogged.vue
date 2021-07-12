@@ -357,7 +357,7 @@
                 font-family: arrowFONT;
                 font-weight: bold;
               "
-              >U234874</span
+              >{{room_number}}</span
             >
           </h5>
         </div>
@@ -559,6 +559,8 @@ export default {
       isFourthActive: false,
       isFifthActive: false,
 
+      room_number: '',
+
       // PAYMENT
       isPayment: false,
       //BALANCE
@@ -730,6 +732,16 @@ export default {
           this.isEmpty = false;
         }
       });
+
+    axios
+      .post(
+        `${env.API_URL}/api/mywhs`,
+        { id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((r) => {
+        this.room_number = r.data[0].room_number;
+      })
     this.emitter.on("deletePost", (code) => {
       axios.post(`${env.API_URL}/api/profile/delete`, {id: code}, {headers: {'Authorization': `Bearer ${token}`}}).then((result) => {
           if(result.data.message == 'წაიშალა წარმატებით') {

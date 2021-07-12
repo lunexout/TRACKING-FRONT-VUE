@@ -1,179 +1,192 @@
 v<template>
-  <div class="payment-modal animate__animated animate__fadeInDown">
-    <button
-      @click="
-        () => {
-          emitter.emit('mobcloseparamprofile');
-          emitter.emit('closedeskprofilesettings');
-        }
+  <div class="payment-modal">
+    <div
+      v-if="isSpinner"
+      class="spinner-grow text-light"
+      style="
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate (-50%, -25%);
       "
-      class="close-payment-modal"
-    >
-      X
-    </button>
-    <div class="payment-menu-cont">
-      <h1 class="payment-header" style="font-size: 25px">პროფილი</h1>
+      role="status"
+    ></div>
+    <template v-else>
+      <button
+        @click="
+          () => {
+            emitter.emit('mobcloseparamprofile');
+            emitter.emit('closedeskprofilesettings');
+          }
+        "
+        class="close-payment-modal"
+      >
+        X
+      </button>
+      <div class="payment-menu-cont">
+        <h1 class="payment-header" style="font-size: 25px">პროფილი</h1>
 
-      <div style="display: flex; justify-content: space-between">
-        <div>
-          <!-- <p class="text-dark mt-3 input-header">ფოტოს შეცვლა</p>
+        <div style="display: flex; justify-content: space-between">
+          <div>
+            <!-- <p class="text-dark mt-3 input-header">ფოტოს შეცვლა</p>
 
           <input
             type="file"
             class="inputs custom-file-input"
             accept="image/png, image/jpeg"
           /> -->
-          <p class="text-dark mt-3 input-header">სახელი(ქართულად)</p>
-          <input type="text" v-model="name_ge" class="inputs" />
-          <p class="text-dark mt-4 input-header">გვარი(ქართულად)</p>
-          <input type="text" v-model="surname_ge" class="inputs" />
-          <p class="text-dark mt-3 input-header">სახელი(ლათინურად)</p>
-          <input type="text" v-model="name_en" class="inputs" />
-          <p class="text-dark mt-4 input-header">გვარი(ლათინურად)</p>
-          <input type="text" v-model="name_en" class="inputs" />
-          <p class="text-dark mt-4 input-header">ქალაქი</p>
-          <select
-            name="cities"
-            v-model="city"
-            aria-placeholder="შეცვლაეთ ქალაქი"
-            class="inputs"
-            style="background-color: #0396db"
-          >
-            <option v-for="city in cities" :key="city.id" :value="city.id">
-              {{ city.name }}
-            </option>
-          </select>
-          <p v-if="isCOMPANY" class="text-dark mt-4 input-header">კომპანია</p>
+            <p class="text-dark mt-3 input-header">სახელი(ქართულად)</p>
+            <input type="text" v-model="name_ge" class="inputs" />
+            <p class="text-dark mt-4 input-header">გვარი(ქართულად)</p>
+            <input type="text" v-model="surname_ge" class="inputs" />
+            <p class="text-dark mt-3 input-header">სახელი(ლათინურად)</p>
+            <input type="text" v-model="name_en" class="inputs" />
+            <p class="text-dark mt-4 input-header">გვარი(ლათინურად)</p>
+            <input type="text" v-model="name_en" class="inputs" />
+            <p class="text-dark mt-4 input-header">ქალაქი</p>
+            <select
+              name="cities"
+              v-model="city"
+              aria-placeholder="შეცვლაეთ ქალაქი"
+              class="inputs"
+              style="background-color: #0396db"
+            >
+              <option v-for="city in cities" :key="city.id" :value="city.id">
+                {{ city.name }}
+              </option>
+            </select>
+            <p v-if="isCOMPANY" class="text-dark mt-4 input-header">კომპანია</p>
 
-          <input
-            v-if="isCOMPANY"
-            type="text"
-            v-model="company"
-            class="inputs"
-          />
-        </div>
-
-        <div>
-          <p class="text-dark mt-3 input-header">დაბადების თარიღი</p>
-          <input
-            type="date"
-            v-model="birthDate"
-            placeholder="დაბადების თარიღი"
-            class="inputs"
-          />
-
-          <p
-            style="
-              font-family: arrowFONT;
-              font-size: 14px;
-              color: #000;
-              margin-left: 18px;
-              font-weight: bold;
-              margin-bottom: -5px;
-              margin-top: 20px;
-            "
-          >
-            სქესი*
-          </p>
-          <input
-            v-model="sex"
-            type="radio"
-            id="male"
-            name="gender"
-            value="male"
-          />
-          <label
-            style="
-              font-family: arrowFONT;
-              font-size: 14px;
-              color: white;
-              font-weight: bold;
-              margin-left: 5px;
-              margin-right: 10px;
-            "
-            for="male"
-            >მდედრობითი</label
-          >
-          <input
-            v-model="sex"
-            type="radio"
-            id="female"
-            name="gender"
-            value="female"
-          />
-          <label
-            style="
-              font-family: arrowFONT;
-              margin-left: 5px;
-              font-size: 14px;
-              color: white;
-              font-weight: bold;
-            "
-            for="female"
-            >მამრობითი</label
-          ><br />
-
-          <p class="text-dark mt-2 input-header">ელ-ფოსტა*</p>
-          <input type="mail" v-model="email" class="inputs" />
-
-          <p class="text-dark mt-2 input-header">მობილური ტელეფონი*</p>
-          <input type="text" v-model="mobile" class="inputs" />
-
-          <p class="text-dark mt-2 input-header">საიდენთიფიკაციო კოდი*</p>
-          <input type="mail" v-model="idNumber" class="inputs" />
-
-          <p
-            class="text-dark mt-2 input-header"
-            style="margin-top: 10px !important"
-          >
-            მისამართი
-          </p>
-          <input type="text" v-model="adress" class="inputs" />
-          <p
-            v-if="isCOMPANY"
-            class="text-dark mt-2 input-header"
-            style="margin-top: 10px !important"
-          >
-            კომპანიის მისამართი
-          </p>
-          <input
-            v-if="isCOMPANY"
-            v-model="company_address"
-            type="text"
-            class="inputs"
-          />
-          <p
-            v-if="isCOMPANY"
-            class="text-dark mt-2 input-header"
-            style="margin-top: 10px !important"
-          >
-            კომპანიის კოდი
-          </p>
-          <input
-            v-if="isCOMPANY"
-            type="text"
-            v-model="company_id"
-            class="inputs"
-          />
-        </div>
-      </div>
-
-      <div
-        class="text-center paymentContainer mt-4"
-        style="margin-left: -20px; margin: 0 auto"
-      >
-        <button class="paymentBtn" @click.prevent="save" @keyup.enter="save">
-          შენახვა
-          <div class="payment-arrow-box">
-            <img
-              style="width: 13px; height: 13x; margin-top: -4px"
-              src="./../../../assets/mainpage/right-arrow.svg"
-              alt="Right arrow"
+            <input
+              v-if="isCOMPANY"
+              type="text"
+              v-model="company"
+              class="inputs"
             />
           </div>
-        </button>
+
+          <div>
+            <p class="text-dark mt-3 input-header">დაბადების თარიღი</p>
+            <input
+              type="date"
+              v-model="birthDate"
+              placeholder="დაბადების თარიღი"
+              class="inputs"
+            />
+
+            <p
+              style="
+                font-family: arrowFONT;
+                font-size: 14px;
+                color: #000;
+                margin-left: 18px;
+                font-weight: bold;
+                margin-bottom: -5px;
+                margin-top: 20px;
+              "
+            >
+              სქესი*
+            </p>
+            <input
+              v-model="sex"
+              type="radio"
+              id="male"
+              name="gender"
+              value="male"
+            />
+            <label
+              style="
+                font-family: arrowFONT;
+                font-size: 14px;
+                color: white;
+                font-weight: bold;
+                margin-left: 5px;
+                margin-right: 10px;
+              "
+              for="male"
+              >მდედრობითი</label
+            >
+            <input
+              v-model="sex"
+              type="radio"
+              id="female"
+              name="gender"
+              value="female"
+            />
+            <label
+              style="
+                font-family: arrowFONT;
+                margin-left: 5px;
+                font-size: 14px;
+                color: white;
+                font-weight: bold;
+              "
+              for="female"
+              >მამრობითი</label
+            ><br />
+
+            <p class="text-dark mt-2 input-header">ელ-ფოსტა*</p>
+            <input type="mail" v-model="email" class="inputs" />
+
+            <p class="text-dark mt-2 input-header">მობილური ტელეფონი*</p>
+            <input type="text" v-model="mobile" class="inputs" />
+
+            <p class="text-dark mt-2 input-header">საიდენთიფიკაციო კოდი*</p>
+            <input type="mail" v-model="idNumber" class="inputs" />
+
+            <p
+              class="text-dark mt-2 input-header"
+              style="margin-top: 10px !important"
+            >
+              მისამართი
+            </p>
+            <input type="text" v-model="adress" class="inputs" />
+            <p
+              v-if="isCOMPANY"
+              class="text-dark mt-2 input-header"
+              style="margin-top: 10px !important"
+            >
+              კომპანიის მისამართი
+            </p>
+            <input
+              v-if="isCOMPANY"
+              v-model="company_address"
+              type="text"
+              class="inputs"
+            />
+            <p
+              v-if="isCOMPANY"
+              class="text-dark mt-2 input-header"
+              style="margin-top: 10px !important"
+            >
+              კომპანიის კოდი
+            </p>
+            <input
+              v-if="isCOMPANY"
+              type="text"
+              v-model="company_id"
+              class="inputs"
+            />
+          </div>
+        </div>
+
+        <div
+          class="text-center paymentContainer mt-4"
+          style="margin-left: -20px; margin: 0 auto"
+        >
+          <button class="paymentBtn" @click.prevent="save" @keyup.enter="save">
+            შენახვა
+            <div class="payment-arrow-box">
+              <img
+                style="width: 13px; height: 13x; margin-top: -4px"
+                src="./../../../assets/mainpage/right-arrow.svg"
+                alt="Right arrow"
+              />
+            </div>
+          </button>
+        </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -203,6 +216,7 @@ export default {
       company_address: null,
 
       cities: [],
+      isSpinner: true,
     };
   },
 
@@ -243,49 +257,54 @@ export default {
           this.cities = resul1t.data;
           resul1t.data.map((city) => {
             if (city.name == result.data.city) {
-              this.city = city.id; 
+              this.city = city.id;
             }
           });
         });
+        this.isSpinner = false;
       });
   },
   methods: {
     save() {
-      const id = localStorage.getItem('id');
+      const id = localStorage.getItem("id");
       const token = localStorage.getItem("token");
 
       const UserInformation = {
-          citizen: this.citizen,
-          name_ge: this.name_ge,
-          name_en: this.name_en,
-          surname_ge: this.surname_ge,
-          surname_en: this.surname_en,
-          email: this.email,
-          mobile: this.mobile,
-          birthday: this.birthDate,
-          idnumber: this.idNumber,
-          sex: this.sex,
-          address: this.adress,
-          city: this.city,
+        citizen: this.citizen,
+        name_ge: this.name_ge,
+        name_en: this.name_en,
+        surname_ge: this.surname_ge,
+        surname_en: this.surname_en,
+        email: this.email,
+        mobile: this.mobile,
+        birthday: this.birthDate,
+        idnumber: this.idNumber,
+        sex: this.sex,
+        address: this.adress,
+        city: this.city,
 
-          company: null,
-          company_id: null,
-          company_address: null,
-        }
-        axios.put(`${env.API_URL}/api/profile/` + id, UserInformation, { headers: { Authorization: `Bearer ${token}` } }).then(r => {
-          this.emitter.emit('mobcloseparamprofile');
-          this.emitter.emit('closedeskprofilesettings');
-          this.emitter.emit('closemobparameters');
-          this.emitter.emit('closedesksettings');
-          localStorage.setItem('user', `${this.name_ge} ${this.surname_ge}`);
-          swal({
-                title: "პროფილის ცვლილება",
-                text: `${r.data.message}`,
-                icon: "success",
-                dangerMode: false,
-              });
-          window.location.reload();
+        company: null,
+        company_id: null,
+        company_address: null,
+      };
+      axios
+        .put(`${env.API_URL}/api/profile/` + id, UserInformation, {
+          headers: { Authorization: `Bearer ${token}` },
         })
+        .then((r) => {
+          this.emitter.emit("mobcloseparamprofile");
+          this.emitter.emit("closedeskprofilesettings");
+          this.emitter.emit("closemobparameters");
+          this.emitter.emit("closedesksettings");
+          localStorage.setItem("user", `${this.name_ge} ${this.surname_ge}`);
+          swal({
+            title: "პროფილის ცვლილება",
+            text: `${r.data.message}`,
+            icon: "success",
+            dangerMode: false,
+          });
+          window.location.reload();
+        });
     },
   },
 };
