@@ -27,7 +27,7 @@
         <div>
           <div class="mt-4 styled-div">
             <label class="switch" style="">
-              <input type="checkbox" />
+              <input type="checkbox" v-model='private_parcel'/>
               <span class="slider round"></span>
             </label>
             <h1 class="declare-header" style="padding: 10px; font-size: 18px">
@@ -47,6 +47,7 @@
             />
             <input
               type="text"
+              v-model='shop_url'
               placeholder="მოძებნე ვებგვერდი"
               onfocus="this.placeholder = ''"
               onblur="this.placeholder = 'მოძებნე ვებგვერდი'"
@@ -107,9 +108,7 @@
         <div class='styled-div mt-4' style="display: flex; justify-content: center; align-items: center;color: white;">
           <select class='input-style'
            v-model='chooseItem' style="outline: none; border: none;">
-            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
-            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
-            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
+            <option v-for='item in products' :key='item.created_at' :value='item.id'>{{item.name_ge}}</option>
           </select>
         </div>
           <!-- <div class="styled-div mt-4">
@@ -167,8 +166,8 @@
           >
             <button
               class="declareBtn"
-              @click.prevent="login"
-              @keyup.enter="login"
+              @click.prevent="declareIt"
+              @keyup.enter="declareIt"
             >
               დეკლარირება
               <div class="declare-arrow-box">
@@ -185,45 +184,74 @@
 </template>
 
 <script>
+import axios from 'axios';
+import env from './../../env.json'
 export default {
   name: "PostDeclare",
   props: ["code"],
   data() {
     return {
-      activeKurierService: false,
+      activeKurierService: true,
       activeFilialService: false,
 
       isAddProduct: false,
-      price: 0,
       productpart: 'აუდიო აპარატურის ნაწილი',
       productprice: '',
+      products: [],
+
+      //constants
+      private_parcel: false,
+      price: 0,
       chooseCurrency: 'GEL',
-      chooseItem: 'ვიდეო აპარატურის ნაწილი',
-      products: []
+      chooseItem: '',
+      shop_url: '',
     };
   },
   mounted() {
+    const token = localStorage.getItem('token');
     this.emitter.on("addproduct", () => {
       this.isAddProduct = true
-    });      
+    });     
+    axios.post(`${env.API_URL}/api/showcat`,{}, {headers: {'Authorization': `Bearer ${token}`}}).then(r => {
+      this.products = r.data;
+      this.chooseItem = r.data[0].id;
+    }) 
   },
   methods: {
-    addproduct() {
-      this.isAddProduct = false
-      this.products.push({
-        id: this.products.length + 1,
-        title: this.productpart,
-        price: this.productprice
+    declareIt(){
+      const user_id = localStorage.getItem('id');
+      const token = localStorage.getItem('token')
+      axios.put(`${env.API_URL}/api/profile/declar/${user_id}`, {tracking_code: this.code}, {headers: {'Authorization': `Bearer ${token}`}}).then( r => {
+        console.log(r);
       })
-    },
-    deleteproduct(code) {
-      // console.log(code);
-        const index = this.products.findIndex((x) => x.id == code);
-        console.log(index);
-        if (index > -1) {
-          this.products.splice(index, 1);
-        }
+      // axios.post(`${env.API_URL}/api/updateparcel/`)
+      const obj = {
+        user_id: user_id,
+        private_parcel:this.private_parcel,
+        tracking_code: this.code,
+        price: this.price,
+        chooseCurrency: this.chooseCurrency,
+        category: this.chooseItem,
+        shop_url: this.shop_url,
+        shipping_method: this.activeKurierService ? 1 : 0
+      }
+      console.log(obj);
     }
+    // addproduct() {
+    //   this.isAddProduct = false
+    //   this.products.push({
+    //     id: this.products.length + 1,
+    //     title: this.productpart,
+    //     price: this.productprice
+    //   })
+    // },
+    // deleteproduct(code) {
+    //     const index = this.products.findIndex((x) => x.id == code);
+    //     console.log(index);
+    //     if (index > -1) {
+    //       this.products.splice(index, 1);
+    //     }
+    // }
   }
 }
 </script>

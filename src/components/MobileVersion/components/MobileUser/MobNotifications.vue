@@ -33,10 +33,10 @@ v<template>
               padding: 5px;
             "
           >
-            ამანათის მიღება ამერიკაში
+            ამანათის მიღება საწყობში
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='parcel_arrived_warehouse_email' />
             <span class="slider round"></span>
           </label>
         </div>
@@ -53,7 +53,7 @@ v<template>
             ამანათი ჩამოსულია
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='parcel_arrived_georgia_email' />
             <span class="slider round"></span>
           </label>
         </div>
@@ -71,7 +71,7 @@ v<template>
             ინვოისის გადახდა
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='pay_invoice' />
             <span class="slider round"></span>
           </label>
         </div>
@@ -89,7 +89,7 @@ v<template>
             თანხის ნაკლებობა
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='notamount_money' />
             <span class="slider round"></span>
           </label>
         </div>
@@ -107,7 +107,7 @@ v<template>
             ამანათი გამოგზავნილია
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='parcel_send' />
             <span class="slider round"></span>
           </label>
         </div>
@@ -125,7 +125,7 @@ v<template>
             ბალანსის შევსება
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='balance'  />
             <span class="slider round"></span>
           </label>
         </div>
@@ -144,7 +144,7 @@ v<template>
             და სერვისის ცვლილებები
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='news' />
             <span class="slider round"></span>
           </label>
         </div>
@@ -172,10 +172,10 @@ v<template>
               padding: 5px;
             "
           >
-            ამანათის მიღება ამერიკაში
+            ამანათის მიღება საწყობში
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='parcel_arrived_warehouse_sms' />
             <span class="slider round"></span>
           </label>
         </div>
@@ -192,22 +192,55 @@ v<template>
             ამანათი ჩამოსულია
           </h5>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" checked v-model='parcel_arrived_georgia_sms'/>
             <span class="slider round"></span>
           </label>
         </div>
+         <button style="padding: 15px;  display: flex; justify-content: center; 
+      align-items: center; margin-top: 20px; outline: none;
+       border: none; background-color: #026492; color: white; border-radius: 15px;" @click='saveNotification'>შენახვა</button>
       </div>
     </div>
+    
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import env from './../../../../env.json'
 export default {
   name: "MobPayment",
   data() {
-    return {};
+    return {
+      parcel_arrived_warehouse_email: true,
+      parcel_arrived_warehouse_sms: true,
+      parcel_arrived_georgia_email: true,
+      parcel_arrived_georgia_sms: true,
+      pay_invoice: true,
+      notamount_money: true,
+      parcel_send: true,
+      balance: true,
+      news: true,
+    };
   },
-  methods: {},
+  methods: {
+    saveNotification() {
+      const obj = {
+        parcel_arrived_warehouse_email: this.parcel_arrived_warehouse_email,
+        parcel_arrived_warehouse_sms: this.parcel_arrived_warehouse_sms,
+        parcel_arrived_georgia_email: this.parcel_arrived_georgia_email,
+        parcel_arrived_georgia_sms: this.parcel_arrived_georgia_sms,
+        pay_invoice: this.pay_invoice,
+        notamount_money: this.notamount_money,
+        parcel_send: this.parcel_send,
+        balance: this.balance,
+        news: this.news
+      }
+      const id = localStorage.getItem("id");
+      const token = localStorage.getItem('token')
+      axios.put(`${env.API_URL}/api/profile/notify/${id}`, {obj}, {headers: {'Authorization': `Bearer ${token}`}})
+    }
+  },
 };
 </script>
 
