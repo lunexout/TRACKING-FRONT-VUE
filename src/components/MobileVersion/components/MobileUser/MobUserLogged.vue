@@ -9,7 +9,7 @@
   <MobProfParameters v-if="isParamProfile" />
   <MobNotification v-if="isNotification" />
   <MobPayment v-if="isPayment" />
-  <MobUserLoggedDeclare :code="declare_code" v-if="isDeclare" />
+  <MobUserLoggedDeclare :code="declareCode" :parsel_id='parsel_id' v-if="isDeclare" />
   <MobAddBalance v-if="isAddBalanace" />
   <MobGanbajeba :code="ganbajeba_code" v-if="isGanbajeba" />
   <MobPostComplate :data="postComplateCode" v-if="isPostComplate" />
@@ -590,7 +590,7 @@ export default {
       isEmpty: false,
 
       room_number: '',
-
+      parsel_id: '',
       posts: [
         // { code: "5145849821475821415414" },
         // { code: "5145849821475821415415" },
@@ -762,9 +762,10 @@ export default {
     this.emitter.on("closemobdeclare", () => {
       this.isDeclare = false;
     });
-    this.emitter.on("openmobdeclare", (code) => {
+    this.emitter.on("openmobdeclare", (data) => {
       this.isDeclare = true;
-      this.declare_code = code;
+      this.declareCode = data.code;
+      this.parsel_id = data.parsel_id;
     });
     this.emitter.on("deletePost", (code) => {
       axios.post(`${env.API_URL}/api/profile/delete`, {id: code}, {headers: {'Authorization': `Bearer ${token}`}}).then((result) => {

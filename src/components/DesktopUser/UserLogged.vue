@@ -13,7 +13,7 @@
   <ProfSettings v-if="isProfSettings" />
   <MobSettings v-if="isSettings" />
   <Adress v-if="isAdress" />
-  <PostDeclare v-if="isDeclare" :code="declareCode" />
+  <PostDeclare v-if="isDeclare" :code="declareCode" :parcel_id='parcel_id'  />
   <MobPayment v-if="isPayment" />
   <AddBalance v-if="isBalance" />
   <div v-else class="container main-cont mt-3 p-0">
@@ -560,7 +560,7 @@ export default {
       isFifthActive: false,
 
       room_number: '',
-
+parcel_id: '',
       // PAYMENT
       isPayment: false,
       //BALANCE
@@ -782,8 +782,9 @@ export default {
       this.isPayment = false;
     });
 
-    this.emitter.on("opendeskdeclare", (code) => {
-      this.declareCode = code;
+    this.emitter.on("opendeskdeclare", (data) => {
+      this.declareCode = data.code;
+      this.parcel_id = data.parcel_id;
       this.isDeclare = true;
     });
     this.emitter.on("closedeskdeclare", () => {

@@ -7,7 +7,7 @@
       </h5>
     </div>
     <div>
-      <button class="declareBtn" @click='emitter.emit("opendeskdeclare",code)'>
+      <button class="declareBtn" @click='emitter.emit("opendeskdeclare",{code: code, parcel_id: parcel_id})'>
         დეკლარირება
         <div class="declare-svg-box">
           <img

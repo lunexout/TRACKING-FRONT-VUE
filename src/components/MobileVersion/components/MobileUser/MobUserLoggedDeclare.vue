@@ -22,7 +22,7 @@
       </div>
       <div class="mt-4 styled-div">
         <label class="switch" style="">
-          <input type="checkbox" />
+          <input type="checkbox" v-model='private_parcel' />
           <span class="slider round"></span>
         </label>
         <h1 class="declare-header" style="padding: 10px; font-size: 18px">
@@ -39,6 +39,7 @@
         />
         <input
           type="text"
+          v-model='shop_url'
           placeholder="მოძებნე ვებგვერდი"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'მოძებნე ვებგვერდი'"
@@ -72,9 +73,13 @@
         <div class='styled-div mt-4' style="display: flex; justify-content: center; align-items: center;color: white;">
           <select class='input-style'
            v-model='chooseItem' style="outline: none; border: none;">
-            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
-            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
-            <option value='ვიდეო აპარატურის ნაწილი'>ვიდეო აპარატურის ნაწილი</option>
+            <option
+                v-for="item in products"
+                :key="item.created_at"
+                :value="item.id"
+              >
+                {{ item.name_ge }}
+              </option>
           </select>
         </div>
       <!-- <div class="styled-div mt-5" @click='emitter.emit("addproduct")' >
@@ -222,7 +227,7 @@
         class="text-center declareContainer mt-5"
         style="margin-left: -20px; margin: 0 auto"
       >
-        <button class="declareBtn" @click.prevent='login' @keyup.enter='login'>
+        <button class="declareBtn" @click.prevent='declareIt' @keyup.enter='declareIt'>
           დეკლარირება
           <div class="declare-arrow-box">
             <img
@@ -238,21 +243,27 @@
 </template>
 
 <script>
+import env from './../../../../env.json'
+import axios from 'axios'
 export default {
   name: "MobUserLoggedDeclare",
-  props: ["code"],
+  props: ["code", "parsel_id"],
   data() {
     return {
       isAddProduct: false,
-      activeKurierService: false,
+      activeKurierService: true,
       activeFilialService: false,
 
       productpart: 'აუდიო აპარატურის ნაწილი',
       productprice: '0',
-      chooseCurrency: 'GEL',
-      chooseItem: 'ვიდეო აპარატურის ნაწილი',
+           products: [],
+
+      //constants
+      private_parcel: false,
       price: 0,
-      products: [ ]
+      chooseCurrency: "GEL",
+      chooseItem: "",
+      shop_url: "",
     };
   },
   mounted() {
@@ -261,7 +272,21 @@ export default {
     })
     this.emitter.on("addcloseproduct", () => {
       this.isAddProduct = false
-    })
+    });
+    const token = localStorage.getItem("token");
+    this.emitter.on("addproduct", () => {
+      this.isAddProduct = true;
+    });
+    axios
+      .post(
+        `${env.API_URL}/api/showcat`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((r) => {
+        this.products = r.data;
+        this.chooseItem = r.data[0].id;
+      });
   },
   methods: {
     addproduct() {
@@ -279,7 +304,53 @@ export default {
         if (index > -1) {
           this.products.splice(index, 1);
         }
-    }
+    },
+    declareIt() {
+      if(this.shop_url == '') {
+        alert('გთხოვთ შეიყვანოთ ვებსაიტი სწორად')
+      }
+      else if(this.price == 0){
+        alert('გთხოვთ შეიყვანოთ სწორი თანხა')
+      }
+      else {
+        const user_id = localStorage.getItem("id");
+      const token = localStorage.getItem("token");
+      const obj = {
+        user_id: user_id,
+        private_parcel: this.private_parcel,
+        tracking_code: this.code,
+        price: this.price,
+        currency: this.chooseCurrency,
+        category: this.chooseItem.toString(),
+        shop_url: this.shop_url.toString(),
+        shipping_method: this.activeKurierService ? 1 : 0,
+      };
+      axios
+        .put(`${env.API_URL}/api/profile/parcelupdate/${this.parsel_id}`, obj, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((re) => {
+          console.log(re);
+          if (
+            re.data.message ==
+            "ამანათი დეკლარირებულია და ცვლილება ვერ მოხერხდება "
+          ) {
+            alert("ამანათი დეკლარირებულია და ცვლილება ვერ მოხერხდება");
+          } else {
+            axios
+              .put(
+                `${env.API_URL}/api/profile/declar/${this.parsel_id}`,
+                { tracking_code: this.code },
+                { headers: { Authorization: `Bearer ${token}` } }
+              )
+              .then((r) => {
+                alert(r.data.message);
+              });
+          }
+        });
+      }
+      // axios.post(`${env.API_URL}/api/updateparcel/`)
+    },
   }
 };
 </script>

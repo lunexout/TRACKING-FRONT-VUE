@@ -20,7 +20,7 @@
 
     <div style="display: flex;" class='mt-2'>
     <div>
-      <button class="declareBtn" @click='emitter.emit("openmobdeclare",code)'>
+      <button class="declareBtn" @click='emitter.emit("openmobdeclare",{code: code, parsel_id: parsel_id})'>
         დეკლარირება
         <div class="declare-svg-box">
           <img
