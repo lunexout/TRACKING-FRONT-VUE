@@ -20,7 +20,7 @@
 
     <div style="display: flex;" class='mt-2'>
     <div>
-      <button class="declareBtn" @click='emitter.emit("openmobdeclare",{code: code, parsel_id: parsel_id})'>
+      <button class="declareBtn" :class="{declared: isDeclared}" @click='declareIT'>
         დეკლარირება
         <div class="declare-svg-box">
           <img
@@ -54,7 +54,22 @@
 <script>
 export default {
   name: "MobUserPost",
-  props: ["code", "parsel_id"],
+  props: ["code", "parsel_id", "isDeclaration"],
+  data(){
+    return {
+      isDeclared: false,
+    }
+  },
+  mounted(){
+    if(this.isDeclaration == 1) {
+      this.isDeclared = true;
+    }
+  },
+  methods: {
+    declareIT(){
+      this.isDeclared ? null : this.emitter.emit("openmobdeclare",{code: this.code, parcel_id: this.parcel_id})
+    }
+  }
 };
 </script>
 
@@ -89,6 +104,23 @@ export default {
   color: white;
   margin-top: -3px;
   background-color: red;
+  border: none;
+  margin-left: 14px;
+}
+.declared {
+    border-radius: 70px;
+  outline: none;
+  padding-top: 6px;
+  width: 150px;
+  font-family: arrowFONT;
+  font-weight: bold;
+  height: 31px;
+  padding-right: 0;
+  text-align: center;
+  font-size: 11px;
+  color: white;
+  margin-top: -3px;
+  background-color: green;
   border: none;
   margin-left: 14px;
 }

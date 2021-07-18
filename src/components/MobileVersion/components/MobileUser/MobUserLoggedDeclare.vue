@@ -391,6 +391,9 @@ export default {
                     icon: "success",
                     dangerMode: false,
                   });
+                  setTimeout(() => {
+                    window.location.href = '/';
+                  }, 800);
                 });
             }
           });

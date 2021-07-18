@@ -488,6 +488,7 @@
                 :key="post.tracking_code"
                 :code="post.tracking_code"
                 :parsel_id="post.id"
+                :isDeclaration="post.declaration"
               />
               <div v-if="posts.length > 1" style="margin-bottom: 25px"></div>
               <!-- POSTS -->

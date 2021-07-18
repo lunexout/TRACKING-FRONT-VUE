@@ -13,7 +13,7 @@
   <ProfSettings v-if="isProfSettings" />
   <MobSettings v-if="isSettings" />
   <Adress v-if="isAdress" />
-  <PostDeclare v-if="isDeclare" :code="declareCode" :parcel_id='parcel_id'  />
+  <PostDeclare v-if="isDeclare" :code="declareCode" :isDeclared="isDeclared" :parcel_id='parcel_id'  />
   <MobPayment v-if="isPayment" />
   <AddBalance v-if="isBalance" />
   <div v-else class="container main-cont mt-3 p-0">
@@ -285,6 +285,7 @@
               :key="post.tracking_code"
               :code="post.tracking_code"
               :parcel_id="post.id"
+              :isDeclaration="post.declaration"
             />
             <div v-if="posts.length > 2" style="margin-bottom: 35px"></div>
             <!-- POSTS -->

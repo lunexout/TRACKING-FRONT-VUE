@@ -7,7 +7,8 @@
       </h5>
     </div>
     <div>
-      <button class="declareBtn" @click='emitter.emit("opendeskdeclare",{code: code, parcel_id: parcel_id})'>
+      <button class="declareBtn" :class="{declared: isDeclared}"
+       @click='declareIT'>
         დეკლარირება
         <div class="declare-svg-box">
           <img
@@ -39,7 +40,22 @@
 <script>
 export default {
   name: "MainPostAdd",
-  props: ["code", "parcel_id"],
+  props: ["code", "parcel_id","isDeclaration"],
+  data(){
+    return {
+      isDeclared: false,
+    }
+  },
+  mounted(){
+    if(this.isDeclaration == 1) {
+      this.isDeclared = true;
+    }
+  },
+  methods: {
+    declareIT(){
+      this.isDeclared ? null : this.emitter.emit("opendeskdeclare",{code: this.code, parcel_id: this.parcel_id})
+    }
+  }
 };
 </script>
 
@@ -75,6 +91,23 @@ export default {
   margin-top: -3px;
 background: rgb(0,0,0);
 background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(20,1,1,1) 0%, rgba(53,3,3,1) 0%, rgba(117,8,8,1) 27%, rgba(223,15,15,1) 98%);
+  border: none;
+}
+.declared {
+  border-radius: 70px;
+  outline: none;
+  padding: 10px;
+
+  width: 200px;
+  font-family: arrowFONT;
+  font-weight: bold;
+  height: 41px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  margin-top: -3px;
+background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(20,1,1,1) 0%, rgba(53,3,3,1) 0%, green 27%, green 98%);
   border: none;
 }
 .declare-svg-box {

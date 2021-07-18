@@ -313,7 +313,10 @@ export default {
                     text: `${r.data.message}`,
                     icon: "success",
                     dangerMode: false,
-                  });
+                  })
+                  setTimeout(() => {
+                    window.location.href = '/';
+                  }, 800);
                 });
             }
           });
