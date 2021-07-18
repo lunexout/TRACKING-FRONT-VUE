@@ -213,6 +213,7 @@
 <script>
 import axios from "axios";
 import env from "./../../env.json";
+import swal from "sweetalert";
 export default {
   name: "PostDeclare",
   props: ["code", "parcel_id"],
@@ -252,48 +253,70 @@ export default {
   },
   methods: {
     declareIt() {
-      if(this.shop_url == '') {
-        alert('გთხოვთ შეიყვანოთ ვებსაიტი სწორად')
-      }
-      else if(this.price == 0){
-        alert('გთხოვთ შეიყვანოთ სწორი თანხა')
-      }
-      else {
-        const user_id = localStorage.getItem("id");
-      const token = localStorage.getItem("token");
-      const obj = {
-        user_id: user_id,
-        private_parcel: this.private_parcel,
-        tracking_code: this.code,
-        price: this.price,
-        currency: this.chooseCurrency,
-        category: this.chooseItem.toString(),
-        shop_url: this.shop_url.toString(),
-        shipping_method: this.activeKurierService ? 1 : 0,
-      };
-      axios
-        .put(`${env.API_URL}/api/profile/parcelupdate/${this.parcel_id}`, obj, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((re) => {
-          console.log(re);
-          if (
-            re.data.message ==
-            "ამანათი დეკლარირებულია და ცვლილება ვერ მოხერხდება "
-          ) {
-            alert("ამანათი დეკლარირებულია და ცვლილება ვერ მოხერხდება");
-          } else {
-            axios
-              .put(
-                `${env.API_URL}/api/profile/declar/${this.parcel_id}`,
-                { tracking_code: this.code },
-                { headers: { Authorization: `Bearer ${token}` } }
-              )
-              .then((r) => {
-                alert(r.data.message);
-              });
-          }
+      if (this.shop_url == "") {
+        swal({
+          title: ``,
+          text: `შეიყვანეთ ვებსაიტის დასახელება სწორად`,
+          icon: "info",
+          dangerMode: false,
         });
+      } else if (this.price == 0 || this.price < 0) {
+        swal({
+          title: ``,
+          text: `შეიყვანეთ სწორი თანხა`,
+          icon: "info",
+          dangerMode: false,
+        });
+      } else {
+        const user_id = localStorage.getItem("id");
+        const token = localStorage.getItem("token");
+        const obj = {
+          user_id: user_id,
+          private_parcel: this.private_parcel,
+          tracking_code: this.code,
+          price: this.price,
+          currency: this.chooseCurrency,
+          category: this.chooseItem.toString(),
+          shop_url: this.shop_url.toString(),
+          shipping_method: this.activeKurierService ? 1 : 0,
+        };
+        axios
+          .put(
+            `${env.API_URL}/api/profile/parcelupdate/${this.parcel_id}`,
+            obj,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          )
+          .then((re) => {
+            console.log(re);
+            if (
+              re.data.message ==
+              "ამანათი დეკლარირებულია და ცვლილება ვერ მოხერხდება "
+            ) {
+              swal({
+                title: `${this.code}`,
+                text: `${re.data.message}`,
+                icon: "info",
+                dangerMode: false,
+              });
+            } else {
+              axios
+                .put(
+                  `${env.API_URL}/api/profile/declar/${this.parcel_id}`,
+                  { tracking_code: this.code },
+                  { headers: { Authorization: `Bearer ${token}` } }
+                )
+                .then((r) => {
+                  swal({
+                    title: `${this.code}`,
+                    text: `${r.data.message}`,
+                    icon: "success",
+                    dangerMode: false,
+                  });
+                });
+            }
+          });
       }
       // axios.post(`${env.API_URL}/api/updateparcel/`)
     },

@@ -22,7 +22,7 @@
       </div>
       <div class="mt-4 styled-div">
         <label class="switch" style="">
-          <input type="checkbox" v-model='private_parcel' />
+          <input type="checkbox" v-model="private_parcel" />
           <span class="slider round"></span>
         </label>
         <h1 class="declare-header" style="padding: 10px; font-size: 18px">
@@ -39,7 +39,7 @@
         />
         <input
           type="text"
-          v-model='shop_url'
+          v-model="shop_url"
           placeholder="მოძებნე ვებგვერდი"
           onfocus="this.placeholder = ''"
           onblur="this.placeholder = 'მოძებნე ვებგვერდი'"
@@ -47,41 +47,61 @@
         />
       </div>
 
-      <div class='styled-div mt-4' style="display: flex; justify-content: center; align-items: center;color: white;">
-          <select
-          class='input-style'
-           v-model='chooseCurrency' style="outline: none; border: none;">
-            <option value='GEL'>&#8382;</option>
-            <option value='DOLLAR'>$</option>
-            <option value='EURO'>&#8364;</option>
-          </select>
-        </div>
+      <div
+        class="styled-div mt-4"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+        "
+      >
+        <select
+          class="input-style"
+          v-model="chooseCurrency"
+          style="outline: none; border: none"
+        >
+          <option value="GEL">&#8382;</option>
+          <option value="DOLLAR">$</option>
+          <option value="EURO">&#8364;</option>
+        </select>
+      </div>
 
-        <div class="styled-div mt-4">
+      <div class="styled-div mt-4">
+        <input
+          type="number"
+          v-model="price"
+          placeholder="ფასი"
+          onfocus="this.placeholder = ''"
+          onblur="this.placeholder = 'ფასი'"
+          class="input-style"
+          style="appearance: none"
+        />
+      </div>
 
-            <input
-              type="number"
-              v-model='price'
-              placeholder="ფასი"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'ფასი'"
-              class="input-style"
-              style="appearance: none;"
-            />
-          </div>
-
-        <div class='styled-div mt-4' style="display: flex; justify-content: center; align-items: center;color: white;">
-          <select class='input-style'
-           v-model='chooseItem' style="outline: none; border: none;">
-            <option
-                v-for="item in products"
-                :key="item.created_at"
-                :value="item.id"
-              >
-                {{ item.name_ge }}
-              </option>
-          </select>
-        </div>
+      <div
+        class="styled-div mt-4"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+        "
+      >
+        <select
+          class="input-style"
+          v-model="chooseItem"
+          style="outline: none; border: none"
+        >
+          <option
+            v-for="item in products"
+            :key="item.created_at"
+            :value="item.id"
+          >
+            {{ item.name_ge }}
+          </option>
+        </select>
+      </div>
       <!-- <div class="styled-div mt-5" @click='emitter.emit("addproduct")' >
         <img
           src="./../../../../assets/mobile/amanatebi.svg"
@@ -227,7 +247,11 @@
         class="text-center declareContainer mt-5"
         style="margin-left: -20px; margin: 0 auto"
       >
-        <button class="declareBtn" @click.prevent='declareIt' @keyup.enter='declareIt'>
+        <button
+          class="declareBtn"
+          @click.prevent="declareIt"
+          @keyup.enter="declareIt"
+        >
           დეკლარირება
           <div class="declare-arrow-box">
             <img
@@ -243,8 +267,9 @@
 </template>
 
 <script>
-import env from './../../../../env.json'
-import axios from 'axios'
+import env from "./../../../../env.json";
+import axios from "axios";
+import swal from "sweetalert";
 export default {
   name: "MobUserLoggedDeclare",
   props: ["code", "parsel_id"],
@@ -254,9 +279,9 @@ export default {
       activeKurierService: true,
       activeFilialService: false,
 
-      productpart: 'აუდიო აპარატურის ნაწილი',
-      productprice: '0',
-           products: [],
+      productpart: "აუდიო აპარატურის ნაწილი",
+      productprice: "0",
+      products: [],
 
       //constants
       private_parcel: false,
@@ -268,10 +293,10 @@ export default {
   },
   mounted() {
     this.emitter.on("addproduct", () => {
-      this.isAddProduct = true
-    })
+      this.isAddProduct = true;
+    });
     this.emitter.on("addcloseproduct", () => {
-      this.isAddProduct = false
+      this.isAddProduct = false;
     });
     const token = localStorage.getItem("token");
     this.emitter.on("addproduct", () => {
@@ -290,75 +315,96 @@ export default {
   },
   methods: {
     addproduct() {
-      this.isAddProduct = false
+      this.isAddProduct = false;
       this.products.push({
         id: this.products.length + 1,
         title: this.productpart,
-        price: this.productprice
-      })
+        price: this.productprice,
+      });
     },
     deleteproduct(code) {
       // console.log(code);
-        const index = this.products.findIndex((x) => x.id == code);
-        console.log(index);
-        if (index > -1) {
-          this.products.splice(index, 1);
-        }
+      const index = this.products.findIndex((x) => x.id == code);
+      console.log(index);
+      if (index > -1) {
+        this.products.splice(index, 1);
+      }
     },
     declareIt() {
-      if(this.shop_url == '') {
-        alert('გთხოვთ შეიყვანოთ ვებსაიტი სწორად')
-      }
-      else if(this.price == 0){
-        alert('გთხოვთ შეიყვანოთ სწორი თანხა')
-      }
-      else {
-        const user_id = localStorage.getItem("id");
-      const token = localStorage.getItem("token");
-      const obj = {
-        user_id: user_id,
-        private_parcel: this.private_parcel,
-        tracking_code: this.code,
-        price: this.price,
-        currency: this.chooseCurrency,
-        category: this.chooseItem.toString(),
-        shop_url: this.shop_url.toString(),
-        shipping_method: this.activeKurierService ? 1 : 0,
-      };
-      axios
-        .put(`${env.API_URL}/api/profile/parcelupdate/${this.parsel_id}`, obj, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((re) => {
-          console.log(re);
-          if (
-            re.data.message ==
-            "ამანათი დეკლარირებულია და ცვლილება ვერ მოხერხდება "
-          ) {
-            alert("ამანათი დეკლარირებულია და ცვლილება ვერ მოხერხდება");
-          } else {
-            axios
-              .put(
-                `${env.API_URL}/api/profile/declar/${this.parsel_id}`,
-                { tracking_code: this.code },
-                { headers: { Authorization: `Bearer ${token}` } }
-              )
-              .then((r) => {
-                alert(r.data.message);
-              });
-          }
+      if (this.shop_url == "") {
+        swal({
+          title: "",
+          text: `შეიყვანეთ ვებსაიტის დასახელება სწორად`,
+          icon: "info",
+          dangerMode: false,
         });
+      } else if (this.price == 0 || this.price < 0) {
+        swal({
+          title: "",
+          text: `თანხა შეიყვანეთ სწორად`,
+          icon: "info",
+          dangerMode: false,
+        });
+      } else {
+        const user_id = localStorage.getItem("id");
+        const token = localStorage.getItem("token");
+        const obj = {
+          user_id: user_id,
+          private_parcel: this.private_parcel,
+          tracking_code: this.code,
+          price: this.price,
+          currency: this.chooseCurrency,
+          category: this.chooseItem.toString(),
+          shop_url: this.shop_url.toString(),
+          shipping_method: this.activeKurierService ? 1 : 0,
+        };
+        axios
+          .put(
+            `${env.API_URL}/api/profile/parcelupdate/${this.parsel_id}`,
+            obj,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          )
+          .then((re) => {
+            if (
+              re.data.message ==
+              "ამანათი დეკლარირებულია და ცვლილება ვერ მოხერხდება "
+            ) {
+              swal({
+                title: `${this.code}`,
+                text: `${re.data.message}`,
+                icon: "info",
+                dangerMode: false,
+              });
+            } else {
+              axios
+                .put(
+                  `${env.API_URL}/api/profile/declar/${this.parsel_id}`,
+                  { tracking_code: this.code },
+                  { headers: { Authorization: `Bearer ${token}` } }
+                )
+                .then((r) => {
+                  swal({
+                    title: `${this.code}`,
+                    text: `${r.data.message}`,
+                    icon: "success",
+                    dangerMode: false,
+                  });
+                });
+            }
+          });
       }
       // axios.post(`${env.API_URL}/api/updateparcel/`)
     },
-  }
+  },
 };
 </script>
 
 <style scoped>
 select {
   color: white !important;
-  background-color: #0396DB !important
+  background-color: #0396db !important;
 }
 .activeService {
   background: rgb(2, 0, 36) !important;
